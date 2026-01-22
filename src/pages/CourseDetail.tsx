@@ -8,6 +8,8 @@ import { VideoPlayer } from "@/components/VideoPlayer";
 import { LearningPath } from "@/components/LearningPath";
 import { getCourseById } from "@/data/courses";
 import { toast } from "sonner";
+import vogaisVideo from "@/assets/videos/vogais-cantantes.mp4";
+import vogaisThumb from "@/assets/thumbnails/vogais-cantantes-thumb.jpg";
 
 export default function CourseDetail() {
   const { courseId } = useParams();
@@ -29,9 +31,22 @@ export default function CourseDetail() {
     );
   }
 
+  // Map video URLs to imported assets
+  const videoAssetMap: Record<string, string> = {
+    "/src/assets/videos/vogais-cantantes.mp4": vogaisVideo,
+  };
+  
+  const thumbnailAssetMap: Record<string, string> = {
+    "/src/assets/thumbnails/vogais-cantantes-thumb.jpg": vogaisThumb,
+  };
+
   // Generate sample lessons if not present
   const lessons = course.lessons.length > 0 
-    ? course.lessons 
+    ? course.lessons.map(lesson => ({
+        ...lesson,
+        videoUrl: videoAssetMap[lesson.videoUrl] || lesson.videoUrl,
+        thumbnail: thumbnailAssetMap[lesson.thumbnail] || lesson.thumbnail,
+      }))
     : Array.from({ length: course.totalLessons }, (_, i) => ({
         id: `lesson-${i + 1}`,
         title: `Aula ${i + 1}: ${course.title} - Parte ${i + 1}`,
@@ -97,7 +112,7 @@ export default function CourseDetail() {
                 videoUrl={lessons[currentLesson].videoUrl || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
                 title={lessons[currentLesson].title}
                 coinsReward={lessons[currentLesson].coinsReward}
-                thumbnail={course.image}
+                thumbnail={lessons[currentLesson].thumbnail || course.image}
                 onComplete={handleLessonComplete}
               />
             ) : (
