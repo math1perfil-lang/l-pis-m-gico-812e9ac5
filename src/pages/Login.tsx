@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Calendar, Camera } from "lucide-react";
+import logoPandoorga from "@/assets/logo-pandoorga.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SponsorFooter } from "@/components/SponsorFooter";
@@ -43,13 +44,11 @@ export default function Login() {
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 rounded-full gradient-primary shadow-glow mb-4">
-              <span className="text-4xl">🎓</span>
-            </div>
-            <h1 className="text-3xl font-extrabold text-gradient-primary">EduKids</h1>
-            <p className="text-muted-foreground mt-2">
-              Aprenda, jogue e transforme seu futuro!
-            </p>
+            <img 
+              src={logoPandoorga} 
+              alt="Pandoorga" 
+              className="h-20 w-auto mx-auto object-contain"
+            />
           </div>
 
           {/* Card */}

@@ -105,7 +105,7 @@ export default function Profile() {
 
         {/* App version */}
         <p className="text-center text-xs text-muted-foreground mt-8">
-          EduKids v1.0.0 • Transformando educação em oportunidades
+          Pandoorga v1.0.0 • Transformando educação em oportunidades
         </p>
       </main>
     </div>
