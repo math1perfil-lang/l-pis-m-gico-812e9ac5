@@ -12,6 +12,7 @@ import {
   Trophy,
   Target,
 } from "lucide-react";
+import logoPandoorga from "@/assets/logo-pandoorga.png";
 import { Button } from "@/components/ui/button";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { LevelBadge } from "@/components/LevelBadge";
@@ -65,10 +66,7 @@ export default function Dashboard() {
         >
           {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
-        <div className="flex items-center gap-2">
-          <span className="text-xl">🎓</span>
-          <span className="font-bold text-gradient-primary">EduKids</span>
-        </div>
+        <img src={logoPandoorga} alt="Pandoorga" className="h-8 w-auto object-contain" />
         <CoinDisplay amount={userData.totalCoins} size="sm" />
       </header>
 
@@ -81,14 +79,8 @@ export default function Dashboard() {
       >
         <div className="p-6">
           {/* Logo */}
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-full gradient-primary flex items-center justify-center">
-              <span className="text-2xl">🎓</span>
-            </div>
-            <div>
-              <h1 className="font-extrabold text-lg text-gradient-primary">EduKids</h1>
-              <p className="text-xs text-muted-foreground">Aprenda & Ganhe</p>
-            </div>
+          <div className="mb-8">
+            <img src={logoPandoorga} alt="Pandoorga" className="h-12 w-auto object-contain" />
           </div>
 
           {/* User info */}

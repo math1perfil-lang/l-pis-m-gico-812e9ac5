@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Play, Star, Gift, Users, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SponsorFooter } from "@/components/SponsorFooter";
+import logoPandoorga from "@/assets/logo-pandoorga.png";
 
 const features = [
   {
@@ -63,13 +64,13 @@ export default function Index() {
         <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Logo */}
-            <div className="inline-flex items-center justify-center w-24 h-24 rounded-full gradient-primary shadow-glow mb-6 animate-scale-in">
-              <span className="text-5xl">🎓</span>
-            </div>
+            <img 
+              src={logoPandoorga} 
+              alt="Pandoorga" 
+              className="h-28 md:h-36 w-auto mx-auto mb-6 animate-scale-in object-contain"
+            />
 
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 animate-slide-up">
-              <span className="text-gradient-primary">EduKids</span>
-              <br />
               <span className="text-foreground">Aprenda, Jogue, Transforme!</span>
             </h1>
 
