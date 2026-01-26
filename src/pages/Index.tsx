@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Play, Star, Gift, Users, ChevronRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SponsorFooter } from "@/components/SponsorFooter";
-import logoPandoorga from "@/assets/logo-pandoorga.png";
+import logoPandoorga from "@/assets/logo-pandoorga-new.jpg";
 
 const features = [
   {
