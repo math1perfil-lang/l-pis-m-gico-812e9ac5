@@ -12,7 +12,7 @@ import {
   Trophy,
   Target,
 } from "lucide-react";
-import logoPandoorga from "@/assets/logo-pandoorga.png";
+import logoPandoorga from "@/assets/logo-pandoorga-new.jpg";
 import { Button } from "@/components/ui/button";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { LevelBadge } from "@/components/LevelBadge";

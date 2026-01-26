@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Calendar, Camera } from "lucide-react";
-import logoPandoorga from "@/assets/logo-pandoorga.png";
+import logoPandoorga from "@/assets/logo-pandoorga-new.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SponsorFooter } from "@/components/SponsorFooter";
