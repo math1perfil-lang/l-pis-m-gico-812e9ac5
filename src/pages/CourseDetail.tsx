@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Clock, Users, Star, Play, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, Clock, Users, Star, Play, CheckCircle2, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { ProgressBar } from "@/components/ProgressBar";
 import { VideoPlayer } from "@/components/VideoPlayer";
-import { LearningPath } from "@/components/LearningPath";
+import { ActivityPlayer } from "@/components/ActivityPlayer";
 import { getCourseById } from "@/data/courses";
+import { getActivitiesForLesson } from "@/data/activities";
 import { toast } from "sonner";
 import vogaisVideo from "@/assets/videos/vogais-cantantes.mp4";
 import vogaisThumb from "@/assets/thumbnails/vogais-cantantes-thumb.jpg";
@@ -17,7 +18,10 @@ export default function CourseDetail() {
   const course = getCourseById(courseId || "");
   const [currentLesson, setCurrentLesson] = useState(0);
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+  const [completedActivities, setCompletedActivities] = useState<string[]>([]);
   const [showVideo, setShowVideo] = useState(false);
+  const [showActivities, setShowActivities] = useState(false);
+  const [videoWatched, setVideoWatched] = useState<string[]>([]);
 
   if (!course) {
     return (
@@ -68,17 +72,34 @@ export default function CourseDetail() {
     coinsReward: lesson.coinsReward,
   }));
 
-  const handleLessonComplete = () => {
+  const handleVideoComplete = () => {
     const lesson = lessons[currentLesson];
-    if (!completedLessons.includes(lesson.id)) {
-      setCompletedLessons([...completedLessons, lesson.id]);
-      toast.success(`🎉 Parabéns! Você ganhou ${lesson.coinsReward} moedas!`);
+    if (!videoWatched.includes(lesson.id)) {
+      setVideoWatched([...videoWatched, lesson.id]);
+      toast.success("📚 Vídeo concluído! Agora complete as 5 atividades.");
     }
     setShowVideo(false);
+    setShowActivities(true);
+  };
+
+  const handleActivitiesComplete = (totalCoins: number) => {
+    const lesson = lessons[currentLesson];
+    if (!completedActivities.includes(lesson.id)) {
+      setCompletedActivities([...completedActivities, lesson.id]);
+    }
+    if (!completedLessons.includes(lesson.id)) {
+      setCompletedLessons([...completedLessons, lesson.id]);
+      toast.success(`🏆 Aula completa! Você ganhou ${lesson.coinsReward + totalCoins} moedas!`);
+    }
+    setShowActivities(false);
     if (currentLesson < lessons.length - 1) {
       setCurrentLesson(currentLesson + 1);
     }
   };
+
+  const currentActivities = course
+    ? getActivitiesForLesson(course.id, lessons[currentLesson]?.id || "", course.title, course.ageMin)
+    : [];
 
   const progress = (completedLessons.length / lessons.length) * 100;
 
@@ -113,7 +134,7 @@ export default function CourseDetail() {
                 title={lessons[currentLesson].title}
                 coinsReward={lessons[currentLesson].coinsReward}
                 thumbnail={lessons[currentLesson].thumbnail || course.image}
-                onComplete={handleLessonComplete}
+                onComplete={handleVideoComplete}
               />
             ) : (
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-card">
@@ -129,12 +150,34 @@ export default function CourseDetail() {
                   </span>
                   <h2 className="text-2xl font-bold text-white mb-2">{course.title}</h2>
                   <p className="text-white/80 mb-4">{course.description}</p>
-                  <Button variant="hero" onClick={() => setShowVideo(true)}>
-                    <Play className="w-5 h-5 mr-2" />
-                    {completedLessons.length > 0 ? "Continuar" : "Começar Agora"}
-                  </Button>
+                  <div className="flex flex-wrap gap-3">
+                    <Button variant="hero" onClick={() => setShowVideo(true)}>
+                      <Play className="w-5 h-5 mr-2" />
+                      {completedLessons.length > 0 ? "Continuar" : "Começar Agora"}
+                    </Button>
+                    {videoWatched.includes(lessons[currentLesson]?.id) && 
+                     !completedActivities.includes(lessons[currentLesson]?.id) && (
+                      <Button 
+                        variant="default" 
+                        onClick={() => setShowActivities(true)}
+                        className="bg-accent hover:bg-accent/90"
+                      >
+                        <BookOpen className="w-5 h-5 mr-2" />
+                        Fazer Atividades
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
+            )}
+
+            {/* Activities Modal */}
+            {showActivities && (
+              <ActivityPlayer
+                activities={currentActivities}
+                onComplete={handleActivitiesComplete}
+                onClose={() => setShowActivities(false)}
+              />
             )}
 
             {/* Course info */}
@@ -186,6 +229,8 @@ export default function CourseDetail() {
                 <div className="space-y-3">
                   {lessons.map((lesson, index) => {
                     const isCompleted = completedLessons.includes(lesson.id);
+                    const hasWatchedVideo = videoWatched.includes(lesson.id);
+                    const hasCompletedActivities = completedActivities.includes(lesson.id);
                     const isCurrent = index === currentLesson;
                     const isLocked = index > currentLesson && !isCompleted;
 
@@ -233,6 +278,12 @@ export default function CourseDetail() {
                               <span>{lesson.duration}</span>
                               <span>•</span>
                               <span>{lesson.coinsReward} 🪙</span>
+                              {hasWatchedVideo && !hasCompletedActivities && (
+                                <>
+                                  <span>•</span>
+                                  <span className="text-primary font-medium">📝 Atividades pendentes</span>
+                                </>
+                              )}
                             </div>
                           </div>
                         </div>
