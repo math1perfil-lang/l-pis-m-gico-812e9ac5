@@ -51,23 +51,13 @@ export default function Index() {
     <div className="min-h-screen flex flex-col">
       {/* Hero section */}
       <section className="relative min-h-screen flex items-center gradient-hero overflow-hidden">
-        {/* Floating elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 text-6xl animate-float">📚</div>
-          <div className="absolute top-40 right-20 text-5xl animate-float" style={{ animationDelay: "0.5s" }}>🎮</div>
-          <div className="absolute bottom-40 left-20 text-4xl animate-float" style={{ animationDelay: "1s" }}>🪙</div>
-          <div className="absolute bottom-20 right-10 text-5xl animate-float" style={{ animationDelay: "1.5s" }}>🎁</div>
-          <div className="absolute top-1/3 left-1/4 text-3xl animate-float" style={{ animationDelay: "0.8s" }}>⭐</div>
-          <div className="absolute top-1/2 right-1/4 text-4xl animate-float" style={{ animationDelay: "1.2s" }}>🏆</div>
-        </div>
-
         <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Logo */}
             <img 
               src={logoPandoorga} 
               alt="Pandoorga" 
-              className="h-28 md:h-36 w-auto mx-auto mb-6 animate-scale-in object-contain"
+              className="h-20 md:h-24 w-auto mx-auto mb-6 animate-scale-in object-contain"
             />
 
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 animate-slide-up">
