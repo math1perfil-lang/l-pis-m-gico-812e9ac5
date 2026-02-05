@@ -430,6 +430,15 @@ export const courseActivitiesMap: Record<string, LessonActivities[]> = {
   "numeros-brincadeira": numerosActivities,
   "matematica-desafios": matematicaDesafiosActivities,
   "algebra-geometria": algebraGeometriaActivities,
+   "natureza-amiga": naturezaAmigaActivities,
+   "portugues-aventura": portuguesAventuraActivities,
+   "ciencias-experimentos": cienciasExperimentosActivities,
+   "educacao-financeira-kids": educacaoFinanceiraKidsActivities,
+   "redacao-nota-mil": redacaoNotaMilActivities,
+   "programacao-iniciantes": programacaoIniciantesActivities,
+   "educacao-financeira-teens": educacaoFinanceiraTeensActivities,
+   "historia-brasil-mundo": historiaBrasilMundoActivities,
+   "ingles-fluente": inglesFuenteActivities,
 };
 
 // Generate default activities for courses without specific ones
