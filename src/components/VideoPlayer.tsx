@@ -116,7 +116,7 @@ export const VideoPlayer = ({
             <div className="text-center animate-scale-in">
               <div className="text-6xl mb-4">🎉</div>
               <p className="text-2xl font-bold text-primary-foreground mb-2">Parabéns!</p>
-              <CoinDisplay amount={coinsReward} size="lg" animated />
+              <CoinDisplay amount={coinsReward} size="lg" />
               <p className="text-primary-foreground mt-2">moedas conquistadas!</p>
             </div>
           </div>

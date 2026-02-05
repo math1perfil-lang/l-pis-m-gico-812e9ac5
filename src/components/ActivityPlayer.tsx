@@ -150,7 +150,7 @@ export const ActivityPlayer = ({
           <p className="text-xl text-muted-foreground mb-6">
             Você completou todas as atividades!
           </p>
-          <CoinDisplay amount={earnedCoins} size="lg" animated />
+          <CoinDisplay amount={earnedCoins} size="lg" />
           <p className="text-muted-foreground mt-2">moedas conquistadas!</p>
         </div>
       </div>
