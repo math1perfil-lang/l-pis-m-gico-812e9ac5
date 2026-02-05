@@ -73,11 +73,11 @@ export default function Dashboard() {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed top-0 left-0 h-full w-64 bg-card border-r border-border z-40 transform transition-transform duration-300 lg:translate-x-0",
+          "fixed top-0 left-0 h-full w-64 bg-card border-r border-border z-40 transform transition-transform duration-300 lg:translate-x-0 flex flex-col",
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="p-6">
+        <div className="p-6 pt-20 lg:pt-6 flex-1 overflow-y-auto">
           {/* User info */}
           <div className="bg-muted/50 rounded-xl p-4 mb-6">
             <div className="flex items-center gap-3">
@@ -115,7 +115,7 @@ export default function Dashboard() {
         </div>
 
         {/* Logout */}
-        <div className="absolute bottom-0 left-0 right-0 p-6">
+        <div className="p-6 border-t border-border">
           <button
             onClick={() => navigate("/")}
             className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all w-full"
@@ -147,9 +147,9 @@ export default function Dashboard() {
           </div>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 auto-rows-fr">
             {/* Daily goal */}
-            <div className="bg-card rounded-2xl p-5 shadow-card">
+            <div className="bg-card rounded-2xl p-5 shadow-card flex flex-col">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
                   <Target className="w-5 h-5 text-primary-foreground" />
@@ -161,17 +161,19 @@ export default function Dashboard() {
                   </p>
                 </div>
               </div>
-              <ProgressBar
+              <div className="mt-auto">
+                <ProgressBar
                 value={userData.dailyProgress}
                 max={userData.dailyGoal}
                 variant="primary"
                 showLabel={false}
                 size="sm"
-              />
+                />
+              </div>
             </div>
 
             {/* Streak */}
-            <div className="bg-card rounded-2xl p-5 shadow-card">
+            <div className="bg-card rounded-2xl p-5 shadow-card flex flex-col justify-center">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full gradient-secondary flex items-center justify-center">
                   <Flame className="w-5 h-5 text-secondary-foreground" />
@@ -184,27 +186,19 @@ export default function Dashboard() {
             </div>
 
             {/* Level progress */}
-            <div className="bg-card rounded-2xl p-5 shadow-card">
-              <div className="flex items-center gap-3 mb-3">
-                <LevelBadge level={userData.level} size="sm" />
-                <div className="flex-1">
-                  <p className="text-sm text-muted-foreground">Nível {userData.level}</p>
-                  <p className="font-bold text-foreground">
-                    {userData.xp}/{userData.xpToNextLevel} XP
-                  </p>
-                </div>
-              </div>
-              <ProgressBar
-                value={userData.xp}
-                max={userData.xpToNextLevel}
-                variant="accent"
-                showLabel={false}
-                size="sm"
+            <div className="bg-card rounded-2xl p-5 shadow-card flex flex-col">
+              <LevelBadge 
+                level={userData.level} 
+                size="sm" 
+                showProgress={true}
+                xp={userData.xp}
+                xpToNextLevel={userData.xpToNextLevel}
+                showLevelInBadge={false}
               />
             </div>
 
             {/* Achievements */}
-            <div className="bg-card rounded-2xl p-5 shadow-card">
+            <div className="bg-card rounded-2xl p-5 shadow-card flex flex-col justify-center">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full gradient-gold flex items-center justify-center">
                   <Trophy className="w-5 h-5 text-gold-foreground" />
