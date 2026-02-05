@@ -424,6 +424,726 @@ export const algebraGeometriaActivities: LessonActivities[] = [
   },
 ];
 
+ // Activities for "Natureza Nossa Amiga" - Ages 6-8
+ export const naturezaAmigaActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "nat-l1-a1",
+         type: "multiple-choice",
+         question: "Qual animal é mamífero?",
+         instruction: "Escolha o animal correto",
+         options: [
+           { id: "a", text: "🐕 Cachorro", isCorrect: true },
+           { id: "b", text: "🐟 Peixe", isCorrect: false },
+           { id: "c", text: "🦎 Lagarto", isCorrect: false },
+           { id: "d", text: "🐦 Passarinho", isCorrect: false },
+         ],
+         coinsReward: 10,
+         difficulty: "easy",
+       },
+       {
+         id: "nat-l1-a2",
+         type: "true-false",
+         question: "As plantas precisam de água e luz do sol para viver?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 10,
+         difficulty: "easy",
+       },
+       {
+         id: "nat-l1-a3",
+         type: "matching",
+         question: "Ligue cada animal ao seu habitat",
+         instruction: "Conecte o animal ao lugar onde vive",
+         options: [
+           { id: "p1", text: "🐟 Peixe", matchId: "p2" },
+           { id: "p2", text: "🌊 Água", matchId: "p1" },
+           { id: "a1", text: "🐦 Pássaro", matchId: "a2" },
+           { id: "a2", text: "🌳 Árvore", matchId: "a1" },
+           { id: "f1", text: "🐜 Formiga", matchId: "f2" },
+           { id: "f2", text: "🏔️ Terra", matchId: "f1" },
+         ],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+       {
+         id: "nat-l1-a4",
+         type: "ordering",
+         question: "Ordene o ciclo de vida da borboleta",
+         instruction: "Arraste na ordem correta",
+         options: [
+           { id: "1", text: "🥚 Ovo" },
+           { id: "2", text: "🐛 Lagarta" },
+           { id: "3", text: "🫛 Casulo" },
+           { id: "4", text: "🦋 Borboleta" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+       {
+         id: "nat-l1-a5",
+         type: "multiple-choice",
+         question: "Qual parte da planta absorve água do solo?",
+         instruction: "Escolha a resposta correta",
+         options: [
+           { id: "a", text: "🌸 Flor", isCorrect: false },
+           { id: "b", text: "🌿 Folha", isCorrect: false },
+           { id: "c", text: "🌱 Raiz", isCorrect: true },
+           { id: "d", text: "🌾 Caule", isCorrect: false },
+         ],
+         coinsReward: 10,
+         difficulty: "easy",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "Português: Uma Aventura" - Ages 9-11
+ export const portuguesAventuraActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "port-l1-a1",
+         type: "multiple-choice",
+         question: "Qual é o sujeito da frase: 'O gato pulou o muro'?",
+         instruction: "Identifique o sujeito",
+         options: [
+           { id: "a", text: "pulou", isCorrect: false },
+           { id: "b", text: "O gato", isCorrect: true },
+           { id: "c", text: "o muro", isCorrect: false },
+           { id: "d", text: "pulou o muro", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+       {
+         id: "port-l1-a2",
+         type: "true-false",
+         question: "'Livro' é um substantivo?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "easy",
+       },
+       {
+         id: "port-l1-a3",
+         type: "matching",
+         question: "Ligue o substantivo ao seu adjetivo correto",
+         instruction: "Faça as conexões corretas",
+         options: [
+           { id: "s1", text: "Casa", matchId: "a1" },
+           { id: "a1", text: "Grande", matchId: "s1" },
+           { id: "s2", text: "Menino", matchId: "a2" },
+           { id: "a2", text: "Esperto", matchId: "s2" },
+           { id: "s3", text: "Flor", matchId: "a3" },
+           { id: "a3", text: "Bonita", matchId: "s3" },
+         ],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+       {
+         id: "port-l1-a4",
+         type: "ordering",
+         question: "Ordene as palavras para formar uma frase correta",
+         instruction: "Arraste as palavras na ordem certa",
+         options: [
+           { id: "1", text: "A" },
+           { id: "2", text: "menina" },
+           { id: "3", text: "leu" },
+           { id: "4", text: "o livro" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+       {
+         id: "port-l1-a5",
+         type: "multiple-choice",
+         question: "Qual é o antônimo de 'alto'?",
+         instruction: "Escolha o oposto",
+         options: [
+           { id: "a", text: "Grande", isCorrect: false },
+           { id: "b", text: "Baixo", isCorrect: true },
+           { id: "c", text: "Largo", isCorrect: false },
+           { id: "d", text: "Forte", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "easy",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "Ciências: Experimentos" - Ages 9-11
+ export const cienciasExperimentosActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "cie-l1-a1",
+         type: "multiple-choice",
+         question: "Qual é o estado físico da água em temperatura ambiente?",
+         instruction: "Escolha a resposta correta",
+         options: [
+           { id: "a", text: "Sólido", isCorrect: false },
+           { id: "b", text: "Líquido", isCorrect: true },
+           { id: "c", text: "Gasoso", isCorrect: false },
+           { id: "d", text: "Plasma", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "easy",
+       },
+       {
+         id: "cie-l1-a2",
+         type: "true-false",
+         question: "O gelo é água no estado sólido?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "easy",
+       },
+       {
+         id: "cie-l1-a3",
+         type: "ordering",
+         question: "Ordene o ciclo da água",
+         instruction: "Coloque na ordem correta",
+         options: [
+           { id: "1", text: "☀️ Evaporação" },
+           { id: "2", text: "☁️ Condensação" },
+           { id: "3", text: "🌧️ Precipitação" },
+           { id: "4", text: "💧 Acumulação" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "cie-l1-a4",
+         type: "matching",
+         question: "Ligue o órgão à sua função",
+         instruction: "Conecte corretamente",
+         options: [
+           { id: "c1", text: "❤️ Coração", matchId: "c2" },
+           { id: "c2", text: "Bombear sangue", matchId: "c1" },
+           { id: "p1", text: "🫁 Pulmões", matchId: "p2" },
+           { id: "p2", text: "Respirar", matchId: "p1" },
+           { id: "e1", text: "🧠 Cérebro", matchId: "e2" },
+           { id: "e2", text: "Pensar", matchId: "e1" },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "cie-l1-a5",
+         type: "multiple-choice",
+         question: "O que acontece quando aquecemos a água a 100°C?",
+         instruction: "Escolha a mudança de estado",
+         options: [
+           { id: "a", text: "Congela", isCorrect: false },
+           { id: "b", text: "Ferve e vira vapor", isCorrect: true },
+           { id: "c", text: "Fica mais densa", isCorrect: false },
+           { id: "d", text: "Não muda", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "Meu Primeiro Cofrinho" - Ages 9-11
+ export const educacaoFinanceiraKidsActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "fin-k-l1-a1",
+         type: "multiple-choice",
+         question: "O que é melhor fazer com o dinheiro que você ganha?",
+         instruction: "Escolha a opção mais inteligente",
+         options: [
+           { id: "a", text: "Gastar tudo de uma vez", isCorrect: false },
+           { id: "b", text: "Guardar uma parte e gastar outra", isCorrect: true },
+           { id: "c", text: "Jogar fora", isCorrect: false },
+           { id: "d", text: "Dar tudo para os amigos", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "easy",
+       },
+       {
+         id: "fin-k-l1-a2",
+         type: "true-false",
+         question: "Poupar significa guardar dinheiro para o futuro?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "easy",
+       },
+       {
+         id: "fin-k-l1-a3",
+         type: "ordering",
+         question: "Ordene os passos para comprar algo que você quer",
+         instruction: "Coloque na ordem correta",
+         options: [
+           { id: "1", text: "💭 Decidir o que quer" },
+           { id: "2", text: "💰 Ver quanto custa" },
+           { id: "3", text: "🐷 Juntar dinheiro" },
+           { id: "4", text: "🛍️ Comprar" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+       {
+         id: "fin-k-l1-a4",
+         type: "matching",
+         question: "Ligue o conceito à sua definição",
+         instruction: "Conecte corretamente",
+         options: [
+           { id: "p1", text: "Poupar", matchId: "p2" },
+           { id: "p2", text: "Guardar dinheiro", matchId: "p1" },
+           { id: "g1", text: "Gastar", matchId: "g2" },
+           { id: "g2", text: "Usar dinheiro", matchId: "g1" },
+           { id: "m1", text: "Meta", matchId: "m2" },
+           { id: "m2", text: "Objetivo", matchId: "m1" },
+         ],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+       {
+         id: "fin-k-l1-a5",
+         type: "multiple-choice",
+         question: "Se você tem R$10 e quer algo de R$15, o que fazer?",
+         instruction: "Escolha a melhor decisão",
+         options: [
+           { id: "a", text: "Desistir de comprar", isCorrect: false },
+           { id: "b", text: "Economizar mais R$5", isCorrect: true },
+           { id: "c", text: "Pedir emprestado e não devolver", isCorrect: false },
+           { id: "d", text: "Ficar triste", isCorrect: false },
+         ],
+         coinsReward: 15,
+         difficulty: "medium",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "Redação Nota Mil" - Ages 12-15
+ export const redacaoNotaMilActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "red-l1-a1",
+         type: "multiple-choice",
+         question: "Qual é a estrutura básica de uma redação dissertativa?",
+         instruction: "Escolha a estrutura correta",
+         options: [
+           { id: "a", text: "Início, meio e fim", isCorrect: false },
+           { id: "b", text: "Introdução, desenvolvimento e conclusão", isCorrect: true },
+           { id: "c", text: "Título, texto e assinatura", isCorrect: false },
+           { id: "d", text: "Parágrafo único", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "red-l1-a2",
+         type: "true-false",
+         question: "A tese é a ideia principal que você defende na redação?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "red-l1-a3",
+         type: "ordering",
+         question: "Ordene os elementos de um parágrafo argumentativo",
+         instruction: "Coloque na ordem correta",
+         options: [
+           { id: "1", text: "Tópico frasal" },
+           { id: "2", text: "Argumento" },
+           { id: "3", text: "Exemplo ou evidência" },
+           { id: "4", text: "Conclusão parcial" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 25,
+         difficulty: "hard",
+       },
+       {
+         id: "red-l1-a4",
+         type: "matching",
+         question: "Ligue o conectivo à sua função",
+         instruction: "Conecte corretamente",
+         options: [
+           { id: "p1", text: "Portanto", matchId: "p2" },
+           { id: "p2", text: "Conclusão", matchId: "p1" },
+           { id: "e1", text: "Entretanto", matchId: "e2" },
+           { id: "e2", text: "Oposição", matchId: "e1" },
+           { id: "a1", text: "Além disso", matchId: "a2" },
+           { id: "a2", text: "Adição", matchId: "a1" },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "red-l1-a5",
+         type: "multiple-choice",
+         question: "O que NÃO deve aparecer em uma redação formal?",
+         instruction: "Identifique o erro",
+         options: [
+           { id: "a", text: "Argumentos bem fundamentados", isCorrect: false },
+           { id: "b", text: "Gírias e linguagem coloquial", isCorrect: true },
+           { id: "c", text: "Citações de especialistas", isCorrect: false },
+           { id: "d", text: "Dados estatísticos", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "Programação para Jovens" - Ages 12-15
+ export const programacaoIniciantesActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "prog-l1-a1",
+         type: "multiple-choice",
+         question: "O que é um algoritmo?",
+         instruction: "Escolha a definição correta",
+         options: [
+           { id: "a", text: "Um tipo de computador", isCorrect: false },
+           { id: "b", text: "Uma sequência de passos para resolver um problema", isCorrect: true },
+           { id: "c", text: "Uma linguagem de programação", isCorrect: false },
+           { id: "d", text: "Um jogo de computador", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "prog-l1-a2",
+         type: "true-false",
+         question: "Em programação, uma 'variável' armazena dados que podem mudar?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "prog-l1-a3",
+         type: "ordering",
+         question: "Ordene os passos para criar um programa simples",
+         instruction: "Coloque na ordem correta",
+         options: [
+           { id: "1", text: "Entender o problema" },
+           { id: "2", text: "Planejar a solução" },
+           { id: "3", text: "Escrever o código" },
+           { id: "4", text: "Testar e corrigir" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 25,
+         difficulty: "medium",
+       },
+       {
+         id: "prog-l1-a4",
+         type: "matching",
+         question: "Ligue o conceito à sua descrição",
+         instruction: "Conecte corretamente",
+         options: [
+           { id: "l1", text: "Loop", matchId: "l2" },
+           { id: "l2", text: "Repetir ações", matchId: "l1" },
+           { id: "c1", text: "Condição", matchId: "c2" },
+           { id: "c2", text: "Se... então...", matchId: "c1" },
+           { id: "f1", text: "Função", matchId: "f2" },
+           { id: "f2", text: "Bloco reutilizável", matchId: "f1" },
+         ],
+         coinsReward: 25,
+         difficulty: "hard",
+       },
+       {
+         id: "prog-l1-a5",
+         type: "multiple-choice",
+         question: "Qual estrutura usamos para tomar decisões no código?",
+         instruction: "Escolha a estrutura correta",
+         options: [
+           { id: "a", text: "for", isCorrect: false },
+           { id: "b", text: "if/else", isCorrect: true },
+           { id: "c", text: "print", isCorrect: false },
+           { id: "d", text: "variable", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "Finanças para o Futuro" - Ages 12-15
+ export const educacaoFinanceiraTeensActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "fin-t-l1-a1",
+         type: "multiple-choice",
+         question: "O que são juros compostos?",
+         instruction: "Escolha a definição correta",
+         options: [
+           { id: "a", text: "Juros sobre o valor inicial apenas", isCorrect: false },
+           { id: "b", text: "Juros sobre juros acumulados", isCorrect: true },
+           { id: "c", text: "Taxa de inflação", isCorrect: false },
+           { id: "d", text: "Desconto em compras", isCorrect: false },
+         ],
+         coinsReward: 25,
+         difficulty: "hard",
+       },
+       {
+         id: "fin-t-l1-a2",
+         type: "true-false",
+         question: "Diversificar investimentos reduz o risco?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "fin-t-l1-a3",
+         type: "ordering",
+         question: "Ordene as etapas de um planejamento financeiro",
+         instruction: "Coloque na ordem correta",
+         options: [
+           { id: "1", text: "Analisar receitas e despesas" },
+           { id: "2", text: "Definir metas" },
+           { id: "3", text: "Criar orçamento" },
+           { id: "4", text: "Acompanhar e ajustar" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 25,
+         difficulty: "hard",
+       },
+       {
+         id: "fin-t-l1-a4",
+         type: "matching",
+         question: "Ligue o tipo de investimento à sua característica",
+         instruction: "Conecte corretamente",
+         options: [
+           { id: "p1", text: "Poupança", matchId: "p2" },
+           { id: "p2", text: "Baixo risco", matchId: "p1" },
+           { id: "a1", text: "Ações", matchId: "a2" },
+           { id: "a2", text: "Alto risco", matchId: "a1" },
+           { id: "t1", text: "Tesouro Direto", matchId: "t2" },
+           { id: "t2", text: "Renda fixa", matchId: "t1" },
+         ],
+         coinsReward: 25,
+         difficulty: "hard",
+       },
+       {
+         id: "fin-t-l1-a5",
+         type: "multiple-choice",
+         question: "O que é inflação?",
+         instruction: "Escolha a definição correta",
+         options: [
+           { id: "a", text: "Aumento geral dos preços ao longo do tempo", isCorrect: true },
+           { id: "b", text: "Queda dos salários", isCorrect: false },
+           { id: "c", text: "Aumento do dólar", isCorrect: false },
+           { id: "d", text: "Taxa de desemprego", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "História: Brasil & Mundo" - Ages 12-15
+ export const historiaBrasilMundoActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "hist-l1-a1",
+         type: "multiple-choice",
+         question: "Em que ano o Brasil foi descoberto?",
+         instruction: "Escolha o ano correto",
+         options: [
+           { id: "a", text: "1492", isCorrect: false },
+           { id: "b", text: "1500", isCorrect: true },
+           { id: "c", text: "1822", isCorrect: false },
+           { id: "d", text: "1889", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "easy",
+       },
+       {
+         id: "hist-l1-a2",
+         type: "true-false",
+         question: "A Independência do Brasil ocorreu em 1822?",
+         instruction: "Responda Verdadeiro ou Falso",
+         options: [
+           { id: "true", text: "Verdadeiro", isCorrect: true },
+           { id: "false", text: "Falso", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "easy",
+       },
+       {
+         id: "hist-l1-a3",
+         type: "ordering",
+         question: "Ordene os períodos históricos do Brasil",
+         instruction: "Do mais antigo para o mais recente",
+         options: [
+           { id: "1", text: "Colônia" },
+           { id: "2", text: "Império" },
+           { id: "3", text: "República Velha" },
+           { id: "4", text: "República Atual" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 25,
+         difficulty: "medium",
+       },
+       {
+         id: "hist-l1-a4",
+         type: "matching",
+         question: "Ligue o evento ao seu período",
+         instruction: "Conecte corretamente",
+         options: [
+           { id: "d1", text: "Descobrimento", matchId: "d2" },
+           { id: "d2", text: "1500", matchId: "d1" },
+           { id: "i1", text: "Independência", matchId: "i2" },
+           { id: "i2", text: "1822", matchId: "i1" },
+           { id: "r1", text: "República", matchId: "r2" },
+           { id: "r2", text: "1889", matchId: "r1" },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "hist-l1-a5",
+         type: "multiple-choice",
+         question: "Quem proclamou a Independência do Brasil?",
+         instruction: "Escolha a resposta correta",
+         options: [
+           { id: "a", text: "Dom João VI", isCorrect: false },
+           { id: "b", text: "Dom Pedro I", isCorrect: true },
+           { id: "c", text: "Getúlio Vargas", isCorrect: false },
+           { id: "d", text: "Marechal Deodoro", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+     ],
+   },
+ ];
+ 
+ // Activities for "Inglês Fluente" - Ages 12-15
+ export const inglesFuenteActivities: LessonActivities[] = [
+   {
+     lessonId: "lesson-1",
+     activities: [
+       {
+         id: "eng-l1-a1",
+         type: "multiple-choice",
+         question: "How do you say 'Olá' in English?",
+         instruction: "Choose the correct translation",
+         options: [
+           { id: "a", text: "Goodbye", isCorrect: false },
+           { id: "b", text: "Hello", isCorrect: true },
+           { id: "c", text: "Thanks", isCorrect: false },
+           { id: "d", text: "Please", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "easy",
+       },
+       {
+         id: "eng-l1-a2",
+         type: "true-false",
+         question: "'She is a teacher' is a correct sentence?",
+         instruction: "Answer True or False",
+         options: [
+           { id: "true", text: "True", isCorrect: true },
+           { id: "false", text: "False", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "easy",
+       },
+       {
+         id: "eng-l1-a3",
+         type: "ordering",
+         question: "Put the words in order to form a sentence",
+         instruction: "Arrange correctly",
+         options: [
+           { id: "1", text: "I" },
+           { id: "2", text: "am" },
+           { id: "3", text: "learning" },
+           { id: "4", text: "English" },
+         ],
+         correctOrder: ["1", "2", "3", "4"],
+         coinsReward: 25,
+         difficulty: "medium",
+       },
+       {
+         id: "eng-l1-a4",
+         type: "matching",
+         question: "Match the word with its translation",
+         instruction: "Connect correctly",
+         options: [
+           { id: "b1", text: "Book", matchId: "b2" },
+           { id: "b2", text: "Livro", matchId: "b1" },
+           { id: "h1", text: "House", matchId: "h2" },
+           { id: "h2", text: "Casa", matchId: "h1" },
+           { id: "s1", text: "School", matchId: "s2" },
+           { id: "s2", text: "Escola", matchId: "s1" },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+       {
+         id: "eng-l1-a5",
+         type: "multiple-choice",
+         question: "Complete: 'They ___ students.'",
+         instruction: "Choose the correct verb",
+         options: [
+           { id: "a", text: "is", isCorrect: false },
+           { id: "b", text: "are", isCorrect: true },
+           { id: "c", text: "am", isCorrect: false },
+           { id: "d", text: "be", isCorrect: false },
+         ],
+         coinsReward: 20,
+         difficulty: "medium",
+       },
+     ],
+   },
+ ];
+ 
 // Map course IDs to their activities
 export const courseActivitiesMap: Record<string, LessonActivities[]> = {
   "alfabetizacao-divertida": alfabetizacaoActivities,
