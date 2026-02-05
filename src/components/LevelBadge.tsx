@@ -8,6 +8,7 @@
    xp?: number;
    xpToNextLevel?: number;
    className?: string;
+  showLevelInBadge?: boolean;
  }
  
  const getLevelInfo = (level: number) => {
@@ -24,7 +25,8 @@
    showProgress = false,
    xp,
    xpToNextLevel,
-   className 
+  className,
+  showLevelInBadge = true
  }: LevelBadgeProps) => {
    const { icon: Icon, title, bgColor } = getLevelInfo(level);
  
@@ -54,14 +56,11 @@
              )}
            >
              <Icon className={cn(iconSizes[size], "text-white")} />
-             <span className="font-bold text-white text-xs">{level}</span>
+          {showLevelInBadge && <span className="font-bold text-white text-xs">{level}</span>}
            </div>
-           <span className="text-xs font-medium text-muted-foreground mt-1">
-             {title}
-           </span>
          </div>
          <div className="flex-1">
-           <p className="text-sm text-muted-foreground">Nível {level}</p>
+        <p className="text-sm text-muted-foreground">Nível {level} - {title}</p>
            <p className="font-bold text-foreground text-lg">
              {xp}/{xpToNextLevel} XP
            </p>
@@ -86,7 +85,7 @@
          )}
        >
          <Icon className={cn(iconSizes[size], "text-white")} />
-         <span className="font-bold text-white text-xs">{level}</span>
+      {showLevelInBadge && <span className="font-bold text-white text-xs">{level}</span>}
        </div>
        <span className="text-xs font-medium text-muted-foreground mt-1">{title}</span>
      </div>
