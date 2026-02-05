@@ -78,11 +78,6 @@ export default function Dashboard() {
         )}
       >
         <div className="p-6">
-          {/* Logo */}
-          <div className="mb-8">
-            <img src={logoPandoorga} alt="Pandoorga" className="h-12 w-auto object-contain" />
-          </div>
-
           {/* User info */}
           <div className="bg-muted/50 rounded-xl p-4 mb-6">
             <div className="flex items-center gap-3">

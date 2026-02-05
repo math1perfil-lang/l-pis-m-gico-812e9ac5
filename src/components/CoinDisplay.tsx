@@ -4,14 +4,12 @@ import { cn } from "@/lib/utils";
 interface CoinDisplayProps {
   amount: number;
   size?: "sm" | "md" | "lg";
-  animated?: boolean;
   className?: string;
 }
 
 export const CoinDisplay = ({ 
   amount, 
   size = "md", 
-  animated = false,
   className 
 }: CoinDisplayProps) => {
   const sizeClasses = {
@@ -29,13 +27,12 @@ export const CoinDisplay = ({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 gradient-gold rounded-full font-extrabold text-gold-foreground shadow-gold",
+        "inline-flex items-center gap-2 bg-amber-50 rounded-full font-bold text-amber-700 border border-amber-200",
         sizeClasses[size],
-        animated && "animate-coin-spin",
         className
       )}
     >
-      <Coins className={cn(iconSizes[size], "animate-float")} />
+      <Coins className={cn(iconSizes[size], "text-amber-600")} />
       <span>{amount.toLocaleString()}</span>
     </div>
   );
