@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useCoins } from "@/hooks/useCoins";
 
 interface DreamBox {
   id: string;
@@ -54,7 +55,7 @@ const colorOptions = [
 
 export default function Cofrinho() {
   const navigate = useNavigate();
-  const [balance, setBalance] = useState(2340);
+  const { balance, addCoins, spendCoins } = useCoins();
   const [boxes, setBoxes] = useState<DreamBox[]>(initialBoxes);
   const [createOpen, setCreateOpen] = useState(false);
   const [transferOpen, setTransferOpen] = useState<DreamBox | null>(null);
