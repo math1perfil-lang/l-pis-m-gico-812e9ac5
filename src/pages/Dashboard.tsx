@@ -11,6 +11,7 @@ import {
   Flame,
   Trophy,
   Target,
+  PiggyBank,
 } from "lucide-react";
 import logoPandoorga from "@/assets/logo-pandoorga.png";
 import { Button } from "@/components/ui/button";
@@ -52,6 +53,7 @@ export default function Dashboard() {
   const menuItems = [
     { icon: Home, label: "Início", path: "/dashboard", active: true },
     { icon: BookOpen, label: "Cursos", path: "/courses" },
+    { icon: PiggyBank, label: "Cofrinho", path: "/cofrinho" },
     { icon: Gift, label: "Recompensas", path: "/rewards" },
     { icon: User, label: "Perfil", path: "/profile" },
   ];
