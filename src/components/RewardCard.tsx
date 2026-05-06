@@ -1,4 +1,4 @@
-import { ShoppingCart, GraduationCap, Laptop, BookOpen, Utensils } from "lucide-react";
+import { ShoppingCart, GraduationCap, Laptop, BookOpen, Utensils, Drama } from "lucide-react";
 import { CoinDisplay } from "./CoinDisplay";
 import { cn } from "@/lib/utils";
 
