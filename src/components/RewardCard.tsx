@@ -51,7 +51,11 @@ export const RewardCard = ({
   onRedeem,
 }: RewardCardProps) => {
   const config = categoryConfig[category];
-  const Icon = config.icon;
+  const overrideIcon: Record<string, typeof Drama> = {
+    "ingresso-teatro": Drama,
+    "bolsa-integral": GraduationCap,
+  };
+  const Icon = overrideIcon[arguments[0]?.id] || config.icon;
   const canRedeem = currentCoins >= coinsRequired;
   const progress = Math.min((currentCoins / coinsRequired) * 100, 100);
 
