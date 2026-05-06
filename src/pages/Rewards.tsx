@@ -37,20 +37,20 @@
      <div className="min-h-screen bg-gradient-to-b from-sky-50 to-background">
        {/* Header */}
        <header className="sticky top-0 bg-white/90 backdrop-blur-lg border-b border-border z-50">
-         <div className="container mx-auto px-4 py-4">
-           <div className="flex items-center justify-between">
-             <div className="flex items-center gap-4">
-               <Button variant="ghost" size="icon" onClick={() => navigate("/dashboard")}>
+         <div className="container mx-auto px-4 py-3">
+           <div className="flex items-center justify-between gap-3">
+             <div className="flex items-center gap-3 min-w-0 flex-1">
+               <Button variant="ghost" size="icon" className="shrink-0" onClick={() => navigate("/dashboard")}>
                  <ArrowLeft className="w-5 h-5" />
                </Button>
-               <div>
-                 <h1 className="text-xl font-bold text-foreground">Loja de Recompensas</h1>
-                 <p className="text-sm text-muted-foreground">
+               <div className="min-w-0">
+                 <h1 className="text-base sm:text-lg font-bold text-foreground leading-tight truncate">Loja de Recompensas</h1>
+                 <p className="text-xs text-muted-foreground truncate">
                    Troque suas moedas por benefícios reais!
                  </p>
                </div>
              </div>
-             <CoinDisplay amount={currentCoins} size="lg" />
+             <CoinDisplay amount={currentCoins} size="sm" />
            </div>
          </div>
        </header>
