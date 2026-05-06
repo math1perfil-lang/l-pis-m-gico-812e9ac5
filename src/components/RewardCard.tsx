@@ -42,6 +42,7 @@ const categoryConfig = {
 };
 
 export const RewardCard = ({
+  id,
   title,
   description,
   coinsRequired,
