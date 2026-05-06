@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useCoins } from "@/hooks/useCoins";
 
 interface DreamBox {
   id: string;
@@ -54,7 +55,7 @@ const colorOptions = [
 
 export default function Cofrinho() {
   const navigate = useNavigate();
-  const [balance, setBalance] = useState(2340);
+  const { balance, addCoins, spendCoins } = useCoins();
   const [boxes, setBoxes] = useState<DreamBox[]>(initialBoxes);
   const [createOpen, setCreateOpen] = useState(false);
   const [transferOpen, setTransferOpen] = useState<DreamBox | null>(null);
@@ -91,7 +92,7 @@ export default function Cofrinho() {
   const handleDelete = (id: string) => {
     const box = boxes.find((b) => b.id === id);
     if (!box) return;
-    setBalance(balance + box.saved);
+    addCoins(box.saved);
     setBoxes(boxes.filter((b) => b.id !== id));
     toast.success(`Caixinha excluída. ${box.saved} moedas voltaram ao saldo.`);
   };
@@ -107,7 +108,7 @@ export default function Cofrinho() {
       toast.error("Saldo insuficiente");
       return;
     }
-    setBalance(balance - amount);
+    spendCoins(amount);
     setBoxes(boxes.map((b) => (b.id === transferOpen.id ? { ...b, saved: b.saved + amount } : b)));
     toast.success(`${amount} moedas guardadas em "${transferOpen.name}"! 🐷`);
     setTransferAmount("");
@@ -125,7 +126,7 @@ export default function Cofrinho() {
       toast.error("A caixinha não tem moedas suficientes");
       return;
     }
-    setBalance(balance + amount);
+    addCoins(amount);
     setBoxes(boxes.map((b) => (b.id === withdrawOpen.id ? { ...b, saved: b.saved - amount } : b)));
     toast.success(`${amount} moedas voltaram ao seu saldo!`);
     setTransferAmount("");

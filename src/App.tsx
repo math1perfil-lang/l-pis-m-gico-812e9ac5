@@ -12,15 +12,17 @@ import Rewards from "./pages/Rewards";
 import Cofrinho from "./pages/Cofrinho";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import { CoinsProvider } from "./hooks/useCoins";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+      <CoinsProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
@@ -31,8 +33,9 @@ const App = () => (
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+          </Routes>
+        </BrowserRouter>
+      </CoinsProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
