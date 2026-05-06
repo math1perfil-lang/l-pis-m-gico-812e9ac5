@@ -92,7 +92,7 @@ export default function Cofrinho() {
   const handleDelete = (id: string) => {
     const box = boxes.find((b) => b.id === id);
     if (!box) return;
-    setBalance(balance + box.saved);
+    addCoins(box.saved);
     setBoxes(boxes.filter((b) => b.id !== id));
     toast.success(`Caixinha excluída. ${box.saved} moedas voltaram ao saldo.`);
   };
@@ -108,7 +108,7 @@ export default function Cofrinho() {
       toast.error("Saldo insuficiente");
       return;
     }
-    setBalance(balance - amount);
+    spendCoins(amount);
     setBoxes(boxes.map((b) => (b.id === transferOpen.id ? { ...b, saved: b.saved + amount } : b)));
     toast.success(`${amount} moedas guardadas em "${transferOpen.name}"! 🐷`);
     setTransferAmount("");
@@ -126,7 +126,7 @@ export default function Cofrinho() {
       toast.error("A caixinha não tem moedas suficientes");
       return;
     }
-    setBalance(balance + amount);
+    addCoins(amount);
     setBoxes(boxes.map((b) => (b.id === withdrawOpen.id ? { ...b, saved: b.saved - amount } : b)));
     toast.success(`${amount} moedas voltaram ao seu saldo!`);
     setTransferAmount("");
