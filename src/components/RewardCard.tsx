@@ -1,4 +1,4 @@
-import { ShoppingCart, GraduationCap, Laptop, BookOpen, Utensils } from "lucide-react";
+import { ShoppingCart, GraduationCap, Laptop, BookOpen, Utensils, Drama } from "lucide-react";
 import { CoinDisplay } from "./CoinDisplay";
 import { cn } from "@/lib/utils";
 
@@ -42,6 +42,7 @@ const categoryConfig = {
 };
 
 export const RewardCard = ({
+  id,
   title,
   description,
   coinsRequired,
@@ -51,7 +52,11 @@ export const RewardCard = ({
   onRedeem,
 }: RewardCardProps) => {
   const config = categoryConfig[category];
-  const Icon = config.icon;
+  const overrideIcon: Record<string, typeof Drama> = {
+    "ingresso-teatro": Drama,
+    "bolsa-integral": GraduationCap,
+  };
+  const Icon = overrideIcon[id] || config.icon;
   const canRedeem = currentCoins >= coinsRequired;
   const progress = Math.min((currentCoins / coinsRequired) * 100, 100);
 
