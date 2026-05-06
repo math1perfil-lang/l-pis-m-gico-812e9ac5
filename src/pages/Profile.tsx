@@ -4,6 +4,7 @@ import { ArrowLeft, Settings, Bell, Shield, HelpCircle, LogOut } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { ChildProfile } from "@/components/ChildProfile";
 import { CoinDisplay } from "@/components/CoinDisplay";
+import { useCoins } from "@/hooks/useCoins";
 
 // Simulated user data
 const userData = {
@@ -13,7 +14,7 @@ const userData = {
   level: 12,
   xp: 450,
   xpToNextLevel: 600,
-  totalCoins: 2340,
+  // totalCoins comes from the shared coins store
   currentStreak: 5,
   longestStreak: 14,
   coursesCompleted: 3,
@@ -29,6 +30,7 @@ const settingsMenu = [
 
 export default function Profile() {
   const navigate = useNavigate();
+  const { balance: totalCoins } = useCoins();
 
   return (
     <div className="min-h-screen bg-background">
@@ -45,14 +47,14 @@ export default function Profile() {
                 <p className="text-sm text-muted-foreground">Gerencie sua conta</p>
               </div>
             </div>
-            <CoinDisplay amount={userData.totalCoins} size="sm" />
+            <CoinDisplay amount={totalCoins} size="sm" />
           </div>
         </div>
       </header>
 
       <main className="container mx-auto px-4 py-8 max-w-2xl">
         {/* Child profile */}
-        <ChildProfile {...userData} />
+        <ChildProfile {...userData} totalCoins={totalCoins} />
 
         {/* Settings menu */}
         <div className="mt-8 bg-card rounded-2xl shadow-card overflow-hidden">

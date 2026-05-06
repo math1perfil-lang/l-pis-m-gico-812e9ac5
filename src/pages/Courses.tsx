@@ -7,6 +7,7 @@ import { CourseCard } from "@/components/CourseCard";
 import { AgeSelector } from "@/components/AgeSelector";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { courses, getCoursesForAge } from "@/data/courses";
+import { useCoins } from "@/hooks/useCoins";
 
 const categories = [
   "Todos",
@@ -21,6 +22,7 @@ const categories = [
 
 export default function Courses() {
   const navigate = useNavigate();
+  const { balance: totalCoins } = useCoins();
   const [selectedAge, setSelectedAge] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchQuery, setSearchQuery] = useState("");
@@ -50,7 +52,7 @@ export default function Courses() {
                 </p>
               </div>
             </div>
-            <CoinDisplay amount={2340} size="sm" />
+            <CoinDisplay amount={totalCoins} size="sm" />
           </div>
         </div>
       </header>
