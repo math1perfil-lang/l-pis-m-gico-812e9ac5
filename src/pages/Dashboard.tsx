@@ -22,6 +22,7 @@ import { ProgressBar } from "@/components/ProgressBar";
 import { StreakDisplay } from "@/components/StreakDisplay";
 import { AgeSelector } from "@/components/AgeSelector";
 import { courses, getCoursesForAge } from "@/data/courses";
+import { useCoins } from "@/hooks/useCoins";
 import { cn } from "@/lib/utils";
 
 // Simulated user data
@@ -32,7 +33,7 @@ const userData = {
   level: 12,
   xp: 450,
   xpToNextLevel: 600,
-  totalCoins: 2340,
+  // totalCoins now comes from the shared coins store
   currentStreak: 5,
   longestStreak: 14,
   coursesCompleted: 3,
@@ -43,6 +44,7 @@ const userData = {
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  const { balance: totalCoins } = useCoins();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedAge, setSelectedAge] = useState<number | null>(userData.age);
 
@@ -69,7 +71,7 @@ export default function Dashboard() {
           {sidebarOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
         <img src={logoPandoorga} alt="Pandoorga" className="h-8 w-auto object-contain" />
-        <CoinDisplay amount={userData.totalCoins} size="sm" />
+        <CoinDisplay amount={totalCoins} size="sm" />
       </header>
 
       {/* Sidebar */}
@@ -143,7 +145,7 @@ export default function Dashboard() {
                 </p>
               </div>
               <div className="hidden lg:flex items-center gap-4">
-                <CoinDisplay amount={userData.totalCoins} size="lg" />
+                <CoinDisplay amount={totalCoins} size="lg" />
               </div>
             </div>
           </div>
