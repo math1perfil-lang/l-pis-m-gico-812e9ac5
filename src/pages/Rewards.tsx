@@ -4,8 +4,9 @@
  import { Button } from "@/components/ui/button";
  import { CoinDisplay } from "@/components/CoinDisplay";
  import { RewardCard } from "@/components/RewardCard";
- import { rewards } from "@/data/rewards";
- import { toast } from "sonner";
+import { rewards } from "@/data/rewards";
+import { useCoins } from "@/hooks/useCoins";
+import { toast } from "sonner";
  
  const categories = [
    { id: "todos", label: "Todos", icon: null },
@@ -16,22 +17,22 @@
    { id: "educacao", label: "Educação", icon: GraduationCap },
  ];
  
- export default function Rewards() {
-   const navigate = useNavigate();
-   const [selectedCategory, setSelectedCategory] = useState("todos");
-   const [currentCoins] = useState(2340);
- 
-   const filteredRewards = selectedCategory === "todos"
-     ? rewards
-     : rewards.filter((reward) => reward.category === selectedCategory);
- 
-   const handleRedeem = (rewardId: string, coinsRequired: number) => {
-     if (currentCoins >= coinsRequired) {
-       toast.success("🎉 Parabéns! Seu prêmio foi resgatado! Verifique seu email.");
-     } else {
-       toast.error("Moedas insuficientes. Continue estudando!");
-     }
-   };
+export default function Rewards() {
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState("todos");
+  const { balance: currentCoins, spendCoins } = useCoins();
+
+  const filteredRewards = selectedCategory === "todos"
+    ? rewards
+    : rewards.filter((reward) => reward.category === selectedCategory);
+
+  const handleRedeem = (rewardId: string, coinsRequired: number) => {
+    if (spendCoins(coinsRequired)) {
+      toast.success("🎉 Parabéns! Seu prêmio foi resgatado! Verifique seu email.");
+    } else {
+      toast.error("Moedas insuficientes. Continue estudando!");
+    }
+  };
  
    return (
      <div className="min-h-screen bg-gradient-to-b from-sky-50 to-background">
