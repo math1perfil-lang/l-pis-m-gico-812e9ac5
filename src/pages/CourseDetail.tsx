@@ -8,6 +8,7 @@ import { VideoPlayer } from "@/components/VideoPlayer";
 import { ActivityPlayer } from "@/components/ActivityPlayer";
 import { getCourseById } from "@/data/courses";
 import { getActivitiesForLesson } from "@/data/activities";
+import { useCoins } from "@/hooks/useCoins";
 import { toast } from "sonner";
 import vogaisVideo from "@/assets/videos/vogais-cantantes.mp4";
 import vogaisThumb from "@/assets/thumbnails/vogais-cantantes-thumb.jpg";
@@ -15,6 +16,7 @@ import vogaisThumb from "@/assets/thumbnails/vogais-cantantes-thumb.jpg";
 export default function CourseDetail() {
   const { courseId } = useParams();
   const navigate = useNavigate();
+  const { balance: totalCoins, addCoins } = useCoins();
   const course = getCourseById(courseId || "");
   const [currentLesson, setCurrentLesson] = useState(0);
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
@@ -76,20 +78,22 @@ export default function CourseDetail() {
     const lesson = lessons[currentLesson];
     if (!videoWatched.includes(lesson.id)) {
       setVideoWatched([...videoWatched, lesson.id]);
-      toast.success("📚 Vídeo concluído! Agora complete as 5 atividades.");
+      addCoins(lesson.coinsReward);
+      toast.success(`📚 Vídeo concluído! +${lesson.coinsReward} moedas. Agora complete as 5 atividades.`);
     }
     setShowVideo(false);
     setShowActivities(true);
   };
 
-  const handleActivitiesComplete = (totalCoins: number) => {
+  const handleActivitiesComplete = (activityCoins: number) => {
     const lesson = lessons[currentLesson];
     if (!completedActivities.includes(lesson.id)) {
       setCompletedActivities([...completedActivities, lesson.id]);
+      addCoins(activityCoins);
     }
     if (!completedLessons.includes(lesson.id)) {
       setCompletedLessons([...completedLessons, lesson.id]);
-      toast.success(`🏆 Aula completa! Você ganhou ${lesson.coinsReward + totalCoins} moedas!`);
+      toast.success(`🏆 Aula completa! Você ganhou ${lesson.coinsReward + activityCoins} moedas no total!`);
     }
     setShowActivities(false);
     if (currentLesson < lessons.length - 1) {
@@ -118,7 +122,7 @@ export default function CourseDetail() {
                 <p className="text-sm text-muted-foreground">{course.category}</p>
               </div>
             </div>
-            <CoinDisplay amount={2340} size="sm" />
+            <CoinDisplay amount={totalCoins} size="sm" />
           </div>
         </div>
       </header>
