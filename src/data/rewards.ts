@@ -27,31 +27,15 @@ export const rewards: Reward[] = [
     partnerName: "Supermercado Futuro",
   },
   {
-    id: "vale-mercearia",
-    title: "Vale Mercearia R$30",
-    description: "Itens de mercearia e higiene pessoal",
-    coinsRequired: 300,
-    category: "supermercado",
-    partnerName: "Supermercado Futuro",
+    id: "ingresso-teatro",
+    title: "Ingresso para Teatro",
+    description: "Ingresso para uma peça teatral cultural infantojuvenil",
+    coinsRequired: 800,
+    category: "escola",
+    partnerName: "Teatro Cultural",
   },
 
   // Educação/Escola
-  {
-    id: "desconto-escola-10",
-    title: "10% Desconto Mensalidade",
-    description: "Desconto na mensalidade escolar por 1 mês",
-    coinsRequired: 2000,
-    category: "escola",
-    partnerName: "Escola Nova Era",
-  },
-  {
-    id: "desconto-escola-20",
-    title: "20% Desconto Mensalidade",
-    description: "Desconto especial na mensalidade escolar por 1 mês",
-    coinsRequired: 4000,
-    category: "escola",
-    partnerName: "Escola Nova Era",
-  },
   {
     id: "bolsa-integral",
     title: "Bolsa de Estudos Integral",
