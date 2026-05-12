@@ -112,7 +112,7 @@ export const VideoPlayer = ({
           src={videoUrl}
           playsInline
           preload="metadata"
-          crossOrigin="anonymous"
+          
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
           onEnded={() => setIsPlaying(false)}
