@@ -756,7 +756,7 @@ export const alfabetizacaoGrupos: LessonGroup[] = [
     videoObjective: "Animais, natureza, habitats e sons.",
     videoScript: "As crianças exploram uma floresta encantada cheia de animais e descobertas.",
     videoDurationLabel: "3 min",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     videoThumbnail: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
     groupCoinsBonus: 10,
     activities: g2Activities,
