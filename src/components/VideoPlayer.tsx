@@ -110,6 +110,12 @@ export const VideoPlayer = ({
           className="w-full h-full object-cover"
           poster={thumbnail}
           src={videoUrl}
+          playsInline
+          preload="metadata"
+          crossOrigin="anonymous"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onEnded={() => setIsPlaying(false)}
         />
 
         {/* Play overlay when paused */}
