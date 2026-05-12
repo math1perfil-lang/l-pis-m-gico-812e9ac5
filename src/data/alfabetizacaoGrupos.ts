@@ -795,7 +795,7 @@ export const alfabetizacaoGrupos: LessonGroup[] = [
     videoObjective: "Hábitos saudáveis e higiene.",
     videoScript: "Lili aprende sobre alimentação saudável e cuidados com o corpo.",
     videoDurationLabel: "3 min",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
     videoThumbnail: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800",
     groupCoinsBonus: 10,
     activities: g5Activities,
