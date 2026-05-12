@@ -769,7 +769,7 @@ export const alfabetizacaoGrupos: LessonGroup[] = [
     videoObjective: "Reconhecimento emocional, empatia e convivência.",
     videoScript: "Lili aprende sobre sentimentos, amizade e como cuidar dos amigos.",
     videoDurationLabel: "3 min",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
     videoThumbnail: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800",
     groupCoinsBonus: 10,
     activities: g3Activities,
