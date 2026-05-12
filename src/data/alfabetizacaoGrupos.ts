@@ -782,7 +782,7 @@ export const alfabetizacaoGrupos: LessonGroup[] = [
     videoObjective: "Criatividade e lógica infantil.",
     videoScript: "As crianças entram em um parque mágico cheio de brinquedos e desafios.",
     videoDurationLabel: "3 min",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
     videoThumbnail: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800",
     groupCoinsBonus: 10,
     activities: g4Activities,
