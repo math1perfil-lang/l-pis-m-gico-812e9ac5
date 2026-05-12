@@ -46,16 +46,30 @@ export const VideoPlayer = ({
     return () => video.removeEventListener("timeupdate", handleTimeUpdate);
   }, [hasCompleted, onComplete]);
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     const video = videoRef.current;
     if (!video) return;
 
-    if (isPlaying) {
-      video.pause();
-    } else {
-      video.play();
+    try {
+      if (video.paused) {
+        await video.play();
+        setIsPlaying(true);
+      } else {
+        video.pause();
+        setIsPlaying(false);
+      }
+    } catch (err) {
+      console.error("Video play failed:", err);
+      // Try muted autoplay fallback (mobile/iOS restriction)
+      try {
+        video.muted = true;
+        setIsMuted(true);
+        await video.play();
+        setIsPlaying(true);
+      } catch {
+        setIsPlaying(false);
+      }
     }
-    setIsPlaying(!isPlaying);
   };
 
   const stopVideo = () => {
@@ -96,6 +110,12 @@ export const VideoPlayer = ({
           className="w-full h-full object-cover"
           poster={thumbnail}
           src={videoUrl}
+          playsInline
+          preload="metadata"
+          
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+          onEnded={() => setIsPlaying(false)}
         />
 
         {/* Play overlay when paused */}
