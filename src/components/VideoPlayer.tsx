@@ -25,12 +25,24 @@ export const VideoPlayer = ({
   const [isMuted, setIsMuted] = useState(false);
   const [showReward, setShowReward] = useState(false);
   const [hasCompleted, setHasCompleted] = useState(false);
+  const [playbackError, setPlaybackError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setIsPlaying(false);
+    setProgress(0);
+    setShowReward(false);
+    setHasCompleted(false);
+    setPlaybackError(null);
+    videoRef.current?.load();
+  }, [videoUrl]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const handleTimeUpdate = () => {
+      if (!video.duration || Number.isNaN(video.duration)) return;
+
       const percentage = (video.currentTime / video.duration) * 100;
       setProgress(percentage);
 
@@ -50,8 +62,14 @@ export const VideoPlayer = ({
     const video = videoRef.current;
     if (!video) return;
 
+    if (!videoUrl) {
+      setPlaybackError("Vídeo indisponível para esta lição.");
+      return;
+    }
+
     try {
       if (video.paused) {
+        setPlaybackError(null);
         await video.play();
         setIsPlaying(true);
       } else {
@@ -66,7 +84,9 @@ export const VideoPlayer = ({
         setIsMuted(true);
         await video.play();
         setIsPlaying(true);
-      } catch {
+      } catch (fallbackError) {
+        console.error("Muted video play failed:", fallbackError);
+        setPlaybackError("Não foi possível reproduzir este vídeo. Toque em tentar novamente.");
         setIsPlaying(false);
       }
     }
@@ -106,20 +126,30 @@ export const VideoPlayer = ({
       {/* Video Element */}
       <div className="relative aspect-video bg-foreground/10">
         <video
+          key={videoUrl}
           ref={videoRef}
           className="w-full h-full object-cover"
           poster={thumbnail}
-          src={videoUrl}
           playsInline
+          controls={false}
           preload="metadata"
-          
+          onLoadedMetadata={() => setPlaybackError(null)}
+          onError={() => setPlaybackError("Não foi possível carregar este vídeo.")}
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
           onEnded={() => setIsPlaying(false)}
-        />
+        >
+          <source src={videoUrl} type="video/mp4" />
+        </video>
 
-        {/* Play overlay when paused */}
-        {!isPlaying && (
+        {playbackError ? (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-card/90 p-6 text-center">
+            <p className="font-bold text-foreground">{playbackError}</p>
+            <Button variant="default" onClick={togglePlay}>
+              Tentar novamente
+            </Button>
+          </div>
+        ) : !isPlaying && (
           <div
             className="absolute inset-0 flex items-center justify-center bg-foreground/20 cursor-pointer"
             onClick={togglePlay}
