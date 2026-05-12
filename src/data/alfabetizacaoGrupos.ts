@@ -743,7 +743,7 @@ export const alfabetizacaoGrupos: LessonGroup[] = [
     videoScript:
       "A mascote Lili entra na Cidade das Letras e descobre que todas as palavras possuem sons especiais.",
     videoDurationLabel: "3 min",
-    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
     videoThumbnail: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     groupCoinsBonus: 10,
     activities: g1Activities,
