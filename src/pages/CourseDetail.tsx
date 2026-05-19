@@ -238,7 +238,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
               <h3 className="font-bold text-lg text-foreground mb-4">Trilha de Grupos</h3>
               <div className="max-h-[600px] overflow-y-auto pr-1">
                 <GroupLearningPath
-                  groups={alfabetizacaoGrupos}
+                  groups={groups}
                   currentIndex={currentIndex}
                   videosWatched={progress.videosWatched}
                   groupsCompleted={progress.groupsCompleted}
