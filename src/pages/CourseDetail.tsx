@@ -9,9 +9,9 @@ import { ActivityPlayer } from "@/components/ActivityPlayer";
 import { GroupLearningPath } from "@/components/GroupLearningPath";
 import { getCourseById } from "@/data/courses";
 import { getActivitiesForLesson } from "@/data/activities";
-import { alfabetizacaoGrupos } from "@/data/alfabetizacaoGrupos";
+import { getCourseGroups, hasCourseGroups } from "@/data/courseGroups";
 import { useCoins } from "@/hooks/useCoins";
-import { useAlfabetizacaoProgress } from "@/hooks/useAlfabetizacaoProgress";
+import { useCourseGroupsProgress } from "@/hooks/useCourseGroupsProgress";
 import { toast } from "sonner";
 import vogaisVideo from "@/assets/videos/vogais-cantantes.mp4";
 import vogaisThumb from "@/assets/thumbnails/vogais-cantantes-thumb.jpg";
@@ -21,9 +21,6 @@ export default function CourseDetail() {
   const navigate = useNavigate();
   const { balance: totalCoins, addCoins } = useCoins();
   const course = getCourseById(courseId || "");
-
-  // Group-based flow for "alfabetizacao-divertida"
-  const isGroupCourse = courseId === "alfabetizacao-divertida";
 
   if (!course) {
     return (
@@ -37,8 +34,8 @@ export default function CourseDetail() {
     );
   }
 
-  if (isGroupCourse) {
-    return <AlfabetizacaoGroupFlow course={course} />;
+  if (hasCourseGroups(courseId || "")) {
+    return <CourseGroupFlow course={course} courseId={courseId!} />;
   }
 
   return <LegacyCourseFlow course={course} totalCoins={totalCoins} addCoins={addCoins} navigate={navigate} />;
