@@ -90,15 +90,15 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
       markGroupCompleted(currentIndex);
       addCoins(activityCoins + group.groupCoinsBonus);
       addXp(activityCoins + group.groupCoinsBonus);
-      addMedal(`alfabetizacao-grupo-${currentIndex + 1}`);
+      addMedal(`${courseId}-grupo-${currentIndex + 1}`);
       toast.success(
         `🏆 Grupo ${currentIndex + 1} completo! +${activityCoins} 🪙 das atividades + ${group.groupCoinsBonus} 🪙 de bônus!`
       );
       // Final completion
       if (completedCount + 1 === totalGroups) {
-        addMedal("alfabetizacao-mestre");
+        addMedal(`${courseId}-mestre`);
         setTimeout(() => {
-          toast.success(`🌟 Você concluiu Alfabetização Divertida! Medalha de Mestre desbloqueada!`);
+          toast.success(`🌟 Você concluiu ${course!.title}! Medalha de Mestre desbloqueada!`);
         }, 1500);
       }
     }
