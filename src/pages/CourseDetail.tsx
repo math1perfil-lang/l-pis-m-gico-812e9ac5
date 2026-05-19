@@ -41,11 +41,12 @@ export default function CourseDetail() {
   return <LegacyCourseFlow course={course} totalCoins={totalCoins} addCoins={addCoins} navigate={navigate} />;
 }
 
-// ---------- Group-based flow (Alfabetização Divertida) ----------
+// ---------- Group-based flow (any course with groups) ----------
 
-function AlfabetizacaoGroupFlow({ course }: { course: ReturnType<typeof getCourseById> }) {
+function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCourseById>; courseId: string }) {
   const navigate = useNavigate();
   const { balance: totalCoins, addCoins } = useCoins();
+  const groups = getCourseGroups(courseId) || [];
   const {
     progress,
     markVideoWatched,
@@ -53,25 +54,27 @@ function AlfabetizacaoGroupFlow({ course }: { course: ReturnType<typeof getCours
     addXp,
     addMedal,
     isGroupUnlocked,
-  } = useAlfabetizacaoProgress();
+  } = useCourseGroupsProgress(courseId);
 
   // Determine current group: first not-completed group
   const computedCurrent = useMemo(() => {
-    const idx = alfabetizacaoGrupos.findIndex((_, i) => !progress.groupsCompleted.includes(i));
-    return idx === -1 ? alfabetizacaoGrupos.length - 1 : idx;
-  }, [progress.groupsCompleted]);
+    const idx = groups.findIndex((_, i) => !progress.groupsCompleted.includes(i));
+    return idx === -1 ? groups.length - 1 : idx;
+  }, [progress.groupsCompleted, groups]);
 
   const [currentIndex, setCurrentIndex] = useState<number>(computedCurrent);
   const [showVideo, setShowVideo] = useState(false);
   const [showActivities, setShowActivities] = useState(false);
 
-  const group = alfabetizacaoGrupos[currentIndex];
+  const group = groups[currentIndex];
   const videoWatched = progress.videosWatched.includes(currentIndex);
   const groupCompleted = progress.groupsCompleted.includes(currentIndex);
 
-  const totalGroups = alfabetizacaoGrupos.length;
+  const totalGroups = groups.length;
   const completedCount = progress.groupsCompleted.length;
   const overallProgress = (completedCount / totalGroups) * 100;
+
+
 
   const handleVideoComplete = () => {
     if (!videoWatched) {
