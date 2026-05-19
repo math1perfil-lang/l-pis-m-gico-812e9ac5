@@ -9,9 +9,9 @@ import { ActivityPlayer } from "@/components/ActivityPlayer";
 import { GroupLearningPath } from "@/components/GroupLearningPath";
 import { getCourseById } from "@/data/courses";
 import { getActivitiesForLesson } from "@/data/activities";
-import { alfabetizacaoGrupos } from "@/data/alfabetizacaoGrupos";
+import { getCourseGroups, hasCourseGroups } from "@/data/courseGroups";
 import { useCoins } from "@/hooks/useCoins";
-import { useAlfabetizacaoProgress } from "@/hooks/useAlfabetizacaoProgress";
+import { useCourseGroupsProgress } from "@/hooks/useCourseGroupsProgress";
 import { toast } from "sonner";
 import vogaisVideo from "@/assets/videos/vogais-cantantes.mp4";
 import vogaisThumb from "@/assets/thumbnails/vogais-cantantes-thumb.jpg";
@@ -21,9 +21,6 @@ export default function CourseDetail() {
   const navigate = useNavigate();
   const { balance: totalCoins, addCoins } = useCoins();
   const course = getCourseById(courseId || "");
-
-  // Group-based flow for "alfabetizacao-divertida"
-  const isGroupCourse = courseId === "alfabetizacao-divertida";
 
   if (!course) {
     return (
@@ -37,18 +34,19 @@ export default function CourseDetail() {
     );
   }
 
-  if (isGroupCourse) {
-    return <AlfabetizacaoGroupFlow course={course} />;
+  if (hasCourseGroups(courseId || "")) {
+    return <CourseGroupFlow course={course} courseId={courseId!} />;
   }
 
   return <LegacyCourseFlow course={course} totalCoins={totalCoins} addCoins={addCoins} navigate={navigate} />;
 }
 
-// ---------- Group-based flow (Alfabetização Divertida) ----------
+// ---------- Group-based flow (any course with groups) ----------
 
-function AlfabetizacaoGroupFlow({ course }: { course: ReturnType<typeof getCourseById> }) {
+function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCourseById>; courseId: string }) {
   const navigate = useNavigate();
   const { balance: totalCoins, addCoins } = useCoins();
+  const groups = getCourseGroups(courseId) || [];
   const {
     progress,
     markVideoWatched,
@@ -56,25 +54,27 @@ function AlfabetizacaoGroupFlow({ course }: { course: ReturnType<typeof getCours
     addXp,
     addMedal,
     isGroupUnlocked,
-  } = useAlfabetizacaoProgress();
+  } = useCourseGroupsProgress(courseId);
 
   // Determine current group: first not-completed group
   const computedCurrent = useMemo(() => {
-    const idx = alfabetizacaoGrupos.findIndex((_, i) => !progress.groupsCompleted.includes(i));
-    return idx === -1 ? alfabetizacaoGrupos.length - 1 : idx;
-  }, [progress.groupsCompleted]);
+    const idx = groups.findIndex((_, i) => !progress.groupsCompleted.includes(i));
+    return idx === -1 ? groups.length - 1 : idx;
+  }, [progress.groupsCompleted, groups]);
 
   const [currentIndex, setCurrentIndex] = useState<number>(computedCurrent);
   const [showVideo, setShowVideo] = useState(false);
   const [showActivities, setShowActivities] = useState(false);
 
-  const group = alfabetizacaoGrupos[currentIndex];
+  const group = groups[currentIndex];
   const videoWatched = progress.videosWatched.includes(currentIndex);
   const groupCompleted = progress.groupsCompleted.includes(currentIndex);
 
-  const totalGroups = alfabetizacaoGrupos.length;
+  const totalGroups = groups.length;
   const completedCount = progress.groupsCompleted.length;
   const overallProgress = (completedCount / totalGroups) * 100;
+
+
 
   const handleVideoComplete = () => {
     if (!videoWatched) {
@@ -90,15 +90,15 @@ function AlfabetizacaoGroupFlow({ course }: { course: ReturnType<typeof getCours
       markGroupCompleted(currentIndex);
       addCoins(activityCoins + group.groupCoinsBonus);
       addXp(activityCoins + group.groupCoinsBonus);
-      addMedal(`alfabetizacao-grupo-${currentIndex + 1}`);
+      addMedal(`${courseId}-grupo-${currentIndex + 1}`);
       toast.success(
         `🏆 Grupo ${currentIndex + 1} completo! +${activityCoins} 🪙 das atividades + ${group.groupCoinsBonus} 🪙 de bônus!`
       );
       // Final completion
       if (completedCount + 1 === totalGroups) {
-        addMedal("alfabetizacao-mestre");
+        addMedal(`${courseId}-mestre`);
         setTimeout(() => {
-          toast.success(`🌟 Você concluiu Alfabetização Divertida! Medalha de Mestre desbloqueada!`);
+          toast.success(`🌟 Você concluiu ${course!.title}! Medalha de Mestre desbloqueada!`);
         }, 1500);
       }
     }
@@ -238,7 +238,7 @@ function AlfabetizacaoGroupFlow({ course }: { course: ReturnType<typeof getCours
               <h3 className="font-bold text-lg text-foreground mb-4">Trilha de Grupos</h3>
               <div className="max-h-[600px] overflow-y-auto pr-1">
                 <GroupLearningPath
-                  groups={alfabetizacaoGrupos}
+                  groups={groups}
                   currentIndex={currentIndex}
                   videosWatched={progress.videosWatched}
                   groupsCompleted={progress.groupsCompleted}
