@@ -11,6 +11,7 @@ import CourseDetail from "./pages/CourseDetail";
 import Rewards from "./pages/Rewards";
 import Cofrinho from "./pages/Cofrinho";
 import Profile from "./pages/Profile";
+import AdminAccess from "./pages/AdminAccess";
 import NotFound from "./pages/NotFound";
 import { CoinsProvider } from "./hooks/useCoins";
 
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/cofrinho" element={<Cofrinho />} />
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin-acess" element={<AdminAccess />} />
           <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
