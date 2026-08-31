@@ -1,52 +1,164 @@
-import { createContext, useContext, useEffect, useState, ReactNode, useCallback } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+  useCallback,
+  useRef,
+} from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
-interface CoinsContextValue {
+export interface UserStats {
+  coins: number;
+  xp: number;
+  level: number;
+  streakDays: number;
+}
+
+const ZERO_STATS: UserStats = { coins: 0, xp: 0, level: 1, streakDays: 0 };
+
+export const XP_PER_LEVEL = 600;
+export const levelFromXp = (xp: number) => Math.floor(xp / XP_PER_LEVEL) + 1;
+export const xpInCurrentLevel = (xp: number) => xp % XP_PER_LEVEL;
+
+interface CoinsContextValue extends UserStats {
   balance: number;
-  addCoins: (amount: number) => void;
-  spendCoins: (amount: number) => boolean;
-  setBalance: (amount: number) => void;
+  loading: boolean;
+  xpToNextLevel: number;
+  xpCurrent: number;
+  addCoins: (amount: number, description?: string, referenceId?: string) => void;
+  spendCoins: (amount: number, description?: string, referenceId?: string) => boolean;
+  addXp: (amount: number) => void;
+  refresh: () => Promise<void>;
 }
 
 const CoinsContext = createContext<CoinsContextValue | undefined>(undefined);
 
-const STORAGE_KEY = "pandoorga.coins.balance";
-const DEFAULT_BALANCE = 2340;
-
 export const CoinsProvider = ({ children }: { children: ReactNode }) => {
-  const [balance, setBalanceState] = useState<number>(() => {
-    if (typeof window === "undefined") return DEFAULT_BALANCE;
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored === null) return DEFAULT_BALANCE;
-    const parsed = parseInt(stored, 10);
-    return Number.isFinite(parsed) ? parsed : DEFAULT_BALANCE;
-  });
+  const { user, loading: authLoading } = useAuth();
+  const [stats, setStats] = useState<UserStats>(ZERO_STATS);
+  const [loading, setLoading] = useState(true);
+  const statsRef = useRef<UserStats>(ZERO_STATS);
+  statsRef.current = stats;
+
+  const load = useCallback(async () => {
+    if (!user) {
+      setStats(ZERO_STATS);
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    const { data } = await supabase
+      .from("user_stats")
+      .select("coins, xp, level, streak_days")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (data) {
+      setStats({
+        coins: data.coins ?? 0,
+        xp: data.xp ?? 0,
+        level: data.level ?? 1,
+        streakDays: data.streak_days ?? 0,
+      });
+    } else {
+      // Nova conta: cria a linha zerada
+      await supabase.from("user_stats").insert({ user_id: user.id });
+      setStats(ZERO_STATS);
+    }
+    setLoading(false);
+  }, [user]);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, String(balance));
-  }, [balance]);
+    if (authLoading) return;
+    load();
+  }, [authLoading, load]);
 
-  const addCoins = useCallback((amount: number) => {
-    setBalanceState((prev) => prev + amount);
-  }, []);
+  const persist = useCallback(
+    async (next: UserStats) => {
+      if (!user) return;
+      await supabase
+        .from("user_stats")
+        .upsert(
+          {
+            user_id: user.id,
+            coins: next.coins,
+            xp: next.xp,
+            level: next.level,
+            streak_days: next.streakDays,
+            last_activity_date: new Date().toISOString().slice(0, 10),
+          },
+          { onConflict: "user_id" }
+        );
+    },
+    [user]
+  );
 
-  const spendCoins = useCallback((amount: number) => {
-    let ok = false;
-    setBalanceState((prev) => {
-      if (prev >= amount) {
-        ok = true;
-        return prev - amount;
-      }
-      return prev;
-    });
-    return ok;
-  }, []);
+  const logTransaction = useCallback(
+    async (amount: number, kind: string, description?: string, referenceId?: string) => {
+      if (!user) return;
+      await supabase.from("coin_transactions").insert({
+        user_id: user.id,
+        amount,
+        kind,
+        description: description ?? null,
+        reference_id: referenceId ?? null,
+      });
+    },
+    [user]
+  );
 
-  const setBalance = useCallback((amount: number) => {
-    setBalanceState(amount);
-  }, []);
+  const addCoins = useCallback(
+    (amount: number, description?: string, referenceId?: string) => {
+      if (amount <= 0) return;
+      const next = { ...statsRef.current, coins: statsRef.current.coins + amount };
+      setStats(next);
+      persist(next);
+      logTransaction(amount, "earn", description, referenceId);
+    },
+    [persist, logTransaction]
+  );
+
+  const spendCoins = useCallback(
+    (amount: number, description?: string, referenceId?: string) => {
+      if (amount <= 0) return false;
+      if (statsRef.current.coins < amount) return false;
+      const next = { ...statsRef.current, coins: statsRef.current.coins - amount };
+      setStats(next);
+      persist(next);
+      logTransaction(-amount, "spend", description, referenceId);
+      return true;
+    },
+    [persist, logTransaction]
+  );
+
+  const addXp = useCallback(
+    (amount: number) => {
+      if (amount <= 0) return;
+      const xp = statsRef.current.xp + amount;
+      const next = { ...statsRef.current, xp, level: levelFromXp(xp) };
+      setStats(next);
+      persist(next);
+    },
+    [persist]
+  );
 
   return (
-    <CoinsContext.Provider value={{ balance, addCoins, spendCoins, setBalance }}>
+    <CoinsContext.Provider
+      value={{
+        ...stats,
+        balance: stats.coins,
+        loading,
+        xpCurrent: xpInCurrentLevel(stats.xp),
+        xpToNextLevel: XP_PER_LEVEL,
+        addCoins,
+        spendCoins,
+        addXp,
+        refresh: load,
+      }}
+    >
       {children}
     </CoinsContext.Provider>
   );

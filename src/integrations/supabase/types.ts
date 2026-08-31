@@ -14,16 +14,225 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      coin_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string | null
+          id: string
+          kind: string
+          reference_id: string | null
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          kind: string
+          reference_id?: string | null
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          kind?: string
+          reference_id?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      course_progress: {
+        Row: {
+          coins_earned: number
+          course_id: string
+          created_at: string
+          groups_completed: number[]
+          id: string
+          updated_at: string
+          user_id: string
+          videos_watched: number[]
+        }
+        Insert: {
+          coins_earned?: number
+          course_id: string
+          created_at?: string
+          groups_completed?: number[]
+          id?: string
+          updated_at?: string
+          user_id: string
+          videos_watched?: number[]
+        }
+        Update: {
+          coins_earned?: number
+          course_id?: string
+          created_at?: string
+          groups_completed?: number[]
+          id?: string
+          updated_at?: string
+          user_id?: string
+          videos_watched?: number[]
+        }
+        Relationships: []
+      }
+      dream_boxes: {
+        Row: {
+          color: string | null
+          created_at: string
+          goal_coins: number
+          icon: string | null
+          id: string
+          name: string
+          saved_coins: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          color?: string | null
+          created_at?: string
+          goal_coins?: number
+          icon?: string | null
+          id?: string
+          name: string
+          saved_coins?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          color?: string | null
+          created_at?: string
+          goal_coins?: number
+          icon?: string | null
+          id?: string
+          name?: string
+          saved_coins?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          age: number | null
+          age_group: string | null
+          avatar_url: string | null
+          created_at: string
+          display_name: string
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          age?: number | null
+          age_group?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          age?: number | null
+          age_group?: string | null
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_medals: {
+        Row: {
+          earned_at: string
+          id: string
+          medal_id: string
+          user_id: string
+        }
+        Insert: {
+          earned_at?: string
+          id?: string
+          medal_id: string
+          user_id: string
+        }
+        Update: {
+          earned_at?: string
+          id?: string
+          medal_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_stats: {
+        Row: {
+          coins: number
+          created_at: string
+          last_activity_date: string | null
+          level: number
+          streak_days: number
+          updated_at: string
+          user_id: string
+          xp: number
+        }
+        Insert: {
+          coins?: number
+          created_at?: string
+          last_activity_date?: string | null
+          level?: number
+          streak_days?: number
+          updated_at?: string
+          user_id: string
+          xp?: number
+        }
+        Update: {
+          coins?: number
+          created_at?: string
+          last_activity_date?: string | null
+          level?: number
+          streak_days?: number
+          updated_at?: string
+          user_id?: string
+          xp?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "student"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +359,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "student"],
+    },
   },
 } as const

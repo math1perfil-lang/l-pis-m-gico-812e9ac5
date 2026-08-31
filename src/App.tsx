@@ -14,30 +14,76 @@ import Profile from "./pages/Profile";
 import AdminAccess from "./pages/AdminAccess";
 import NotFound from "./pages/NotFound";
 import { CoinsProvider } from "./hooks/useCoins";
+import { AuthProvider } from "./hooks/useAuth";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <CoinsProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/course/:courseId" element={<CourseDetail />} />
-          <Route path="/cofrinho" element={<Cofrinho />} />
-          <Route path="/rewards" element={<Rewards />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/admin-acess" element={<AdminAccess />} />
-          <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </CoinsProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <CoinsProvider>
+            <Toaster />
+            <Sonner />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/courses"
+                element={
+                  <ProtectedRoute>
+                    <Courses />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/course/:courseId"
+                element={
+                  <ProtectedRoute>
+                    <CourseDetail />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/cofrinho"
+                element={
+                  <ProtectedRoute>
+                    <Cofrinho />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/rewards"
+                element={
+                  <ProtectedRoute>
+                    <Rewards />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/admin-acess" element={<AdminAccess />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </CoinsProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
 );
