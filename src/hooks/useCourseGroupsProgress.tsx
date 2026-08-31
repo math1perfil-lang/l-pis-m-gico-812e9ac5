@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
-
-const XP_KEY = "pandoorga.xp";
-const MEDALS_KEY = "pandoorga.medals";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { useCoins } from "@/hooks/useCoins";
 
 export interface CourseGroupsProgress {
   videosWatched: number[];
@@ -10,72 +10,106 @@ export interface CourseGroupsProgress {
 
 const DEFAULT: CourseGroupsProgress = { videosWatched: [], groupsCompleted: [] };
 
-const storageKey = (courseId: string) => `pandoorga.course.${courseId}.progress`;
-
-const read = (courseId: string): CourseGroupsProgress => {
-  if (typeof window === "undefined") return DEFAULT;
-  try {
-    const raw = window.localStorage.getItem(storageKey(courseId));
-    if (!raw) return DEFAULT;
-    const parsed = JSON.parse(raw);
-    return {
-      videosWatched: Array.isArray(parsed.videosWatched) ? parsed.videosWatched : [],
-      groupsCompleted: Array.isArray(parsed.groupsCompleted) ? parsed.groupsCompleted : [],
-    };
-  } catch {
-    return DEFAULT;
-  }
-};
-
 export const useCourseGroupsProgress = (courseId: string) => {
-  const [progress, setProgress] = useState<CourseGroupsProgress>(() => read(courseId));
+  const { user } = useAuth();
+  const { addXp } = useCoins();
+  const [progress, setProgress] = useState<CourseGroupsProgress>(DEFAULT);
+  const [loading, setLoading] = useState(true);
+  const ref = useRef<CourseGroupsProgress>(DEFAULT);
+  ref.current = progress;
 
   useEffect(() => {
-    setProgress(read(courseId));
-  }, [courseId]);
-
-  useEffect(() => {
-    window.localStorage.setItem(storageKey(courseId), JSON.stringify(progress));
-  }, [courseId, progress]);
-
-  const markVideoWatched = useCallback((groupIndex: number) => {
-    setProgress((p) =>
-      p.videosWatched.includes(groupIndex)
-        ? p
-        : { ...p, videosWatched: [...p.videosWatched, groupIndex] }
-    );
-  }, []);
-
-  const markGroupCompleted = useCallback((groupIndex: number) => {
-    setProgress((p) =>
-      p.groupsCompleted.includes(groupIndex)
-        ? p
-        : { ...p, groupsCompleted: [...p.groupsCompleted, groupIndex] }
-    );
-  }, []);
-
-  const addXp = useCallback((amount: number) => {
-    const cur = parseInt(window.localStorage.getItem(XP_KEY) || "0", 10);
-    window.localStorage.setItem(XP_KEY, String((Number.isFinite(cur) ? cur : 0) + amount));
-  }, []);
-
-  const addMedal = useCallback((medalId: string) => {
-    try {
-      const raw = window.localStorage.getItem(MEDALS_KEY);
-      const list: string[] = raw ? JSON.parse(raw) : [];
-      if (!list.includes(medalId)) {
-        list.push(medalId);
-        window.localStorage.setItem(MEDALS_KEY, JSON.stringify(list));
+    let active = true;
+    const load = async () => {
+      if (!user || !courseId) {
+        setProgress(DEFAULT);
+        setLoading(false);
+        return;
       }
-    } catch {
-      window.localStorage.setItem(MEDALS_KEY, JSON.stringify([medalId]));
-    }
-  }, []);
+      setLoading(true);
+      const { data } = await supabase
+        .from("course_progress")
+        .select("videos_watched, groups_completed")
+        .eq("user_id", user.id)
+        .eq("course_id", courseId)
+        .maybeSingle();
+      if (!active) return;
+      setProgress({
+        videosWatched: data?.videos_watched ?? [],
+        groupsCompleted: data?.groups_completed ?? [],
+      });
+      setLoading(false);
+    };
+    load();
+    return () => {
+      active = false;
+    };
+  }, [user, courseId]);
+
+  const persist = useCallback(
+    async (next: CourseGroupsProgress) => {
+      if (!user || !courseId) return;
+      await supabase.from("course_progress").upsert(
+        {
+          user_id: user.id,
+          course_id: courseId,
+          videos_watched: next.videosWatched,
+          groups_completed: next.groupsCompleted,
+        },
+        { onConflict: "user_id,course_id" }
+      );
+    },
+    [user, courseId]
+  );
+
+  const markVideoWatched = useCallback(
+    (groupIndex: number) => {
+      if (ref.current.videosWatched.includes(groupIndex)) return;
+      const next = {
+        ...ref.current,
+        videosWatched: [...ref.current.videosWatched, groupIndex],
+      };
+      setProgress(next);
+      persist(next);
+    },
+    [persist]
+  );
+
+  const markGroupCompleted = useCallback(
+    (groupIndex: number) => {
+      if (ref.current.groupsCompleted.includes(groupIndex)) return;
+      const next = {
+        ...ref.current,
+        groupsCompleted: [...ref.current.groupsCompleted, groupIndex],
+      };
+      setProgress(next);
+      persist(next);
+    },
+    [persist]
+  );
+
+  const addMedal = useCallback(
+    async (medalId: string) => {
+      if (!user) return;
+      await supabase
+        .from("user_medals")
+        .upsert({ user_id: user.id, medal_id: medalId }, { onConflict: "user_id,medal_id" });
+    },
+    [user]
+  );
 
   const isGroupUnlocked = useCallback(
     (groupIndex: number) => groupIndex === 0 || progress.groupsCompleted.includes(groupIndex - 1),
     [progress]
   );
 
-  return { progress, markVideoWatched, markGroupCompleted, addXp, addMedal, isGroupUnlocked };
+  return {
+    progress,
+    loading,
+    markVideoWatched,
+    markGroupCompleted,
+    addXp,
+    addMedal,
+    isGroupUnlocked,
+  };
 };
