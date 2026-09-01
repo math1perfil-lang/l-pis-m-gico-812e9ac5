@@ -99,7 +99,10 @@ export default function Profile() {
           <Button
             variant="outline"
             className="w-full text-destructive border-destructive/30 hover:bg-destructive/10"
-            onClick={() => navigate("/")}
+            onClick={async () => {
+              await signOut();
+              navigate("/");
+            }}
           >
             <LogOut className="w-5 h-5 mr-2" />
             Sair da Conta
