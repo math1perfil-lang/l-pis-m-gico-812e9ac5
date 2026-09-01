@@ -23,28 +23,29 @@ import { StreakDisplay } from "@/components/StreakDisplay";
 import { AgeSelector } from "@/components/AgeSelector";
 import { courses, getCoursesForAge } from "@/data/courses";
 import { useCoins } from "@/hooks/useCoins";
+import { useAuth } from "@/hooks/useAuth";
+import { useProfile } from "@/hooks/useProfile";
 import { cn } from "@/lib/utils";
-
-// Simulated user data
-const userData = {
-  name: "Maria Silva",
-  age: 10,
-  avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Maria",
-  level: 12,
-  xp: 450,
-  xpToNextLevel: 600,
-  // totalCoins now comes from the shared coins store
-  currentStreak: 5,
-  longestStreak: 14,
-  coursesCompleted: 3,
-  lessonsCompleted: 28,
-  dailyGoal: 3,
-  dailyProgress: 2,
-};
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { balance: totalCoins } = useCoins();
+  const { balance: totalCoins, xp, level, xpCurrent, xpToNextLevel, streakDays } = useCoins();
+  const { profile } = useProfile();
+  const { signOut } = useAuth();
+  const userData = {
+    name: profile.name,
+    age: profile.age,
+    avatar: profile.avatar,
+    level,
+    xp: xpCurrent,
+    xpToNextLevel,
+    currentStreak: streakDays,
+    longestStreak: streakDays,
+    coursesCompleted: 0,
+    lessonsCompleted: 0,
+    dailyGoal: 3,
+    dailyProgress: 0,
+  };
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedAge, setSelectedAge] = useState<number | null>(userData.age);
 
@@ -121,7 +122,10 @@ export default function Dashboard() {
         {/* Logout */}
         <div className="p-6 border-t border-border">
           <button
-            onClick={() => navigate("/")}
+            onClick={async () => {
+              await signOut();
+              navigate("/");
+            }}
             className="flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all w-full"
           >
             <LogOut className="w-5 h-5" />
@@ -138,7 +142,7 @@ export default function Dashboard() {
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
               <div>
                 <h1 className="text-2xl lg:text-3xl font-extrabold text-foreground">
-                  Olá, {userData.name.split(" ")[0]}! 👋
+                  Olá, {(userData.name || "Aluno").split(" ")[0]}! 👋
                 </h1>
                 <p className="text-muted-foreground">
                   Pronto para mais uma aventura de aprendizado?
