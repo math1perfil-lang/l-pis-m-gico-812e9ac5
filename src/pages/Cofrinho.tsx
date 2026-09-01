@@ -37,12 +37,6 @@ interface DreamBox {
   color: string;
 }
 
-const initialBoxes: DreamBox[] = [
-  { id: "1", name: "Bicicleta nova", emoji: "🚲", goal: 3000, saved: 1200, color: "from-pink-400 to-rose-400" },
-  { id: "2", name: "Videogame", emoji: "🎮", goal: 5000, saved: 800, color: "from-purple-400 to-indigo-400" },
-  { id: "3", name: "Viagem família", emoji: "✈️", goal: 8000, saved: 2500, color: "from-sky-400 to-cyan-400" },
-];
-
 const emojiOptions = ["🎯", "🚲", "🎮", "✈️", "📱", "🎸", "⚽", "🎨", "📚", "🏠", "🎁", "💝"];
 const colorOptions = [
   "from-pink-400 to-rose-400",
@@ -55,49 +49,88 @@ const colorOptions = [
 
 export default function Cofrinho() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { balance, addCoins, spendCoins } = useCoins();
-  const [boxes, setBoxes] = useState<DreamBox[]>(initialBoxes);
+  const [boxes, setBoxes] = useState<DreamBox[]>([]);
   const [createOpen, setCreateOpen] = useState(false);
   const [transferOpen, setTransferOpen] = useState<DreamBox | null>(null);
   const [withdrawOpen, setWithdrawOpen] = useState<DreamBox | null>(null);
   const [transferAmount, setTransferAmount] = useState("");
   const [newBox, setNewBox] = useState({ name: "", goal: "", emoji: "🎯", color: colorOptions[0] });
 
+  useEffect(() => {
+    const load = async () => {
+      if (!user) return;
+      const { data } = await supabase
+        .from("dream_boxes")
+        .select("id, name, goal_coins, saved_coins, icon, color")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: true });
+      setBoxes(
+        (data ?? []).map((b) => ({
+          id: b.id,
+          name: b.name,
+          emoji: b.icon ?? "🎯",
+          goal: b.goal_coins ?? 0,
+          saved: b.saved_coins ?? 0,
+          color: b.color ?? colorOptions[0],
+        }))
+      );
+    };
+    load();
+  }, [user]);
+
   const totalSaved = boxes.reduce((sum, b) => sum + b.saved, 0);
   const totalGoal = boxes.reduce((sum, b) => sum + b.goal, 0);
   const totalCoinsAcumuladas = balance + totalSaved;
 
-  const handleCreate = () => {
+  const handleCreate = async () => {
     const goal = parseInt(newBox.goal);
     if (!newBox.name.trim() || !goal || goal <= 0) {
       toast.error("Preencha o nome e a meta da caixinha");
       return;
     }
+    if (!user) return;
+    const { data, error } = await supabase
+      .from("dream_boxes")
+      .insert({
+        user_id: user.id,
+        name: newBox.name.trim(),
+        goal_coins: goal,
+        saved_coins: 0,
+        icon: newBox.emoji,
+        color: newBox.color,
+      })
+      .select("id")
+      .single();
+    if (error || !data) {
+      toast.error("Não foi possível criar a caixinha");
+      return;
+    }
     setBoxes([
       ...boxes,
-      {
-        id: Date.now().toString(),
-        name: newBox.name,
-        emoji: newBox.emoji,
-        color: newBox.color,
-        goal,
-        saved: 0,
-      },
+      { id: data.id, name: newBox.name.trim(), emoji: newBox.emoji, color: newBox.color, goal, saved: 0 },
     ]);
     setNewBox({ name: "", goal: "", emoji: "🎯", color: colorOptions[0] });
     setCreateOpen(false);
     toast.success("Caixinha criada! 🎉");
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     const box = boxes.find((b) => b.id === id);
     if (!box) return;
-    addCoins(box.saved);
+    await supabase.from("dream_boxes").delete().eq("id", id);
+    if (box.saved > 0) addCoins(box.saved, `Caixinha excluída: ${box.name}`, id);
     setBoxes(boxes.filter((b) => b.id !== id));
     toast.success(`Caixinha excluída. ${box.saved} moedas voltaram ao saldo.`);
   };
 
-  const handleTransfer = () => {
+  const updateSaved = async (id: string, saved: number) => {
+    await supabase.from("dream_boxes").update({ saved_coins: saved }).eq("id", id);
+    setBoxes((prev) => prev.map((b) => (b.id === id ? { ...b, saved } : b)));
+  };
+
+  const handleTransfer = async () => {
     if (!transferOpen) return;
     const amount = parseInt(transferAmount);
     if (!amount || amount <= 0) {
@@ -108,14 +141,14 @@ export default function Cofrinho() {
       toast.error("Saldo insuficiente");
       return;
     }
-    spendCoins(amount);
-    setBoxes(boxes.map((b) => (b.id === transferOpen.id ? { ...b, saved: b.saved + amount } : b)));
+    spendCoins(amount, `Guardado em: ${transferOpen.name}`, transferOpen.id);
+    await updateSaved(transferOpen.id, transferOpen.saved + amount);
     toast.success(`${amount} moedas guardadas em "${transferOpen.name}"! 🐷`);
     setTransferAmount("");
     setTransferOpen(null);
   };
 
-  const handleWithdraw = () => {
+  const handleWithdraw = async () => {
     if (!withdrawOpen) return;
     const amount = parseInt(transferAmount);
     if (!amount || amount <= 0) {
@@ -126,12 +159,13 @@ export default function Cofrinho() {
       toast.error("A caixinha não tem moedas suficientes");
       return;
     }
-    addCoins(amount);
-    setBoxes(boxes.map((b) => (b.id === withdrawOpen.id ? { ...b, saved: b.saved - amount } : b)));
+    addCoins(amount, `Resgate da caixinha: ${withdrawOpen.name}`, withdrawOpen.id);
+    await updateSaved(withdrawOpen.id, withdrawOpen.saved - amount);
     toast.success(`${amount} moedas voltaram ao seu saldo!`);
     setTransferAmount("");
     setWithdrawOpen(null);
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-amber-50 via-background to-background">
