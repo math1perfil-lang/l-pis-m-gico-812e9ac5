@@ -47,7 +47,12 @@ export default function Dashboard() {
     dailyProgress: 0,
   };
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [selectedAge, setSelectedAge] = useState<number | null>(userData.age);
+  const [selectedAge, setSelectedAge] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (profile.age) setSelectedAge((cur) => cur ?? profile.age);
+  }, [profile.age]);
+
 
   const filteredCourses = selectedAge
     ? getCoursesForAge(selectedAge)
