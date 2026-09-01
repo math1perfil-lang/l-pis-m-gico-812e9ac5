@@ -225,6 +225,22 @@ export default function Login() {
               </Button>
             </form>
 
+            <div className="flex items-center gap-3 my-4">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs text-muted-foreground">ou</span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full h-12 rounded-xl font-bold"
+              onClick={handleGoogle}
+            >
+              Continuar com Google
+            </Button>
+
+
             {isLogin && (
               <p className="text-center text-sm text-muted-foreground mt-4">
                 Esqueceu a senha?{" "}
