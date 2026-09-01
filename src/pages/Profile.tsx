@@ -5,21 +5,8 @@ import { Button } from "@/components/ui/button";
 import { ChildProfile } from "@/components/ChildProfile";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { useCoins } from "@/hooks/useCoins";
-
-// Simulated user data
-const userData = {
-  name: "Maria Silva",
-  age: 10,
-  avatar: "https://api.dicebear.com/7.x/adventurer/svg?seed=Maria",
-  level: 12,
-  xp: 450,
-  xpToNextLevel: 600,
-  // totalCoins comes from the shared coins store
-  currentStreak: 5,
-  longestStreak: 14,
-  coursesCompleted: 3,
-  lessonsCompleted: 28,
-};
+import { useAuth } from "@/hooks/useAuth";
+import { useProfile } from "@/hooks/useProfile";
 
 const settingsMenu = [
   { icon: Settings, label: "Configurações", description: "Ajuste preferências do app" },
@@ -30,7 +17,21 @@ const settingsMenu = [
 
 export default function Profile() {
   const navigate = useNavigate();
-  const { balance: totalCoins } = useCoins();
+  const { balance: totalCoins, level, xpCurrent, xpToNextLevel, streakDays } = useCoins();
+  const { profile } = useProfile();
+  const { signOut } = useAuth();
+  const userData = {
+    name: profile.name,
+    age: profile.age ?? 0,
+    avatar: profile.avatar,
+    level,
+    xp: xpCurrent,
+    xpToNextLevel,
+    currentStreak: streakDays,
+    longestStreak: streakDays,
+    coursesCompleted: 0,
+    lessonsCompleted: 0,
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -98,7 +99,10 @@ export default function Profile() {
           <Button
             variant="outline"
             className="w-full text-destructive border-destructive/30 hover:bg-destructive/10"
-            onClick={() => navigate("/")}
+            onClick={async () => {
+              await signOut();
+              navigate("/");
+            }}
           >
             <LogOut className="w-5 h-5 mr-2" />
             Sair da Conta

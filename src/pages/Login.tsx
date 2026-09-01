@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Calendar, Camera } from "lucide-react";
 import logoPandoorga from "@/assets/logo-pandoorga.png";
@@ -6,9 +6,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SponsorFooter } from "@/components/SponsorFooter";
 import { toast } from "sonner";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { user, loading: authLoading, signIn, signUp, signInWithGoogle } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,22 +22,56 @@ export default function Login() {
   const [childAge, setChildAge] = useState("");
   const [parentName, setParentName] = useState("");
 
+  useEffect(() => {
+    if (!authLoading && user) navigate("/dashboard", { replace: true });
+  }, [authLoading, user, navigate]);
+
+  const translateError = (msg: string) => {
+    if (/Invalid login credentials/i.test(msg)) return "E-mail ou senha incorretos.";
+    if (/already registered|User already/i.test(msg))
+      return "Este e-mail já possui uma conta. Faça login.";
+    if (/Password should be at least/i.test(msg))
+      return "A senha deve ter pelo menos 6 caracteres.";
+    if (/Email not confirmed/i.test(msg)) return "Confirme seu e-mail para entrar.";
+    return msg;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Simular autenticação
-    setTimeout(() => {
+    if (isLogin) {
+      const { error } = await signIn(email.trim(), password);
       setLoading(false);
-      if (isLogin) {
-        toast.success("Bem-vindo de volta! 🎉");
-        navigate("/dashboard");
-      } else {
-        toast.success("Conta criada com sucesso! Vamos começar sua jornada! 🚀");
-        navigate("/dashboard");
+      if (error) {
+        toast.error(translateError(error));
+        return;
       }
-    }, 1500);
+      toast.success("Bem-vindo de volta! 🎉");
+      navigate("/dashboard");
+    } else {
+      const { error } = await signUp({
+        email: email.trim(),
+        password,
+        childName: childName.trim() || "Aluno",
+        childAge: childAge ? parseInt(childAge, 10) : undefined,
+        parentName: parentName.trim(),
+      });
+      setLoading(false);
+      if (error) {
+        toast.error(translateError(error));
+        return;
+      }
+      toast.success("Conta criada! Sua jornada começa do zero. 🚀");
+      navigate("/dashboard");
+    }
   };
+
+  const handleGoogle = async () => {
+    const { error } = await signInWithGoogle();
+    if (error) toast.error(translateError(error));
+  };
+
 
   return (
     <div className="min-h-screen flex flex-col gradient-hero">
@@ -188,6 +224,22 @@ export default function Login() {
                 )}
               </Button>
             </form>
+
+            <div className="flex items-center gap-3 my-4">
+              <div className="h-px flex-1 bg-border" />
+              <span className="text-xs text-muted-foreground">ou</span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full h-12 rounded-xl font-bold"
+              onClick={handleGoogle}
+            >
+              Continuar com Google
+            </Button>
+
 
             {isLogin && (
               <p className="text-center text-sm text-muted-foreground mt-4">
