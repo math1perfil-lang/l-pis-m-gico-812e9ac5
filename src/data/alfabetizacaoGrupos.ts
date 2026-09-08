@@ -1,4 +1,9 @@
 import type { Activity } from "./activities";
+import cenaTatuEscola from "@/assets/activities/tatu-escola-cena.jpg";
+import optTatu from "@/assets/activities/opt-tatu.jpg";
+import optCoelho from "@/assets/activities/opt-coelho.jpg";
+import optPato from "@/assets/activities/opt-pato.jpg";
+import optPeixe from "@/assets/activities/opt-peixe.jpg";
 
 export interface LessonGroup {
   id: string;
@@ -20,13 +25,27 @@ const g1Activities: Activity[] = [
   {
     id: "alf-g1-a1",
     type: "multiple-choice",
-    question: "Qual palavra começa com B?",
-    instruction: "Toque na palavra correta",
+    question: "Qual animal foi à escola no poema?",
+    instruction: "Observe as figuras e toque no animal certo",
+    poemTitle: "Tatu-bola",
+    poem: [
+      "TATU-BOLA",
+      "FOI À ESCOLA",
+      "LEVAR CENOURA",
+      "PARA A TURMA TODA.",
+      "",
+      "NO CAMINHO ENCONTROU",
+      "COELHO, PATO E PEIXINHO,",
+      "MAS SÓ ELE CHEGOU",
+      "COM O CESTO CHEIINHO.",
+    ],
+    imageUrl: cenaTatuEscola,
+    imageCaption: "Tatu-bola indo à escola com uma mochila",
     options: [
-      { id: "a", text: "🍎 Maçã", isCorrect: false },
-      { id: "b", text: "⚽ Bola", isCorrect: true },
-      { id: "c", text: "🐱 Gato", isCorrect: false },
-      { id: "d", text: "🌞 Sol", isCorrect: false },
+      { id: "a", text: "Coelho", isCorrect: false, imageUrl: optCoelho },
+      { id: "b", text: "Peixe", isCorrect: false, imageUrl: optPeixe },
+      { id: "c", text: "Pato", isCorrect: false, imageUrl: optPato },
+      { id: "d", text: "Tatu", isCorrect: true, imageUrl: optTatu },
     ],
     coinsReward: ACT_COINS,
     difficulty: "easy",
