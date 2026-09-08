@@ -1,4 +1,9 @@
 import type { Activity } from "./activities";
+import cenaTatuEscola from "@/assets/activities/tatu-escola-cena.jpg";
+import optTatu from "@/assets/activities/opt-tatu.jpg";
+import optCoelho from "@/assets/activities/opt-coelho.jpg";
+import optPato from "@/assets/activities/opt-pato.jpg";
+import optPeixe from "@/assets/activities/opt-peixe.jpg";
 
 export interface LessonGroup {
   id: string;
