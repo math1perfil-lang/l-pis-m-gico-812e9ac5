@@ -178,6 +178,34 @@ export const ActivityPlayer = ({
 
         {/* Activity Content */}
         <div className="p-6">
+          {currentActivity.imageUrl && (
+            <div className="mb-6 rounded-2xl bg-secondary/40 p-4">
+              <div className="grid gap-4 md:grid-cols-2 items-center">
+                {currentActivity.poem && (
+                  <div>
+                    {currentActivity.poemTitle && (
+                      <h4 className="text-lg font-extrabold tracking-wide text-foreground mb-3 uppercase">
+                        {currentActivity.poemTitle}
+                      </h4>
+                    )}
+                    <div className="space-y-1">
+                      {currentActivity.poem.map((line, i) => (
+                        <p key={i} className="text-base font-semibold uppercase text-foreground leading-snug">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                <img
+                  src={currentActivity.imageUrl}
+                  alt={currentActivity.imageCaption || currentActivity.question}
+                  loading="lazy"
+                  className="w-full rounded-xl object-cover"
+                />
+              </div>
+            </div>
+          )}
           <p className="text-sm text-primary font-medium mb-2">
             {currentActivity.instruction}
           </p>
@@ -185,9 +213,56 @@ export const ActivityPlayer = ({
             {currentActivity.question}
           </h3>
 
+          {/* Picture options */}
+          {(currentActivity.type === "multiple-choice" ||
+            currentActivity.type === "true-false") &&
+            currentActivity.options.some((o) => o.imageUrl) && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {currentActivity.options.map((option) => (
+                  <button
+                    key={option.id}
+                    onClick={() => !isCorrect && setSelectedAnswer(option.id)}
+                    disabled={isCorrect !== null}
+                    className={cn(
+                      "rounded-2xl border-4 overflow-hidden bg-muted/40 text-center",
+                      selectedAnswer === option.id
+                        ? isCorrect === null
+                          ? "border-primary"
+                          : isCorrect
+                          ? "border-accent"
+                          : "border-destructive"
+                        : "border-border",
+                      isCorrect !== null && option.isCorrect && "border-accent"
+                    )}
+                  >
+                    <img
+                      src={option.imageUrl}
+                      alt={option.text}
+                      loading="lazy"
+                      className="w-full aspect-square object-cover"
+                    />
+                    <div className="p-2 flex items-center justify-center gap-1">
+                      <span className="text-sm font-bold text-foreground uppercase">
+                        {option.text}
+                      </span>
+                      {isCorrect !== null && option.isCorrect && (
+                        <Check className="w-4 h-4 text-accent" />
+                      )}
+                      {isCorrect === false &&
+                        selectedAnswer === option.id &&
+                        !option.isCorrect && (
+                          <X className="w-4 h-4 text-destructive" />
+                        )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            )}
+
           {/* Multiple Choice / True-False */}
           {(currentActivity.type === "multiple-choice" ||
-            currentActivity.type === "true-false") && (
+            currentActivity.type === "true-false") &&
+            !currentActivity.options.some((o) => o.imageUrl) && (
             <div className="grid gap-3">
               {currentActivity.options.map((option) => (
                 <button

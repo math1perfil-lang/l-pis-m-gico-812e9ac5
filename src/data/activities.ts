@@ -11,6 +11,7 @@ export interface ActivityOption {
   text: string;
   isCorrect?: boolean;
   matchId?: string; // For matching activities
+  imageUrl?: string; // Optional picture option
 }
 
 export interface Activity {
@@ -23,6 +24,10 @@ export interface Activity {
   correctOrder?: string[]; // For ordering
   coinsReward: number;
   difficulty: "easy" | "medium" | "hard";
+  imageUrl?: string; // Illustration shown above the question
+  imageCaption?: string;
+  poem?: string[]; // Optional poem/text lines shown with the illustration
+  poemTitle?: string;
 }
 
 export interface LessonActivities {
