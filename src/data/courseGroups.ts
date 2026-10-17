@@ -1,6 +1,20 @@
 import type { Activity } from "./activities";
 import type { LessonGroup } from "./alfabetizacaoGrupos";
 import { alfabetizacaoGrupos } from "./alfabetizacaoGrupos";
+import { MODULE_BONUS_BY_BAND, type AgeBand, type GroupSpec as ExtraGroupSpec } from "./activityKit";
+import { specs as alfabetizacaoExtra } from "./groups/alfabetizacao-divertida";
+import { specs as numerosExtra } from "./groups/numeros-brincadeira";
+import { specs as naturezaExtra } from "./groups/natureza-amiga";
+import { specs as portuguesExtra } from "./groups/portugues-aventura";
+import { specs as matematicaExtra } from "./groups/matematica-desafios";
+import { specs as cienciasExtra } from "./groups/ciencias-experimentos";
+import { specs as financeiraKidsExtra } from "./groups/educacao-financeira-kids";
+import { specs as redacaoExtra } from "./groups/redacao-nota-mil";
+import { specs as algebraExtra } from "./groups/algebra-geometria";
+import { specs as programacaoExtra } from "./groups/programacao-iniciantes";
+import { specs as financeiraTeensExtra } from "./groups/educacao-financeira-teens";
+import { specs as historiaExtra } from "./groups/historia-brasil-mundo";
+import { specs as inglesExtra } from "./groups/ingles-fluente";
 
 // ---------- Builders ----------
 const ACT_COINS = 5;
@@ -1208,8 +1222,51 @@ const inglesGroups = buildCourseGroups("ingles-fluente", [
   },
 ]);
 
+// ---------- Módulos novos (trilhas de conhecimento) ----------
+// Cada curso recebe módulos extras, acrescentados DEPOIS dos grupos originais,
+// para que o progresso já salvo (guardado pelo índice do grupo) continue válido.
+// Padrão de cada módulo: 10 atividades (3 fáceis, 4 médias, 3 difíceis); veja activityKit.ts.
+const extraModules: Record<string, { band: AgeBand; specs: ExtraGroupSpec[] }> = {
+  "alfabetizacao-divertida": { band: "6-8", specs: alfabetizacaoExtra },
+  "numeros-brincadeira": { band: "6-8", specs: numerosExtra },
+  "natureza-amiga": { band: "6-8", specs: naturezaExtra },
+  "portugues-aventura": { band: "9-11", specs: portuguesExtra },
+  "matematica-desafios": { band: "9-11", specs: matematicaExtra },
+  "ciencias-experimentos": { band: "9-11", specs: cienciasExtra },
+  "educacao-financeira-kids": { band: "9-11", specs: financeiraKidsExtra },
+  "redacao-nota-mil": { band: "12-15", specs: redacaoExtra },
+  "algebra-geometria": { band: "12-15", specs: algebraExtra },
+  "programacao-iniciantes": { band: "12-15", specs: programacaoExtra },
+  "educacao-financeira-teens": { band: "12-15", specs: financeiraTeensExtra },
+  "historia-brasil-mundo": { band: "12-15", specs: historiaExtra },
+  "ingles-fluente": { band: "12-15", specs: inglesExtra },
+};
+
+const withExtraModules = (courseId: string, base: LessonGroup[]): LessonGroup[] => {
+  const extra = extraModules[courseId];
+  if (!extra) return base;
+  const more = extra.specs.map((spec, i): LessonGroup => {
+    const index = base.length + i;
+    const gid = `${courseId}-g${index + 1}`;
+    return {
+      id: gid,
+      index,
+      title: spec.title,
+      videoTitle: spec.title,
+      videoObjective: spec.objective,
+      videoScript: spec.script,
+      videoDurationLabel: "3 min",
+      videoUrl: `/videos/alfabetizacao-grupo-${(index % 5) + 1}.mp4`,
+      videoThumbnail: spec.thumb,
+      groupCoinsBonus: MODULE_BONUS_BY_BAND[extra.band],
+      activities: spec.activities.map((a, j) => ({ ...a, id: `${gid}-a${j + 1}` })),
+    };
+  });
+  return [...base, ...more];
+};
+
 // ---------- Registry ----------
-const registry: Record<string, LessonGroup[]> = {
+const baseRegistry: Record<string, LessonGroup[]> = {
   "alfabetizacao-divertida": alfabetizacaoGrupos,
   "numeros-brincadeira": numerosGroups,
   "natureza-amiga": naturezaGroups,
@@ -1224,6 +1281,10 @@ const registry: Record<string, LessonGroup[]> = {
   "historia-brasil-mundo": historiaGroups,
   "ingles-fluente": inglesGroups,
 };
+
+const registry: Record<string, LessonGroup[]> = Object.fromEntries(
+  Object.entries(baseRegistry).map(([id, groups]) => [id, withExtraModules(id, groups)])
+);
 
 export const getCourseGroups = (courseId: string): LessonGroup[] | undefined =>
   registry[courseId];

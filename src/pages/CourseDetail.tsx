@@ -71,6 +71,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
   const groupCompleted = progress.groupsCompleted.includes(currentIndex);
 
   const totalGroups = groups.length;
+  const totalActivities = groups.reduce((sum, g) => sum + g.activities.length, 0);
   const completedCount = progress.groupsCompleted.length;
   const overallProgress = (completedCount / totalGroups) * 100;
 
@@ -201,11 +202,11 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-gold" />
-                  <span className="text-muted-foreground">{totalGroups} grupos • 50 atividades</span>
+                  <span className="text-muted-foreground">{totalGroups} grupos • {totalActivities} atividades</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Trophy className="w-5 h-5 text-gold" />
-                  <span className="text-muted-foreground">Bônus: 10 🪙 por grupo</span>
+                  <span className="text-muted-foreground">Bônus: {group.groupCoinsBonus} 🪙 neste grupo</span>
                 </div>
               </div>
 
