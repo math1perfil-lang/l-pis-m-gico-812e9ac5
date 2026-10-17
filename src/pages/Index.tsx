@@ -39,7 +39,7 @@ const features = [
 
 const stats = [
   { value: "10.000+", label: "Crianças Beneficiadas" },
-  { value: "500+", label: "Cursos Disponíveis" },
+  { value: "400+", label: "Cursos Disponíveis" },
   { value: "R$50.000+", label: "Em Benefícios Distribuídos" },
   { value: "98%", label: "Taxa de Satisfação" },
 ];
