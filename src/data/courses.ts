@@ -27,18 +27,15 @@ export const courses: Course[] = [
   {
     id: "alfabetizacao-divertida",
     title: "Português Divertido",
-    description: "Aprenda as letras, sons e primeiras palavras de forma lúdica e interativa!",
+    description: "Contos de fadas, fábulas, letras e sons: aprenda português brincando!",
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     ageMin: 6,
     ageMax: 8,
     duration: "2h 30min",
-    coinsReward: 500,
-    totalLessons: 10,
+    coinsReward: 660,
+    totalLessons: 11,
     category: "Linguagem",
-    lessons: [
-      { id: "l1", title: "As Vogais Cantantes", videoUrl: "/src/assets/videos/vogais-cantantes.mp4", thumbnail: "/src/assets/thumbnails/vogais-cantantes-thumb.jpg", duration: "5min", coinsReward: 50, description: "Conheça as vogais A, E, I, O, U através de animações mágicas e divertidas!" },
-      { id: "l2", title: "Consoantes Mágicas", videoUrl: "", thumbnail: "", duration: "15min", coinsReward: 50, description: "Descubra o som das consoantes" },
-    ]
+    lessons: []
   },
   {
     id: "numeros-brincadeira",
