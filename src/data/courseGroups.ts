@@ -2,7 +2,6 @@ import type { Activity } from "./activities";
 import type { LessonGroup } from "./alfabetizacaoGrupos";
 import { alfabetizacaoGrupos } from "./alfabetizacaoGrupos";
 import { MODULE_BONUS_BY_BAND, type AgeBand, type GroupSpec as ExtraGroupSpec } from "./activityKit";
-import { specs as alfabetizacaoExtra } from "./groups/alfabetizacao-divertida";
 import { specs as numerosExtra } from "./groups/numeros-brincadeira";
 import { specs as naturezaExtra } from "./groups/natureza-amiga";
 import { specs as portuguesExtra } from "./groups/portugues-aventura";
@@ -1227,7 +1226,6 @@ const inglesGroups = buildCourseGroups("ingles-fluente", [
 // para que o progresso já salvo (guardado pelo índice do grupo) continue válido.
 // Padrão de cada módulo: 10 atividades (3 fáceis, 4 médias, 3 difíceis); veja activityKit.ts.
 const extraModules: Record<string, { band: AgeBand; specs: ExtraGroupSpec[] }> = {
-  "alfabetizacao-divertida": { band: "6-8", specs: alfabetizacaoExtra },
   "numeros-brincadeira": { band: "6-8", specs: numerosExtra },
   "natureza-amiga": { band: "6-8", specs: naturezaExtra },
   "portugues-aventura": { band: "9-11", specs: portuguesExtra },
