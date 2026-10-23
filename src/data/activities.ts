@@ -4,7 +4,8 @@ export type ActivityType =
   | "matching" 
   | "fill-blank" 
   | "ordering" 
-  | "true-false";
+  | "true-false"
+  | "reading"; // leitura de um texto base (sem resposta): libera as questões que dependem dele
 
 export interface ActivityOption {
   id: string;
@@ -28,6 +29,12 @@ export interface Activity {
   imageCaption?: string;
   poem?: string[]; // Optional poem/text lines shown with the illustration
   poemTitle?: string;
+  // Texto base (type "reading"): título e parágrafos que a criança lê antes das questões.
+  passageTitle?: string;
+  passage?: string[];
+  // Em questões que dependem de um texto: id da atividade "reading" correspondente.
+  // O player mostra "Reler o texto" nessas questões.
+  basedOn?: string;
 }
 
 export interface LessonActivities {

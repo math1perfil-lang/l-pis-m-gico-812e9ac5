@@ -32,7 +32,7 @@ export const courses: Course[] = [
     ageMin: 6,
     ageMax: 8,
     duration: "2h 30min",
-    coinsReward: 660,
+    coinsReward: 700,
     totalLessons: 11,
     category: "Linguagem",
     lessons: []

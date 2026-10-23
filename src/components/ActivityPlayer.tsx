@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Check, X, ArrowRight, RotateCcw, Trophy, Star } from "lucide-react";
+import { Check, X, ArrowRight, RotateCcw, Trophy, Star, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CoinDisplay } from "./CoinDisplay";
 import { ProgressBar } from "./ProgressBar";
@@ -99,6 +99,23 @@ export const ActivityPlayer = ({
     }
   };
 
+  // Leitura do texto base: conta como atividade concluída e já avança para as questões.
+  const finishReading = () => {
+    if (!currentActivity) return;
+    const coins = currentActivity.coinsReward;
+    const total = earnedCoins + coins;
+    setEarnedCoins(total);
+    setCompletedActivities([...completedActivities, currentActivity.id]);
+    if (currentIndex < activities.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setShowCelebration(true);
+      setTimeout(() => {
+        onComplete(total);
+      }, 3000);
+    }
+  };
+
   const retryActivity = () => {
     setSelectedAnswer(null);
     setIsCorrect(null);
@@ -159,6 +176,12 @@ export const ActivityPlayer = ({
 
   if (!currentActivity) return null;
 
+  const isReading = currentActivity.type === "reading";
+  const basePassage =
+    !isReading && currentActivity.basedOn
+      ? activities.find((a) => a.id === currentActivity.basedOn)
+      : undefined;
+
   return (
     <div className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-card rounded-3xl shadow-card max-w-2xl w-full max-h-[90vh] overflow-y-auto">
@@ -168,7 +191,7 @@ export const ActivityPlayer = ({
             <div className="flex items-center gap-2">
               <Star className="w-5 h-5 text-gold" />
               <span className="font-bold text-foreground">
-                Atividade {currentIndex + 1} de {activities.length}
+                {isReading ? "📖 Leitura • " : ""}Atividade {currentIndex + 1} de {activities.length}
               </span>
             </div>
             <CoinDisplay amount={earnedCoins} size="sm" />
@@ -205,6 +228,43 @@ export const ActivityPlayer = ({
                 />
               </div>
             </div>
+          )}
+          {isReading && (
+            <div className="mb-2 rounded-2xl border-2 border-primary/30 bg-secondary/40 p-5">
+              {currentActivity.passageTitle && (
+                <h4 className="text-xl font-extrabold text-foreground mb-3">
+                  {currentActivity.passageTitle}
+                </h4>
+              )}
+              <div className="space-y-3">
+                {currentActivity.passage?.map((paragraph, i) => (
+                  <p key={i} className="text-lg leading-relaxed text-foreground">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+          {basePassage && (
+            <details className="mb-4 rounded-2xl border-2 border-primary/30 bg-secondary/40 p-4">
+              <summary className="cursor-pointer font-bold text-primary flex items-center gap-2">
+                <BookOpen className="w-4 h-4" /> Reler o texto
+              </summary>
+              <div className="mt-3">
+                {basePassage.passageTitle && (
+                  <h4 className="text-lg font-extrabold text-foreground mb-2">
+                    {basePassage.passageTitle}
+                  </h4>
+                )}
+                <div className="space-y-2">
+                  {basePassage.passage?.map((paragraph, i) => (
+                    <p key={i} className="text-base leading-relaxed text-foreground">
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+              </div>
+            </details>
           )}
           <p className="text-sm text-primary font-medium mb-2">
             {currentActivity.instruction}
@@ -453,7 +513,14 @@ export const ActivityPlayer = ({
             Sair
           </Button>
 
-          {isCorrect === null && (
+          {isReading && (
+            <Button onClick={finishReading} className="flex-1">
+              <Check className="w-4 h-4 mr-2" />
+              Li o texto
+            </Button>
+          )}
+
+          {!isReading && isCorrect === null && (
             <Button
               onClick={checkAnswer}
               disabled={
@@ -471,14 +538,14 @@ export const ActivityPlayer = ({
             </Button>
           )}
 
-          {isCorrect === false && (
+          {!isReading && isCorrect === false && (
             <Button onClick={retryActivity} className="flex-1">
               <RotateCcw className="w-4 h-4 mr-2" />
               Tentar Novamente
             </Button>
           )}
 
-          {isCorrect === true && (
+          {!isReading && isCorrect === true && (
             <Button onClick={nextActivity} className="flex-1">
               {currentIndex < activities.length - 1 ? (
                 <>

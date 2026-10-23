@@ -80,7 +80,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
   const handleVideoComplete = () => {
     if (!videoWatched) {
       markVideoWatched(currentIndex);
-      toast.success(`🎬 Vídeo concluído! Agora complete as 10 atividades do grupo.`);
+      toast.success(`🎬 Vídeo concluído! Agora faça as ${group.activities.length} atividades do grupo.`);
     }
     setShowVideo(false);
     setShowActivities(true);
@@ -168,7 +168,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                     {videoWatched && !groupCompleted && (
                       <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90">
                         <BookOpen className="w-5 h-5 mr-2" />
-                        Fazer 10 atividades
+                        Fazer {group.activities.length} atividades
                       </Button>
                     )}
                     {groupCompleted && (
