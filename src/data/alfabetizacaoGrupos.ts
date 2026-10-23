@@ -1,4 +1,5 @@
 import type { Activity } from "./activities";
+import { portuguesDivertidoGrupos } from "./portuguesDivertidoGrupos";
 import cenaTatuEscola from "@/assets/activities/tatu-escola-cena.jpg";
 import optTatu from "@/assets/activities/opt-tatu.jpg";
 import optCoelho from "@/assets/activities/opt-coelho.jpg";
@@ -752,7 +753,7 @@ const g5Activities: Activity[] = [
   },
 ];
 
-export const alfabetizacaoGrupos: LessonGroup[] = [
+const gruposBase: LessonGroup[] = [
   {
     id: "alf-g1",
     index: 0,
@@ -820,5 +821,8 @@ export const alfabetizacaoGrupos: LessonGroup[] = [
     activities: g5Activities,
   },
 ];
+
+// Curso "Português Divertido": grupos base + grupos baseados no livro (Unidade 1).
+export const alfabetizacaoGrupos: LessonGroup[] = [...gruposBase, ...portuguesDivertidoGrupos];
 
 export const getAlfabetizacaoGroups = () => alfabetizacaoGrupos;

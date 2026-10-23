@@ -300,7 +300,7 @@ const EducationModule = () => (
     <Panel>
       <SectionTitle icon={Cpu} title="IA educacional" subtitle="Insights gerados automaticamente" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <Insight tone="green" text="Crianças expostas à Alfabetização Divertida por 5+ sessões têm 38% mais retenção em Matemática." />
+        <Insight tone="green" text="Crianças expostas ao Português Divertido por 5+ sessões têm 38% mais retenção em Matemática." />
         <Insight tone="gold" icon={AlertTriangle} text="42 crianças em risco de abandono nesta semana — recomendação de missão personalizada enviada." />
         <Insight tone="violet" icon={Sparkles} text="Conteúdo 'Sons das Letras' identificado como mais eficiente para 6-8 anos. Replicar formato." />
         <Insight tone="cyan" text="Dificuldade média do módulo Inglês acima do esperado. Sugerido ajuste adaptativo automático." />

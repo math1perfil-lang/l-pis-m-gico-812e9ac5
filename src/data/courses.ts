@@ -26,7 +26,7 @@ export const courses: Course[] = [
   // 6-8 anos - Básico
   {
     id: "alfabetizacao-divertida",
-    title: "Alfabetização Divertida",
+    title: "Português Divertido",
     description: "Aprenda as letras, sons e primeiras palavras de forma lúdica e interativa!",
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     ageMin: 6,
