@@ -5,6 +5,7 @@ import { CoinDisplay } from "./CoinDisplay";
 import { ProgressBar } from "./ProgressBar";
 import type { Activity } from "@/data/activities";
 import { cn } from "@/lib/utils";
+import { setBusy } from "@/updateGuard";
 
 interface ActivityPlayerProps {
   activities: Activity[];
@@ -28,6 +29,12 @@ export const ActivityPlayer = ({
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
   const [showCelebration, setShowCelebration] = useState(false);
   const [rightOrder, setRightOrder] = useState<string[]>([]);
+
+  // Não atualiza o app (recarregando a página) enquanto a criança faz a atividade
+  useEffect(() => {
+    setBusy(true);
+    return () => setBusy(false);
+  }, []);
 
   const currentActivity = activities[currentIndex];
   const progress = ((currentIndex + (isCorrect ? 1 : 0)) / activities.length) * 100;

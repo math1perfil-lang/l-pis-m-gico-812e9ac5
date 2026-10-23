@@ -4,8 +4,14 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { VitePWA } from "vite-plugin-pwa";
 
+// Id único deste build: o app instalado compara com /version.json para saber se há versão nova.
+const BUILD_ID = Date.now().toString(36);
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  define: {
+    __BUILD_ID__: JSON.stringify(mode === "development" ? "dev" : BUILD_ID),
+  },
   server: {
     host: "::",
     port: 8080,
@@ -16,6 +22,13 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     mode === "development" && componentTagger(),
+    {
+      name: "emit-version-json",
+      apply: "build" as const,
+      generateBundle() {
+        this.emitFile({ type: "asset", fileName: "version.json", source: JSON.stringify({ id: BUILD_ID }) });
+      },
+    },
     VitePWA({
       registerType: "prompt", // a aplicação da versão nova é feita em src/pwaUpdate.ts
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "pwa-icon-192.png", "pwa-icon-512.png"],
@@ -50,6 +63,11 @@ export default defineConfig(({ mode }) => ({
         clientsClaim: true,
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10 MB limit
         runtimeCaching: [
+          {
+            // O arquivo de versão nunca pode vir do cache
+            urlPattern: ({ url }: { url: URL }) => url.pathname === "/version.json",
+            handler: "NetworkOnly",
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: "CacheFirst",

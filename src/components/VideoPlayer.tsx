@@ -3,6 +3,7 @@ import { Play, Pause, Square, Volume2, VolumeX, Maximize, SkipForward } from "lu
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CoinDisplay } from "./CoinDisplay";
+import { setBusy } from "@/updateGuard";
 
 interface VideoPlayerProps {
   videoUrl: string;
@@ -26,6 +27,12 @@ export const VideoPlayer = ({
   const [showReward, setShowReward] = useState(false);
   const [hasCompleted, setHasCompleted] = useState(false);
   const [playbackError, setPlaybackError] = useState<string | null>(null);
+
+  // Não atualiza o app enquanto o vídeo está aberto
+  useEffect(() => {
+    setBusy(true);
+    return () => setBusy(false);
+  }, []);
 
   useEffect(() => {
     setIsPlaying(false);
