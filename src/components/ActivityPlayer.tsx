@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Check, X, ArrowRight, RotateCcw, Trophy, Star, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CoinDisplay } from "./CoinDisplay";
@@ -27,6 +27,7 @@ export const ActivityPlayer = ({
   const [matchedPairs, setMatchedPairs] = useState<Record<string, string>>({});
   const [selectedMatch, setSelectedMatch] = useState<string | null>(null);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [rightOrder, setRightOrder] = useState<string[]>([]);
 
   const currentActivity = activities[currentIndex];
   const progress = ((currentIndex + (isCorrect ? 1 : 0)) / activities.length) * 100;
@@ -39,6 +40,17 @@ export const ActivityPlayer = ({
     setOrderedItems([]);
     setMatchedPairs({});
     setSelectedMatch(null);
+
+    // Ligar: embaralha a coluna da direita (senão a resposta aparece pela posição)
+    if (currentActivity?.type === "matching") {
+      const rightIds = currentActivity.options.filter((_, i) => i % 2 === 1).map((o) => o.id);
+      let shuffledRight = rightIds;
+      for (let t = 0; t < 10 && rightIds.length > 1; t++) {
+        shuffledRight = [...rightIds].sort(() => Math.random() - 0.5);
+        if (shuffledRight.some((id, i) => id !== rightIds[i])) break;
+      }
+      setRightOrder(shuffledRight);
+    }
 
     // Initialize ordering if needed
     if (currentActivity?.type === "ordering") {
@@ -130,10 +142,17 @@ export const ActivityPlayer = ({
   };
 
   const handleMatchClick = (id: string) => {
+    if (!currentActivity) return;
+    const leftIds = currentActivity.options.filter((_, i) => i % 2 === 0).map((o) => o.id);
+    const isLeft = (x: string) => leftIds.includes(x);
     if (!selectedMatch) {
       setSelectedMatch(id);
+    } else if (selectedMatch === id) {
+      setSelectedMatch(null);
+    } else if (isLeft(selectedMatch) === isLeft(id)) {
+      // Mesma coluna: troca a seleção (só se liga um item da esquerda com um da direita)
+      setSelectedMatch(id);
     } else {
-      // Create a match
       setMatchedPairs({
         ...matchedPairs,
         [selectedMatch]: id,
@@ -243,6 +262,11 @@ export const ActivityPlayer = ({
                   </p>
                 ))}
               </div>
+              {currentActivity.passageCredit && (
+                <p className="mt-4 border-t border-primary/20 pt-3 text-sm italic text-muted-foreground">
+                  Fonte: {currentActivity.passageCredit}
+                </p>
+              )}
             </div>
           )}
           {basePassage && (
@@ -263,6 +287,11 @@ export const ActivityPlayer = ({
                     </p>
                   ))}
                 </div>
+                {basePassage.passageCredit && (
+                  <p className="mt-3 border-t border-primary/20 pt-2 text-xs italic text-muted-foreground">
+                    Fonte: {basePassage.passageCredit}
+                  </p>
+                )}
               </div>
             </details>
           )}
@@ -323,14 +352,14 @@ export const ActivityPlayer = ({
           {(currentActivity.type === "multiple-choice" ||
             currentActivity.type === "true-false") &&
             !currentActivity.options.some((o) => o.imageUrl) && (
-            <div className="grid gap-3">
-              {currentActivity.options.map((option) => (
+            <div className="grid gap-3 auto-rows-fr">
+              {currentActivity.options.map((option, optionIndex) => (
                 <button
                   key={option.id}
                   onClick={() => !isCorrect && setSelectedAnswer(option.id)}
                   disabled={isCorrect !== null}
                   className={cn(
-                    "p-4 rounded-xl text-left transition-all border-2",
+                    "w-full h-full min-h-[64px] p-4 rounded-xl text-left transition-all border-2",
                     selectedAnswer === option.id
                       ? isCorrect === null
                         ? "border-primary bg-primary/10"
@@ -341,18 +370,18 @@ export const ActivityPlayer = ({
                     isCorrect !== null && option.isCorrect && "border-accent bg-accent/10"
                   )}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 h-full">
                     <div
                       className={cn(
-                        "w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm",
+                        "w-9 h-9 min-w-[2.25rem] shrink-0 aspect-square rounded-full flex items-center justify-center font-bold text-base leading-none",
                         selectedAnswer === option.id
                           ? "gradient-primary text-primary-foreground"
                           : "bg-muted-foreground/20"
                       )}
                     >
-                      {option.id.toUpperCase()}
+                      {String.fromCharCode(65 + optionIndex)}
                     </div>
-                    <span className="font-medium text-foreground">
+                    <span className="font-medium text-foreground flex-1">
                       {option.text}
                     </span>
                     {isCorrect !== null && option.isCorrect && (
@@ -371,7 +400,7 @@ export const ActivityPlayer = ({
 
           {/* Ordering */}
           {currentActivity.type === "ordering" && (
-            <div className="space-y-2">
+            <div className="grid gap-2 auto-rows-fr">
               {orderedItems.map((itemId, index) => {
                 const option = currentActivity.options.find(
                   (o) => o.id === itemId
@@ -380,7 +409,7 @@ export const ActivityPlayer = ({
                   <div
                     key={itemId}
                     className={cn(
-                      "p-4 rounded-xl border-2 flex items-center justify-between",
+                      "min-h-[64px] p-4 rounded-xl border-2 flex items-center justify-between gap-3",
                       isCorrect === true
                         ? "border-accent bg-accent/10"
                         : isCorrect === false
@@ -388,8 +417,8 @@ export const ActivityPlayer = ({
                         : "border-border bg-muted/50"
                     )}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <span className="w-9 h-9 min-w-[2.25rem] shrink-0 aspect-square rounded-full gradient-primary flex items-center justify-center text-primary-foreground font-bold text-base leading-none">
                         {index + 1}
                       </span>
                       <span className="font-medium text-foreground">
@@ -423,62 +452,45 @@ export const ActivityPlayer = ({
           )}
 
           {/* Matching */}
-          {currentActivity.type === "matching" && (
-            <div className="grid grid-cols-2 gap-4">
-              {/* Left column */}
-              <div className="space-y-2">
-                {currentActivity.options
-                  .filter((_, i) => i % 2 === 0)
-                  .map((option) => (
-                    <button
-                      key={option.id}
-                      onClick={() =>
-                        isCorrect === null && handleMatchClick(option.id)
-                      }
-                      disabled={
-                        isCorrect !== null || matchedPairs[option.id] !== undefined
-                      }
-                      className={cn(
-                        "w-full p-4 rounded-xl border-2 transition-all",
-                        selectedMatch === option.id
-                          ? "border-primary bg-primary/10"
-                          : matchedPairs[option.id]
-                          ? "border-accent bg-accent/10"
-                          : "border-border bg-muted/50 hover:bg-muted"
-                      )}
-                    >
-                      <span className="font-bold text-xl">{option.text}</span>
-                    </button>
-                  ))}
+          {currentActivity.type === "matching" && (() => {
+            const leftItems = currentActivity.options.filter((_, i) => i % 2 === 0);
+            const defaultRightIds = currentActivity.options.filter((_, i) => i % 2 === 1).map((o) => o.id);
+            const rightIds = rightOrder.length === defaultRightIds.length ? rightOrder : defaultRightIds;
+            const rightItems = rightIds
+              .map((id) => currentActivity.options.find((o) => o.id === id))
+              .filter((o): o is NonNullable<typeof o> => Boolean(o));
+
+            const renderMatchButton = (option: (typeof currentActivity.options)[number]) => (
+              <button
+                key={option.id}
+                onClick={() => isCorrect === null && handleMatchClick(option.id)}
+                disabled={isCorrect !== null || matchedPairs[option.id] !== undefined}
+                className={cn(
+                  "w-full h-full min-h-[72px] p-3 rounded-xl border-2 transition-all",
+                  "flex items-center justify-center text-center font-semibold text-base leading-snug",
+                  selectedMatch === option.id
+                    ? "border-primary bg-primary/10"
+                    : matchedPairs[option.id]
+                    ? "border-accent bg-accent/10"
+                    : "border-border bg-muted/50 hover:bg-muted"
+                )}
+              >
+                {option.text}
+              </button>
+            );
+
+            // Todas as caixas com o mesmo tamanho e alinhadas em linhas (auto-rows-fr)
+            return (
+              <div className="grid grid-cols-2 gap-3 auto-rows-fr">
+                {leftItems.map((left, row) => (
+                  <Fragment key={left.id}>
+                    {renderMatchButton(left)}
+                    {rightItems[row] ? renderMatchButton(rightItems[row]) : <div />}
+                  </Fragment>
+                ))}
               </div>
-              {/* Right column */}
-              <div className="space-y-2">
-                {currentActivity.options
-                  .filter((_, i) => i % 2 === 1)
-                  .map((option) => (
-                    <button
-                      key={option.id}
-                      onClick={() =>
-                        isCorrect === null && handleMatchClick(option.id)
-                      }
-                      disabled={
-                        isCorrect !== null || matchedPairs[option.id] !== undefined
-                      }
-                      className={cn(
-                        "w-full p-4 rounded-xl border-2 transition-all",
-                        selectedMatch === option.id
-                          ? "border-primary bg-primary/10"
-                          : matchedPairs[option.id]
-                          ? "border-accent bg-accent/10"
-                          : "border-border bg-muted/50 hover:bg-muted"
-                      )}
-                    >
-                      <span className="font-medium">{option.text}</span>
-                    </button>
-                  ))}
-              </div>
-            </div>
-          )}
+            );
+          })()}
 
           {/* Feedback */}
           {isCorrect !== null && (
