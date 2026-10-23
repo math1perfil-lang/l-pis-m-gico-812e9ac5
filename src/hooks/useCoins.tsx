@@ -114,6 +114,9 @@ export const CoinsProvider = ({ children }: { children: ReactNode }) => {
     (amount: number, description?: string, referenceId?: string) => {
       if (amount <= 0) return;
       const next = { ...statsRef.current, coins: statsRef.current.coins + amount };
+      // Atualiza já a referência: chamadas seguidas (ex.: addCoins + addXp) partem do saldo novo,
+      // e não do antigo, que apagava as moedas recém-ganhas.
+      statsRef.current = next;
       setStats(next);
       persist(next);
       logTransaction(amount, "earn", description, referenceId);
@@ -126,6 +129,7 @@ export const CoinsProvider = ({ children }: { children: ReactNode }) => {
       if (amount <= 0) return false;
       if (statsRef.current.coins < amount) return false;
       const next = { ...statsRef.current, coins: statsRef.current.coins - amount };
+      statsRef.current = next;
       setStats(next);
       persist(next);
       logTransaction(-amount, "spend", description, referenceId);
@@ -139,6 +143,7 @@ export const CoinsProvider = ({ children }: { children: ReactNode }) => {
       if (amount <= 0) return;
       const xp = statsRef.current.xp + amount;
       const next = { ...statsRef.current, xp, level: levelFromXp(xp) };
+      statsRef.current = next;
       setStats(next);
       persist(next);
     },

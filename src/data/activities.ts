@@ -32,6 +32,8 @@ export interface Activity {
   // Texto base (type "reading"): título e parágrafos que a criança lê antes das questões.
   passageTitle?: string;
   passage?: string[];
+  // Fonte/autoria do texto, exibida no rodapé (obrigatória em todo texto base).
+  passageCredit?: string;
   // Em questões que dependem de um texto: id da atividade "reading" correspondente.
   // O player mostra "Reler o texto" nessas questões.
   basedOn?: string;
