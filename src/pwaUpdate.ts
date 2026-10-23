@@ -1,12 +1,14 @@
 import { registerSW } from "virtual:pwa-register";
+import { isBusy } from "./updateGuard";
 
 // Atualização automática do app instalado na tela de início.
 //
 // 1) Procura versão nova ao abrir o app, ao voltar para ele e a cada 30 minutos
 //    (um app instalado costuma ficar "congelado" em segundo plano por dias).
 // 2) Baixa a versão nova em segundo plano e só a aplica quando o app vai para
-//    segundo plano, para nunca recarregar no meio de uma atividade da criança.
-//    Na próxima vez que ela abrir o app, já estará na versão mais nova.
+//    segundo plano e não há atividade/vídeo aberto, para nunca recarregar no meio
+//    de uma atividade da criança.
+// A segunda camada, independente do service worker, está em versionCheck.ts.
 
 const CHECK_EVERY_MS = 30 * 60 * 1000;
 
@@ -29,13 +31,14 @@ const updateSW = registerSW({
   },
   onNeedRefresh() {
     updateReady = true;
-    if (document.hidden) void updateSW(true);
+    if (document.hidden && !isBusy()) void updateSW(true);
   },
 });
 
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
-    if (updateReady) void updateSW(true);
+    // Não recarrega com atividade ou vídeo aberto (ver updateGuard.ts)
+    if (updateReady && !isBusy()) void updateSW(true);
   } else {
     checkForUpdate();
   }
