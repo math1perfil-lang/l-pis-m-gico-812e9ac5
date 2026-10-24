@@ -27,13 +27,13 @@ export const courses: Course[] = [
   {
     id: "alfabetizacao-divertida",
     title: "Português Divertido",
-    description: "Contos de fadas, fábulas, letras e sons: aprenda português brincando!",
+    description: "Contos, fábulas, quadrinhos, letras, sons e palavras: aprenda português brincando!",
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     ageMin: 6,
     ageMax: 8,
-    duration: "2h 30min",
-    coinsReward: 700,
-    totalLessons: 11,
+    duration: "6h",
+    coinsReward: 2075,
+    totalLessons: 31,
     category: "Linguagem",
     lessons: []
   },

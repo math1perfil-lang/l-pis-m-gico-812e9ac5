@@ -7,7 +7,8 @@ import type { LessonGroup } from "./alfabetizacaoGrupos";
 //   Cap. 2 – Depois do final feliz (paródia, variedades da língua, fonema e letra)
 //   Cap. 3 – Fábulas em cena! (texto teatral e fábula – parte inicial)
 // Todo o texto e os exercícios abaixo foram criados do zero para a faixa de 6 anos;
-// nada foi copiado do livro.
+// nada foi copiado do livro, por isso os textos não têm "Fonte". Se um dia um texto for
+// copiado de uma obra, passe a fonte completa como 4º argumento de read().
 
 const ACT_COINS = 5;
 
@@ -18,7 +19,7 @@ const slotFor = (id: string, total: number) =>
   Array.from(id).reduce((sum, ch) => sum + ch.charCodeAt(0), 0) % total;
 
 /** Múltipla escolha: 1 resposta certa + 3 erradas. */
-const mc = (
+export const mc = (
   id: string,
   question: string,
   instruction: string,
@@ -44,7 +45,7 @@ const mc = (
 };
 
 /** Verdadeiro ou falso. */
-const tf = (
+export const tf = (
   id: string,
   question: string,
   correct: boolean,
@@ -63,7 +64,7 @@ const tf = (
 });
 
 /** Ligar pares (esquerda ↔ direita). */
-const match = (
+export const match = (
   id: string,
   question: string,
   pairs: [string, string][],
@@ -82,7 +83,7 @@ const match = (
 });
 
 /** Ordenar: informe os itens já na ordem correta. */
-const order = (
+export const order = (
   id: string,
   question: string,
   items: string[],
@@ -99,21 +100,22 @@ const order = (
 });
 
 /** Leitura do texto base: vira uma atividade do grupo e libera as questões que dependem dele. */
-const read = (id: string, title: string, passage: string[], credit: string): Activity => ({
+/** Só informe `credit` quando o texto for copiado de uma obra (autor, obra, editora, ano). Textos criados aqui ficam sem fonte. */
+export const read = (id: string, title: string, passage: string[], credit?: string): Activity => ({
   id,
   type: "reading",
   question: "Leia o texto com atenção. Depois, responda às perguntas.",
   instruction: "Leia o texto e toque em “Li o texto”",
   passageTitle: title,
   passage,
-  passageCredit: credit,
+  ...(credit ? { passageCredit: credit } : {}),
   options: [],
   coinsReward: ACT_COINS,
   difficulty: "easy",
 });
 
 /** Marca uma questão como dependente de um texto base (aparece o botão “Reler o texto”). */
-const fromText = (readingId: string, activity: Activity): Activity => ({
+export const fromText = (readingId: string, activity: Activity): Activity => ({
   ...activity,
   basedOn: readingId,
 });
@@ -132,7 +134,7 @@ const g1Activities: Activity[] = [
     "— Devolva o meu gato, por favor! — pediu Lia.",
     "A bruxa viu que a menina era corajosa e desfez o feitiço. O gato voltou a brilhar.",
     "E Lia e o gato foram felizes para sempre.",
-  ], "Texto original criado para o Português Divertido (Pandoorga). Não foi retirado de livro ou obra de terceiros."),
+  ]),
   fromText("pd-g1-leitura", mc("pd-g1-a1", "Como essa história começa?", "Toque na resposta certa",
     "Era uma vez...", ["Fim de papo!", "Tchau, pessoal!", "Quem quer pipoca?"])),
   fromText("pd-g1-leitura", mc("pd-g1-a2", "Em “Era uma vez...”, a história do texto acontece em um tempo...", "Toque na resposta certa",
@@ -173,7 +175,7 @@ const g2Activities: Activity[] = [
     "Na caverna, o dragão rugiu: — Ninguém vai pegar o meu vento!",
     "Teo ficou com medo, mas respirou fundo e disse: — Se você soltar o vento, eu convido você para brincar com a gente.",
     "O dragão, que estava muito sozinho, ficou surpreso e feliz. Soltou o vento e ganhou novos amigos.",
-  ], "Texto original criado para o Português Divertido (Pandoorga). Não foi retirado de livro ou obra de terceiros."),
+  ]),
   fromText("pd-g2-leitura", mc("pd-g2-a1", "Quem é o herói da história?", "Toque na resposta certa",
     "Teo", ["O dragão", "O rei", "O vento"])),
   fromText("pd-g2-leitura", mc("pd-g2-a2", "Quem atrapalha o herói? Ou seja, quem é o vilão?", "Toque na resposta certa",
@@ -213,7 +215,7 @@ const g3Activities: Activity[] = [
     "— Vou salvar o meu irmão! — respondeu Bia.",
     "De repente, Bia caiu em si: tinha esquecido a lanterna em casa!",
     "Mesmo assim, ela moveu mundos e fundos para chegar até a montanha. E o irmão apareceu, sorrindo.",
-  ], "Texto original criado para o Português Divertido (Pandoorga). Não foi retirado de livro ou obra de terceiros."),
+  ]),
   fromText("pd-g3-leitura", mc("pd-g3-a1", "“Ela andou, andou, andou.” O que a repetição mostra?", "Toque na resposta certa",
     "Que ela andou por muito tempo", ["Que ela correu rápido", "Que ela ficou parada", "Que ela dormiu"], "medium")),
   fromText("pd-g3-leitura", mc("pd-g3-a2", "O que o ponto de exclamação mostra em “Ah! Que lindo!”?", "Toque na resposta certa",
@@ -261,7 +263,7 @@ const g4Activities: Activity[] = [
     "Quadrinho 1: Um menino desenhou uma girafa roxa na parede da sala.",
     "Quadrinho 2: A mãe chega, de braços cruzados, e pergunta: — O que é isso na parede?",
     "Quadrinho 3: O menino sorri e responde: — Uma girafa! A mãe faz cara de brava.",
-  ], "Texto original criado para o Português Divertido (Pandoorga). Tirinha descrita em palavras; personagens e falas inventados para esta atividade."),
+  ]),
   fromText("pd-g4-leitura1", mc("pd-g4-a5", "O que o menino desenhou na parede?", "Toque na resposta certa",
     "Uma girafa roxa", ["Um gato azul", "Uma casa", "Um sol amarelo"])),
   fromText("pd-g4-leitura1", mc("pd-g4-a6", "Por que a mãe perguntou: “O que é isso na parede?”", "Pense no que a mãe queria dizer",
@@ -275,7 +277,7 @@ const g4Activities: Activity[] = [
     "Para crianças de 6 a 9 anos.",
     "Todos os sábados, às 10 horas.",
     "Inscrições na biblioteca da cidade.",
-  ], "Cartaz fictício criado para esta atividade. A oficina não existe de verdade."),
+  ]),
   fromText("pd-g4-leitura2", mc("pd-g4-a8", "Para quem é a oficina?", "Leia o cartaz e escolha",
     "Para crianças de 6 a 9 anos", ["Só para adultos", "Para bebês", "Para animais"])),
   fromText("pd-g4-leitura2", mc("pd-g4-a9", "Em que dia acontece a oficina?", "Leia o cartaz e escolha",
@@ -338,7 +340,7 @@ const g6Activities: Activity[] = [
     "Vieram a Branca de Neve, o Lobo Mau e os Três Porquinhos. Todos disseram que também estavam entediados.",
     "Decidiram inventar uma gincana. Foi uma bagunça muito divertida, uma verdadeira balbúrdia!",
     "E assim ficaram felizes... quase sempre, porque de vez em quando precisavam de uma aventura.",
-  ], "Texto original criado para o Português Divertido (Pandoorga). Os personagens de contos de fadas citados vêm da tradição popular."),
+  ]),
   fromText("pd-g6-leitura", mc("pd-g6-a3", "Depois de muito tempo felizes, como o príncipe e a princesa se sentiram?", "Toque na resposta certa",
     "Entediados", ["Com medo", "Com fome", "Com frio"], "medium")),
   fromText("pd-g6-leitura", mc("pd-g6-a4", "Quem disse: “A gente precisa de uma aventura!”?", "Toque na resposta certa",
@@ -472,7 +474,7 @@ const g10Activities: Activity[] = [
     "(A luz fica fraca. O vento sopra. Chegou o inverno.)",
     "CIGARRA: (tremendo) Estou com frio e com fome...",
     "FORMIGA: (generosa) Entre, Cigarra. Eu divido a minha comida com você. Mas, no ano que vem, vamos nos preparar juntas.",
-  ], "Adaptação livre, em forma de peça de teatro, da fábula “A cigarra e a formiga”, de Esopo (tradição popular, domínio público). Texto de teatro original do Português Divertido (Pandoorga)."),
+  ]),
   fromText("pd-g10-leitura", mc("pd-g10-a4", "No texto, quem diz: “Estou guardando comida para o inverno”?", "Leia e escolha",
     "A Formiga", ["A Cigarra", "O leitor", "O diretor"])),
   fromText("pd-g10-leitura", mc("pd-g10-a5", "As indicações entre parênteses, como (cantando) e (tremendo), servem para...",
@@ -506,7 +508,7 @@ const g11Activities: Activity[] = [
     "A raposa chegou e fez uma reverência: — Perdão, Vossa Majestade! Fui bem longe buscar uma erva rara, a única que pode curar o senhor.",
     "Ela preparou o chá e o leão melhorou. Então a raposa disse: — O lobo ficou aqui e só fez fofoca. Eu fui ajudar.",
     "O leão entendeu quem era amigo de verdade e mandou o lobo pedir desculpas.",
-  ], "Reconto original, em palavras simples, da fábula “O leão, o lobo e a raposa”, atribuída a Esopo (tradição popular, domínio público). Final adaptado para crianças; texto do Português Divertido (Pandoorga)."),
+  ]),
   fromText("pd-g11-leitura", mc("pd-g11-a1", "Por que o leão chamou os animais?", "Toque na resposta certa",
     "Estava doente e queria remédios e conselhos",
     ["Queria dar uma festa", "Queria ensinar a nadar", "Queria vender flores"], "medium")),
@@ -542,7 +544,7 @@ const g11Activities: Activity[] = [
 // do Grupo 1 como substituto. Troque os caminhos quando os novos vídeos existirem.
 const PLACEHOLDER_VIDEO = "/videos/alfabetizacao-grupo-1.mp4";
 
-const grupo = (
+export const grupo = (
   num: number,
   title: string,
   videoObjective: string,
@@ -563,10 +565,10 @@ const grupo = (
   activities,
 });
 
-const IMG_LIVRO = "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800";
-const IMG_LETRAS = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800";
-const IMG_FLORESTA = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800";
-const IMG_CRIANCAS = "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800";
+export const IMG_LIVRO = "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800";
+export const IMG_LETRAS = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800";
+export const IMG_FLORESTA = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800";
+export const IMG_CRIANCAS = "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800";
 
 export const portuguesDivertidoGrupos: LessonGroup[] = [
   grupo(1, "Era Uma Vez...",
