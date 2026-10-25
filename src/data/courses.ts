@@ -31,9 +31,9 @@ export const courses: Course[] = [
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     ageMin: 6,
     ageMax: 8,
-    duration: "6h",
-    coinsReward: 2075,
-    totalLessons: 31,
+    duration: "9h",
+    coinsReward: 3260,
+    totalLessons: 47,
     category: "Linguagem",
     lessons: []
   },
