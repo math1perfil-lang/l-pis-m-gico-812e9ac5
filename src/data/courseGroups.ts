@@ -1,6 +1,7 @@
 import type { Activity } from "./activities";
 import type { LessonGroup } from "./alfabetizacaoGrupos";
 import { alfabetizacaoGrupos } from "./alfabetizacaoGrupos";
+import { portuguesEmAcaoGrupos } from "./portuguesEmAcaoGrupos";
 import { MODULE_BONUS_BY_BAND, type AgeBand, type GroupSpec as ExtraGroupSpec } from "./activityKit";
 import { specs as numerosExtra } from "./groups/numeros-brincadeira";
 import { specs as naturezaExtra } from "./groups/natureza-amiga";
@@ -1266,6 +1267,7 @@ const withExtraModules = (courseId: string, base: LessonGroup[]): LessonGroup[] 
 // ---------- Registry ----------
 const baseRegistry: Record<string, LessonGroup[]> = {
   "alfabetizacao-divertida": alfabetizacaoGrupos,
+  "portugues-em-acao": portuguesEmAcaoGrupos,
   "numeros-brincadeira": numerosGroups,
   "natureza-amiga": naturezaGroups,
   "portugues-aventura": portuguesGroups,
