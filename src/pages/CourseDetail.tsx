@@ -166,10 +166,10 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                 />
               )
             ) : (
-              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-card animate-fade-in">
-                <img src={group.videoThumbnail} alt={group.videoTitle} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
+              <div className="relative aspect-video flex flex-col justify-end rounded-2xl overflow-hidden shadow-card animate-fade-in">
+                <img src={group.videoThumbnail} alt={group.videoTitle} className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/60 to-foreground/20" />
+                <div className="relative p-4 sm:p-6 pt-16">
                   <span className="px-3 py-1 rounded-full text-xs font-bold gradient-primary text-primary-foreground mb-3 inline-block">
                     Grupo {currentIndex + 1} • Vídeo {group.videoDurationLabel}
                   </span>
@@ -187,15 +187,15 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                       </Button>
                     )}
                     {groupCompleted && (
-                      <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90">
-                        <BookOpen className="w-5 h-5 mr-2" />
-                        Refazer atividades (sem moedas)
-                      </Button>
-                    )}
-                    {groupCompleted && (
-                      <span className="inline-flex items-center gap-2 bg-accent/90 text-accent-foreground px-4 py-2 rounded-full font-bold">
-                        <CheckCircle2 className="w-5 h-5" /> Grupo concluído
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <span className="inline-flex items-center gap-2 bg-accent/90 text-accent-foreground px-4 py-2 rounded-full font-bold whitespace-nowrap">
+                          <CheckCircle2 className="w-5 h-5" /> Grupo concluído
+                        </span>
+                        <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90 whitespace-nowrap">
+                          <BookOpen className="w-5 h-5 mr-2" />
+                          Refazer atividades
+                        </Button>
+                      </div>
                     )}
                   </div>
                 </div>
