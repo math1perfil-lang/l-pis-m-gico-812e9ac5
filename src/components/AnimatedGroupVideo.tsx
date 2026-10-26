@@ -18,11 +18,11 @@ interface Scene {
 
 const SCENES: Record<AnimationId, Scene[]> = {
   "era-uma-vez": [
-    { dur: 7000, text: "Oi! Eu sou a Lili. Hoje vamos abrir um livro encantado e entrar no reino das histórias!" },
+    { dur: 7000, text: "Oi! Eu sou o Pan. Hoje vamos abrir um livro encantado e entrar no reino das histórias!" },
     { dur: 6000, text: "Os contos de fadas começam com uma frase mágica: Era uma vez!" },
     { dur: 9000, text: "Aí a gente descobre onde a história acontece e quem são os personagens: uma menina, um gato de estrelas e um castelo no alto da montanha." },
     { dur: 8000, text: "Mas toda boa história tem um problema! Uma bruxa ranzinza enfeitiçou o gato, e ele desapareceu." },
-    { dur: 8000, text: "Os personagens resolvem o problema. A Lili teve coragem, atravessou a floresta e pediu o gato de volta." },
+    { dur: 8000, text: "Os personagens resolvem o problema. A Lia teve coragem, atravessou a floresta e pediu o gato de volta." },
     { dur: 8000, text: "No fim, tudo se resolve. E foram felizes para sempre! Agora vêm as atividades. Vamos lá?" },
   ],
 };

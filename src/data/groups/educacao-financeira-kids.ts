@@ -6,7 +6,7 @@ export const specs: GroupSpec[] = [
   {
     title: "O Que é Dinheiro?",
     objective: "Conhecer a origem do dinheiro, as moedas e as notas e fazer contas simples com elas.",
-    script: "Lili conta como as pessoas trocavam objetos antes do dinheiro existir e mostra as notas e moedas do real.",
+    script: "Pan conta como as pessoas trocavam objetos antes do dinheiro existir e mostra as notas e moedas do real.",
     thumb: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800",
     activities: [
       mc("easy", "Qual é a moeda usada no Brasil?", [["Dólar", false], ["Euro", false], ["Real", true], ["Iene", false]]),
@@ -29,7 +29,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Necessidade x Desejo",
     objective: "Diferenciar o que precisamos do que apenas queremos e usar isso para decidir uma compra.",
-    script: "Lili faz a lista de compras da família e separa o que é necessário do que é só vontade.",
+    script: "Pan faz a lista de compras da família e separa o que é necessário do que é só vontade.",
     thumb: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800",
     activities: [
       mc("easy", "Qual destes itens é uma necessidade básica?", [["Figurinhas", false], ["Videogame", false], ["Água potável", true], ["Doces", false]]),
@@ -52,7 +52,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Aprendendo a Poupar",
     objective: "Entender como guardar dinheiro aos poucos e calcular quanto tempo leva para juntar.",
-    script: "Lili enche o cofrinho moeda por moeda e mostra como pequenas quantias viram um grande sonho.",
+    script: "Pan enche o cofrinho moeda por moeda e mostra como pequenas quantias viram um grande sonho.",
     thumb: "https://images.unsplash.com/photo-1582486225644-26d3d09b8c1f?w=800",
     activities: [
       mc("easy", "O que significa poupar?", [["Gastar tudo logo", false], ["Guardar uma parte do dinheiro para usar depois", true], ["Pedir dinheiro emprestado", false], ["Dar todo o dinheiro", false]]),
@@ -75,7 +75,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Mesada e Orçamento",
     objective: "Planejar como dividir a mesada entre poupar, gastar e imprevistos.",
-    script: "Lili recebe a mesada, anota quanto entra e quanto sai e monta seu primeiro orçamento.",
+    script: "Pan recebe a mesada, anota quanto entra e quanto sai e monta seu primeiro orçamento.",
     thumb: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800",
     activities: [
       mc("easy", "O que é um orçamento?", [["Uma lista de brincadeiras", false], ["Um tipo de moeda", false], ["Um plano que mostra quanto dinheiro entra e quanto será gasto", true], ["Uma conta de banco", false]]),
@@ -98,7 +98,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Doar e Compartilhar",
     objective: "Perceber como ajudar os outros com dinheiro, objetos e tempo, sem deixar de se planejar.",
-    script: "Lili separa uma parte da mesada e alguns brinquedos para ajudar quem precisa.",
+    script: "Pan separa uma parte da mesada e alguns brinquedos para ajudar quem precisa.",
     thumb: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800",
     activities: [
       mc("easy", "O que é doar?", [["Vender mais caro", false], ["Dar algo sem cobrar nada em troca", true], ["Emprestar e cobrar depois", false], ["Trocar por outro item", false]]),
@@ -121,7 +121,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Trabalho e Valor do Dinheiro",
     objective: "Entender que o dinheiro vem do trabalho e calcular ganhos por serviço e por hora.",
-    script: "Lili visita a padaria do bairro e descobre como cada profissão ganha o seu dinheiro.",
+    script: "Pan visita a padaria do bairro e descobre como cada profissão ganha o seu dinheiro.",
     thumb: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800",
     activities: [
       mc("easy", "Como se chama o dinheiro que um adulto recebe pelo seu trabalho todo mês?", [["Troco", false], ["Salário", true], ["Mesada", false], ["Desconto", false]]),
@@ -144,7 +144,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Pesquisa de Preços e Troco",
     objective: "Comparar preços antes de comprar e calcular o troco corretamente.",
-    script: "Lili vai a três lojas procurar o melhor preço para o material escolar e confere o troco no caixa.",
+    script: "Pan vai a três lojas procurar o melhor preço para o material escolar e confere o troco no caixa.",
     thumb: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800",
     activities: [
       mc("easy", "O que é pesquisar preços?", [["Comprar o primeiro produto que vê", false], ["Comparar o preço do mesmo produto em lugares diferentes", true], ["Pedir desconto em tudo", false], ["Contar o dinheiro do cofrinho", false]]),
@@ -167,7 +167,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Metas de Poupança",
     objective: "Definir uma meta e calcular quanto falta e em quantos meses é possível alcançá-la.",
-    script: "Lili escolhe uma meta, faz as contas de quanto guardar por mês e acompanha o cofrinho crescer.",
+    script: "Pan escolhe uma meta, faz as contas de quanto guardar por mês e acompanha o cofrinho crescer.",
     thumb: "https://images.unsplash.com/photo-1518560306407-fcfac09e8c3a?w=800",
     activities: [
       mc("easy", "O que é uma meta de poupança?", [["Um valor que queremos juntar para um objetivo", true], ["Um presente que ganhamos", false], ["Uma dívida", false], ["Um tipo de moeda", false]]),
@@ -190,7 +190,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Consumo Consciente e Propaganda",
     objective: "Analisar propagandas e promoções para comprar com consciência.",
-    script: "Lili assiste a propagandas coloridas e aprende a perguntar se realmente precisa do que está sendo vendido.",
+    script: "Pan assiste a propagandas coloridas e aprende a perguntar se realmente precisa do que está sendo vendido.",
     thumb: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800",
     activities: [
       mc("easy", "Para que serve uma propaganda?", [["Para ensinar matemática", false], ["Para divulgar um produto e convencer as pessoas a comprar", true], ["Para devolver o troco", false], ["Para guardar dinheiro", false]]),
@@ -213,7 +213,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Segurança com o Dinheiro",
     objective: "Aprender a guardar dinheiro com segurança e a reconhecer golpes simples, sempre com a ajuda de um adulto.",
-    script: "Lili conhece o banco com um adulto de confiança e descobre os sinais de mensagens suspeitas.",
+    script: "Pan conhece o banco com um adulto de confiança e descobre os sinais de mensagens suspeitas.",
     thumb: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=800",
     activities: [
       mc("easy", "Quem deve ajudar uma criança a usar o banco ou o Pix?", [["Um desconhecido", false], ["Qualquer colega", false], ["Um adulto de confiança, como pai, mãe ou responsável", true], ["Ninguém", false]]),

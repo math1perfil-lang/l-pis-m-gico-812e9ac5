@@ -98,7 +98,7 @@ const numerosGroups = buildCourseGroups("numeros-brincadeira", [
   {
     title: "Contando até 10",
     objective: "Reconhecer e contar números de 1 a 10.",
-    script: "A mascote Lili conta dedos, brinquedos e estrelas para apresentar os números.",
+    script: "A mascote Pan conta dedos, brinquedos e estrelas para apresentar os números.",
     thumb: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=800",
     activities: [
       mc("Quantos dedos tem uma mão?", [["3", false], ["5", true], ["7", false], ["10", false]]),
@@ -116,7 +116,7 @@ const numerosGroups = buildCourseGroups("numeros-brincadeira", [
   {
     title: "Somando com Diversão",
     objective: "Somas simples até 10 com objetos do dia a dia.",
-    script: "Lili junta frutinhas e brinquedos para ensinar adição.",
+    script: "Pan junta frutinhas e brinquedos para ensinar adição.",
     thumb: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
     activities: [
       mc("2 + 1 = ?", [["2", false], ["3", true], ["4", false], ["5", false]]),
@@ -134,7 +134,7 @@ const numerosGroups = buildCourseGroups("numeros-brincadeira", [
   {
     title: "Subtraindo Juntos",
     objective: "Subtrações simples até 10.",
-    script: "Lili distribui frutas e mostra o que sobra ao tirar algumas.",
+    script: "Pan distribui frutas e mostra o que sobra ao tirar algumas.",
     thumb: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=800",
     activities: [
       mc("5 - 2 = ?", [["2", false], ["3", true], ["4", false], ["7", false]]),
@@ -152,7 +152,7 @@ const numerosGroups = buildCourseGroups("numeros-brincadeira", [
   {
     title: "Formas no Mundo",
     objective: "Reconhecer círculo, quadrado, triângulo e retângulo.",
-    script: "Lili procura formas geométricas pela casa e pela rua.",
+    script: "Pan procura formas geométricas pela casa e pela rua.",
     thumb: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800",
     activities: [
       mc("Quantos lados tem um triângulo?", [["2", false], ["3", true], ["4", false], ["5", false]]),
@@ -170,7 +170,7 @@ const numerosGroups = buildCourseGroups("numeros-brincadeira", [
   {
     title: "Maior, Menor e Igual",
     objective: "Comparar quantidades e tamanhos.",
-    script: "Lili compara objetos e ensina os símbolos > < =.",
+    script: "Pan compara objetos e ensina os símbolos > < =.",
     thumb: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800",
     activities: [
       mc("Qual é maior?", [["3", false], ["5", false], ["8", true], ["2", false]]),
@@ -192,7 +192,7 @@ const naturezaGroups = buildCourseGroups("natureza-amiga", [
   {
     title: "Animais e Seus Lares",
     objective: "Conhecer animais e onde eles vivem.",
-    script: "Lili visita o zoológico e descobre habitats: floresta, água, fazenda.",
+    script: "Pan visita o zoológico e descobre habitats: floresta, água, fazenda.",
     thumb: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
     activities: [
       mc("Onde vive o peixe?", [["No ar", false], ["Na água", true], ["Na areia", false], ["Em árvore", false]]),
@@ -210,7 +210,7 @@ const naturezaGroups = buildCourseGroups("natureza-amiga", [
   {
     title: "Plantas e Flores",
     objective: "Partes da planta e ciclo das flores.",
-    script: "Lili planta uma semente e acompanha o nascer da flor.",
+    script: "Pan planta uma semente e acompanha o nascer da flor.",
     thumb: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800",
     activities: [
       mc("O que a planta precisa para crescer?", [["Sol e água", true], ["Só sombra", false], ["Só sal", false], ["Nada", false]]),
@@ -228,7 +228,7 @@ const naturezaGroups = buildCourseGroups("natureza-amiga", [
   {
     title: "Tempo e Clima",
     objective: "Sol, chuva, vento, frio e calor.",
-    script: "Lili observa o céu e mostra como o tempo muda.",
+    script: "Pan observa o céu e mostra como o tempo muda.",
     thumb: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800",
     activities: [
       mc("O que cai do céu quando chove?", [["Pedras", false], ["Água", true], ["Areia", false], ["Folhas", false]]),
@@ -246,7 +246,7 @@ const naturezaGroups = buildCourseGroups("natureza-amiga", [
   {
     title: "Meu Corpo, Meu Tesouro",
     objective: "Partes do corpo e sentidos.",
-    script: "Lili nomeia partes do corpo e mostra os 5 sentidos.",
+    script: "Pan nomeia partes do corpo e mostra os 5 sentidos.",
     thumb: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
     activities: [
       mc("Com o que vemos?", [["Mão", false], ["Olho", true], ["Boca", false], ["Pé", false]]),
@@ -264,7 +264,7 @@ const naturezaGroups = buildCourseGroups("natureza-amiga", [
   {
     title: "Cuidando do Planeta",
     objective: "Lixo, reciclagem e preservação.",
-    script: "Lili separa lixo reciclável e mostra como cuidar da natureza.",
+    script: "Pan separa lixo reciclável e mostra como cuidar da natureza.",
     thumb: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800",
     activities: [
       mc("Onde devemos jogar o lixo?", [["Na rua", false], ["No rio", false], ["Na lixeira", true], ["No mato", false]]),
@@ -286,7 +286,7 @@ const portuguesGroups = buildCourseGroups("portugues-aventura", [
   {
     title: "O Mundo dos Substantivos",
     objective: "Substantivos próprios, comuns, concretos e abstratos.",
-    script: "Lili viaja por cidades e descobre que tudo tem um nome.",
+    script: "Pan viaja por cidades e descobre que tudo tem um nome.",
     thumb: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800",
     activities: [
       mc("Qual é um substantivo próprio?", [["cidade", false], ["São Paulo", true], ["rua", false], ["pessoa", false]]),
@@ -304,7 +304,7 @@ const portuguesGroups = buildCourseGroups("portugues-aventura", [
   {
     title: "Adjetivos que Descrevem",
     objective: "Adjetivos e suas funções na frase.",
-    script: "Lili usa adjetivos para descrever amigos e lugares.",
+    script: "Pan usa adjetivos para descrever amigos e lugares.",
     thumb: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800",
     activities: [
       mc("Adjetivo em 'casa grande':", [["casa", false], ["grande", true], ["a", false], ["nenhum", false]]),
@@ -322,7 +322,7 @@ const portuguesGroups = buildCourseGroups("portugues-aventura", [
   {
     title: "Verbos em Ação",
     objective: "Reconhecer e conjugar verbos no presente, passado e futuro.",
-    script: "Lili conta o que faz hoje, fez ontem e fará amanhã.",
+    script: "Pan conta o que faz hoje, fez ontem e fará amanhã.",
     thumb: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     activities: [
       mc("Qual é verbo?", [["mesa", false], ["correr", true], ["bonito", false], ["azul", false]]),
@@ -340,7 +340,7 @@ const portuguesGroups = buildCourseGroups("portugues-aventura", [
   {
     title: "Pontuação Inteligente",
     objective: "Uso de ponto, vírgula, interrogação e exclamação.",
-    script: "Lili escreve cartas usando cada sinal de pontuação.",
+    script: "Pan escreve cartas usando cada sinal de pontuação.",
     thumb: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=800",
     activities: [
       mc("Qual sinal usamos em pergunta?", [[".", false], ["?", true], ["!", false], [",", false]]),
@@ -358,7 +358,7 @@ const portuguesGroups = buildCourseGroups("portugues-aventura", [
   {
     title: "Interpretando Textos",
     objective: "Identificar ideia principal, personagens e contexto.",
-    script: "Lili lê uma fábula e responde sobre ela.",
+    script: "Pan lê uma fábula e responde sobre ela.",
     thumb: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800",
     activities: [
       mc("Em 'O leão e o rato', quem ajuda quem?", [["Leão ajuda rato", false], ["Rato ajuda leão", true], ["Ninguém ajuda", false], ["Os dois lutam", false]]),
@@ -380,7 +380,7 @@ const matematicaGroups = buildCourseGroups("matematica-desafios", [
   {
     title: "Multiplicação Mágica",
     objective: "Tabuadas e multiplicação até 10x10.",
-    script: "Lili mostra como multiplicar é somar várias vezes.",
+    script: "Pan mostra como multiplicar é somar várias vezes.",
     thumb: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800",
     activities: [
       mc("3 x 4 = ?", [["7", false], ["12", true], ["15", false], ["10", false]]),
@@ -398,7 +398,7 @@ const matematicaGroups = buildCourseGroups("matematica-desafios", [
   {
     title: "Divisão Sem Mistério",
     objective: "Divisões exatas e conceito de partes iguais.",
-    script: "Lili reparte pizzas e doces igualmente entre amigos.",
+    script: "Pan reparte pizzas e doces igualmente entre amigos.",
     thumb: "https://images.unsplash.com/photo-1604079628040-94301bb21b91?w=800",
     activities: [
       mc("12 ÷ 4 = ?", [["2", false], ["3", true], ["4", false], ["6", false]]),
@@ -416,7 +416,7 @@ const matematicaGroups = buildCourseGroups("matematica-desafios", [
   {
     title: "Frações da Pizza",
     objective: "Compreender frações com objetos do dia a dia.",
-    script: "Lili divide uma pizza para mostrar 1/2, 1/4 e 1/8.",
+    script: "Pan divide uma pizza para mostrar 1/2, 1/4 e 1/8.",
     thumb: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
     activities: [
       mc("Metade de 10 é:", [["2", false], ["5", true], ["8", false], ["10", false]]),
@@ -434,7 +434,7 @@ const matematicaGroups = buildCourseGroups("matematica-desafios", [
   {
     title: "Geometria Plana",
     objective: "Polígonos, perímetro e área simples.",
-    script: "Lili calcula o perímetro do quintal e a área da sala.",
+    script: "Pan calcula o perímetro do quintal e a área da sala.",
     thumb: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800",
     activities: [
       mc("Quantos lados tem o pentágono?", [["4", false], ["5", true], ["6", false], ["7", false]]),
@@ -452,7 +452,7 @@ const matematicaGroups = buildCourseGroups("matematica-desafios", [
   {
     title: "Resolvendo Problemas",
     objective: "Aplicar operações em problemas do cotidiano.",
-    script: "Lili resolve compras, distâncias e horas.",
+    script: "Pan resolve compras, distâncias e horas.",
     thumb: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
     activities: [
       mc("Comprei 3 cadernos a R$5 cada. Total?", [["R$8", false], ["R$15", true], ["R$20", false], ["R$10", false]]),
@@ -474,7 +474,7 @@ const cienciasExpGroups = buildCourseGroups("ciencias-experimentos", [
   {
     title: "Estados da Matéria",
     objective: "Sólido, líquido e gasoso.",
-    script: "Lili congela, derrete e ferve água para mostrar as mudanças.",
+    script: "Pan congela, derrete e ferve água para mostrar as mudanças.",
     thumb: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800",
     activities: [
       mc("Água em forma de gelo é:", [["Líquida", false], ["Sólida", true], ["Gasosa", false], ["Plasma", false]]),
@@ -492,7 +492,7 @@ const cienciasExpGroups = buildCourseGroups("ciencias-experimentos", [
   {
     title: "Viagem ao Sistema Solar",
     objective: "Sol, planetas e seus nomes.",
-    script: "Lili viaja entre planetas com seu foguete.",
+    script: "Pan viaja entre planetas com seu foguete.",
     thumb: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800",
     activities: [
       mc("Qual é a estrela do nosso sistema?", [["Lua", false], ["Sol", true], ["Marte", false], ["Vênus", false]]),
@@ -510,7 +510,7 @@ const cienciasExpGroups = buildCourseGroups("ciencias-experimentos", [
   {
     title: "Reino dos Seres Vivos",
     objective: "Classificação de animais e plantas.",
-    script: "Lili visita o museu e classifica os seres vivos.",
+    script: "Pan visita o museu e classifica os seres vivos.",
     thumb: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800",
     activities: [
       mc("Mamíferos amamentam os filhotes?", [["Sim", true], ["Não", false], ["Só pássaros", false], ["Só peixes", false]]),
@@ -528,7 +528,7 @@ const cienciasExpGroups = buildCourseGroups("ciencias-experimentos", [
   {
     title: "Corpo Humano por Dentro",
     objective: "Sistemas digestório, respiratório e circulatório.",
-    script: "Lili percorre o corpo humano e mostra como cada sistema funciona.",
+    script: "Pan percorre o corpo humano e mostra como cada sistema funciona.",
     thumb: "https://images.unsplash.com/photo-1559757175-08fd0a3a924b?w=800",
     activities: [
       mc("Qual órgão bombeia sangue?", [["Pulmão", false], ["Coração", true], ["Estômago", false], ["Rim", false]]),
@@ -546,7 +546,7 @@ const cienciasExpGroups = buildCourseGroups("ciencias-experimentos", [
   {
     title: "Ecossistemas e Meio Ambiente",
     objective: "Florestas, oceanos, cadeias alimentares e equilíbrio.",
-    script: "Lili explora biomas brasileiros e ações para preservá-los.",
+    script: "Pan explora biomas brasileiros e ações para preservá-los.",
     thumb: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800",
     activities: [
       mc("Qual é o maior bioma brasileiro?", [["Caatinga", false], ["Amazônia", true], ["Pampas", false], ["Cerrado", false]]),
@@ -568,7 +568,7 @@ const cofrinhoKidsGroups = buildCourseGroups("educacao-financeira-kids", [
   {
     title: "O Que é Dinheiro?",
     objective: "Origem do dinheiro, moedas e notas.",
-    script: "Lili conta como o dinheiro surgiu para trocar coisas.",
+    script: "Pan conta como o dinheiro surgiu para trocar coisas.",
     thumb: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800",
     activities: [
       mc("Qual é a moeda do Brasil?", [["Dólar", false], ["Euro", false], ["Real", true], ["Iene", false]]),
@@ -586,7 +586,7 @@ const cofrinhoKidsGroups = buildCourseGroups("educacao-financeira-kids", [
   {
     title: "Necessidade x Desejo",
     objective: "Diferenciar o que precisamos do que queremos.",
-    script: "Lili faz uma lista de compras e separa necessidades de desejos.",
+    script: "Pan faz uma lista de compras e separa necessidades de desejos.",
     thumb: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?w=800",
     activities: [
       mc("Qual é necessidade?", [["Videogame", false], ["Comida", true], ["Doce", false], ["Brinquedo", false]]),
@@ -604,7 +604,7 @@ const cofrinhoKidsGroups = buildCourseGroups("educacao-financeira-kids", [
   {
     title: "Aprendendo a Poupar",
     objective: "Como guardar dinheiro no cofrinho.",
-    script: "Lili enche o cofrinho aos poucos para realizar um sonho.",
+    script: "Pan enche o cofrinho aos poucos para realizar um sonho.",
     thumb: "https://images.unsplash.com/photo-1582486225644-26d3d09b8c1f?w=800",
     activities: [
       mc("O que é poupar?", [["Gastar tudo", false], ["Guardar parte", true], ["Pedir emprestado", false], ["Jogar fora", false]]),
@@ -622,7 +622,7 @@ const cofrinhoKidsGroups = buildCourseGroups("educacao-financeira-kids", [
   {
     title: "Mesada e Orçamento",
     objective: "Planejar gastos com mesada.",
-    script: "Lili recebe mesada e divide entre gastos, poupança e doação.",
+    script: "Pan recebe mesada e divide entre gastos, poupança e doação.",
     thumb: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800",
     activities: [
       mc("O que é orçamento?", [["Lista de músicas", false], ["Plano de gastos", true], ["Lista de amigos", false], ["Receita de bolo", false]]),
@@ -640,7 +640,7 @@ const cofrinhoKidsGroups = buildCourseGroups("educacao-financeira-kids", [
   {
     title: "Doar e Compartilhar",
     objective: "Empatia financeira e generosidade.",
-    script: "Lili separa parte do dinheiro para ajudar quem precisa.",
+    script: "Pan separa parte do dinheiro para ajudar quem precisa.",
     thumb: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800",
     activities: [
       mc("Doar é:", [["Vender caro", false], ["Dar sem cobrar", true], ["Emprestar com juros", false], ["Trocar", false]]),
@@ -662,7 +662,7 @@ const redacaoGroups = buildCourseGroups("redacao-nota-mil", [
   {
     title: "Tipos Textuais",
     objective: "Narrativo, dissertativo, descritivo, injuntivo, expositivo.",
-    script: "Lili apresenta cada tipo textual com exemplos.",
+    script: "Pan apresenta cada tipo textual com exemplos.",
     thumb: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800",
     activities: [
       mc("Receita de bolo é:", [["Narrativo", false], ["Injuntivo", true], ["Descritivo", false], ["Argumentativo", false]]),
@@ -680,7 +680,7 @@ const redacaoGroups = buildCourseGroups("redacao-nota-mil", [
   {
     title: "Tese e Argumentação",
     objective: "Construir tese e argumentos válidos.",
-    script: "Lili monta uma tese sobre tecnologia e defende com argumentos.",
+    script: "Pan monta uma tese sobre tecnologia e defende com argumentos.",
     thumb: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=800",
     activities: [
       mc("Tese é:", [["História engraçada", false], ["Posicionamento sobre o tema", true], ["Pergunta", false], ["Descrição", false]]),
@@ -698,7 +698,7 @@ const redacaoGroups = buildCourseGroups("redacao-nota-mil", [
   {
     title: "Coesão e Coerência",
     objective: "Conectivos e fluidez textual.",
-    script: "Lili usa conectivos para encadear ideias com clareza.",
+    script: "Pan usa conectivos para encadear ideias com clareza.",
     thumb: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800",
     activities: [
       mc("Conectivo de oposição:", [["portanto", false], ["porém", true], ["porque", false], ["e", false]]),
@@ -716,7 +716,7 @@ const redacaoGroups = buildCourseGroups("redacao-nota-mil", [
   {
     title: "Repertório Sociocultural",
     objective: "Citar filmes, livros, dados, fatos históricos.",
-    script: "Lili enriquece textos com referências bem escolhidas.",
+    script: "Pan enriquece textos com referências bem escolhidas.",
     thumb: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800",
     activities: [
       mc("Repertório válido inclui:", [["Frase de meme genérica", false], ["Livro/filme/dado real", true], ["Boato", false], ["Mentira", false]]),
@@ -734,7 +734,7 @@ const redacaoGroups = buildCourseGroups("redacao-nota-mil", [
   {
     title: "Estrutura Dissertativa",
     objective: "Montar redação em 4 parágrafos.",
-    script: "Lili escreve uma redação ENEM passo a passo.",
+    script: "Pan escreve uma redação ENEM passo a passo.",
     thumb: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800",
     activities: [
       mc("Qual parte vem primeiro?", [["Desenvolvimento", false], ["Introdução", true], ["Conclusão", false], ["Proposta", false]]),
@@ -756,7 +756,7 @@ const algebraGroups = buildCourseGroups("algebra-geometria", [
   {
     title: "Equações de 1º Grau",
     objective: "Resolver equações ax+b=c.",
-    script: "Lili equilibra uma balança para resolver equações.",
+    script: "Pan equilibra uma balança para resolver equações.",
     thumb: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
     activities: [
       mc("x + 5 = 10 → x = ?", [["3", false], ["5", true], ["10", false], ["15", false]]),
@@ -774,7 +774,7 @@ const algebraGroups = buildCourseGroups("algebra-geometria", [
   {
     title: "Equações de 2º Grau",
     objective: "Bhaskara e fórmula resolvente.",
-    script: "Lili apresenta Bhaskara passo a passo.",
+    script: "Pan apresenta Bhaskara passo a passo.",
     thumb: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800",
     activities: [
       mc("Em ax²+bx+c=0, discriminante é:", [["b²-4ac", true], ["b+4ac", false], ["a²-4bc", false], ["b²+4ac", false]]),
@@ -792,7 +792,7 @@ const algebraGroups = buildCourseGroups("algebra-geometria", [
   {
     title: "Funções",
     objective: "Função afim e função quadrática.",
-    script: "Lili representa funções como máquinas que recebem x e devolvem y.",
+    script: "Pan representa funções como máquinas que recebem x e devolvem y.",
     thumb: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
     activities: [
       mc("f(x) = 2x + 1. f(3) = ?", [["5", false], ["6", false], ["7", true], ["8", false]]),
@@ -810,7 +810,7 @@ const algebraGroups = buildCourseGroups("algebra-geometria", [
   {
     title: "Geometria Plana",
     objective: "Áreas, perímetros e Teorema de Pitágoras.",
-    script: "Lili calcula áreas de figuras e usa Pitágoras em triângulos.",
+    script: "Pan calcula áreas de figuras e usa Pitágoras em triângulos.",
     thumb: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800",
     activities: [
       mc("Teorema de Pitágoras:", [["a²=b²+c²", false], ["a²+b²=c²", true], ["a+b=c", false], ["abc", false]]),
@@ -828,7 +828,7 @@ const algebraGroups = buildCourseGroups("algebra-geometria", [
   {
     title: "Geometria Espacial",
     objective: "Volumes de cubo, prisma, cilindro e esfera.",
-    script: "Lili calcula volumes de caixas, latas e bolas.",
+    script: "Pan calcula volumes de caixas, latas e bolas.",
     thumb: "https://images.unsplash.com/photo-1551405780-03882d5a2ba7?w=800",
     activities: [
       mc("Volume do cubo aresta 3:", [["9", false], ["18", false], ["27", true], ["81", false]]),
@@ -850,7 +850,7 @@ const programacaoGroups = buildCourseGroups("programacao-iniciantes", [
   {
     title: "Lógica de Programação",
     objective: "Pensar algorítmico e fluxograma.",
-    script: "Lili escreve passos para fazer um sanduíche como algoritmo.",
+    script: "Pan escreve passos para fazer um sanduíche como algoritmo.",
     thumb: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
     activities: [
       mc("O que é algoritmo?", [["Sequência de passos para resolver problema", true], ["Linguagem de máquina", false], ["Banco de dados", false], ["Computador", false]]),
@@ -868,11 +868,11 @@ const programacaoGroups = buildCourseGroups("programacao-iniciantes", [
   {
     title: "Variáveis e Tipos",
     objective: "Tipos básicos: número, texto, booleano.",
-    script: "Lili guarda valores em caixinhas chamadas variáveis.",
+    script: "Pan guarda valores em caixinhas chamadas variáveis.",
     thumb: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800",
     activities: [
       mc("Variável serve para:", [["Guardar valor", true], ["Apagar dados", false], ["Travar PC", false], ["Imprimir só", false]]),
-      mc("Tipo de 'Lili':", [["número", false], ["string", true], ["boolean", false], ["nulo", false]]),
+      mc("Tipo de 'Pan':", [["número", false], ["string", true], ["boolean", false], ["nulo", false]]),
       mc("Tipo de 42:", [["string", false], ["number", true], ["boolean", false], ["lista", false]]),
       mc("Tipo de true:", [["string", false], ["number", false], ["boolean", true], ["array", false]]),
       tf("Em Python, variáveis não precisam declarar tipo explicitamente.", true),
@@ -886,7 +886,7 @@ const programacaoGroups = buildCourseGroups("programacao-iniciantes", [
   {
     title: "Condicionais",
     objective: "if, else if, else.",
-    script: "Lili decide entre 'levar guarda-chuva' usando if.",
+    script: "Pan decide entre 'levar guarda-chuva' usando if.",
     thumb: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800",
     activities: [
       mc("if avalia:", [["condição verdadeira/falsa", true], ["nome", false], ["tipo", false], ["tamanho", false]]),
@@ -904,7 +904,7 @@ const programacaoGroups = buildCourseGroups("programacao-iniciantes", [
   {
     title: "Loops e Repetição",
     objective: "for e while.",
-    script: "Lili usa for para contar de 1 a 10 sem cansar.",
+    script: "Pan usa for para contar de 1 a 10 sem cansar.",
     thumb: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800",
     activities: [
       mc("Loop serve para:", [["Repetir blocos de código", true], ["Apagar tudo", false], ["Imprimir 1 vez", false], ["Encerrar", false]]),
@@ -922,7 +922,7 @@ const programacaoGroups = buildCourseGroups("programacao-iniciantes", [
   {
     title: "Funções",
     objective: "Criar e chamar funções.",
-    script: "Lili agrupa código em funções reutilizáveis.",
+    script: "Pan agrupa código em funções reutilizáveis.",
     thumb: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800",
     activities: [
       mc("Função é:", [["Bloco reutilizável de código", true], ["Tipo de variável", false], ["Operador", false], ["Erro", false]]),
@@ -944,7 +944,7 @@ const financasTeensGroups = buildCourseGroups("educacao-financeira-teens", [
   {
     title: "Renda e Custos",
     objective: "Renda, custos fixos e variáveis.",
-    script: "Lili mostra de onde vem o dinheiro e para onde vai.",
+    script: "Pan mostra de onde vem o dinheiro e para onde vai.",
     thumb: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800",
     activities: [
       mc("Renda é:", [["O que recebemos", true], ["O que pagamos", false], ["Dívida", false], ["Imposto", false]]),
@@ -962,7 +962,7 @@ const financasTeensGroups = buildCourseGroups("educacao-financeira-teens", [
   {
     title: "Orçamento Pessoal",
     objective: "Planejar receitas e despesas.",
-    script: "Lili faz uma planilha mensal e ajusta gastos.",
+    script: "Pan faz uma planilha mensal e ajusta gastos.",
     thumb: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800",
     activities: [
       mc("Regra popular 50-30-20:", [["50% necessidades, 30% desejos, 20% poupança", true], ["50% lazer", false], ["100% gastar", false], ["50-50-0", false]]),
@@ -980,7 +980,7 @@ const financasTeensGroups = buildCourseGroups("educacao-financeira-teens", [
   {
     title: "Juros Simples e Compostos",
     objective: "Diferença e impacto a longo prazo.",
-    script: "Lili compara crescimento simples e composto.",
+    script: "Pan compara crescimento simples e composto.",
     thumb: "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800",
     activities: [
       mc("Juros simples calculam sobre:", [["Valor inicial", true], ["Saldo atualizado", false], ["Nada", false], ["Dívida do amigo", false]]),
@@ -998,7 +998,7 @@ const financasTeensGroups = buildCourseGroups("educacao-financeira-teens", [
   {
     title: "Tipos de Investimento",
     objective: "Renda fixa, renda variável, risco.",
-    script: "Lili explica poupança, CDB, Tesouro e ações.",
+    script: "Pan explica poupança, CDB, Tesouro e ações.",
     thumb: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800",
     activities: [
       mc("Renda fixa:", [["Retorno previsível", true], ["Sempre alto", false], ["Sem regras", false], ["Só prejuízo", false]]),
@@ -1016,7 +1016,7 @@ const financasTeensGroups = buildCourseGroups("educacao-financeira-teens", [
   {
     title: "Empreendedorismo",
     objective: "Ideias, validação, modelo de negócio.",
-    script: "Lili monta uma barraca de limonada e analisa custos e lucro.",
+    script: "Pan monta uma barraca de limonada e analisa custos e lucro.",
     thumb: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800",
     activities: [
       mc("Empreender é:", [["Criar e gerir negócio próprio", true], ["Só trabalhar CLT", false], ["Aposentar", false], ["Estudar só", false]]),
@@ -1038,7 +1038,7 @@ const historiaGroups = buildCourseGroups("historia-brasil-mundo", [
   {
     title: "Civilizações Antigas",
     objective: "Egito, Grécia, Roma e Mesopotâmia.",
-    script: "Lili viaja pelas pirâmides, Atenas e o Coliseu.",
+    script: "Pan viaja pelas pirâmides, Atenas e o Coliseu.",
     thumb: "https://images.unsplash.com/photo-1461360370896-922624d12a74?w=800",
     activities: [
       mc("Pirâmides ficam no:", [["Brasil", false], ["Egito", true], ["Japão", false], ["México apenas", false]]),
@@ -1056,7 +1056,7 @@ const historiaGroups = buildCourseGroups("historia-brasil-mundo", [
   {
     title: "Idade Média",
     objective: "Feudalismo, Igreja, Cruzadas.",
-    script: "Lili visita castelos e descobre como viviam os vassalos.",
+    script: "Pan visita castelos e descobre como viviam os vassalos.",
     thumb: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=800",
     activities: [
       mc("Idade Média começa após:", [["Roma cair (476)", true], ["1500", false], ["1789", false], ["2000", false]]),
@@ -1074,7 +1074,7 @@ const historiaGroups = buildCourseGroups("historia-brasil-mundo", [
   {
     title: "Brasil Colonial",
     objective: "Descobrimento, capitanias, escravidão.",
-    script: "Lili acompanha caravelas até 1500 e a vida colonial.",
+    script: "Pan acompanha caravelas até 1500 e a vida colonial.",
     thumb: "https://images.unsplash.com/photo-1518912784930-0c2b4ad34c50?w=800",
     activities: [
       mc("Brasil 'descoberto' em:", [["1492", false], ["1500", true], ["1822", false], ["1889", false]]),
@@ -1092,7 +1092,7 @@ const historiaGroups = buildCourseGroups("historia-brasil-mundo", [
   {
     title: "Brasil Império e República",
     objective: "Independência, Império, Proclamação, Era Vargas.",
-    script: "Lili acompanha do brado do Ipiranga ao Brasil moderno.",
+    script: "Pan acompanha do brado do Ipiranga ao Brasil moderno.",
     thumb: "https://images.unsplash.com/photo-1518560306407-fcfac09e8c3a?w=800",
     activities: [
       mc("Independência do Brasil:", [["1808", false], ["1822", true], ["1888", false], ["1889", false]]),
@@ -1110,7 +1110,7 @@ const historiaGroups = buildCourseGroups("historia-brasil-mundo", [
   {
     title: "Mundo Contemporâneo",
     objective: "Guerras mundiais, Guerra Fria, Globalização.",
-    script: "Lili visita o século XX e as transformações do mundo atual.",
+    script: "Pan visita o século XX e as transformações do mundo atual.",
     thumb: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800",
     activities: [
       mc("1ª Guerra Mundial começa em:", [["1914", true], ["1939", false], ["1945", false], ["1991", false]]),
@@ -1132,13 +1132,13 @@ const inglesGroups = buildCourseGroups("ingles-fluente", [
   {
     title: "Greetings & Basics",
     objective: "Saudações, apresentações, números.",
-    script: "Lili conhece amigos novos em inglês.",
+    script: "Pan conhece amigos novos em inglês.",
     thumb: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800",
     activities: [
       mc("'Hello' significa:", [["Adeus", false], ["Olá", true], ["Obrigado", false], ["Por favor", false]]),
       mc("'Thank you' significa:", [["Por favor", false], ["Obrigado", true], ["Desculpe", false], ["Tchau", false]]),
       mc("'Goodbye' significa:", [["Olá", false], ["Tchau", true], ["Sim", false], ["Não", false]]),
-      mc("'My name is Lili' significa:", [["Eu tenho 10 anos", false], ["Meu nome é Lili", true], ["Eu gosto de Lili", false], ["Onde está Lili?", false]]),
+      mc("'My name is Pan' significa:", [["Eu tenho 10 anos", false], ["Meu nome é Pan", true], ["Eu gosto de Pan", false], ["Onde está Pan?", false]]),
       mc("Como se diz 'sim' em inglês?", [["No", false], ["Yes", true], ["Maybe", false], ["Please", false]]),
       mt("Ligue inglês ao português:", [["Hello", "Olá"], ["Bye", "Tchau"], ["Please", "Por favor"]]),
       mc("'How are you?'", [["Quantos anos?", false], ["Como você está?", true], ["Onde mora?", false], ["O que come?", false]]),
@@ -1150,7 +1150,7 @@ const inglesGroups = buildCourseGroups("ingles-fluente", [
   {
     title: "Verb 'To Be'",
     objective: "I am, you are, he/she/it is.",
-    script: "Lili conjuga to be no presente.",
+    script: "Pan conjuga to be no presente.",
     thumb: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800",
     activities: [
       mc("I ___ a student.", [["am", true], ["is", false], ["are", false], ["be", false]]),
@@ -1168,7 +1168,7 @@ const inglesGroups = buildCourseGroups("ingles-fluente", [
   {
     title: "Present Simple",
     objective: "Rotinas e fatos no presente.",
-    script: "Lili descreve o dia a dia em inglês.",
+    script: "Pan descreve o dia a dia em inglês.",
     thumb: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     activities: [
       mc("I ___ soccer every day.", [["plays", false], ["play", true], ["played", false], ["playing", false]]),
@@ -1186,7 +1186,7 @@ const inglesGroups = buildCourseGroups("ingles-fluente", [
   {
     title: "Past Simple",
     objective: "Verbos regulares e irregulares no passado.",
-    script: "Lili narra suas férias usando passado.",
+    script: "Pan narra suas férias usando passado.",
     thumb: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800",
     activities: [
       mc("Passado de 'play':", [["plays", false], ["played", true], ["playing", false], ["plaied", false]]),
@@ -1204,7 +1204,7 @@ const inglesGroups = buildCourseGroups("ingles-fluente", [
   {
     title: "Vocabulary Themes",
     objective: "Cores, comidas, família, profissões.",
-    script: "Lili apresenta vocabulários temáticos do dia a dia.",
+    script: "Pan apresenta vocabulários temáticos do dia a dia.",
     thumb: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800",
     activities: [
       mc("'Red' é:", [["Azul", false], ["Vermelho", true], ["Verde", false], ["Amarelo", false]]),

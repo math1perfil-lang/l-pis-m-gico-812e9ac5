@@ -6,7 +6,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Contando até 10",
     objective: "Reconhecer, contar e ordenar os números de 1 a 10.",
-    script: "A mascote Lili conta dedos, brinquedos e estrelas para apresentar os números de 1 a 10.",
+    script: "A mascote Pan conta dedos, brinquedos e estrelas para apresentar os números de 1 a 10.",
     thumb: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=800",
     activities: [
       mc("easy", "Quantos olhos tem uma pessoa?", [["1", false], ["2", true], ["3", false], ["4", false]]),
@@ -24,7 +24,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Somando com Diversão",
     objective: "Resolver somas simples até 10 com objetos do dia a dia.",
-    script: "Lili junta frutinhas e brinquedos para mostrar que somar é juntar quantidades.",
+    script: "Pan junta frutinhas e brinquedos para mostrar que somar é juntar quantidades.",
     thumb: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
     activities: [
       mc("easy", "1 + 4 = ?", [["3", false], ["5", true], ["4", false], ["6", false]]),
@@ -42,7 +42,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Subtraindo Juntos",
     objective: "Resolver subtrações simples até 10 em situações do dia a dia.",
-    script: "Lili distribui frutas e mostra quanto sobra quando tiramos algumas.",
+    script: "Pan distribui frutas e mostra quanto sobra quando tiramos algumas.",
     thumb: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=800",
     activities: [
       mc("easy", "6 - 1 = ?", [["4", false], ["5", true], ["7", false], ["6", false]]),
@@ -60,7 +60,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Formas no Mundo",
     objective: "Reconhecer círculo, quadrado, triângulo e retângulo e contar seus lados.",
-    script: "Lili procura formas geométricas pela casa, pela escola e pela rua.",
+    script: "Pan procura formas geométricas pela casa, pela escola e pela rua.",
     thumb: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800",
     activities: [
       mc("easy", "Quantos cantos tem um triângulo?", [["4", false], ["2", false], ["3", true], ["5", false]]),
@@ -78,7 +78,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Maior, Menor e Igual",
     objective: "Comparar números e quantidades usando maior, menor e igual.",
-    script: "Lili compara objetos e números e ensina os sinais de maior, menor e igual.",
+    script: "Pan compara objetos e números e ensina os sinais de maior, menor e igual.",
     thumb: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800",
     activities: [
       mc("easy", "Qual é o maior número?", [["3", false], ["5", false], ["8", true], ["2", false]]),
@@ -96,7 +96,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Contando até 100",
     objective: "Contar até 100 usando dezenas e unidades.",
-    script: "Lili empacota lápis em caixinhas de 10 e mostra como dezenas e unidades formam os números até 100.",
+    script: "Pan empacota lápis em caixinhas de 10 e mostra como dezenas e unidades formam os números até 100.",
     thumb: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800",
     activities: [
       mc("easy", "Uma dezena tem quantas unidades?", [["5", false], ["10", true], ["100", false], ["1", false]]),
@@ -114,7 +114,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Dobro e Metade",
     objective: "Calcular o dobro e a metade de números pequenos.",
-    script: "Lili divide pizzas e dobra receitas de bolo para mostrar o que são dobro e metade.",
+    script: "Pan divide pizzas e dobra receitas de bolo para mostrar o que são dobro e metade.",
     thumb: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
     activities: [
       mc("easy", "O dobro de 2 é...", [["3", false], ["5", false], ["4", true], ["6", false]]),
@@ -132,7 +132,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Medidas e Tempo",
     objective: "Comparar tamanhos e pesos e usar relógio e dias da semana.",
-    script: "Lili mede com régua, pesa frutas na balança e conta os dias da semana no calendário.",
+    script: "Pan mede com régua, pesa frutas na balança e conta os dias da semana no calendário.",
     thumb: "https://images.unsplash.com/photo-1604079628040-94301bb21b91?w=800",
     activities: [
       mc("easy", "Quantos dias tem uma semana?", [["5", false], ["6", false], ["8", false], ["7", true]]),
@@ -150,7 +150,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Dinheiro e Trocas",
     objective: "Reconhecer moedas e notas em reais e fazer contas simples de compra e troco.",
-    script: "Lili vai à padaria com seu cofrinho e mostra como pagar, trocar e receber troco em reais.",
+    script: "Pan vai à padaria com seu cofrinho e mostra como pagar, trocar e receber troco em reais.",
     thumb: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800",
     activities: [
       mc("easy", "Qual é o dinheiro do Brasil?", [["Dólar", false], ["Real", true], ["Euro", false], ["Peso", false]]),
@@ -168,7 +168,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Padrões e Gráficos",
     objective: "Continuar padrões e sequências e ler gráficos simples.",
-    script: "Lili descobre padrões em colares e sequências de números e conta os votos num gráfico da turma.",
+    script: "Pan descobre padrões em colares e sequências de números e conta os votos num gráfico da turma.",
     thumb: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800",
     activities: [
       mc("easy", "Qual vem depois? 🔴🔵🔴🔵🔴 ?", [["🔴", false], ["🔵", true], ["🟢", false], ["🟡", false]]),
