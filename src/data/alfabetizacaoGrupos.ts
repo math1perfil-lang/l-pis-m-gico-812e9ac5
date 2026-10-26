@@ -15,6 +15,8 @@ export interface LessonGroup {
   videoUrl: string;
   videoThumbnail: string;
   groupCoinsBonus: number;
+  // Vídeo animado feito no próprio app (em vez de arquivo de vídeo). Ver AnimatedGroupVideo.
+  animation?: "era-uma-vez";
   activities: Activity[];
 }
 
