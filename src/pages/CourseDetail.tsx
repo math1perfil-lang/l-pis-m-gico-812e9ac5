@@ -88,6 +88,12 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
   };
 
   const handleActivitiesComplete = (activityCoins: number) => {
+    if (groupCompleted) {
+      // Treino: grupo já concluído, não dá moedas nem avança de grupo
+      toast.success("✅ Treino concluído! Sem moedas, pois você já ganhou neste grupo.");
+      setShowActivities(false);
+      return;
+    }
     if (!groupCompleted) {
       markGroupCompleted(currentIndex);
       addCoins(activityCoins + group.groupCoinsBonus);
@@ -170,16 +176,20 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                   <h2 className="text-2xl font-bold text-white mb-1">{group.videoTitle}</h2>
                   <p className="text-white/80 mb-4 text-sm">{group.videoObjective}</p>
                   <div className="flex flex-wrap gap-3">
-                    {!groupCompleted && (
-                      <Button variant="hero" onClick={() => setShowVideo(true)}>
-                        <Play className="w-5 h-5 mr-2" />
-                        {videoWatched ? "Rever vídeo" : "Assistir vídeo"}
-                      </Button>
-                    )}
+                    <Button variant="hero" onClick={() => setShowVideo(true)}>
+                      <Play className="w-5 h-5 mr-2" />
+                      {videoWatched ? "Rever vídeo" : "Assistir vídeo"}
+                    </Button>
                     {videoWatched && !groupCompleted && (
                       <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90">
                         <BookOpen className="w-5 h-5 mr-2" />
                         Fazer {group.activities.length} atividades
+                      </Button>
+                    )}
+                    {groupCompleted && (
+                      <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90">
+                        <BookOpen className="w-5 h-5 mr-2" />
+                        Refazer atividades (sem moedas)
                       </Button>
                     )}
                     {groupCompleted && (
@@ -197,6 +207,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                 activities={group.activities}
                 onComplete={handleActivitiesComplete}
                 onClose={() => setShowActivities(false)}
+                practice={groupCompleted}
               />
             )}
 
@@ -217,7 +228,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                 </div>
                 <div className="flex items-center gap-2">
                   <Trophy className="w-5 h-5 text-gold" />
-                  <span className="text-muted-foreground">Bônus: {group.groupCoinsBonus} 🪙 neste grupo</span>
+                  <span className="text-muted-foreground">{groupCompleted ? "Já concluído: refazer não dá moedas" : `Bônus: ${group.groupCoinsBonus} 🪙 neste grupo`}</span>
                 </div>
               </div>
 
