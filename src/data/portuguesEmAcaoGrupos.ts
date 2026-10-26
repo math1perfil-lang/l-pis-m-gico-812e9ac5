@@ -2,12 +2,12 @@ import type { Activity } from "./activities";
 import type { LessonGroup } from "./alfabetizacaoGrupos";
 import { fromText, IMG_CRIANCAS, IMG_LETRAS, IMG_LIVRO, match, mc, read } from "./portuguesDivertidoGrupos";
 
-// Curso "Português em Ação" (id interno: portugues-em-acao), para 9 anos.
+// Curso "Português em Ação" (id interno: portugues-em-acao), para 14 anos (9º ano).
 // Baseado na Parte 1 do livro "Português Linguagens – 9º ano" (Cereja e Vianna, Saraiva, 2022):
 // Unidade 1 "Caiu na rede!" e Capítulo 1 "As fake news e a pós-verdade".
 //
 // Cada pergunta do livro virou exatamente uma atividade, reescrita com palavras próprias e
-// adaptada para 9 anos. Perguntas de resposta pessoal viraram escolha entre A, B, C e D.
+// mantida no nível do 9º ano. Perguntas de resposta pessoal viraram escolha entre A, B, C e D.
 // Os textos-base foram reescritos; por isso a fonte aparece como "baseado em", e não como cópia.
 // Só os dois trechinhos citados no grupo 4 são cópia fiel e levam a fonte completa.
 
@@ -107,10 +107,10 @@ const g2Activities: Activity[] = [
     [
       "A pesquisadora Pollyana Ferrari estuda as fake news, que são notícias falsas, e conversou sobre isso com uma revista de educação.",
       "Ela explica que as notícias falsas sempre existiram, até na Roma Antiga. O que mudou foi o tamanho: com as redes sociais, todo mundo ganhou voz e pode criar e espalhar conteúdo pelo celular. Nos grandes jornais há etapas para checar as informações. Nas redes, qualquer pessoa pode postar sem ninguém conferir.",
-      "Ela conta um caso real: em 2014, uma mulher chamada Fabiane de Jesus foi muito machucada por pessoas que acreditaram em um boato falso, espalhado pela internet. Ela não tinha feito nada daquilo. Mesmo quando a mentira é tirada do ar, o estrago pode ficar. Uma informação falsa pode destruir a vida de alguém, a fama de uma empresa, uma escola, uma família.",
+      "Ela conta um caso real: em 2014, Fabiane de Jesus foi linchada no Guarujá (SP) depois de ser acusada, em uma página da internet, de praticar magia negra com crianças. A informação era falsa. Mesmo quando a mentira é tirada do ar, o estrago pode ficar. Uma informação falsa pode destruir a vida de alguém, a fama de uma empresa, uma escola, uma família.",
       "Quem cria fake news? Cerca de 30% vêm de escritórios e grupos que ganham dinheiro com isso. A maior parte vem de pessoas comuns, que querem prejudicar alguém ou espalhar ódio. E quem começou? Quase nunca se descobre, por isso é tão difícil punir.",
     ],
-    "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018). Texto reescrito para crianças."
+    "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018). Texto reescrito."
   ),
   ...txt(
     "p9-g2-leitura",
@@ -147,7 +147,7 @@ const g3Activities: Activity[] = [
       "A pós-verdade também aparece quando notícias parecem verdadeiras e mexem com as emoções, e ganham destaque, principalmente na vida social e na política, como se fossem fatos comprovados.",
       "Na entrevista, a pesquisadora conta que a pós-verdade aparece quando as pessoas compartilham o que combina com seus desejos e crenças, mesmo que desconfiem que é falso. Ela lembra que o dedo é mais rápido que o cérebro: a gente compartilha sem perguntar de onde veio a foto ou o vídeo. Uma rede social que reúne 2 bilhões de pessoas, cerca de um terço da população do mundo, torna isso ainda mais preocupante.",
     ],
-    "Baseado no verbete “pós-verdade” (Academia Brasileira de Letras, Nova Palavra) e na entrevista de Pollyana Ferrari (Carta Capital, 2018). Texto reescrito para crianças."
+    "Baseado no verbete “pós-verdade” (Academia Brasileira de Letras, Nova Palavra) e na entrevista de Pollyana Ferrari (Carta Capital, 2018). Texto reescrito."
   ),
   ...txt(
     "p9-g3-leitura",
@@ -282,18 +282,18 @@ const grupo9 = (
 export const portuguesEmAcaoGrupos: LessonGroup[] = [
   grupo9(1, "Caiu na rede!",
     "Observar uma ilustração e ideias de um cordel para descobrir o tema da unidade: a vida na internet e nas redes sociais.",
-    "Pan observa uma rua cheia de gente olhando o celular e descobre uma criança que levanta a cabeça. Depois conhece livros, filmes e sites sobre a vida com telas.",
+    "Uma cena de rua com todos olhando o celular e uma pessoa que levanta a cabeça abre a discussão; depois, livros, filmes e sites sobre a vida com telas.",
     IMG_CRIANCAS, g1Activities),
   grupo9(2, "As fake news",
     "Entender o que são fake news, como nascem, quem as cria e por que são tão difíceis de combater.",
-    "Pan recebe uma notícia estranha no celular e vai investigar com uma lupa: será que é verdade? Uma pesquisadora explica o que são notícias falsas.",
+    "Uma notícia estranha chega ao celular: será verdade? Uma pesquisadora explica o que são notícias falsas e por que elas se espalham.",
     IMG_LIVRO, g2Activities),
   grupo9(3, "Pós-verdade e bolhas",
     "Compreender a pós-verdade e as bolhas das redes sociais, e como o senso crítico ajuda a sair delas.",
-    "Pan descobre que cada grupo de amigos pode ficar dentro de uma bolha e aprende como espiar outras bolhas para pensar com mais cuidado.",
+    "Como as redes formam bolhas, como os algoritmos as reforçam e como o senso crítico ajuda a sair delas.",
     IMG_LETRAS, g3Activities),
   grupo9(4, "A linguagem do texto",
     "Observar palavras em inglês, pronomes, o verbo ser e as aspas em trechos da entrevista.",
-    "Pan lê trechos da entrevista com uma lupa de palavras e descobre a quem cada pronome se refere.",
+    "Estrangeirismos, pronomes, concordância do verbo ser e aspas em trechos da entrevista.",
     IMG_LIVRO, g4Activities),
 ];
