@@ -11,12 +11,15 @@ interface ActivityPlayerProps {
   activities: Activity[];
   onComplete: (totalCoins: number) => void;
   onClose: () => void;
+  // Modo treino (grupo já concluído): refaz as atividades sem ganhar moedas.
+  practice?: boolean;
 }
 
 export const ActivityPlayer = ({
   activities,
   onComplete,
   onClose,
+  practice = false,
 }: ActivityPlayerProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -100,7 +103,7 @@ export const ActivityPlayer = ({
     setAttempts(attempts + 1);
 
     if (correct) {
-      const coins = currentActivity.coinsReward;
+      const coins = practice ? 0 : currentActivity.coinsReward;
       setEarnedCoins(earnedCoins + coins);
       setCompletedActivities([...completedActivities, currentActivity.id]);
     }
@@ -121,7 +124,7 @@ export const ActivityPlayer = ({
   // Leitura do texto base: conta como atividade concluída e já avança para as questões.
   const finishReading = () => {
     if (!currentActivity) return;
-    const coins = currentActivity.coinsReward;
+    const coins = practice ? 0 : currentActivity.coinsReward;
     const total = earnedCoins + coins;
     setEarnedCoins(total);
     setCompletedActivities([...completedActivities, currentActivity.id]);
@@ -193,8 +196,14 @@ export const ActivityPlayer = ({
           <p className="text-xl text-muted-foreground mb-6">
             Você completou todas as atividades!
           </p>
-          <CoinDisplay amount={earnedCoins} size="lg" />
-          <p className="text-muted-foreground mt-2">moedas conquistadas!</p>
+          {practice ? (
+            <p className="text-muted-foreground mt-2">Treino concluído! (sem moedas, você já tinha ganho neste grupo)</p>
+          ) : (
+            <>
+              <CoinDisplay amount={earnedCoins} size="lg" />
+              <p className="text-muted-foreground mt-2">moedas conquistadas!</p>
+            </>
+          )}
         </div>
       </div>
     );
@@ -220,7 +229,11 @@ export const ActivityPlayer = ({
                 {isReading ? "📖 Leitura • " : ""}Atividade {currentIndex + 1} de {activities.length}
               </span>
             </div>
-            <CoinDisplay amount={earnedCoins} size="sm" />
+            {practice ? (
+              <span className="text-xs font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">Treino • sem moedas</span>
+            ) : (
+              <CoinDisplay amount={earnedCoins} size="sm" />
+            )}
           </div>
           <ProgressBar value={currentIndex + (isCorrect ? 1 : 0)} max={activities.length} variant="accent" />
         </div>
