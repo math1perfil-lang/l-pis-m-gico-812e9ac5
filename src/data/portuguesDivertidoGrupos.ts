@@ -571,10 +571,10 @@ export const IMG_FLORESTA = "https://images.unsplash.com/photo-1441974231531-c62
 export const IMG_CRIANCAS = "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800";
 
 export const portuguesDivertidoGrupos: LessonGroup[] = [
-  grupo(1, "Era Uma Vez...",
+  { ...grupo(1, "Era Uma Vez...",
     "Como começa e termina um conto de fadas: tempo, lugar, problema e final feliz.",
     "Lili abre um livro encantado e entra no reino das histórias, onde descobre como os contos começam, o que atrapalha os personagens e como terminam.",
-    IMG_LIVRO, g1Activities),
+    IMG_LIVRO, g1Activities), animation: "era-uma-vez" },
   grupo(2, "Heróis, Vilões e Sentimentos",
     "Personagens principais, vilões, ajudantes e os sentimentos que sentem.",
     "Lili encontra fadas, bruxas e heróis e aprende que todo personagem sente alegria, raiva, medo e tristeza.",

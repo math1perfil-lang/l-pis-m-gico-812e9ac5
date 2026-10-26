@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { ProgressBar } from "@/components/ProgressBar";
 import { VideoPlayer } from "@/components/VideoPlayer";
+import { AnimatedGroupVideo } from "@/components/AnimatedGroupVideo";
 import { ActivityPlayer } from "@/components/ActivityPlayer";
 import { GroupLearningPath } from "@/components/GroupLearningPath";
 import { getCourseById } from "@/data/courses";
@@ -141,13 +142,23 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
             {showVideo ? (
-              <VideoPlayer
-                videoUrl={group.videoUrl}
-                title={group.videoTitle}
-                coinsReward={0}
-                thumbnail={group.videoThumbnail}
-                onComplete={handleVideoComplete}
-              />
+              group.animation ? (
+                <AnimatedGroupVideo
+                  key={group.id}
+                  animation={group.animation}
+                  title={group.videoTitle}
+                  coinsReward={0}
+                  onComplete={handleVideoComplete}
+                />
+              ) : (
+                <VideoPlayer
+                  videoUrl={group.videoUrl}
+                  title={group.videoTitle}
+                  coinsReward={0}
+                  thumbnail={group.videoThumbnail}
+                  onComplete={handleVideoComplete}
+                />
+              )
             ) : (
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-card animate-fade-in">
                 <img src={group.videoThumbnail} alt={group.videoTitle} className="w-full h-full object-cover" />
