@@ -6,7 +6,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Animais e Seus Lares",
     objective: "Conhecer animais e os lugares onde eles vivem.",
-    script: "Lili visita o zoológico e descobre onde vivem os bichos: floresta, água, fazenda e até o gelo.",
+    script: "Pan visita o zoológico e descobre onde vivem os bichos: floresta, água, fazenda e até o gelo.",
     thumb: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
     activities: [
       mc("easy", "🐟 Onde o peixe vive?", [["Na água", true], ["Em uma árvore", false], ["No deserto", false], ["Na neve", false]]),
@@ -24,7 +24,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Plantas e Flores",
     objective: "Conhecer as partes da planta e como ela cresce.",
-    script: "Lili planta uma semente de feijão e acompanha o broto, as folhas e a flor nascendo.",
+    script: "Pan planta uma semente de feijão e acompanha o broto, as folhas e a flor nascendo.",
     thumb: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800",
     activities: [
       mc("easy", "Qual parte da planta usa a luz do sol para fazer seu alimento?", [["Raiz", false], ["Folha", true], ["Semente", false], ["Fruto", false]]),
@@ -42,7 +42,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Tempo e Clima",
     objective: "Reconhecer sol, chuva, vento, frio e calor.",
-    script: "Lili olha para o céu, vê as nuvens mudarem e descobre como o tempo muda ao longo do dia.",
+    script: "Pan olha para o céu, vê as nuvens mudarem e descobre como o tempo muda ao longo do dia.",
     thumb: "https://images.unsplash.com/photo-1561484930-998b6a7b22e8?w=800",
     activities: [
       mc("easy", "☔ O que cai das nuvens quando chove?", [["Água", true], ["Areia", false], ["Folhas", false], ["Pedras", false]]),
@@ -60,7 +60,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Meu Corpo, Meu Tesouro",
     objective: "Conhecer partes do corpo e hábitos que cuidam da saúde.",
-    script: "Lili mostra o que o coração, os pulmões e o cérebro fazem e ensina a cuidar do corpo.",
+    script: "Pan mostra o que o coração, os pulmões e o cérebro fazem e ensina a cuidar do corpo.",
     thumb: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800",
     activities: [
       mc("easy", "Qual parte do corpo usamos para andar e correr?", [["Braços", false], ["Pernas", true], ["Orelhas", false], ["Cabelo", false]]),
@@ -78,7 +78,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Cuidando do Planeta",
     objective: "Cuidar do lixo, da água e da energia para proteger a natureza.",
-    script: "Lili separa o lixo nas lixeiras coloridas e mostra pequenas ações que ajudam o planeta.",
+    script: "Pan separa o lixo nas lixeiras coloridas e mostra pequenas ações que ajudam o planeta.",
     thumb: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800",
     activities: [
       mc("easy", "Onde devemos jogar o lixo?", [["Na rua", false], ["No rio", false], ["Na lixeira", true], ["No quintal do vizinho", false]]),
@@ -96,7 +96,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Os Cinco Sentidos",
     objective: "Descobrir como ver, ouvir, cheirar, provar e tocar.",
-    script: "Lili brinca de caixa-surpresa e usa olhos, nariz, ouvidos, língua e pele para descobrir os objetos.",
+    script: "Pan brinca de caixa-surpresa e usa olhos, nariz, ouvidos, língua e pele para descobrir os objetos.",
     thumb: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800",
     activities: [
       mc("easy", "👀 Com os olhos nós...", [["Ouvimos", false], ["Vemos", true], ["Cheiramos", false], ["Provamos", false]]),
@@ -114,7 +114,7 @@ export const specs: GroupSpec[] = [
   {
     title: "A Água: de Onde Vem e Para Onde Vai",
     objective: "Entender os estados da água e o caminho que ela faz.",
-    script: "Lili segue uma gotinha que sobe como vapor, vira nuvem, cai como chuva e volta para o rio.",
+    script: "Pan segue uma gotinha que sobe como vapor, vira nuvem, cai como chuva e volta para o rio.",
     thumb: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=800",
     activities: [
       mc("easy", "Qual destes lugares tem água salgada?", [["Rio", false], ["Lago", false], ["Mar", true], ["Chuveiro", false]]),
@@ -132,7 +132,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Reduzir, Reutilizar e Reciclar",
     objective: "Aprender os três R e como fazer menos lixo.",
-    script: "Lili transforma uma caixa velha em porta-lápis e mostra o que são reduzir, reutilizar e reciclar.",
+    script: "Pan transforma uma caixa velha em porta-lápis e mostra o que são reduzir, reutilizar e reciclar.",
     thumb: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800",
     activities: [
       mc("easy", "O que significa reciclar?", [["Jogar fora", false], ["Transformar o usado em algo novo", true], ["Queimar o lixo", false], ["Enterrar o lixo", false]]),
@@ -150,7 +150,7 @@ export const specs: GroupSpec[] = [
   {
     title: "O Que Cada Animal Come",
     objective: "Descobrir o alimento de cada bicho e a cadeia alimentar.",
-    script: "Lili passeia pelo campo e mostra quem come capim, quem come insetos e quem come outros bichos.",
+    script: "Pan passeia pelo campo e mostra quem come capim, quem come insetos e quem come outros bichos.",
     thumb: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800",
     activities: [
       mc("easy", "🐮 O que a vaca come?", [["Carne", false], ["Peixe", false], ["Capim", true], ["Insetos", false]]),
@@ -168,7 +168,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Dia, Noite, Sol, Lua e Estações",
     objective: "Entender dia e noite, Sol e Lua e as estações do ano.",
-    script: "Lili gira um globo perto de uma lanterna para mostrar por que existem dia e noite.",
+    script: "Pan gira um globo perto de uma lanterna para mostrar por que existem dia e noite.",
     thumb: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800",
     activities: [
       mc("easy", "O que ilumina o céu durante o dia?", [["O Sol", true], ["A Lua", false], ["Um relâmpago", false], ["Uma vela", false]]),

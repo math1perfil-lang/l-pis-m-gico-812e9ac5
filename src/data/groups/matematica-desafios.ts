@@ -6,7 +6,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Multiplicação Mágica",
     objective: "Usar as tabuadas para resolver multiplicações e problemas do dia a dia.",
-    script: "Lili mostra que multiplicar é somar parcelas iguais, usando caixas de ovos e pacotes de figurinhas.",
+    script: "Pan mostra que multiplicar é somar parcelas iguais, usando caixas de ovos e pacotes de figurinhas.",
     thumb: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800",
     activities: [
       mc("easy", "Quanto é 7 × 6?", [["36", false], ["42", true], ["48", false], ["13", false]]),
@@ -24,7 +24,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Divisão Sem Mistério",
     objective: "Dividir em partes iguais e conferir o resultado com a multiplicação.",
-    script: "Lili reparte pizzas e doces entre os amigos e confere cada divisão com uma multiplicação.",
+    script: "Pan reparte pizzas e doces entre os amigos e confere cada divisão com uma multiplicação.",
     thumb: "https://images.unsplash.com/photo-1604079628040-94301bb21b91?w=800",
     activities: [
       mc("easy", "Quanto é 24 ÷ 4?", [["4", false], ["5", false], ["6", true], ["8", false]]),
@@ -42,7 +42,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Frações da Pizza",
     objective: "Entender, comparar e somar frações usando pizzas e objetos do dia a dia.",
-    script: "Lili corta pizzas em partes iguais para mostrar metades, quartos e oitavos.",
+    script: "Pan corta pizzas em partes iguais para mostrar metades, quartos e oitavos.",
     thumb: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
     activities: [
       mc("easy", "Uma pizza foi cortada em 8 pedaços iguais. Cada pedaço é que fração da pizza?", [["1/4", false], ["1/8", true], ["1/6", false], ["8/1", false]]),
@@ -60,7 +60,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Geometria Plana",
     objective: "Reconhecer polígonos e calcular perímetro e área de quadrados e retângulos.",
-    script: "Lili mede o quintal com passos e a sala com ladrilhos para descobrir perímetro e área.",
+    script: "Pan mede o quintal com passos e a sala com ladrilhos para descobrir perímetro e área.",
     thumb: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800",
     activities: [
       mc("easy", "Quantos lados tem um hexágono?", [["5", false], ["6", true], ["7", false], ["8", false]]),
@@ -78,7 +78,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Resolvendo Problemas",
     objective: "Escolher a operação certa e resolver problemas de compras, tempo e médias.",
-    script: "Lili resolve situações de compras, viagens e horários, escolhendo a conta certa para cada pergunta.",
+    script: "Pan resolve situações de compras, viagens e horários, escolhendo a conta certa para cada pergunta.",
     thumb: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
     activities: [
       mc("easy", "Para repartir 20 balas igualmente entre 4 amigos, qual operação usamos?", [["Adição", false], ["Subtração", false], ["Multiplicação", false], ["Divisão", true]]),
@@ -96,7 +96,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Números Grandes",
     objective: "Ler, escrever, comparar e decompor números grandes usando o valor posicional.",
-    script: "Lili visita um estádio lotado e mostra como cada algarismo vale mais ou menos conforme sua posição.",
+    script: "Pan visita um estádio lotado e mostra como cada algarismo vale mais ou menos conforme sua posição.",
     thumb: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
     activities: [
       mc("easy", "No número 3.527, qual é o valor do algarismo 5?", [["5", false], ["50", false], ["500", true], ["5.000", false]]),
@@ -114,7 +114,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Medidas do Dia a Dia",
     objective: "Converter e calcular com medidas de tempo, comprimento e massa.",
-    script: "Lili pesa ingredientes de uma receita, mede o caminho da escola e confere o horário das aulas.",
+    script: "Pan pesa ingredientes de uma receita, mede o caminho da escola e confere o horário das aulas.",
     thumb: "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=800",
     activities: [
       mc("easy", "Quantos metros há em 1 quilômetro?", [["10", false], ["100", false], ["1.000", true], ["10.000", false]]),
@@ -132,7 +132,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Decimais e Dinheiro",
     objective: "Ler, comparar e calcular com números decimais usando reais e centavos.",
-    script: "Lili vai à padaria e à feira para mostrar que os centavos são partes decimais do real.",
+    script: "Pan vai à padaria e à feira para mostrar que os centavos são partes decimais do real.",
     thumb: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800",
     activities: [
       mc("easy", "Como se lê o número 0,5?", [["Cinco centésimos", false], ["Cinco décimos", true], ["Cinquenta", false], ["Cinco inteiros", false]]),
@@ -150,7 +150,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Tabelas, Gráficos e Sorte",
     objective: "Ler tabelas e gráficos e descrever a chance de um resultado acontecer.",
-    script: "Lili faz uma votação para a festa da turma, monta a tabela e sorteia bolinhas para falar de chance.",
+    script: "Pan faz uma votação para a festa da turma, monta a tabela e sorteia bolinhas para falar de chance.",
     thumb: "https://images.unsplash.com/photo-1551405780-03882d5a2ba7?w=800",
     activities: [
       mc("easy", "Em um gráfico de barras, a barra mais alta mostra:", [["A menor quantidade", false], ["A maior quantidade", true], ["A média", false], ["O título", false]]),
@@ -168,7 +168,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Problemas de Várias Etapas",
     objective: "Resolver problemas que pedem duas ou mais contas em sequência.",
-    script: "Lili desmonta problemas grandes em passos pequenos, como ler, calcular e conferir o troco.",
+    script: "Pan desmonta problemas grandes em passos pequenos, como ler, calcular e conferir o troco.",
     thumb: "https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=800",
     activities: [
       mc("easy", "Ao resolver um problema, o que devemos fazer primeiro?", [["Calcular logo", false], ["Ler e entender a pergunta", true], ["Escolher um número qualquer", false], ["Conferir o resultado", false]]),

@@ -6,7 +6,7 @@ export const specs: GroupSpec[] = [
   {
     title: "O Mundo dos Substantivos",
     objective: "Reconhecer substantivos próprios, comuns, concretos e abstratos e usar o plural.",
-    script: "Lili viaja por cidades e descobre que tudo tem um nome: pessoas, lugares, objetos e até sentimentos.",
+    script: "Pan viaja por cidades e descobre que tudo tem um nome: pessoas, lugares, objetos e até sentimentos.",
     thumb: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800",
     activities: [
       mc("easy", "Qual destas palavras é um substantivo próprio?", [["escola", false], ["Amazonas", true], ["rio", false], ["floresta", false]]),
@@ -24,7 +24,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Adjetivos que Descrevem",
     objective: "Identificar adjetivos, usar a concordância com o substantivo e comparar características.",
-    script: "Lili descreve amigos e lugares usando adjetivos e descobre como eles mudam para o feminino e o plural.",
+    script: "Pan descreve amigos e lugares usando adjetivos e descobre como eles mudam para o feminino e o plural.",
     thumb: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800",
     activities: [
       mc("easy", "Qual destas palavras é um adjetivo?", [["cantar", false], ["mesa", false], ["alegre", true], ["ontem", false]]),
@@ -42,7 +42,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Verbos em Ação",
     objective: "Reconhecer verbos, os tempos presente, passado e futuro e a concordância com o sujeito.",
-    script: "Lili conta o que faz hoje, o que fez ontem e o que fará amanhã, e os verbos mudam junto com ela.",
+    script: "Pan conta o que faz hoje, o que fez ontem e o que fará amanhã, e os verbos mudam junto com ela.",
     thumb: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800",
     activities: [
       mc("easy", "Qual destas palavras é um verbo?", [["nadar", true], ["mesa", false], ["verde", false], ["ontem", false]]),
@@ -60,7 +60,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Pontuação Inteligente",
     objective: "Usar ponto, vírgula, interrogação, exclamação e dois-pontos para dar sentido às frases.",
-    script: "Lili escreve cartas e descobre como cada sinal de pontuação muda o que a frase quer dizer.",
+    script: "Pan escreve cartas e descobre como cada sinal de pontuação muda o que a frase quer dizer.",
     thumb: "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=800",
     activities: [
       mc("easy", "Qual sinal usamos no final de uma pergunta?", [["!", false], [".", false], ["?", true], [",", false]]),
@@ -68,7 +68,7 @@ export const specs: GroupSpec[] = [
       mc("easy", "Qual frase expressa surpresa?", [["Que susto!", true], ["Você foi ao parque?", false], ["Fui à escola.", false], ["Ele comprou pão.", false]]),
       mc("medium", "Qual frase está bem pontuada?", [["Comprei, maçã pera uva e banana.", false], ["Comprei maçã pera, uva, e banana.", false], ["Comprei maçã, pera, uva, e, banana.", false], ["Comprei maçã, pera, uva e banana.", true]]),
       mt("medium", "Ligue cada sinal ao seu uso:", [["?", "Faz uma pergunta"], ["!", "Mostra espanto ou alegria"], [",", "Separa itens de uma lista"], [".", "Encerra uma frase afirmativa"]]),
-      ord("medium", "Ordene as partes desta carta:", ["Querido vovô,", "Estou com saudade de você.", "Beijos,", "Lili"]),
+      ord("medium", "Ordene as partes desta carta:", ["Querido vovô,", "Estou com saudade de você.", "Beijos,", "Pan"]),
       tf("medium", "Em 'Pedro, venha cá!', a vírgula deveria ser retirada.", false),
       mc("hard", "Qual frase chama o Pedro para comer, sem sugerir que ele seja comido?", [["Vamos comer Pedro!", false], ["Vamos comer, Pedro!", true], ["Vamos, comer Pedro!", false], ["Vamos comer Pedro?", false]]),
       mc("hard", "Quantas vírgulas faltam em: 'Pedro Ana e Lia comeram pão queijo e ovo.'?", [["1", false], ["2", true], ["3", false], ["4", false]]),
@@ -78,7 +78,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Interpretando Textos",
     objective: "Localizar informações, fazer inferências e entender personagens, sequência e lição de um texto.",
-    script: "Lili lê pequenos textos com muita atenção e descobre as pistas que o autor deixou escondidas.",
+    script: "Pan lê pequenos textos com muita atenção e descobre as pistas que o autor deixou escondidas.",
     thumb: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=800",
     activities: [
       mc("easy", "'Lia pegou o guarda-chuva porque o céu estava escuro.' Por que Lia pegou o guarda-chuva?", [["Porque estava com frio", false], ["Porque o céu estava escuro", true], ["Porque era seu aniversário", false], ["Porque fazia sol", false]]),
@@ -96,7 +96,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Sílabas, Acentos e Ortografia",
     objective: "Separar sílabas, reconhecer a sílaba tônica e usar os acentos e a escrita correta das palavras.",
-    script: "Lili bate palmas para separar sílabas e descobre por que algumas palavras ganham acento.",
+    script: "Pan bate palmas para separar sílabas e descobre por que algumas palavras ganham acento.",
     thumb: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800",
     activities: [
       mc("easy", "Quantas sílabas tem a palavra 'borboleta'?", [["2", false], ["3", false], ["4", true], ["5", false]]),
@@ -114,7 +114,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Sinônimos, Antônimos e Sentidos",
     objective: "Reconhecer palavras de sentido parecido, contrário e palavras com mais de um significado.",
-    script: "Lili brinca de trocar palavras e descobre que uma mesma palavra pode ter sentidos diferentes.",
+    script: "Pan brinca de trocar palavras e descobre que uma mesma palavra pode ter sentidos diferentes.",
     thumb: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800",
     activities: [
       mc("easy", "Qual palavra é sinônima de 'feliz'?", [["alegre", true], ["bravo", false], ["cansado", false], ["doente", false]]),
@@ -132,12 +132,12 @@ export const specs: GroupSpec[] = [
   {
     title: "Frases, Orações e Concordância",
     objective: "Montar frases com sentido, identificar orações e fazer a concordância entre sujeito e verbo.",
-    script: "Lili monta frases como se fossem peças de quebra-cabeça e descobre quando elas combinam entre si.",
+    script: "Pan monta frases como se fossem peças de quebra-cabeça e descobre quando elas combinam entre si.",
     thumb: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=800",
     activities: [
       mc("easy", "Qual alternativa forma uma frase com sentido?", [["Gato o de leite o", false], ["Bebe o leite gato", false], ["O gato bebe leite.", true], ["Leite gato bebe de", false]]),
       tf("easy", "Uma frase começa com letra maiúscula e termina com um sinal de pontuação.", true),
-      mc("easy", "Em 'Lili comeu um pão', quem pratica a ação de comer?", [["Lili", true], ["pão", false], ["um", false], ["comeu", false]]),
+      mc("easy", "Em 'Pan comeu um pão', quem pratica a ação de comer?", [["Pan", true], ["pão", false], ["um", false], ["comeu", false]]),
       mc("medium", "Qual frase está com a concordância correta?", [["As meninas é alegres.", false], ["As menina são alegres.", false], ["As meninas são alegre.", false], ["As meninas são alegres.", true]]),
       mc("medium", "Complete: 'Os cachorros ___ no quintal.'", [["corre", false], ["correm", true], ["corremos", false], ["corres", false]]),
       mt("medium", "Ligue cada pronome ao verbo 'estudar' que combina com ele:", [["Eu", "estudo"], ["Ela", "estuda"], ["Nós", "estudamos"], ["Eles", "estudam"]]),
@@ -150,7 +150,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Gêneros Textuais",
     objective: "Distinguir bilhete, notícia, receita e poema pela finalidade e pelas características de cada um.",
-    script: "Lili recebe bilhetes, lê o jornal, cozinha com uma receita e recita um poema para descobrir como cada texto funciona.",
+    script: "Pan recebe bilhetes, lê o jornal, cozinha com uma receita e recita um poema para descobrir como cada texto funciona.",
     thumb: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
     activities: [
       mc("easy", "Qual texto serve para deixar um recado curto para alguém?", [["Receita", false], ["Notícia", false], ["Bilhete", true], ["Poema", false]]),
@@ -168,7 +168,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Produzindo um Texto",
     objective: "Planejar, escrever e revisar uma narrativa com começo, meio e fim.",
-    script: "Lili inventa uma história, passa pelo rascunho e aprende a revisar para deixar o texto bem escrito.",
+    script: "Pan inventa uma história, passa pelo rascunho e aprende a revisar para deixar o texto bem escrito.",
     thumb: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800",
     activities: [
       mc("easy", "Qual é a ordem de uma narrativa?", [["Fim, meio e começo", false], ["Meio, fim e começo", false], ["Começo, meio e fim", true], ["Fim, começo e meio", false]]),

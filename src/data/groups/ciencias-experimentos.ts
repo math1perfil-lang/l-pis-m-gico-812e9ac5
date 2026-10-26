@@ -6,7 +6,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Estados da Matéria",
     objective: "Reconhecer sólido, líquido e gasoso e as mudanças de estado da água.",
-    script: "Lili congela, derrete e esquenta água na cozinha para mostrar como ela muda de estado e onde vemos isso no dia a dia.",
+    script: "Pan congela, derrete e esquenta água na cozinha para mostrar como ela muda de estado e onde vemos isso no dia a dia.",
     thumb: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800",
     activities: [
       mc("easy", "O gelo que colocamos no suco é água no estado:", [["Líquido", false], ["Sólido", true], ["Gasoso", false], ["Pastoso", false]]),
@@ -24,7 +24,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Viagem ao Sistema Solar",
     objective: "Conhecer o Sol, os planetas, a Lua e os movimentos da Terra.",
-    script: "Lili pilota seu foguete passando pelos planetas e explica por que existem dia, noite e anos.",
+    script: "Pan pilota seu foguete passando pelos planetas e explica por que existem dia, noite e anos.",
     thumb: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800",
     activities: [
       mc("easy", "Qual é a estrela que ilumina e aquece a Terra?", [["Lua", false], ["Marte", false], ["Sol", true], ["Vênus", false]]),
@@ -42,7 +42,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Reino dos Seres Vivos",
     objective: "Classificar animais, plantas e fungos pelas suas características.",
-    script: "Lili visita um museu de ciências e agrupa os seres vivos por suas características, do sapo à borboleta.",
+    script: "Pan visita um museu de ciências e agrupa os seres vivos por suas características, do sapo à borboleta.",
     thumb: "https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=800",
     activities: [
       mc("easy", "Qual destes animais é um mamífero?", [["Sapo", false], ["Cobra", false], ["Vaca", true], ["Tubarão", false]]),
@@ -60,7 +60,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Corpo Humano por Dentro",
     objective: "Entender como funcionam os sistemas digestório, respiratório e circulatório.",
-    script: "Lili faz uma viagem dentro do corpo humano e mostra o caminho do ar, do alimento e do sangue.",
+    script: "Pan faz uma viagem dentro do corpo humano e mostra o caminho do ar, do alimento e do sangue.",
     thumb: "https://images.unsplash.com/photo-1559757175-08fd0a3a924b?w=800",
     activities: [
       mc("easy", "Qual órgão bombeia o sangue pelo corpo?", [["Pulmão", false], ["Coração", true], ["Estômago", false], ["Rim", false]]),
@@ -78,7 +78,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Ecossistemas e Meio Ambiente",
     objective: "Relacionar biomas brasileiros, cadeias alimentares e o equilíbrio da natureza.",
-    script: "Lili percorre os biomas do Brasil e mostra como plantas, animais e decompositores dependem uns dos outros.",
+    script: "Pan percorre os biomas do Brasil e mostra como plantas, animais e decompositores dependem uns dos outros.",
     thumb: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800",
     activities: [
       mc("easy", "Qual é o maior bioma do Brasil?", [["Amazônia", true], ["Cerrado", false], ["Pampa", false], ["Caatinga", false]]),
@@ -96,7 +96,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Luz, Som e Calor",
     objective: "Compreender como a luz, o som e o calor se comportam no dia a dia.",
-    script: "Lili faz experimentos com lanterna, espelho e copos para mostrar como a luz, o som e o calor viajam.",
+    script: "Pan faz experimentos com lanterna, espelho e copos para mostrar como a luz, o som e o calor viajam.",
     thumb: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800",
     activities: [
       mc("easy", "Qual destes objetos produz a própria luz?", [["Espelho", false], ["Lua", false], ["Lanterna acesa", true], ["Parede branca", false]]),
@@ -114,7 +114,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Misturas e Transformações",
     objective: "Distinguir misturas, separar seus componentes e identificar mudanças físicas e químicas.",
-    script: "Lili mistura areia, sal e água na cozinha, separa tudo de novo e compara com uma reação de bicarbonato e vinagre.",
+    script: "Pan mistura areia, sal e água na cozinha, separa tudo de novo e compara com uma reação de bicarbonato e vinagre.",
     thumb: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=800",
     activities: [
       mc("easy", "Quando juntamos areia e sal sem mudar nenhum dos dois, temos:", [["Um só material puro", false], ["Uma mistura", true], ["Um gás", false], ["Um metal", false]]),
@@ -132,7 +132,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Energia e Eletricidade",
     objective: "Entender circuitos simples, transformações de energia e como se proteger da eletricidade.",
-    script: "Lili monta com um adulto um circuito simples com pilha pequena e lâmpada, e lembra as regras de segurança com tomadas.",
+    script: "Pan monta com um adulto um circuito simples com pilha pequena e lâmpada, e lembra as regras de segurança com tomadas.",
     thumb: "https://images.unsplash.com/photo-1518912784930-0c2b4ad34c50?w=800",
     activities: [
       mc("easy", "Qual objeto transforma energia elétrica em luz?", [["Ventilador", false], ["Geladeira", false], ["Lâmpada", true], ["Rádio", false]]),
@@ -150,7 +150,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Água, Ar e Solo",
     objective: "Relacionar o ciclo da água, as propriedades do ar e os tipos de solo.",
-    script: "Lili observa nuvens, enche vasos com areia e argila e acompanha um feijão germinando para entender água, ar e solo.",
+    script: "Pan observa nuvens, enche vasos com areia e argila e acompanha um feijão germinando para entender água, ar e solo.",
     thumb: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
     activities: [
       mc("easy", "Qual gás do ar precisamos para respirar?", [["Hélio", false], ["Oxigênio", true], ["Fumaça", false], ["Vapor", false]]),
@@ -168,7 +168,7 @@ export const specs: GroupSpec[] = [
   {
     title: "Método Científico",
     objective: "Praticar observar, levantar hipóteses, testar uma variável por vez e concluir.",
-    script: "Lili investiga com um teste justo se o gelo derrete mais rápido no sol, anotando tudo no caderno de cientista.",
+    script: "Pan investiga com um teste justo se o gelo derrete mais rápido no sol, anotando tudo no caderno de cientista.",
     thumb: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
     activities: [
       mc("easy", "O que é uma hipótese?", [["Um resultado já provado", false], ["Uma opinião sem teste", false], ["Uma resposta provisória que será testada", true], ["Um erro do experimento", false]]),
