@@ -79,6 +79,19 @@ export const courses: Course[] = [
     lessons: []
   },
   {
+    id: "portugues-em-acao",
+    title: "Português em Ação",
+    description: "Fake news, pós-verdade e redes sociais: aprenda a ler, entender e pensar com senso crítico!",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800",
+    ageMin: 9,
+    ageMax: 11,
+    duration: "1h",
+    coinsReward: 235,
+    totalLessons: 4,
+    category: "Linguagem",
+    lessons: []
+  },
+  {
     id: "matematica-desafios",
     title: "Matemática: Desafios",
     description: "Multiplicação, divisão, frações e problemas que desafiam o raciocínio!",

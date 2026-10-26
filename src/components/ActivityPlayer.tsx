@@ -241,7 +241,7 @@ export const ActivityPlayer = ({
         {/* Activity Content */}
         <div className="p-6">
           {currentActivity.imageUrl && (
-            <div className="mb-6 rounded-2xl bg-secondary/40 p-4">
+            <div data-illustration className="mb-6 rounded-2xl bg-secondary/40 p-4">
               <div className="grid gap-4 md:grid-cols-2 items-center">
                 {currentActivity.poem && (
                   <div>
@@ -264,6 +264,10 @@ export const ActivityPlayer = ({
                   alt={currentActivity.imageCaption || currentActivity.question}
                   loading="lazy"
                   className="w-full rounded-xl object-cover"
+                  onError={(e) => {
+                    // Se a ilustração não carregar, esconde o quadro em vez de mostrar imagem quebrada
+                    (e.currentTarget.closest("[data-illustration]") as HTMLElement | null)?.style.setProperty("display", "none");
+                  }}
                 />
               </div>
             </div>
