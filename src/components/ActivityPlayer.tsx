@@ -39,6 +39,11 @@ export const ActivityPlayer = ({
     return () => setBusy(false);
   }, []);
 
+  // Página inteira: volta ao topo a cada atividade nova
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentIndex]);
+
   const currentActivity = activities[currentIndex];
   const progress = ((currentIndex + (isCorrect ? 1 : 0)) / activities.length) * 100;
 
@@ -218,17 +223,23 @@ export const ActivityPlayer = ({
       : undefined;
 
   return (
-    <div className="fixed inset-0 bg-background/95 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-card rounded-3xl shadow-card max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="p-6 border-b border-border">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <Star className="w-5 h-5 text-gold" />
+    <div className="min-h-screen bg-background sm:py-6">
+      <div className="bg-card sm:rounded-3xl sm:shadow-card max-w-2xl w-full mx-auto min-h-screen sm:min-h-0">
+        {/* Header (fixo no topo, com o botão Sair sempre à mão) */}
+        <div className="sticky top-0 z-10 bg-card p-4 sm:p-6 border-b border-border sm:rounded-t-3xl">
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <div className="flex items-center gap-2 min-w-0">
+              <Star className="w-5 h-5 text-gold shrink-0" />
               <span className="font-bold text-foreground">
                 {isReading ? "📖 Leitura • " : ""}Atividade {currentIndex + 1} de {activities.length}
               </span>
             </div>
+            <Button variant="ghost" size="sm" onClick={onClose} className="shrink-0" aria-label="Sair das atividades">
+              <X className="w-4 h-4 mr-1" />
+              Sair
+            </Button>
+          </div>
+          <div className="flex items-center justify-end mb-3">
             {practice ? (
               <span className="text-xs font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">Treino • sem moedas</span>
             ) : (
@@ -239,7 +250,7 @@ export const ActivityPlayer = ({
         </div>
 
         {/* Activity Content */}
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {currentActivity.imageUrl && (
             <div data-illustration className="mb-6 rounded-2xl bg-secondary/40 p-4">
               <div className="grid gap-4 md:grid-cols-2 items-center">
