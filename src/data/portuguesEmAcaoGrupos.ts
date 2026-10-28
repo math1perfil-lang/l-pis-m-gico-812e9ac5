@@ -12,9 +12,13 @@ import { fromText, IMG_CRIANCAS, IMG_LETRAS, IMG_LIVRO, match, mc, read } from "
 // Só os dois trechinhos citados no grupo 4 são cópia fiel e levam a fonte completa.
 
 const IMG = "/ilustracoes/portugues9";
-const IMG_ABERTURA = `${IMG}/abertura.png`;
-const IMG_BOLHA = `${IMG}/bolha.png`;
-const IMG_LUPA = `${IMG}/lupa.png`;
+const IMG_ABERTURA = `${IMG}/abertura.jpg`;
+const IMG_BOLHA = `${IMG}/bolha.jpg`;
+const IMG_LUPA = `${IMG}/lupa.jpg`;
+const IMG_FIQUE = `${IMG}/fique-ligado.jpg`;
+const IMG_ESPALHA = `${IMG}/espalha.jpg`;
+const IMG_COMPARTILHA = `${IMG}/compartilhar.jpg`;
+const IMG_MAPA = `${IMG}/mapa-baloes.jpg`;
 
 const txt = (readingId: string, ...acts: Activity[]): Activity[] =>
   acts.map((a) => fromText(readingId, a));
@@ -34,13 +38,13 @@ const g1Activities: Activity[] = [
       "p9-g1-leitura",
       "Caiu na rede!",
       [
-        "Olhe com calma a ilustração. Muita gente está junta, mas quase todas as pessoas olham para o celular, de cabeça baixa. No meio delas, uma criança de camiseta laranja levanta a cabeça e olha para o alto, sorrindo, curiosa.",
+        "Olhe com calma a ilustração. Muita gente está junta, mas quase todas as pessoas olham para o celular, de cabeça baixa. No meio delas, um jovem de moletom laranja levanta a cabeça e olha para o alto, com um meio sorriso curioso.",
         "A unidade também traz a ideia de um poema de cordel, do poeta Bráulio Bessa, sobre as redes sociais: nelas o mundo é bem diferente, dá para ter milhões de amigos e, mesmo assim, ainda se sentir sozinho, e existe todo tipo de vida e de gente.",
       ],
-      "Ilustração original criada para este curso. Ideias do cordel de Bráulio Bessa (Poesia que transforma, Sextante, 2018), contadas com palavras nossas."
+      "Ilustração original criada para este curso (Runway). Ideias do cordel de Bráulio Bessa (Poesia que transforma, Sextante, 2018), contadas com palavras nossas."
     ),
     IMG_ABERTURA,
-    "Uma multidão olhando para o celular e uma criança olhando para cima"
+    "Uma multidão olhando para o celular e um jovem de moletom laranja olhando para cima"
   ),
   ...txt(
     "p9-g1-leitura",
@@ -53,7 +57,7 @@ const g1Activities: Activity[] = [
       mc("p9-g1-a2", "Uma pessoa é diferente das outras. O que a expressão do rosto dela mostra?", "Toque na resposta certa",
         "Curiosidade e alegria: ela levantou a cabeça e percebeu o que está em volta.",
         ["Sono, porque ela está bocejando.", "Raiva, porque quer brigar com alguém.", "Medo, porque ela está perdida."]),
-      IMG_ABERTURA, "A criança que olha para cima"),
+      IMG_ABERTURA, "O jovem de moletom laranja que olha para cima"),
     withImage(
       mc("p9-g1-a3", "Essa cena é um exagero, mas lembra algo que acontece na vida real. O quê?", "Toque na resposta certa",
         "Muita gente fica olhando só para o celular, mesmo perto de outras pessoas.",
@@ -64,11 +68,13 @@ const g1Activities: Activity[] = [
         "O uso do celular pode afastar as pessoas umas das outras e do que está ao redor.",
         ["O celular é sempre ruim e ninguém deveria usá-lo.", "As ruas das cidades estão muito sujas.", "As pessoas andam devagar demais."], "medium"),
       IMG_ABERTURA, "Uma multidão olhando para o celular"),
-    mc("p9-g1-a5", "Qual é a relação entre a cena da ilustração e a ideia do cordel de Bráulio Bessa?", "Toque na resposta certa",
-      "Os dois falam das redes sociais: há muita gente conectada, mas as pessoas podem ficar distantes umas das outras.",
-      ["O cordel fala de futebol e a ilustração mostra um jogo.", "O cordel fala de uma viagem e a ilustração mostra um avião.", "Não há relação: um fala de bichos e a outra de árvores."], "medium"),
+    withImage(
+      mc("p9-g1-a5", "Qual é a relação entre a cena da ilustração e a ideia do cordel de Bráulio Bessa?", "Toque na resposta certa",
+        "Os dois falam das redes sociais: há muita gente conectada, mas as pessoas podem ficar distantes umas das outras.",
+        ["O cordel fala de futebol e a ilustração mostra um jogo.", "O cordel fala de uma viagem e a ilustração mostra um avião.", "Não há relação: um fala de bichos e a outra de árvores."], "medium"),
+      IMG_ABERTURA, "Uma multidão olhando para o celular"),
   ),
-  read(
+  withImage(read(
     "p9-g1-leitura2",
     "Fique ligado!",
     [
@@ -76,16 +82,20 @@ const g1Activities: Activity[] = [
       "Um livro, chamado “No tempo das telas”, conta a história de oito personagens e mostra como celulares, computadores e redes sociais mudaram o jeito de as pessoas se comunicarem. Um filme conta a história de uma aluna muito esperta que entra em um esquema de trapaça. Há músicas sobre o assunto e até o site de um museu, o Museu do Amanhã, que faz um passeio virtual e pensa nas transformações dos próximos anos.",
       "Também há dois sites sobre segurança na internet: o Internet Segura e o Safernet.",
     ],
-    "Baseado nas sugestões da seção “Fique ligado!” (Cereja e Vianna, Português Linguagens 9º ano, Saraiva, 2022)."
-  ),
+    "Baseado nas sugestões da seção “Fique ligado!” (Cereja e Vianna, Português Linguagens 9º ano, Saraiva, 2022). Ilustração original criada para este curso (Runway)."
+  ), IMG_FIQUE, "Livro com celular na capa, claquete de cinema, fones de ouvido, prédio de museu e site com escudo de segurança"),
   ...txt(
     "p9-g1-leitura2",
-    mc("p9-g1-a6", "O livro “No tempo das telas” trata de quê?", "Toque na resposta certa",
-      "De como as telas, os celulares e as redes sociais mudaram a nossa forma de nos comunicar.",
-      ["De como cuidar de uma horta.", "Da história dos dinossauros.", "De regras de um jogo de futebol."]),
-    mc("p9-g1-a7", "Pensando em todas as sugestões, qual pode ser o tema principal da unidade?", "Toque na resposta certa",
-      "A vida na internet e nas redes sociais.",
-      ["A vida dos animais do mar.", "Receitas de bolo.", "A história dos jogos olímpicos."]),
+    withImage(
+      mc("p9-g1-a6", "O livro “No tempo das telas” trata de quê?", "Toque na resposta certa",
+        "De como as telas, os celulares e as redes sociais mudaram a nossa forma de nos comunicar.",
+        ["De como cuidar de uma horta.", "Da história dos dinossauros.", "De regras de um jogo de futebol."]),
+      IMG_FIQUE, "Livro, filme, fones de ouvido, museu e site"),
+    withImage(
+      mc("p9-g1-a7", "Pensando em todas as sugestões, qual pode ser o tema principal da unidade?", "Toque na resposta certa",
+        "A vida na internet e nas redes sociais.",
+        ["A vida dos animais do mar.", "Receitas de bolo.", "A história dos jogos olímpicos."]),
+      IMG_FIQUE, "Livro, filme, fones de ouvido, museu e site"),
   ),
 ];
 
@@ -97,11 +107,13 @@ const g2Activities: Activity[] = [
     mc("p9-g2-a1", "Que mal pode haver em curtir e repassar uma notícia sem conferir se ela é verdadeira?", "Toque na resposta certa",
       "Uma mentira pode se espalhar bem rápido e prejudicar pessoas.",
       ["Nenhum, porque repassar é sempre divertido.", "A mensagem fica mais bonita.", "O celular só gasta um pouco mais de bateria."]),
-    IMG_LUPA, "Uma criança com uma lupa, conferindo uma notícia no celular"),
-  mc("p9-g2-a2", "Quando algo chega no seu celular, qual é a melhor reação?", "Toque na resposta certa",
-    "Procurar saber se a informação é verdadeira, em fontes confiáveis, antes de repassar.",
-    ["Repassar na hora, para ser o primeiro a contar.", "Acreditar em tudo que os amigos mandam.", "Apagar só as mensagens que eu não entendi."], "medium"),
-  read(
+    IMG_LUPA, "Um jovem com uma lupa conferindo uma notícia no celular"),
+  withImage(
+    mc("p9-g2-a2", "Quando algo chega no seu celular, qual é a melhor reação?", "Toque na resposta certa",
+      "Procurar saber se a informação é verdadeira, em fontes confiáveis, antes de repassar.",
+      ["Repassar na hora, para ser o primeiro a contar.", "Acreditar em tudo que os amigos mandam.", "Apagar só as mensagens que eu não entendi."], "medium"),
+    IMG_LUPA, "Um jovem com uma lupa conferindo uma notícia no celular"),
+  withImage(read(
     "p9-g2-leitura",
     "Como sair das bolhas? (primeira parte)",
     [
@@ -110,8 +122,8 @@ const g2Activities: Activity[] = [
       "Ela conta um caso real: em 2014, Fabiane de Jesus foi linchada no Guarujá (SP) depois de ser acusada, em uma página da internet, de praticar magia negra com crianças. A informação era falsa. Mesmo quando a mentira é tirada do ar, o estrago pode ficar. Uma informação falsa pode destruir a vida de alguém, a fama de uma empresa, uma escola, uma família.",
       "Quem cria fake news? Cerca de 30% vêm de escritórios e grupos que ganham dinheiro com isso. A maior parte vem de pessoas comuns, que querem prejudicar alguém ou espalhar ódio. E quem começou? Quase nunca se descobre, por isso é tão difícil punir.",
     ],
-    "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018). Texto reescrito."
-  ),
+    "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018). Texto reescrito. Ilustração original criada para este curso (Runway)."
+  ), IMG_ESPALHA, "Uma mensagem falsa se espalhando por uma rede de pessoas"),
   ...txt(
     "p9-g2-leitura",
     mc("p9-g2-a3", "Segundo o texto, qual é a diferença entre as informações dos grandes veículos de comunicação e as das redes sociais?", "Toque na resposta certa",
@@ -123,9 +135,11 @@ const g2Activities: Activity[] = [
     mc("p9-g2-a5", "Como as fake news nascem? Que interesses podem existir por trás delas?", "Toque na resposta certa",
       "São criadas por pessoas que postam mentiras, muitas vezes por raiva, vingança ou para ganhar dinheiro.",
       ["Nascem sozinhas, sem que ninguém as crie.", "São criadas só para ajudar as pessoas.", "São criadas pelos jornais para ensinar a ler."], "medium"),
-    mc("p9-g2-a6", "Por que as fake news podem ser prejudiciais?", "Toque na resposta certa",
-      "Podem manchar a imagem de uma pessoa ou de uma empresa e até provocar reações violentas, como no caso de Fabiane de Jesus.",
-      ["Porque deixam a internet mais lenta.", "Porque fazem as pessoas ficarem mais bonitas.", "Porque só atingem quem está distraído."], "medium"),
+    withImage(
+      mc("p9-g2-a6", "Por que as fake news podem ser prejudiciais?", "Toque na resposta certa",
+        "Podem manchar a imagem de uma pessoa ou de uma empresa e até provocar reações violentas, como no caso de Fabiane de Jesus.",
+        ["Porque deixam a internet mais lenta.", "Porque fazem as pessoas ficarem mais bonitas.", "Porque só atingem quem está distraído."], "medium"),
+      IMG_ESPALHA, "Uma mensagem falsa se espalhando por uma rede de pessoas"),
     mc("p9-g2-a7", "Por que é difícil combater as fake news?", "Toque na resposta certa",
       "Porque a maioria vem de pessoas comuns, e quase nunca se sabe quem começou, o que dificulta punir.",
       ["Porque elas só existem em um país.", "Porque são sempre fáceis de reconhecer.", "Porque ninguém usa redes sociais."], "medium"),
@@ -139,7 +153,7 @@ const g2Activities: Activity[] = [
 // Grupo 3 — Pós-verdade e bolhas
 // ---------------------------------------------------------------------------
 const g3Activities: Activity[] = [
-  read(
+  withImage(read(
     "p9-g3-leitura",
     "A pós-verdade",
     [
@@ -147,8 +161,8 @@ const g3Activities: Activity[] = [
       "A pós-verdade também aparece quando notícias parecem verdadeiras e mexem com as emoções, e ganham destaque, principalmente na vida social e na política, como se fossem fatos comprovados.",
       "Na entrevista, a pesquisadora conta que a pós-verdade aparece quando as pessoas compartilham o que combina com seus desejos e crenças, mesmo que desconfiem que é falso. Ela lembra que o dedo é mais rápido que o cérebro: a gente compartilha sem perguntar de onde veio a foto ou o vídeo. Uma rede social que reúne 2 bilhões de pessoas, cerca de um terço da população do mundo, torna isso ainda mais preocupante.",
     ],
-    "Baseado no verbete “pós-verdade” (Academia Brasileira de Letras, Nova Palavra) e na entrevista de Pollyana Ferrari (Carta Capital, 2018). Texto reescrito."
-  ),
+    "Baseado no verbete “pós-verdade” (Academia Brasileira de Letras, Nova Palavra) e na entrevista de Pollyana Ferrari (Carta Capital, 2018). Texto reescrito. Ilustração original criada para este curso (Runway)."
+  ), IMG_COMPARTILHA, "Um dedo apertando o botão de compartilhar, enquanto um cérebro com lupa vem correndo atrás"),
   ...txt(
     "p9-g3-leitura",
     mc("p9-g3-a1", "O que é pós-verdade? Que relação ela tem com as fake news?", "Toque na resposta certa",
@@ -157,9 +171,11 @@ const g3Activities: Activity[] = [
     mc("p9-g3-a2", "Por que as pessoas passam a acreditar na pós-verdade?", "Toque na resposta certa",
       "Porque confiam em quem enviou, recebem a mesma informação várias vezes e ela combina com o que já pensam.",
       ["Porque a informação sempre vem com provas.", "Porque as pessoas nunca usam a internet.", "Porque elas só acreditam nos professores."], "medium"),
-    mc("p9-g3-a3", "A pesquisadora diz: “o dedo é mais rápido que o cérebro”. O que isso quer dizer e como ajuda a criar a pós-verdade?", "Toque na resposta certa",
-      "As pessoas repassam antes de pensar e checar. Assim, a informação falsa se espalha e acaba virando “verdade”.",
-      ["Que digitar com o dedo é mais rápido que pensar, e isso é bom.", "Que o cérebro dá ordem para o dedo checar tudo.", "Que quem tem dedos rápidos nunca erra."], "hard"),
+    withImage(
+      mc("p9-g3-a3", "A pesquisadora diz: “o dedo é mais rápido que o cérebro”. O que isso quer dizer e como ajuda a criar a pós-verdade?", "Toque na resposta certa",
+        "As pessoas repassam antes de pensar e checar. Assim, a informação falsa se espalha e acaba virando “verdade”.",
+        ["Que digitar com o dedo é mais rápido que pensar, e isso é bom.", "Que o cérebro dá ordem para o dedo checar tudo.", "Que quem tem dedos rápidos nunca erra."], "hard"),
+      IMG_COMPARTILHA, "Um dedo apertando o botão de compartilhar, enquanto um cérebro com lupa vem correndo atrás"),
     mc("p9-g3-a4", "A rede social citada reúne 2 bilhões de pessoas, cerca de um terço da população do mundo. Por que isso preocupa a pesquisadora?", "Toque na resposta certa",
       "Porque uma mentira tomada como verdade pode chegar a muita gente e causar consequências graves.",
       ["Porque a rede fica lotada e trava.", "Porque ninguém mais usa a escola.", "Porque ter muitos amigos é sempre ruim."], "medium"),
@@ -174,9 +190,9 @@ const g3Activities: Activity[] = [
         "Para sair da bolha, é preciso conhecer outros grupos, ver mensagens de pessoas que pensam diferente e conversar. Se ficarmos só no que concordamos, repetimos opiniões prontas.",
         "A pesquisadora diz que a escola não pode ignorar esse assunto. Ela ajuda a formar adultos mais críticos e éticos, que sabem pensar sobre os temas por pontos de vista diferentes.",
       ],
-      "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018). Ilustração original criada para este curso."
+      "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018). Ilustração original criada para este curso (Runway)."
     ),
-    IMG_BOLHA, "Um grupo de amigos dentro de uma bolha e outros grupos em outras bolhas"
+    IMG_BOLHA, "Um grupo de jovens dentro de uma bolha e outros grupos em outras bolhas"
   ),
   ...txt(
     "p9-g3-leitura2",
@@ -217,7 +233,7 @@ const g3Activities: Activity[] = [
 // Grupo 4 — A linguagem do texto
 // ---------------------------------------------------------------------------
 const g4Activities: Activity[] = [
-  read(
+  withImage(read(
     "p9-g4-leitura",
     "Trechos para observar",
     [
@@ -225,12 +241,14 @@ const g4Activities: Activity[] = [
       "“Bolha são as redes sociais e proponho uma reflexão sobre a necessidade de sairmos desse espaço que te induz a compartilhar com os seus ‘iguais’.”",
       "Nesses trechos, preste atenção nas palavras fake, fake news e timeline, no pronome “as”, no verbo “são”, no pronome “te” e nas aspas de “iguais”.",
     ],
-    "FERRARI, Pollyana. [Entrevista cedida a] Ana Luiza Basilio. Carta Capital, São Paulo, 17 abr. 2018. Trechos copiados."
-  ),
+    "FERRARI, Pollyana. [Entrevista cedida a] Ana Luiza Basilio. Carta Capital, São Paulo, 17 abr. 2018. Trechos copiados. Ilustração original criada para este curso (Runway)."
+  ), IMG_MAPA, "Um mapa-múndi colorido, com símbolos que lembram línguas diferentes"),
   ...txt(
     "p9-g4-leitura",
-    mc("p9-g4-a1", "As palavras fake, fake news e timeline vêm de qual língua?", "Toque na resposta certa",
-      "Do inglês.", ["Do espanhol.", "Do francês.", "Do tupi."]),
+    withImage(
+      mc("p9-g4-a1", "As palavras fake, fake news e timeline vêm de qual língua?", "Toque na resposta certa",
+        "Do inglês.", ["Do espanhol.", "Do francês.", "Do tupi."]),
+      IMG_MAPA, "Um mapa-múndi colorido, com símbolos que lembram línguas diferentes"),
     match("p9-g4-a2", "Ligue cada palavra em inglês à palavra ou expressão em português que quer dizer quase o mesmo.",
       [["fake", "falso"], ["fake news", "notícias falsas"], ["timeline", "linha do tempo"]]),
     mc("p9-g4-a3", "Por que você acha que a pesquisadora preferiu usar essas palavras em inglês em vez de palavras em português?", "Toque na resposta certa",
