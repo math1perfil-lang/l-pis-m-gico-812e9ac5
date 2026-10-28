@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Clock, Users, Star, Play, CheckCircle2, BookOpen, Trophy } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { ProgressBar } from "@/components/ProgressBar";
@@ -89,8 +90,8 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
 
   const handleActivitiesComplete = (activityCoins: number) => {
     if (groupCompleted) {
-      // Treino: grupo já concluído, não dá moedas nem avança de grupo
-      toast.success("✅ Treino concluído! Sem moedas, pois você já ganhou neste grupo.");
+      // Revisão: grupo já concluído, não dá moedas nem avança de grupo
+      toast.success("✅ Revisão concluída! Sem moedas, pois você já ganhou neste grupo.");
       setShowActivities(false);
       return;
     }
@@ -180,34 +181,51 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
             ) : (
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-card animate-fade-in">
                 <img src={group.videoThumbnail} alt={group.videoTitle} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/55 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
-                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold gradient-primary text-primary-foreground mb-1.5 sm:mb-3 inline-block">
-                    Grupo {currentIndex + 1} • Vídeo {group.videoDurationLabel}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/45 to-foreground/10" />
+
+                {/* Etiquetas nos cantos: grupo/vídeo à esquerda, situação à direita */}
+                <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold gradient-primary text-primary-foreground shadow-soft">
+                  Grupo {currentIndex + 1} • Vídeo {group.videoDurationLabel}
+                </span>
+                {groupCompleted && (
+                  <span className="absolute top-3 right-3 sm:top-4 sm:right-4 inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold bg-accent text-accent-foreground shadow-soft">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Grupo concluído
                   </span>
-                  <h2 className="text-lg sm:text-2xl font-bold text-white mb-1 leading-tight line-clamp-1">{group.videoTitle}</h2>
+                )}
+
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
+                  <h2 className="text-lg sm:text-2xl font-bold text-white mb-1 sm:mb-2 leading-tight line-clamp-1 drop-shadow">{group.videoTitle}</h2>
                   <p className="hidden sm:block text-white/80 mb-4 text-sm">{group.videoObjective}</p>
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1.5 sm:mt-0">
-                    <Button variant="hero" size="sm" className="sm:h-11 sm:px-8 sm:text-base" onClick={() => setShowVideo(true)}>
-                      <Play className="w-4 h-4 mr-1.5" />
+                  {/* Botões do mesmo tamanho, lado a lado */}
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3">
+                    <Button
+                      variant="hero"
+                      className={cn(
+                        "w-full h-11 px-2 text-[13px] sm:px-5 sm:text-base gap-1.5 whitespace-nowrap",
+                        !(videoWatched || groupCompleted) && "col-span-2"
+                      )}
+                      onClick={() => setShowVideo(true)}
+                    >
+                      <Play className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                       {videoWatched || groupCompleted ? "Rever vídeo" : "Assistir vídeo"}
                     </Button>
                     {videoWatched && !groupCompleted && (
-                      <Button size="sm" onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90 whitespace-nowrap">
-                        <BookOpen className="w-4 h-4 mr-1.5" />
+                      <Button
+                        onClick={() => setShowActivities(true)}
+                        className="w-full h-11 px-2 text-[13px] sm:px-5 sm:text-base gap-1.5 whitespace-nowrap bg-accent hover:bg-accent/90"
+                      >
+                        <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                         Fazer {group.activities.length} atividades
                       </Button>
                     )}
                     {groupCompleted && (
-                      <>
-                        <span className="inline-flex items-center gap-1.5 bg-accent/90 text-accent-foreground px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap">
-                          <CheckCircle2 className="w-4 h-4" /> Grupo concluído
-                        </span>
-                        <Button size="sm" onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90 whitespace-nowrap">
-                          <BookOpen className="w-4 h-4 mr-1.5" />
-                          Refazer atividades
-                        </Button>
-                      </>
+                      <Button
+                        onClick={() => setShowActivities(true)}
+                        className="w-full h-11 px-2 text-[13px] sm:px-5 sm:text-base gap-1.5 whitespace-nowrap bg-accent hover:bg-accent/90"
+                      >
+                        <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
+                        Refazer atividades
+                      </Button>
                     )}
                   </div>
                 </div>

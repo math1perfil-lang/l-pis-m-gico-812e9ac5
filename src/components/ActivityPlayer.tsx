@@ -11,7 +11,7 @@ interface ActivityPlayerProps {
   activities: Activity[];
   onComplete: (totalCoins: number) => void;
   onClose: () => void;
-  // Modo treino (grupo já concluído): refaz as atividades sem ganhar moedas.
+  // Modo revisão (grupo já concluído): refaz as atividades sem ganhar moedas.
   practice?: boolean;
 }
 
@@ -202,7 +202,7 @@ export const ActivityPlayer = ({
             Você completou todas as atividades!
           </p>
           {practice ? (
-            <p className="text-muted-foreground mt-2">Treino concluído! (sem moedas, você já tinha ganho neste grupo)</p>
+            <p className="text-muted-foreground mt-2">Revisão concluída! (sem moedas, você já tinha ganho neste grupo)</p>
           ) : (
             <>
               <CoinDisplay amount={earnedCoins} size="lg" />
@@ -234,14 +234,8 @@ export const ActivityPlayer = ({
                 {isReading ? "📖 Leitura • " : ""}Atividade {currentIndex + 1} de {activities.length}
               </span>
             </div>
-            <Button variant="ghost" size="sm" onClick={onClose} className="shrink-0" aria-label="Sair das atividades">
-              <X className="w-4 h-4 mr-1" />
-              Sair
-            </Button>
-          </div>
-          <div className="flex items-center justify-end mb-3">
             {practice ? (
-              <span className="text-xs font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">Treino • sem moedas</span>
+              <span className="shrink-0 text-xs font-bold text-muted-foreground bg-muted px-3 py-1 rounded-full">Revisão • sem moedas</span>
             ) : (
               <CoinDisplay amount={earnedCoins} size="sm" />
             )}
