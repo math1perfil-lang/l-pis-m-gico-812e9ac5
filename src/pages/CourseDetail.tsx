@@ -166,19 +166,19 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                 />
               )
             ) : (
-              <div className="relative aspect-video flex flex-col justify-end rounded-2xl overflow-hidden shadow-card animate-fade-in">
+              <div className="relative min-h-[17rem] sm:min-h-[22rem] flex flex-col justify-end rounded-2xl overflow-hidden shadow-card animate-fade-in">
                 <img src={group.videoThumbnail} alt={group.videoTitle} className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/60 to-foreground/20" />
-                <div className="relative p-4 sm:p-6 pt-16">
+                <div className="relative p-5 sm:p-6 pt-20">
                   <span className="px-3 py-1 rounded-full text-xs font-bold gradient-primary text-primary-foreground mb-3 inline-block">
                     Grupo {currentIndex + 1} • Vídeo {group.videoDurationLabel}
                   </span>
                   <h2 className="text-2xl font-bold text-white mb-1">{group.videoTitle}</h2>
                   <p className="text-white/80 mb-4 text-sm">{group.videoObjective}</p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     <Button variant="hero" onClick={() => setShowVideo(true)}>
                       <Play className="w-5 h-5 mr-2" />
-                      {videoWatched ? "Rever vídeo" : "Assistir vídeo"}
+                      {videoWatched || groupCompleted ? "Rever vídeo" : "Assistir vídeo"}
                     </Button>
                     {videoWatched && !groupCompleted && (
                       <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90">
@@ -187,7 +187,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                       </Button>
                     )}
                     {groupCompleted && (
-                      <div className="flex items-center gap-2">
+                      <>
                         <span className="inline-flex items-center gap-2 bg-accent/90 text-accent-foreground px-4 py-2 rounded-full font-bold whitespace-nowrap">
                           <CheckCircle2 className="w-5 h-5" /> Grupo concluído
                         </span>
@@ -195,7 +195,7 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                           <BookOpen className="w-5 h-5 mr-2" />
                           Refazer atividades
                         </Button>
-                      </div>
+                      </>
                     )}
                   </div>
                 </div>

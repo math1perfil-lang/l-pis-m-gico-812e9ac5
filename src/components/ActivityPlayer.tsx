@@ -273,7 +273,7 @@ export const ActivityPlayer = ({
             </div>
           )}
           {isReading && (
-            <div className="mb-2 rounded-2xl border-2 border-primary/30 bg-secondary/40 p-5">
+            <div className="mb-2 rounded-2xl bg-secondary/40 p-5">
               {currentActivity.passageTitle && (
                 <h4 className="text-xl font-extrabold text-foreground mb-3">
                   {currentActivity.passageTitle}
@@ -294,7 +294,7 @@ export const ActivityPlayer = ({
             </div>
           )}
           {basePassage && (
-            <details className="mb-4 rounded-2xl border-2 border-primary/30 bg-secondary/40 p-4">
+            <details className="mb-4 rounded-2xl bg-secondary/40 p-4">
               <summary className="cursor-pointer font-bold text-primary flex items-center gap-2">
                 <BookOpen className="w-4 h-4" /> Reler o texto
               </summary>

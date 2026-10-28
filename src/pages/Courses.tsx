@@ -8,6 +8,7 @@ import { AgeSelector } from "@/components/AgeSelector";
 import { CoinDisplay } from "@/components/CoinDisplay";
 import { courses, getCoursesForAge } from "@/data/courses";
 import { useCoins } from "@/hooks/useCoins";
+import { useAllCoursesProgress } from "@/hooks/useAllCoursesProgress";
 
 const categories = [
   "Todos",
@@ -23,6 +24,7 @@ const categories = [
 export default function Courses() {
   const navigate = useNavigate();
   const { balance: totalCoins } = useCoins();
+  const { summaryFor } = useAllCoursesProgress();
   const [selectedAge, setSelectedAge] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("Todos");
   const [searchQuery, setSearchQuery] = useState("");
@@ -96,7 +98,9 @@ export default function Courses() {
         {/* Courses grid */}
         {filteredCourses.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredCourses.map((course, index) => (
+            {filteredCourses.map((course) => {
+              const prog = summaryFor(course);
+              return (
               <CourseCard
                 key={course.id}
                 id={course.id}
@@ -106,13 +110,14 @@ export default function Courses() {
                 ageRange={`${course.ageMin}-${course.ageMax}`}
                 duration={course.duration}
                 coinsReward={course.coinsReward}
-                totalLessons={course.totalLessons}
-                completedLessons={index % 3 === 0 ? Math.floor(course.totalLessons * 0.5) : 0}
-                progress={index % 3 === 0 ? 50 : 0}
+                totalLessons={prog.total}
+                completedLessons={prog.completed}
+                progress={prog.percent}
                 category={course.category}
                 onStart={() => navigate(`/course/${course.id}`)}
               />
-            ))}
+              );
+            })}
           </div>
         ) : (
           <div className="text-center py-16">

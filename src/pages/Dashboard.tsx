@@ -25,11 +25,13 @@ import { courses, getCoursesForAge } from "@/data/courses";
 import { useCoins } from "@/hooks/useCoins";
 import { useAuth } from "@/hooks/useAuth";
 import { useProfile } from "@/hooks/useProfile";
+import { useAllCoursesProgress } from "@/hooks/useAllCoursesProgress";
 import { cn } from "@/lib/utils";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const { balance: totalCoins, xp, level, xpCurrent, xpToNextLevel, streakDays } = useCoins();
+  const { summaryFor } = useAllCoursesProgress();
   const { profile } = useProfile();
   const { signOut } = useAuth();
   const userData = {
@@ -252,7 +254,9 @@ export default function Dashboard() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredCourses.slice(0, 6).map((course, index) => (
+              {filteredCourses.slice(0, 6).map((course, index) => {
+                const prog = summaryFor(course);
+                return (
                 <CourseCard
                   key={course.id}
                   id={course.id}
@@ -262,14 +266,15 @@ export default function Dashboard() {
                   ageRange={`${course.ageMin}-${course.ageMax}`}
                   duration={course.duration}
                   coinsReward={course.coinsReward}
-                  totalLessons={course.totalLessons}
-                  completedLessons={index === 0 ? 5 : index === 1 ? 3 : 0}
-                  progress={index === 0 ? 50 : index === 1 ? 30 : 0}
+                  totalLessons={prog.total}
+                  completedLessons={prog.completed}
+                  progress={prog.percent}
                   category={course.category}
                   isLocked={index > 3}
                   onStart={() => navigate(`/course/${course.id}`)}
                 />
-              ))}
+                );
+              })}
             </div>
           </section>
 
