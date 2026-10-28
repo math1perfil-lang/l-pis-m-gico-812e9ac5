@@ -12,13 +12,13 @@ import { fromText, IMG_CRIANCAS, IMG_LETRAS, IMG_LIVRO, match, mc, read } from "
 // Só os dois trechinhos citados no grupo 4 são cópia fiel e levam a fonte completa.
 
 const IMG = "/ilustracoes/portugues9";
-const IMG_ABERTURA = `${IMG}/abertura.png`;
-const IMG_BOLHA = `${IMG}/bolha.png`;
-const IMG_LUPA = `${IMG}/lupa.png`;
-const IMG_FIQUE = `${IMG}/fique-ligado.png`;
-const IMG_ESPALHA = `${IMG}/espalha.png`;
-const IMG_COMPARTILHA = `${IMG}/compartilhar.png`;
-const IMG_MAPA = `${IMG}/mapa-baloes.png`;
+const IMG_ABERTURA = `${IMG}/abertura.jpg`;
+const IMG_BOLHA = `${IMG}/bolha.jpg`;
+const IMG_LUPA = `${IMG}/lupa.jpg`;
+const IMG_FIQUE = `${IMG}/fique-ligado.jpg`;
+const IMG_ESPALHA = `${IMG}/espalha.jpg`;
+const IMG_COMPARTILHA = `${IMG}/compartilhar.jpg`;
+const IMG_MAPA = `${IMG}/mapa-baloes.jpg`;
 
 const txt = (readingId: string, ...acts: Activity[]): Activity[] =>
   acts.map((a) => fromText(readingId, a));
@@ -83,7 +83,7 @@ const g1Activities: Activity[] = [
       "Também há dois sites sobre segurança na internet: o Internet Segura e o Safernet.",
     ],
     "Baseado nas sugestões da seção “Fique ligado!” (Cereja e Vianna, Português Linguagens 9º ano, Saraiva, 2022). Ilustração original criada para este curso (Runway)."
-  ), IMG_FIQUE, "Livro, filme, fones de ouvido, museu e site de segurança na internet"),
+  ), IMG_FIQUE, "Livro com celular na capa, claquete de cinema, fones de ouvido, prédio de museu e site com escudo de segurança"),
   ...txt(
     "p9-g1-leitura2",
     withImage(
@@ -162,7 +162,7 @@ const g3Activities: Activity[] = [
       "Na entrevista, a pesquisadora conta que a pós-verdade aparece quando as pessoas compartilham o que combina com seus desejos e crenças, mesmo que desconfiem que é falso. Ela lembra que o dedo é mais rápido que o cérebro: a gente compartilha sem perguntar de onde veio a foto ou o vídeo. Uma rede social que reúne 2 bilhões de pessoas, cerca de um terço da população do mundo, torna isso ainda mais preocupante.",
     ],
     "Baseado no verbete “pós-verdade” (Academia Brasileira de Letras, Nova Palavra) e na entrevista de Pollyana Ferrari (Carta Capital, 2018). Texto reescrito. Ilustração original criada para este curso (Runway)."
-  ), IMG_COMPARTILHA, "Um polegar sobre o botão de compartilhar, mais rápido que o cérebro"),
+  ), IMG_COMPARTILHA, "Um dedo apertando o botão de compartilhar, enquanto um cérebro com lupa vem correndo atrás"),
   ...txt(
     "p9-g3-leitura",
     mc("p9-g3-a1", "O que é pós-verdade? Que relação ela tem com as fake news?", "Toque na resposta certa",
@@ -175,7 +175,7 @@ const g3Activities: Activity[] = [
       mc("p9-g3-a3", "A pesquisadora diz: “o dedo é mais rápido que o cérebro”. O que isso quer dizer e como ajuda a criar a pós-verdade?", "Toque na resposta certa",
         "As pessoas repassam antes de pensar e checar. Assim, a informação falsa se espalha e acaba virando “verdade”.",
         ["Que digitar com o dedo é mais rápido que pensar, e isso é bom.", "Que o cérebro dá ordem para o dedo checar tudo.", "Que quem tem dedos rápidos nunca erra."], "hard"),
-      IMG_COMPARTILHA, "Um polegar sobre o botão de compartilhar, mais rápido que o cérebro"),
+      IMG_COMPARTILHA, "Um dedo apertando o botão de compartilhar, enquanto um cérebro com lupa vem correndo atrás"),
     mc("p9-g3-a4", "A rede social citada reúne 2 bilhões de pessoas, cerca de um terço da população do mundo. Por que isso preocupa a pesquisadora?", "Toque na resposta certa",
       "Porque uma mentira tomada como verdade pode chegar a muita gente e causar consequências graves.",
       ["Porque a rede fica lotada e trava.", "Porque ninguém mais usa a escola.", "Porque ter muitos amigos é sempre ruim."], "medium"),
@@ -242,13 +242,13 @@ const g4Activities: Activity[] = [
       "Nesses trechos, preste atenção nas palavras fake, fake news e timeline, no pronome “as”, no verbo “são”, no pronome “te” e nas aspas de “iguais”.",
     ],
     "FERRARI, Pollyana. [Entrevista cedida a] Ana Luiza Basilio. Carta Capital, São Paulo, 17 abr. 2018. Trechos copiados. Ilustração original criada para este curso (Runway)."
-  ), IMG_MAPA, "Um mapa-múndi feito de balões de fala coloridos"),
+  ), IMG_MAPA, "Um mapa-múndi colorido, com símbolos que lembram línguas diferentes"),
   ...txt(
     "p9-g4-leitura",
     withImage(
       mc("p9-g4-a1", "As palavras fake, fake news e timeline vêm de qual língua?", "Toque na resposta certa",
         "Do inglês.", ["Do espanhol.", "Do francês.", "Do tupi."]),
-      IMG_MAPA, "Um mapa-múndi feito de balões de fala coloridos"),
+      IMG_MAPA, "Um mapa-múndi colorido, com símbolos que lembram línguas diferentes"),
     match("p9-g4-a2", "Ligue cada palavra em inglês à palavra ou expressão em português que quer dizer quase o mesmo.",
       [["fake", "falso"], ["fake news", "notícias falsas"], ["timeline", "linha do tempo"]]),
     mc("p9-g4-a3", "Por que você acha que a pesquisadora preferiu usar essas palavras em inglês em vez de palavras em português?", "Toque na resposta certa",
