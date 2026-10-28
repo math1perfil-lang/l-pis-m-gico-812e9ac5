@@ -116,6 +116,18 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
     }
   };
 
+  // Atividades em página inteira (sem a página do curso por trás, para a rolagem não conflitar)
+  if (showActivities) {
+    return (
+      <ActivityPlayer
+        activities={group.activities}
+        onComplete={handleActivitiesComplete}
+        onClose={() => setShowActivities(false)}
+        practice={groupCompleted}
+      />
+    );
+  }
+
   const selectGroup = (index: number) => {
     if (!isGroupUnlocked(index)) return;
     setCurrentIndex(index);
@@ -166,33 +178,33 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                 />
               )
             ) : (
-              <div className="relative min-h-[17rem] sm:min-h-[22rem] flex flex-col justify-end rounded-2xl overflow-hidden shadow-card animate-fade-in">
-                <img src={group.videoThumbnail} alt={group.videoTitle} className="absolute inset-0 w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/60 to-foreground/20" />
-                <div className="relative p-5 sm:p-6 pt-20">
-                  <span className="px-3 py-1 rounded-full text-xs font-bold gradient-primary text-primary-foreground mb-3 inline-block">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-card animate-fade-in">
+                <img src={group.videoThumbnail} alt={group.videoTitle} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/55 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
+                  <span className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold gradient-primary text-primary-foreground mb-1.5 sm:mb-3 inline-block">
                     Grupo {currentIndex + 1} • Vídeo {group.videoDurationLabel}
                   </span>
-                  <h2 className="text-2xl font-bold text-white mb-1">{group.videoTitle}</h2>
-                  <p className="text-white/80 mb-4 text-sm">{group.videoObjective}</p>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <Button variant="hero" onClick={() => setShowVideo(true)}>
-                      <Play className="w-5 h-5 mr-2" />
+                  <h2 className="text-lg sm:text-2xl font-bold text-white mb-1 leading-tight line-clamp-1">{group.videoTitle}</h2>
+                  <p className="hidden sm:block text-white/80 mb-4 text-sm">{group.videoObjective}</p>
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1.5 sm:mt-0">
+                    <Button variant="hero" size="sm" className="sm:h-11 sm:px-8 sm:text-base" onClick={() => setShowVideo(true)}>
+                      <Play className="w-4 h-4 mr-1.5" />
                       {videoWatched || groupCompleted ? "Rever vídeo" : "Assistir vídeo"}
                     </Button>
                     {videoWatched && !groupCompleted && (
-                      <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90">
-                        <BookOpen className="w-5 h-5 mr-2" />
+                      <Button size="sm" onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90 whitespace-nowrap">
+                        <BookOpen className="w-4 h-4 mr-1.5" />
                         Fazer {group.activities.length} atividades
                       </Button>
                     )}
                     {groupCompleted && (
                       <>
-                        <span className="inline-flex items-center gap-2 bg-accent/90 text-accent-foreground px-4 py-2 rounded-full font-bold whitespace-nowrap">
-                          <CheckCircle2 className="w-5 h-5" /> Grupo concluído
+                        <span className="inline-flex items-center gap-1.5 bg-accent/90 text-accent-foreground px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold whitespace-nowrap">
+                          <CheckCircle2 className="w-4 h-4" /> Grupo concluído
                         </span>
-                        <Button onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90 whitespace-nowrap">
-                          <BookOpen className="w-5 h-5 mr-2" />
+                        <Button size="sm" onClick={() => setShowActivities(true)} className="bg-accent hover:bg-accent/90 whitespace-nowrap">
+                          <BookOpen className="w-4 h-4 mr-1.5" />
                           Refazer atividades
                         </Button>
                       </>
@@ -200,15 +212,6 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
                   </div>
                 </div>
               </div>
-            )}
-
-            {showActivities && (
-              <ActivityPlayer
-                activities={group.activities}
-                onComplete={handleActivitiesComplete}
-                onClose={() => setShowActivities(false)}
-                practice={groupCompleted}
-              />
             )}
 
             {/* Info */}
@@ -348,6 +351,16 @@ function LegacyCourseFlow({
 
   const currentActivities = getActivitiesForLesson(course.id, lessons[currentLesson]?.id || "", course.title, course.ageMin);
 
+  if (showActivities) {
+    return (
+      <ActivityPlayer
+        activities={currentActivities}
+        onComplete={handleActivitiesComplete}
+        onClose={() => setShowActivities(false)}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 bg-card/80 backdrop-blur-lg border-b border-border z-50">
@@ -403,14 +416,6 @@ function LegacyCourseFlow({
                   </div>
                 </div>
               </div>
-            )}
-
-            {showActivities && (
-              <ActivityPlayer
-                activities={currentActivities}
-                onComplete={handleActivitiesComplete}
-                onClose={() => setShowActivities(false)}
-              />
             )}
 
             <div className="bg-card rounded-2xl p-6 shadow-card">
