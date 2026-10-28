@@ -16,6 +16,7 @@ import NotFound from "./pages/NotFound";
 import { CoinsProvider } from "./hooks/useCoins";
 import { AuthProvider } from "./hooks/useAuth";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { UpdateBanner } from "./components/UpdateBanner";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <CoinsProvider>
             <Toaster />
             <Sonner />
+            <UpdateBanner />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />

@@ -11,10 +11,16 @@ import { isBusy } from "./updateGuard";
 declare const __BUILD_ID__: string;
 
 const RUNNING = typeof __BUILD_ID__ === "string" ? __BUILD_ID__ : "dev";
-const CHECK_EVERY_MS = 15 * 60 * 1000;
+const CHECK_EVERY_MS = 5 * 60 * 1000;
 const RELOADED_KEY = "pandoorga.reloadedForBuild";
+const RETRY_AFTER_MS = 10 * 60 * 1000; // se a recarga não trouxe a versão nova, tenta de novo depois disso
+export const UPDATE_EVENT = "pandoorga:update-available";
 
 let pendingBuild: string | null = null;
+
+/** Identificador da versão que está rodando (aparece no Perfil para conferência). */
+export const runningBuildId = (): string => RUNNING;
+export const hasPendingUpdate = (): boolean => pendingBuild !== null;
 
 // Arquivo principal (com hash no nome) que está rodando agora.
 const runningAsset = (): string | null => {
@@ -60,7 +66,11 @@ const findNewerBuild = async (): Promise<string | null> => {
 
 const alreadyTriedFor = (build: string) => {
   try {
-    return localStorage.getItem(RELOADED_KEY) === build;
+    const raw = localStorage.getItem(RELOADED_KEY);
+    if (!raw) return false;
+    const [b, at] = raw.split("@");
+    // Só desiste daquela versão por alguns minutos; depois tenta de novo.
+    return b === build && Date.now() - Number(at || 0) < RETRY_AFTER_MS;
   } catch {
     return false;
   }
@@ -69,7 +79,7 @@ const alreadyTriedFor = (build: string) => {
 const hardReload = async (build: string) => {
   // Evita laço de recarregamentos se o servidor ainda entregar o arquivo antigo.
   try {
-    localStorage.setItem(RELOADED_KEY, build);
+    localStorage.setItem(RELOADED_KEY, `${build}@${Date.now()}`);
   } catch {
     /* sem armazenamento: segue mesmo assim */
   }
@@ -89,10 +99,29 @@ const hardReload = async (build: string) => {
 };
 
 const applyIfSafe = () => {
-  if (!pendingBuild || isBusy() || alreadyTriedFor(pendingBuild)) return;
+  if (!pendingBuild || alreadyTriedFor(pendingBuild)) return;
+  if (isBusy()) {
+    // Atividade/vídeo aberto: não recarrega, mas avisa que há versão nova.
+    window.dispatchEvent(new CustomEvent(UPDATE_EVENT));
+    return;
+  }
   const build = pendingBuild;
   pendingBuild = null;
   void hardReload(build);
+};
+
+/** Atualiza agora, por pedido da pessoa (botão), mesmo que a checagem automática tenha falhado. */
+export const forceUpdateNow = async (): Promise<void> => {
+  await hardReload(`manual-${Date.now()}`);
+};
+
+/** Confere agora; devolve true se havia versão nova (e já inicia a atualização). */
+export const checkNow = async (): Promise<boolean> => {
+  if (RUNNING === "dev") return false;
+  const latest = await findNewerBuild();
+  if (!latest) return false;
+  await hardReload(latest);
+  return true;
 };
 
 const check = async () => {
@@ -111,4 +140,7 @@ if (RUNNING !== "dev") {
     if (document.hidden) applyIfSafe(); // criança saiu do app: troca agora
     else void check(); // voltou para o app: confere e, se houver versão nova, atualiza
   });
+  // No iPhone, o app salvo na tela de início nem sempre dispara "visibilitychange" ao voltar.
+  window.addEventListener("focus", () => void check());
+  window.addEventListener("pageshow", () => void check());
 }
