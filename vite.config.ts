@@ -30,7 +30,13 @@ export default defineConfig(({ mode }) => ({
       },
     },
     VitePWA({
-      registerType: "prompt", // a aplicação da versão nova é feita em src/pwaUpdate.ts
+      // O app deixou de usar service worker: ele guardava uma cópia antiga do app no celular e
+      // o ícone da tela de início ficava preso na versão velha. Este modo gera um sw.js que se
+      // apaga sozinho (limpa o cache e recarrega), o que conserta os apps já instalados.
+      // A instalação na tela de início continua funcionando pelo manifest.
+      // Novas versões chegam por src/versionCheck.ts.
+      selfDestroying: true,
+      registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png", "pwa-icon-192.png", "pwa-icon-512.png"],
       manifest: {
         name: "Pandoorga - Aprenda, Jogue, Transforme",
@@ -58,11 +64,26 @@ export default defineConfig(({ mode }) => ({
         ]
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,jpg,jpeg}"],
+        // O index.html NÃO fica guardado no cache do app: ele sempre vem da rede (com cópia de
+        // reserva só para uso sem internet). Assim o app instalado nunca fica preso a uma tela
+        // antiga. Os arquivos js/css têm hash no nome, então são seguros de guardar.
+        globPatterns: ["**/*.{js,css,ico,png,svg,jpg,jpeg,webp}"],
+        navigateFallback: null,
         cleanupOutdatedCaches: true,
+        // A versão nova do service worker assume na hora, sem esperar o app ser fechado.
+        skipWaiting: true,
         clientsClaim: true,
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10 MB limit
         runtimeCaching: [
+          {
+            // Telas (index.html): rede primeiro; se estiver sem internet, usa a última cópia
+            urlPattern: ({ request }: { request: Request }) => request.mode === "navigate",
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "pages",
+              networkTimeoutSeconds: 4,
+            },
+          },
           {
             // O arquivo de versão nunca pode vir do cache
             urlPattern: ({ url }: { url: URL }) => url.pathname === "/version.json",
