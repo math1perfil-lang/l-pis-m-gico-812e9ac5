@@ -7,6 +7,8 @@ import { CoinDisplay } from "@/components/CoinDisplay";
 import { useCoins } from "@/hooks/useCoins";
 import { useAuth } from "@/hooks/useAuth";
 import { useProfile } from "@/hooks/useProfile";
+import { checkNow, forceUpdateNow, runningBuildId } from "@/versionCheck";
+import { toast } from "sonner";
 
 const settingsMenu = [
   { icon: Settings, label: "Configurações", description: "Ajuste preferências do app" },
@@ -113,6 +115,31 @@ export default function Profile() {
         <p className="text-center text-xs text-muted-foreground mt-8">
           Pandoorga v1.0.0 • Transformando educação em oportunidades
         </p>
+        <div className="text-center mt-3 space-y-2">
+          <p className="text-xs text-muted-foreground">Versão instalada: {runningBuildId()}</p>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={async () => {
+              toast.message("Procurando versão nova...");
+              const found = await checkNow();
+              if (!found) {
+                toast.success("Você já está na versão mais recente.");
+              }
+            }}
+          >
+            Verificar atualização
+          </Button>
+          <div>
+            <button
+              type="button"
+              className="text-xs text-muted-foreground underline"
+              onClick={() => void forceUpdateNow()}
+            >
+              Forçar atualização (limpar cache)
+            </button>
+          </div>
+        </div>
       </main>
     </div>
   );
