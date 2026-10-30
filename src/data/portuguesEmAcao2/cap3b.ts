@@ -1,0 +1,404 @@
+import { grupo, IMG, IMG_CRIANCAS, IMG_FLORESTA, IMG_LETRAS, IMG_LIVRO, mc, read, txt, withImage } from "./shared";
+import type { GrupoParcial } from "./shared";
+
+// Capítulo 3 (continuação): onde/aonde, poema "Quadrilha", E/I e O/U, visão crítica, artigo de opinião (II).
+
+const I = "Toque na resposta certa";
+const IMG_CASULO = `${IMG}/c3-tira-casulo.jpg`;
+const IMG_PAI = `${IMG}/c3-tira-pai.jpg`;
+const IMG_CHEFE = `${IMG}/c3-tira-chefe.jpg`;
+const IMG_ALIEN = `${IMG}/c3-tira-alien.jpg`;
+
+// ---------------------------------------------------------------------------
+// C9 — Onde, aonde, donde: tira da borboleta
+// ---------------------------------------------------------------------------
+const casulo = withImage(read("p9c3-casulo", "Tira: a lagarta professora", [
+  "Tira em 3 quadrinhos. Uma lagarta professora dá aula para um grupo de lagartinhas, com um quadro verde ao fundo.",
+  "Quadrinho 1. Lagarta professora: “Primeiro, a gente é uma lagarta e come folhas.”",
+  "Quadrinho 2. Lagarta professora: “Depois vira um casulo de onde sai uma linda borboleta.”",
+  "Quadrinho 3. Uma borboleta sai do casulo, mas as asas dela estão cobertas de logomarcas de uma marca de refrigerante, e ela diz, sorrindo: “Voe com o refrigerante Gostosão!”",
+]), IMG_CASULO, "Tira: uma borboleta sai do casulo coberta de logomarcas");
+
+const c9: GrupoParcial = grupo(
+  "Onde, aonde e donde",
+  "Usar onde, aonde, donde/de onde e em que de acordo com a norma-padrão.",
+  "Onde indica lugar, aonde pede movimento e “de onde” combina com verbos que pedem “de”. Uma tira de borboleta mostra o pronome em ação.",
+  IMG_FLORESTA,
+  [
+    casulo,
+    ...txt("p9c3-casulo",
+      withImage(mc("p9c3-g9-a1", "No segundo quadrinho foi empregado o pronome relativo “onde”: “vira um casulo de onde sai uma linda borboleta”. Qual é o antecedente desse pronome?", I,
+        "“Um casulo”.",
+        ["“Uma linda borboleta”.", "“Vira”.", "“Sai”."], "medium"), IMG_CASULO, "Tira: uma borboleta sai do casulo coberta de logomarcas"),
+      mc("p9c3-g9-a2", "Que função sintática o pronome “onde” exerce nesse contexto?", I,
+        "Adjunto adverbial (de lugar).",
+        ["Sujeito.", "Objeto direto.", "Adjunto adnominal."], "medium"),
+      mc("p9c3-g9-a3", "Por que foi empregado o pronome “onde” com a preposição “de” (“de onde”)?", I,
+        "Porque o verbo sair rege a preposição de.",
+        ["Porque “de” é sempre obrigatório antes de “onde”.", "Porque a borboleta é pequena.", "Porque o casulo é redondo."], "medium"),
+      mc("p9c3-g9-a4", "Observe o último quadrinho. O que a tira satiriza?", I,
+        "A interferência da publicidade em todos os setores da vida.",
+        ["A vida das lagartas.", "A dificuldade de voar.", "O preço dos refrigerantes."], "medium"),
+    ),
+    mc("p9c3-g9-a5", "Complete de acordo com a norma-padrão: “Eu gostaria de saber ___ vamos passear hoje.”", I,
+      "onde",
+      ["aonde", "de onde", "cujo"], "medium"),
+    mc("p9c3-g9-a6", "Complete: “Sempre me perguntam ___ vim.”", I,
+      "donde / de onde",
+      ["onde", "aonde", "em que"], "medium"),
+    mc("p9c3-g9-a7", "Complete: “Era uma família ___ todos eram calmos.”", I,
+      "em que",
+      ["aonde", "donde", "cuja"], "medium"),
+    mc("p9c3-g9-a8", "Complete: “Ela foi logo cedo ___ combinamos.”", I,
+      "aonde",
+      ["onde", "donde", "em que"], "medium"),
+    mc("p9c3-g9-a9", "Complete: “___ você pensa que vai?”", I,
+      "Aonde",
+      ["Onde", "Donde", "Em que"], "medium"),
+    mc("p9c3-g9-a10", "Complete: “Não sei ___ você quer chegar.”", I,
+      "aonde",
+      ["onde", "donde", "em que"], "medium"),
+    mc("p9c3-g9-a11", "Complete: “Você está ___?”", I,
+      "onde",
+      ["aonde", "donde", "cuja"], "medium"),
+    mc("p9c3-g9-a12", "Complete: “___ ele chegou aqui?” (de onde ele veio)", I,
+      "De onde / donde",
+      ["Aonde", "Em que", "Cujo"], "medium"),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// C10 — Semântica e discurso: poema "Quadrilha"
+// ---------------------------------------------------------------------------
+const quadrilha = read("p9c3-quadrilha", "Uma quadrilha de amores errados", [
+  "Texto inspirado no poema “Quadrilha”, com nomes trocados: a Lia amava o Caio, que amava a Duda, que amava o Hugo, que amava a Bia, que amava o Léo, que não amava ninguém.",
+  "Depois, cada um seguiu seu caminho: a Lia foi estudar fora, o Caio entrou para um time de basquete, a Duda virou DJ, o Hugo mudou de cidade, a Bia virou cantora e o Léo acabou namorando o Pedro, que não tinha entrado na história.",
+], "Inspirado em Carlos Drummond de Andrade, “Quadrilha”, Reunião (José Olympio, 1980).");
+
+const c10: GrupoParcial = grupo(
+  "Quadrilha: um poema e um encadeamento",
+  "Observar como o pronome relativo encadeia versos num poema sobre desencontros amorosos.",
+  "Um grande encadeamento de “que” liga personagens que amam a pessoa errada, como numa dança de quadrilha.",
+  IMG_LETRAS,
+  [
+    quadrilha,
+    ...txt("p9c3-quadrilha",
+      mc("p9c3-g10-a1", "O texto retrata um problema comum nos relacionamentos amorosos. Qual é?", I,
+        "O desencontro amoroso.",
+        ["O ciúme dos amigos.", "A falta de dinheiro.", "A distância entre cidades."]),
+      mc("p9c3-g10-a2", "A visão do texto sobre o amor é otimista ou pessimista? Por quê?", I,
+        "Pessimista: apresenta a ideia de que sempre se gosta da pessoa errada.",
+        ["Otimista: todos acabam felizes.", "Otimista: porque o texto termina em festa.", "Neutra: o texto não trata de amor."], "medium"),
+      mc("p9c3-g10-a3", "Que pronome relativo é empregado seis vezes no texto?", I,
+        "O pronome “que”.",
+        ["O pronome “quem”.", "O pronome “onde”.", "O pronome “cujo”."]),
+      mc("p9c3-g10-a4", "Nos versos “a Lia amava o Caio, que amava a Duda, que amava o Hugo, que amava a Bia, que amava o Léo, que não amava ninguém”, qual é o antecedente de cada “que”?", I,
+        "Caio, Duda, Hugo, Bia e Léo, nessa ordem.",
+        ["Lia, Caio, Duda, Hugo e Bia, nessa ordem.", "Todos têm o mesmo antecedente: Lia.", "Os antecedentes são os verbos “amava”."], "hard"),
+      mc("p9c3-g10-a5", "Qual é a função sintática do antecedente de cada pronome relativo?", I,
+        "Todos desempenham a função de objeto direto.",
+        ["Todos são sujeito.", "Todos são adjunto adverbial.", "Todos são predicativo."], "hard"),
+      mc("p9c3-g10-a6", "Qual é a função sintática de cada pronome relativo “que”?", I,
+        "Todos desempenham a função de sujeito.",
+        ["Todos são objeto direto.", "Todos são objeto indireto.", "Todos são adjunto adnominal."], "hard"),
+      mc("p9c3-g10-a7", "A função sintática dos pronomes relativos coincide com a dos antecedentes?", I,
+        "Não: os relativos são sujeito, e os antecedentes são objeto direto.",
+        ["Sim: todos são sujeito.", "Sim: todos são objeto direto.", "Só no último verso."], "hard"),
+      mc("p9c3-g10-a8", "O desencontro entre a função do relativo e a do antecedente confirma ou nega a visão pessimista sobre o amor? Por quê?", I,
+        "Confirma: no plano amoroso também há desencontros.",
+        ["Nega: tudo se encaixa perfeitamente.", "Nega: o amor sempre dá certo.", "Não tem relação alguma."], "hard"),
+      mc("p9c3-g10-a9", "Que relação existe entre a dança da quadrilha (festas juninas) e o encadeamento dos pronomes relativos no texto?", I,
+        "Na quadrilha cada participante se liga a outro, formando um encadeamento de pessoas, como no texto há um encadeamento de pronomes.",
+        ["Nenhuma: são coisas totalmente diferentes.", "As duas servem para pedir silêncio.", "As duas só existem no Nordeste."], "medium"),
+      mc("p9c3-g10-a10", "O texto traz a visão de que o amor nunca dá certo, pois sempre se ama a pessoa errada. Que relação há entre essa ideia e a dança da quadrilha?", I,
+        "A troca de parceiros na dança equivale à escolha do parceiro errado no plano amoroso.",
+        ["A dança mostra que todos encontram o parceiro certo.", "A dança não tem parceiros.", "A dança serve para esquecer o amor."], "medium"),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// C11 — De olho na escrita: E ou I? O ou U? (tira do pai desempregado + notícias)
+// ---------------------------------------------------------------------------
+const pai = withImage(read("p9c3-pai", "Tira: o pai e a filha", [
+  "Tira em 3 quadrinhos, em tom azulado, com um pai sentado num sofá, de cabeça baixa, e a filha adolescente ao lado.",
+  "Quadrinho 1. Filha: “Pai, por que você está triste?” Pai: “Estou sem emprego, filha.”",
+  "Quadrinho 2. Filha: “Não fique triste, pai. Você não está sozinho!”",
+  "Quadrinho 3. A filha sorri e completa: “Tem muita gente desempregada, como você, e a cada dia tem mais!” O pai olha para ela, surpreso.",
+]), IMG_PAI, "Tira: uma filha tenta consolar o pai desempregado");
+
+const noticias = read("p9c3-noticias", "Dois trechos de notícias", [
+  "Trecho I (de uma revista de conselho médico): “Na década de 50 do século passado, o conselho regional de medicina dava seus passos iniciais sob a presidência do iminente professor de Medicina Legal, detentor do registro número 001.”",
+  "Trecho II (de uma coluna de revista de negócios): “No processo de criação do meu próximo encontro de especialistas, tive o previlégio de conhecer o tataraneto de um grande empresário.”",
+], "Textos criados com base em notícias do Cremesp (2004) e da revista Exame (2022).");
+
+const c11: GrupoParcial = grupo(
+  "E ou I? O ou U?",
+  "Perceber que a escrita nem sempre corresponde à pronúncia e aprender situações em que se usa E/I e O/U.",
+  "Na fala, “filho” soa como “filhu”, mas na escrita é com O. Uma tira e dois trechos de notícias ajudam a entender o porquê.",
+  IMG_LIVRO,
+  [
+    pai,
+    ...txt("p9c3-pai",
+      withImage(mc("p9c3-g11-a1", "O pai está triste. Por quê?", I,
+        "Porque está sem emprego.",
+        ["Porque perdeu o celular.", "Porque brigou com a filha.", "Porque perdeu um jogo."]), IMG_PAI, "Tira: uma filha tenta consolar o pai desempregado"),
+      mc("p9c3-g11-a2", "No segundo quadrinho, a filha tenta consolá-lo. Que argumento usa e que sentido parece ter “sozinho”?", I,
+        "Diz que ele não está sozinho; parece querer dizer que ela está junto, que enfrentarão a situação juntos.",
+        ["Diz que o pai nunca esteve sozinho porque tem muitos amigos virtuais.", "Diz que o pai deve ficar sozinho.", "Diz que o emprego volta amanhã."], "medium"),
+      mc("p9c3-g11-a3", "No terceiro quadrinho, há uma quebra de expectativa. Qual é o sentido de “sozinho” revelado?", I,
+        "Que muitas outras pessoas também estão desempregadas, e cada vez mais; a filha, por ser jovem, talvez não perceba a gravidade e sorri, pois o pai tem companhia na situação.",
+        ["Que o pai está só no mundo.", "Que a filha também perdeu o emprego.", "Que o pai quer ficar sozinho."], "hard"),
+    ),
+    mc("p9c3-g11-a4", "Em uma leitura dramática da tira, em dupla, o que vocês devem fazer?", I,
+      "Expressar os sentimentos e os estados de espírito dos dois personagens com a voz.",
+      ["Ler em voz baixa, sem emoção alguma.", "Ler só os números dos quadrinhos.", "Ler as falas na ordem inversa."]),
+    mc("p9c3-g11-a5", "Preste atenção na pronúncia das letras E e O em “triste”, “me”, “filho”, “fique”, “sozinho”. Houve diferenças?", I,
+      "Sim, em muitos lugares do Brasil se pronuncia “tristi”, “mi”, “filhu”, “fiqui”, “sozinhu”, e as respostas dependem da região.",
+      ["Não: todos falam exatamente como se escreve.", "Não: ninguém fala essas palavras.", "Sim, mas só em outros países."], "medium"),
+    noticias,
+    ...txt("p9c3-noticias",
+      mc("p9c3-g11-a6", "Observe as fontes dos trechos. São publicações de órgãos de imprensa e/ou de instituições socialmente respeitadas? Justifique.", I,
+        "Sim: uma é de um conselho de medicina, instituição respeitada, e a outra é de uma revista conhecida.",
+        ["Não: são de blogs anônimos.", "Não: são de mensagens de celular.", "Sim, mas só porque são muito antigas."], "medium"),
+      mc("p9c3-g11-a7", "Procure as palavras “iminente” e “previlégio” no dicionário. O que se descobre quanto ao sentido e à grafia delas?", I,
+        "“Iminente” significa que está prestes a acontecer; “previlégio” não existe em português: a grafia correta é “privilégio”.",
+        ["Ambas existem exatamente como estão escritas.", "“Iminente” significa ilustre e “previlégio” significa vantagem.", "Nenhuma das duas existe."], "hard"),
+      mc("p9c3-g11-a8", "No primeiro trecho, a intenção do redator era escrever “eminente” ou “iminente”? Explique.", I,
+        "“Eminente”, que significa ilustre, importante; um “professor iminente” seria um professor prestes a acontecer, o que não faz sentido.",
+        ["“Iminente”, porque o professor ia chegar.", "Tanto faz: as duas palavras têm o mesmo sentido.", "Nenhuma das duas: o certo é “emitente”."], "hard"),
+    ),
+    mc("p9c3-g11-a9", "A escrita das palavras corresponde sempre e exatamente à maneira como as pronunciamos?", I,
+      "Não: na língua portuguesa nem sempre há correspondência entre os sons e as letras; por exemplo, as vogais átonas E e I, O e U soam igual no final, como em “mininu” (menino) e “mágua” (mágoa).",
+      ["Sim: escrevemos exatamente como falamos.", "Sim: só as palavras com “O” são diferentes.", "Não: só em palavras de outras línguas."], "hard"),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// C12 — E/I e O/U: exercícios (tira do chefe + presente do indicativo)
+// ---------------------------------------------------------------------------
+const chefe = withImage(read("p9c3-chefe", "Tira: quem será essa pessoa?", [
+  "Tira em 4 quadrinhos, com três bichos de escritório: dois colegas, um coelho e uma raposa, andando pelo corredor, e o Pipo, um castor de gravata, que vem logo atrás.",
+  "Quadrinho 1. Coelho e raposa conversam baixinho, caminhando pelo corredor.",
+  "Quadrinho 2. Coelho: “Ele é perverso, arrogante, maquiavélico, néscio e vil!” Raposa: “E ainda faz questão de ser assim!”",
+  "Quadrinho 3. Pipo escuta tudo, arregala os olhos e pensa: “Perverso... arrogante... maquiavélico... néscio... vil...”",
+  "Quadrinho 4. Pipo, de braços cruzados, conclui: “Ah! Todas essas palavras querem dizer a mesma coisa: ‘chefe’!”",
+]), IMG_CHEFE, "Tira: colegas de trabalho falam mal de alguém e Pipo conclui que é o chefe");
+
+const c12: GrupoParcial = grupo(
+  "Grafia: contribui, atue, destrói",
+  "Aplicar as regras de uso de E/I e O/U ao escrever verbos no presente do indicativo e no subjuntivo.",
+  "Verbos terminados em -uir, -air e -oer levam I; os terminados em -uar e -oar levam E. Uma tira sobre o chefe ajuda a treinar.",
+  IMG_LETRAS,
+  [
+    read("p9c3-g12-regras", "E ou I? O ou U? Resumo", [
+      "Emprega-se E: nas formas dos verbos terminados em -oar e -uar (abençoe, habitue) e no prefixo ante- (antes: antecipar, antediluviano).",
+      "Emprega-se I: nas formas dos verbos terminados em -air, -oer e -uir (subtrai, condói, possui); no prefixo anti- (contra: antiestético, antiofídico); e no plural das terminações -al, -ol, -ul (casais, anzóis, azuis).",
+      "Emprega-se O: no final de palavras átonas (leço, mito, foto) e nas terminações -oa, -ola, -olo (mágoa, silvícola, êmbolo). Emprega-se U: no final de algumas palavras terminadas com S (bônus, ônibus) e nas terminações -ua, -ula, -ulo (água, vírgula, pêndulo).",
+    ]),
+    chefe,
+    ...txt("p9c3-chefe",
+      withImage(mc("p9c3-g12-a1", "Considerando a fala do Pipo no último quadrinho, a quem os colegas se referiam, na opinião dele?", I,
+        "Ao chefe deles.",
+        ["Ao porteiro do prédio.", "A um cliente.", "A um novo colega."]), IMG_CHEFE, "Tira: colegas de trabalho falam mal de alguém e Pipo conclui que é o chefe"),
+      mc("p9c3-g12-a2", "As características atribuídas à pessoa são positivas ou negativas? Explique.", I,
+        "Negativas: por exemplo, perverso significa “malvado” e arrogante significa “presunçoso”.",
+        ["Positivas: são elogios ao chefe.", "Neutras: não dizem nada sobre a pessoa.", "Positivas: porque terminam com exclamação."], "medium"),
+      mc("p9c3-g12-a3", "No que consiste o humor da tira?", I,
+        "No fato de o Pipo, ao ouvir uma série de características negativas de alguém desconhecido, entender que todas as palavras são sinônimas de “chefe”.",
+        ["No fato de o chefe aparecer de surpresa.", "No fato de os colegas falarem em voz alta.", "No fato de o Pipo não conhecer as palavras."], "medium"),
+    ),
+    mc("p9c3-g12-a4", "Qual é a grafia correta: “Ele contribue” ou “Ele contribui” para o crescimento da equipe?", I,
+      "Contribui.",
+      ["Contribue.", "Contribuí.", "Contribúe."]),
+    mc("p9c3-g12-a5", "Complete no presente do indicativo ou do subjuntivo, atento à grafia: “Talvez ele ___ na nova montagem da peça.” (atuar)", I,
+      "atue",
+      ["atui", "atua-se", "atúe"], "medium"),
+    mc("p9c3-g12-a6", "Complete: “O uso de aerossóis ___ a camada de ozônio.” (destruir)", I,
+      "destrói",
+      ["destroe", "destruí", "destrói-se"], "medium"),
+    mc("p9c3-g12-a7", "Complete: “Ele ___ uma biblioteca invejável.” (possuir)", I,
+      "possui",
+      ["possue", "possuí", "possúe"], "medium"),
+    mc("p9c3-g12-a8", "Complete: “Por favor, não ___ dele!” (caçoar)", I,
+      "caçoe",
+      ["caçoi", "caçoa", "caçoí"], "medium"),
+    mc("p9c3-g12-a9", "Complete: “Ai! Como esse machucado ___!” (doer)", I,
+      "dói",
+      ["doe", "doí", "doi-se"], "medium"),
+    mc("p9c3-g12-a10", "Complete: “Será que você me ___ nos seus planos?” (incluir)", I,
+      "inclui",
+      ["inclue", "incluí", "incluie"], "medium"),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// C13 — Ortografia: formas adequadas e palavras com grafia errada
+// ---------------------------------------------------------------------------
+const c13: GrupoParcial = grupo(
+  "Qual é a grafia certa?",
+  "Escolher a grafia adequada à norma-padrão e identificar palavras escritas de forma errada.",
+  "Empecilho ou impecilho? Mexerico ou mixirico? Praticamos a escrita correta de palavras que costumam gerar dúvidas.",
+  IMG_LIVRO,
+  [
+    mc("p9c3-g13-a1", "Qual é a forma adequada: “empecilho” ou “impecilho”?", I,
+      "Empecilho.",
+      ["Impecilho.", "Empicilho.", "Impicilho."]),
+    mc("p9c3-g13-a2", "Qual é a forma adequada: “quasi” ou “quase”?", I,
+      "Quase.",
+      ["Quasi.", "Quaze.", "Cuase."]),
+    mc("p9c3-g13-a3", "Qual é a forma adequada: “senão” ou “sinão”?", I,
+      "Senão.",
+      ["Sinão.", "Cenão.", "Sinaum."]),
+    mc("p9c3-g13-a4", "Qual é a forma adequada: “mixirico” ou “mexerico”?", I,
+      "Mexerico.",
+      ["Mixirico.", "Mexirico.", "Mixerico."]),
+    mc("p9c3-g13-a5", "Em “nódoa – tribo – engolir – tussir – polir”, qual palavra está errada e como se escreve?", I,
+      "“Tussir” está errada: tossir.",
+      ["“Tribo” está errada: trivo.", "“Engolir” está errada: ingolir.", "“Nódoa” está errada: nódua."], "medium"),
+    mc("p9c3-g13-a6", "Em “abolir – amêndoa – amuntuar – boate – caçoar”, qual palavra está errada e como se escreve?", I,
+      "“Amuntuar” está errada: amontoar.",
+      ["“Boate” está errada: boati.", "“Amêndoa” está errada: amêndua.", "“Abolir” está errada: abulir."], "medium"),
+    mc("p9c3-g13-a7", "Em “bueiro – entupir – tábua – tostão – sutaque”, qual palavra está errada e como se escreve?", I,
+      "“Sutaque” está errada: sotaque.",
+      ["“Tostão” está errada: tustão.", "“Tábua” está errada: táboa.", "“Entupir” está errada: entopir."], "medium"),
+    mc("p9c3-g13-a8", "Em “polenta – poleiro – muleque – mosquito – zoar”, qual palavra está errada e como se escreve?", I,
+      "“Muleque” está errada: moleque.",
+      ["“Polenta” está errada: pulenta.", "“Mosquito” está errada: muskito.", "“Zoar” está errada: zuar."], "medium"),
+    mc("p9c3-g13-a9", "Em “malcriado – mal-estar – auferir – mal-caráter – autuar”, qual palavra está errada e como se escreve?", I,
+      "“Mal-caráter” está errada: mau-caráter.",
+      ["“Auferir” está errada: aferir.", "“Autuar” está errada: atuar.", "“Malcriado” está errada: mau-criado."], "hard"),
+    mc("p9c3-g13-a10", "Em “caldaloso – autêntico – alface – almofada – almoço”, qual palavra está errada e como se escreve?", I,
+      "“Caldaloso” está errada: caudaloso.",
+      ["“Alface” está errada: auface.", "“Almoço” está errada: aumoço.", "“Autêntico” está errada: altêntico."], "hard"),
+    mc("p9c3-g13-a11", "Em “aurífero – aucalino – augusto – austero – álcool”, qual palavra está errada e como se escreve?", I,
+      "“Aucalino” está errada: alcalino.",
+      ["“Augusto” está errada: algusto.", "“Austero” está errada: alstero.", "“Aurífero” está errada: alrífero."], "hard"),
+    mc("p9c3-g13-a12", "Em “mautrapilho – malvadeza – sauna – mal-acostumado – mau-olhado”, qual palavra está errada e como se escreve?", I,
+      "“Mautrapilho” está errada: maltrapilho.",
+      ["“Sauna” está errada: salna.", "“Malvadeza” está errada: mauvadeza.", "“Mau-olhado” está errada: mal-olhado."], "hard"),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// C14 — Para ler e escrever com visão crítica: confronto de pontos de vista
+// ---------------------------------------------------------------------------
+const doze = read("p9c3-doze", "12 pontos positivos das redes sociais", [
+  "Um texto de site apresenta pontos positivos das redes sociais, tantas vezes criticadas. Entre eles:",
+  "1. Reencontrar amigos de infância: quase todo mundo já achou um velho colega da escola ou da vizinhança pela rede, e é mágico retomar o contato.",
+  "2. Estar perto, mesmo que distante fisicamente: quem se muda para outro estado ou continente pode se fazer presente postando as experiências da viagem e acompanhar o dia a dia dos entes queridos em tempo real, amenizando a saudade.",
+  "3. Denunciar agressores: muitas vezes a justiça tarda, mas a rede abriu um novo canal de denúncias; a violência pode ter seus responsáveis amplamente divulgados e, depois, capturados.",
+  "5. Adquirir conhecimento: as redes funcionam como filtro de artigos, porque as pessoas compartilham o que as interessa.",
+  "9. Acabar com a espera: na fila do banco ou na sala de espera, dá para ver as novidades e o tempo passa mais rápido.",
+  "10. Poder de mobilização: para um protesto, um evento ou doações de sangue para um amigo, a rede espalha o apelo e junta voluntários; um simples post pode salvar uma vida.",
+  "11. Emocionar-se: um vídeo de Natal ou o depoimento de uma mãe mostram que a internet, tão impessoal, também toca corações.",
+], "Baseado em “12 pontos positivos das redes sociais na sua vida”, O Segredo, 1º nov. 2017.");
+
+const c14: GrupoParcial = grupo(
+  "Pontos de vista sobre o mesmo fato",
+  "Comparar três textos (selfies, a convivência com a internet e os pontos positivos das redes) e perceber que o ponto de vista depende do objetivo de quem escreve.",
+  "Um mesmo assunto pode ser visto de jeitos muito diferentes. Comparamos três textos sobre as redes e a internet.",
+  IMG_CRIANCAS,
+  [
+    doze,
+    ...txt("p9c3-doze",
+      mc("p9c3-g14-a1", "Qual é o objetivo do texto “12 pontos positivos das redes sociais”?", I,
+        "Apresentar pontos positivos das redes sociais, tantas vezes criticadas.",
+        ["Criticar o uso de celulares.", "Ensinar a pesquisar na internet.", "Anunciar um produto."]),
+      mc("p9c3-g14-a2", "O artigo “Selfies” diz que fotografar-se na viagem pode ser fugir das próprias sensações. Em que trecho do outro texto se explicita uma visão diferente sobre postar fotos?", I,
+        "No item 2, “Estar perto, mesmo que distante fisicamente”.",
+        ["No item 9, “Acabar com a espera”.", "No item 11, “Emocionar-se”.", "No item 1, “Reencontrar amigos de infância”."], "medium"),
+      mc("p9c3-g14-a3", "Em que consiste a diferença de pontos de vista entre os dois textos?", I,
+        "O artigo “Selfies” defende que postar selfies esvazia as experiências reais; o outro vê postar fotos como uma forma de aproximar pessoas que se gostam e estão distantes.",
+        ["Os dois defendem exatamente a mesma ideia.", "O primeiro defende as selfies e o segundo as condena.", "Os dois falam de assuntos diferentes."], "hard"),
+      mc("p9c3-g14-a4", "No artigo “A convivência com a internet”, Rosely Sayão fala da agressividade e da violência em comentários. Qual ponto do texto “12 pontos…” também fala de violência, mas de um jeito que torna as redes úteis?", I,
+        "O ponto 3, “Denunciar agressores”, que defende que as redes facilitam denunciar agressões.",
+        ["O ponto 5, “Adquirir conhecimento”.", "O ponto 9, “Acabar com a espera”.", "O ponto 1, “Reencontrar amigos”."], "medium"),
+      mc("p9c3-g14-a5", "Um dos três textos apresenta um ponto de vista mais correto ou verdadeiro? Ou todos apresentam pontos válidos?", I,
+        "Todos apresentam pontos válidos, cada um com seu objetivo e sua situação de produção.",
+        ["Só o primeiro está certo.", "Só o último está certo.", "Nenhum tem pontos válidos."], "medium"),
+      mc("p9c3-g14-a6", "Qual dos pontos do texto você destacaria por se identificar com ele? Por quê?", I,
+        "O ponto 10 (poder de mobilização), porque mostra que um post pode ajudar pessoas de verdade.",
+        ["Nenhum, porque redes sociais não servem para nada.", "O ponto 9, porque assim eu nunca preciso conversar com ninguém.", "Nenhum, porque sempre discordo de tudo."]),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// C15 — Artigo de opinião (II): análise de um trecho e variações do gênero
+// ---------------------------------------------------------------------------
+const clube = read("p9c3-clube", "Clube de leitura de jovens", [
+  "Depois de assistir a uma animação sobre uma menina que larga os estudos e os sonhos para cuidar da casa, um grupo de alunas de uma escola estadual do interior de São Paulo percebeu que aquela história não era ficção: ela é vivida de forma predominante por mulheres negras.",
+  "Com o apoio da professora, as meninas criaram um clube de leitura que usa redes sociais, jogos, pesquisas e cafés literários on-line para dar visibilidade a escritoras negras e estimular a leitura dos livros delas. A iniciativa ficou entre as 50 premiadas num desafio nacional de projetos escolares. Uma das alunas, de 16 anos, diz querer que outras pessoas leiam essa literatura e vejam que também podem alcançar seus objetivos.",
+], "Baseado em Helisa Ignácio, “Com clube de leitura, jovens querem inspirar trajetórias de meninas negras”, Criativos da Escola, 1º abr. 2021.");
+
+const c15: GrupoParcial = grupo(
+  "Artigo de opinião: estilos e variações",
+  "Analisar como Marcelo Coelho constrói sua opinião e entender que o artigo de opinião admite variações.",
+  "Afirmar e avaliar, usar a primeira pessoa do plural e do singular, citar a experiência pessoal: são recursos para persuadir. E nem todo artigo segue o mesmo molde.",
+  IMG_LETRAS,
+  [
+    ...txt("p9c3-selfies",
+      mc("p9c3-g15-a1", "Na primeira frase do trecho (“Muita gente se irrita, e com razão, com o uso indiscriminado dos celulares”), qual é a afirmação e como se expressa a avaliação sobre ela?", I,
+        "A afirmação é que muita gente se irrita com o uso indiscriminado dos celulares; a avaliação aparece em “e com razão”, entre vírgulas.",
+        ["A afirmação é que os celulares são caros; a avaliação é “indiscriminado”.", "A afirmação é que ninguém usa celular; a avaliação é “muita gente”.", "Não há afirmação, só uma pergunta."], "medium"),
+      mc("p9c3-g15-a2", "No terceiro período, o autor usa a primeira pessoa do plural. Que termo confirma isso e que efeito produz?", I,
+        "A forma verbal “somos” (“somos invadidos”); cria aproximação e identificação com o leitor, como se todos fôssemos invadidos por imagens.",
+        ["A forma “servem”; cria distância do leitor.", "A forma “irrita”; mostra raiva do leitor.", "A palavra “gente”; indica pessoas desconhecidas."], "medium"),
+      mc("p9c3-g15-a3", "Em seguida, o autor usa a primeira pessoa do singular e cita uma experiência pessoal como argumento. Que palavras indicam isso e que experiência é essa?", I,
+        "O verbo “vejo” e o pronome “meus” (“meus filhos”); ele observa que os filhos acham ridículo tirar e postar selfies, o que confirma sua posição.",
+        ["O verbo “somos” e o pronome “nós”; ele conta uma viagem.", "O verbo “serve” e o pronome “eles”; ele fala de gatos.", "As palavras “dez” e “doze”; ele fala da sua idade."], "hard"),
+    ),
+    mc("p9c3-g15-a4", "O artigo de Marcelo Coelho tem estrutura e linguagem diferentes do de Rosely Sayão. Quais afirmações se referem a cada um? a) Conteúdo pessoal sem relação explícita com a profissão do autor. b) Conteúdo pessoal com argumentos ligados à experiência profissional. c) Expõe um problema e apresenta alternativas. d) Constrói humor com situações do cotidiano.", I,
+      "a) e d) são de Marcelo Coelho; b) e c) são de Rosely Sayão.",
+      ["a) e c) são de Marcelo Coelho; b) e d) são de Rosely Sayão.", "a) e b) são de Marcelo Coelho; c) e d) são de Rosely Sayão.", "Todas são de Marcelo Coelho."], "hard"),
+    mc("p9c3-g15-a5", "O quadro “Artigo de opinião: construção e recursos expressivos” do capítulo anterior vale também para o artigo estudado neste capítulo? Explique.", I,
+      "Sim, em linhas gerais: as características do gênero se mantêm, ainda que haja diferenças de estilo e de modo de apresentar o ponto de vista.",
+      ["Não: os dois textos são de gêneros diferentes.", "Não: nada do quadro vale para este artigo.", "Sim: porque os dois textos são idênticos."], "medium"),
+    mc("p9c3-g15-a6", "Existe um único padrão para os artigos de opinião? Que tipo de variação parece haver?", I,
+      "Não: o autor pode se posicionar de forma mais ou menos pessoal, em primeira ou terceira pessoa, com tom irônico, agressivo ou conciliador, usando argumentos variados, inclusive da experiência pessoal.",
+      ["Sim: todos seguem exatamente o mesmo modelo.", "Sim: todos usam apenas a terceira pessoa.", "Não: mas todos têm o mesmo tom e os mesmos argumentos."], "medium"),
+    mc("p9c3-g15-a7", "O que é indispensável no artigo de opinião, que o caracteriza como tal?", I,
+      "A defesa de um ponto de vista sobre determinado tema, fundamentada em argumentos consistentes.",
+      ["O uso de gírias e de emojis.", "A presença de personagens e de enredo.", "A rima e a métrica."]),
+    clube,
+    ...txt("p9c3-clube",
+      mc("p9c3-g15-a8", "Os artigos “Selfies” e “A convivência com a internet” focam bastante nos aspectos negativos do mundo digital. E o texto sobre o clube de leitura? Explique.", I,
+        "Não: ele destaca um uso muito positivo das redes, pois foi por meio delas que as jovens criaram a iniciativa premiada.",
+        ["Sim: também só critica o mundo digital.", "Sim: afirma que as redes não servem para ler.", "Não: porque o texto não fala de redes."], "medium"),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// C16 — Passando a limpo: tira do alienígena
+// ---------------------------------------------------------------------------
+const alien = withImage(read("p9c3-alien", "Tira: o garoto, o alienígena e o castigo", [
+  "Tira em 3 quadrinhos, com um alienígena verde de nave, um garoto e a mãe dele.",
+  "Quadrinho 1. O alienígena, na nave, diz: “Nossa frota está pronta para invadir a Terra!”",
+  "Quadrinho 2. O garoto, na rua, aponta para o céu e diz ao alienígena: “O planeta que você procura fica lá no fim da galáxia!” O alienígena parte para longe.",
+  "Quadrinho 3. A mãe, de braços cruzados, diz ao garoto: “Salvar o planeta não importa, mocinho! Mentiu para uma visita? Está de castigo!”",
+]), IMG_ALIEN, "Tira: um garoto engana um alienígena e leva castigo da mãe");
+
+const c16: GrupoParcial = grupo(
+  "Passando a limpo: a tira do alienígena",
+  "Interpretar uma tira usando o que aprendeu: quebra de expectativa, valores e relações sintáticas.",
+  "Uma tira com alienígena e castigo pede leitura atenta: quem quebra a expectativa, que valores a mãe tem e o que significam as orações.",
+  IMG_FLORESTA,
+  [
+    alien,
+    ...txt("p9c3-alien",
+      withImage(mc("p9c3-g16-a1", "É possível afirmar que, no terceiro quadrinho, ocorre uma quebra de expectativa que provoca o humor. Ela ocorre:", I,
+        "Com a atitude da mãe, que castigou o filho por ter mentido ao alienígena.",
+        ["Com a não concretização da invasão.", "Com a amizade entre o garoto e o alienígena.", "Com a mudança de rota das naves."], "medium"), IMG_ALIEN, "Tira: um garoto engana um alienígena e leva castigo da mãe"),
+      mc("p9c3-g16-a2", "No terceiro quadrinho, a mãe coloca o filho de castigo. Em relação aos valores dela, podemos dizer que ela:", I,
+        "Põe a verdade sempre em primeiro lugar.",
+        ["Desvaloriza a segurança de seus semelhantes.", "É intransigente com o filho em tudo.", "Prefere o heroísmo à verdade."], "medium"),
+      mc("p9c3-g16-a3", "Leia as afirmações. I. A expressão “para invadir a Terra” complementa o sentido de “pronta”, com ideia de finalidade. II. A oração “que você procura” delimita um planeta entre muitos outros. III. Em “Mentiu para uma visita? Está de castigo!”, o verbo “mentiu” traz subentendida uma ideia de condição. IV. “Salvar o planeta não importa” tem o mesmo sentido de “a salvação do planeta (feita por você) não importa”. Pode-se considerar correto o que se afirma em:", I,
+        "Todas.",
+        ["I e II apenas.", "I, II e III.", "III e IV apenas."], "hard"),
+    ),
+  ]
+);
+
+export const cap3bGrupos: GrupoParcial[] = [c9, c10, c11, c12, c13, c14, c15, c16];
