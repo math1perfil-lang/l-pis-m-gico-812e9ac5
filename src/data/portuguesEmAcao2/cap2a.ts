@@ -1,0 +1,339 @@
+import { grupo, IMG, IMG_CRIANCAS, IMG_LETRAS, IMG_LIVRO, mc, read, txt, withImage } from "./shared";
+import type { GrupoParcial } from "./shared";
+
+// Capítulo 2 — "Entre o real e o ideal" (crônica, métricas das redes, orações subordinadas substantivas).
+// Cada pergunta/item do livro virou exatamente uma atividade. Textos reescritos com palavras próprias.
+
+const I = "Toque na resposta certa";
+const IMG_TIRA_REDES = `${IMG}/c2-tira-redes.jpg`;
+const CAP_TIRA = "Tira: uma coruja pensa nas redes sociais";
+
+// ---------------------------------------------------------------------------
+// A1 — A crônica "Perfis de redes sociais são retratos ideais de nós mesmos" (parte 1)
+// ---------------------------------------------------------------------------
+const a1: GrupoParcial = grupo(
+  "Retratos ideais de nós mesmos",
+  "Ler uma crônica sobre perfis de redes sociais e entender o que o narrador observa e conclui.",
+  "Um cronista visita perfis de redes sociais e repara numa foto de atriz famosa entre as fotos de uma moça. O que isso diz sobre o real e o ideal?",
+  IMG_CRIANCAS,
+  [
+    read("p9c2-cronica", "Perfis de redes sociais são retratos ideais de nós mesmos", [
+      "1. Desde as “priscas eras” do Orkut, o narrador percebe um fenômeno. Ao entrar no perfil de uma moça, ele vê fotos dela em várias fases da vida: criança, vestida de odalisca num Carnaval “amarelado” do século 20; adulta, com o cachorro na praia; adolescente, com a turma na piscina; ao lado do namorado, numa cabine de fotos 3 × 4.",
+      "2. De repente, uma foto chama o olhar dele: “como ela saiu bem nessa foto!”. Só um segundo depois ele percebe o engano: quem saiu bem não era a moça, mas uma atriz famosa (como Penélope Cruz, Marilyn Monroe, Sarah Jessica Parker ou Sharon Stone), cuja imagem foi “contrabandeada” para o álbum por causa de alguma semelhança com a dona do perfil.",
+      "3. No começo, o narrador sentia pena e “vergonha alheia”: achava que a moça tinha delírios de grandeza, de beleza, e que não sabia lidar com a realidade.",
+      "4. “Aos poucos, contudo”, ele chegou a uma constatação óbvia: todo perfil de rede social é um retrato ideal de nós mesmos. Quando ele posta o link de um filme de Woody Allen, cita uma frase de Nietzsche ou até mostra um churrasco, também está se editando, tentando emoldurar seus defeitos, qualidades, ansiedades e frustrações de um jeito que valorize o quadro: engraçado, profundo, hedonista?",
+      "5. “Pensando bem”, nem é preciso ir até as redes. Quando nos vestimos, damos uma opinião ou caminhamos de peito aberto ou de olhos no chão, também negociamos entre o real e o ideal. Há pobres que se vestem de ricos, ricos que se vestem de pobres, feiosos que entram num restaurante crentes de que são George Clooney e belos que andam por aí mais parecidos com Tim Burton e Zezé Macedo. No fim, somos um meio-termo entre o ator e o roteiro que tentamos escrever.",
+      "6. “Hoje, portanto”, ele admira as moças que põem fotos de atrizes entre as suas: vê ali ousadia e esperança, e não um delírio; vê a capacidade de se aceitar na mistura entre o que se é e o que se gostaria de ser.",
+    ], "Baseado em Antonio Prata, “Perfis de redes sociais são retratos ideais de nós mesmos”, Folha de S.Paulo, 4 jul. 2012."),
+    ...txt("p9c2-cronica",
+      mc("p9c2-g1-a1", "O texto trata de um fenômeno que se difundiu em todas as faixas etárias. Qual é ele?", I,
+        "Estar ligado às redes sociais.",
+        ["Colecionar discos antigos.", "Fazer exercícios em academias.", "Viajar para a Europa."]),
+      mc("p9c2-g1-a2", "O narrador fala das “priscas eras do Orkut”. Que avaliação a palavra “priscas” revela sobre essa rede social?", I,
+        "Que ela está ultrapassada, é antiquada.",
+        ["Que ela é a melhor rede de todas.", "Que ela é muito nova.", "Que ela só é usada por famosos."]),
+      mc("p9c2-g1-a3", "O que as fotos da moça retratam?", I,
+        "Várias fases da vida dela: infância, adolescência e fase adulta.",
+        ["Só paisagens de viagem.", "Apenas fotos de atrizes famosas.", "Somente o cachorro dela."]),
+      mc("p9c2-g1-a4", "Que surpresa o narrador tem ao olhar as fotos?", I,
+        "Ver a foto de uma atriz famosa entre as fotos da moça.",
+        ["Descobrir que a moça é a prima dele.", "Perceber que as fotos estavam apagadas.", "Ver que a moça fechou o perfil."]),
+      mc("p9c2-g1-a5", "O narrador diz ter sentido “vergonha alheia”. Qual é o sentido dessa expressão no contexto?", I,
+        "Ele se coloca no lugar da moça e sente vergonha por ela, achando que ela tinha delírios e não percebia o significado do gesto.",
+        ["Ele sentiu vergonha por ter entrado no perfil dos outros.", "Ele ficou com vergonha de não conhecer a atriz.", "Ele sentiu vergonha porque a foto estava borrada."], "medium"),
+      mc("p9c2-g1-a6", "Várias personalidades são citadas na crônica. Qual é a melhor atitude para descobrir quem são as que você não conhece?", I,
+        "Pesquisar o nome e a profissão de cada uma.",
+        ["Ignorar o trecho em que elas aparecem.", "Supor que todas são cantoras.", "Perguntar só a quem não as conhece."]),
+      mc("p9c2-g1-a7", "Que profissão exercem ou pelo que se tornaram conhecidas as personalidades citadas?", I,
+        "Penélope Cruz, Marilyn Monroe, Sarah Jessica Parker, Sharon Stone e Zezé Macedo: atrizes; Woody Allen e Tim Burton: cineastas; Nietzsche: filósofo; George Clooney: ator e cineasta.",
+        ["Todas são cantoras e dançarinas.", "Todas são jogadoras de futebol.", "Todas são políticas e juízas."], "medium"),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// A2 — A crônica (parte 2) e as expressões que marcam mudança de ponto de vista
+// ---------------------------------------------------------------------------
+const a2: GrupoParcial = grupo(
+  "Do real ao ideal: a conclusão do narrador",
+  "Entender a conclusão do narrador, a mudança do ponto de vista dele e as expressões que marcam essa mudança.",
+  "O narrador muda de opinião aos poucos. Observamos como ele chega a essa conclusão e quais expressões do texto mostram a virada.",
+  IMG_LIVRO,
+  [
+    ...txt("p9c2-cronica",
+      mc("p9c2-g2-a1", "Com base nas observações, a que conclusão o narrador chega sobre os perfis das redes sociais? Explique.", I,
+        "Chega à conclusão de que todo perfil de rede social é um retrato ideal de nós mesmos.",
+        ["Conclui que todo perfil é feito só de mentiras.", "Conclui que ninguém deveria ter perfil.", "Conclui que só famosos têm perfil verdadeiro."]),
+      mc("p9c2-g2-a2", "O que o narrador conclui quanto ao papel das imagens, dos pensamentos e dos links de filmes em um perfil?", I,
+        "Que tudo o que é postado ajuda a criar uma identidade que não é exatamente a real, mas a que a pessoa gostaria de ter.",
+        ["Que tudo é postado por acaso, sem intenção.", "Que servem só para encher espaço.", "Que mostram a pessoa exatamente como ela é."], "medium"),
+      mc("p9c2-g2-a3", "De acordo com o quinto e o sexto parágrafos, o confronto entre o real e o ideal se restringe às redes sociais? Justifique com exemplos.", I,
+        "Não: também fora das redes buscamos passar uma imagem entre o real e o ideal, na postura, nas roupas que vestimos e ao imitar quem admiramos.",
+        ["Sim: só nas redes as pessoas tentam parecer algo que não são.", "Sim: fora das redes todo mundo se mostra exatamente como é.", "Não: porque apenas atores e atrizes fazem isso."], "medium"),
+      mc("p9c2-g2-a4", "Em “acabamos sendo um meio-termo entre o ator e o roteiro que tentamos escrever”, quem é o ator e o que é o roteiro?", I,
+        "O ator é a pessoa real; o roteiro é o que ela imagina ser ou gostaria de ser, ou seja, o ideal.",
+        ["O ator é a atriz famosa; o roteiro é a foto 3 × 4.", "O ator é o narrador; o roteiro é o jornal.", "O ator é o namorado; o roteiro é o Carnaval."], "medium"),
+      mc("p9c2-g2-a5", "No início, o narrador parece achar que a moça queria fugir de si mesma; no fim, revê o posicionamento e a admira. Que argumento justifica essa nova perspectiva?", I,
+        "O de que o gesto tem ousadia e esperança e mostra a capacidade de se aceitar na mistura entre o que se é e o que se gostaria de ser.",
+        ["O de que a moça é muito parecida com a atriz.", "O de que a foto da atriz estava bem editada.", "O de que o Orkut voltou a ser moda."], "medium"),
+      mc("p9c2-g2-a6", "Na sua opinião, a admiração do narrador é verdadeira ou irônica?", I,
+        "Verdadeira: ele explica a mudança de olhar e diz ver ousadia, esperança e aceitação de si.",
+        ["Irônica: ele zomba da moça até o fim.", "Irônica: ele quer ofender a atriz.", "Nenhuma das duas: o narrador não tem opinião."], "hard"),
+      mc("p9c2-g2-a7", "Quais expressões do texto marcam a mudança de ponto de vista do narrador?", I,
+        "“Aos poucos, contudo”, “Pensando bem” e “Hoje, portanto”.",
+        ["“Desde as priscas eras”, “Então” e “Era uma vez”.", "“Desde as priscas eras”, “Então” e “Aos poucos, contudo”.", "“Então”, “Hoje” e “Certa vez”."], "medium"),
+      mc("p9c2-g2-a8", "No dia a dia, que expressão você usa para indicar que mudou de opinião?", I,
+        "“Pensando melhor, mudei de ideia.”",
+        ["“Era uma vez.”", "“Fim de papo.”", "“Eu juro que sim, sem pensar.”"]),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// A3 — A linguagem do texto + Oralidade em foco (métricas das mídias)
+// ---------------------------------------------------------------------------
+const a3: GrupoParcial = grupo(
+  "Palavras e métricas das redes",
+  "Analisar palavras da crônica (amarelado, contrabandeada, adjetivos) e discutir as métricas das mídias sociais.",
+  "Como uma palavra muda de lugar e ganha novo sentido? E como as curtidas e os seguidores medem o reconhecimento de alguém nas redes?",
+  IMG_LETRAS,
+  [
+    ...txt("p9c2-cronica",
+      mc("p9c2-g3-a1", "No primeiro parágrafo, o narrador se refere a um “Carnaval já amarelado do século 20”. Que efeito de sentido a palavra “amarelado” produz?", I,
+        "Transfere para o Carnaval a característica da foto envelhecida, mostrando que ele é antigo.",
+        ["Indica que o Carnaval foi pintado de amarelo.", "Mostra que a festa foi no verão.", "Indica que a moça estava doente."], "medium"),
+      mc("p9c2-g3-a2", "A palavra “contrabandeada” (“cuja imagem foi contrabandeada para aquele álbum”) pertence à área da ilegalidade. O que justifica esse emprego?", I,
+        "A foto da atriz não pertencia à moça; ela estava, de certo modo, fraudando a própria imagem e enganando quem via o perfil.",
+        ["O fato de a foto ter sido tirada em outro país.", "O fato de o álbum ser caro.", "O fato de a moça vender fotos."], "medium"),
+      mc("p9c2-g3-a3", "Em “engraçado, profundo, hedonista?”, a que se referem esses adjetivos?", I,
+        "Ao quadro, ou retrato, que o cronista acredita formar de si mesmo por meio do que posta.",
+        ["À atriz famosa que apareceu na foto.", "Ao churrasco que ele postou.", "Ao filme de Woody Allen."], "medium"),
+    ),
+    mc("p9c2-g3-a4", "Vocês já ouviram falar em métricas das mídias? O que a expressão significa?", I,
+      "São as medidas que permitem entender o desempenho de uma página ou pessoa nas redes sociais.",
+      ["São regras de português para legendas.", "São os tipos de papel usados em jornais.", "São medidas de tamanho de telas de celular."]),
+    mc("p9c2-g3-a5", "Que instrumentos as pessoas que se autopromovem nas redes usam para avaliar seu reconhecimento?", I,
+      "O número de curtidas, de seguidores e de comentários, além de outros dados do perfil.",
+      ["Só o número de fotos postadas.", "A cor do tema do perfil.", "O tamanho da bateria do celular."]),
+    mc("p9c2-g3-a6", "Na sua opinião, o que faz um post viralizar e ter métricas que chamam a atenção?", I,
+      "Algo que foge do comum (uma cena muito engraçada, triste ou assustadora) ou que está ligado a alguém com muitos seguidores.",
+      ["Estar escrito sempre em letras minúsculas.", "Ser postado só de madrugada.", "Ter exatamente 10 palavras."]),
+    mc("p9c2-g3-a7", "Como vocês avaliam a estratégia de produtoras que escalam influencers, sem formação profissional, como atores e atrizes?", I,
+      "Pode ampliar o alcance da obra, mas talento e formação continuam importantes para o desempenho do ator.",
+      ["É sempre ruim, porque influencer nunca sabe atuar.", "É sempre boa, porque seguidores substituem qualquer estudo.", "Não faz diferença nenhuma."], "medium"),
+    mc("p9c2-g3-a8", "Organizem os resultados da pesquisa sobre os instrumentos mais usados. Qual é uma boa ideia?", I,
+      "Montar um gráfico de barras com os três instrumentos mais mencionados.",
+      ["Guardar tudo na memória, sem registrar.", "Apagar as respostas diferentes das suas.", "Registrar só a resposta do professor."]),
+    mc("p9c2-g3-a9", "Como ampliar a pesquisa para saber se a percepção se mantém em outras turmas?", I,
+      "Elaborar um pequeno questionário e entrevistar alunos de outras turmas, com a ajuda do professor.",
+      ["Perguntar só aos amigos mais próximos.", "Copiar as respostas de uma pesquisa antiga.", "Não perguntar a ninguém e supor as respostas."]),
+    mc("p9c2-g3-a10", "Depois de ampliar a pesquisa, como organizar os resultados de todas as turmas?", I,
+      "Em outro gráfico de barras, somando os resultados, que podem ser compartilhados no evento da escola.",
+      ["Em uma lista sem números.", "Em um poema sobre os resultados.", "Em uma foto do caderno fechado."]),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// A4 — Trocando ideias + Construindo o conceito (orações subordinadas substantivas)
+// ---------------------------------------------------------------------------
+const a4: GrupoParcial = grupo(
+  "Minha geração e as redes",
+  "Refletir sobre a situação da crônica na sua geração e começar a estudar o que é uma oração que funciona como substantivo.",
+  "Será que a moça da foto também existe hoje? E uma oração inteira pode ocupar o lugar de um substantivo?",
+  IMG_CRIANCAS,
+  [
+    mc("p9c2-g4-a1", "Na sua opinião, a situação apresentada na crônica é comum nos perfis de redes sociais da sua geração?", I,
+      "Sim: muita gente mostra nas redes a versão que gostaria de ser, com filtros e fotos escolhidas.",
+      ["Não: todos os perfis mostram a pessoa exatamente como ela é.", "Não: ninguém da minha geração usa redes sociais.", "Sim, mas só entre pessoas famosas."], "medium"),
+    mc("p9c2-g4-a2", "As personalidades citadas pelo narrador são as que, em geral, sua geração também admira?", I,
+      "Em parte: alguns nomes ainda são conhecidos, mas hoje muitos jovens admiram também influenciadores, atletas e artistas atuais.",
+      ["Sim: são exatamente as mesmas, sem nenhuma diferença.", "Não: ninguém admira artistas nem atletas hoje.", "Não: os jovens só admiram personagens de livros."], "medium"),
+    mc("p9c2-g4-a3", "Para você, há uma pessoa do seu dia a dia ou uma personalidade com a qual se identifica mais? Ela é referência para seu projeto de vida?", I,
+      "Sim: admiro alguém (da família, da escola ou famoso) pelas atitudes e penso em seguir caminhos parecidos com os dela.",
+      ["Não admiro ninguém e nunca pensei no futuro.", "Admiro só quem tem muitos seguidores, sem saber por quê.", "Prefiro copiar tudo o que os outros fazem."], "medium"),
+    read("p9c2-g4-frases", "Duas frases para analisar", [
+      "Frase I: Perfis de redes sociais são retratos ideais de nós mesmos.",
+      "Frase II: Aos poucos, contudo, o narrador chegou à constatação óbvia de que todo perfil de rede social é um retrato ideal de nós mesmos.",
+      "Frase III: Aos poucos, contudo, o narrador chegou à constatação óbvia disso.",
+    ], "Baseado no título e em um trecho de Antonio Prata, Folha de S.Paulo, 4 jul. 2012."),
+    ...txt("p9c2-g4-frases",
+      mc("p9c2-g4-a4", "Nas frases I e II, o uso da palavra “ideal” transmite a ideia de:", I,
+        "Idealização.",
+        ["Exatidão.", "Falsificação.", "Fidelidade."]),
+      mc("p9c2-g4-a5", "Quantas orações há em cada período? Eles são simples ou compostos?", I,
+        "Em I há uma oração (só o verbo “são”), período simples; em II há duas (“chegou” e “é”), período composto.",
+        ["Em I há duas orações e em II há uma.", "Os dois têm apenas uma oração.", "Os dois têm três orações."], "medium"),
+      mc("p9c2-g4-a6", "Na frase III, a segunda oração foi substituída pelo pronome substantivo “disso”. Que termo da oração principal esse pronome completa e que classe de palavra ele é?", I,
+        "Completa o termo “constatação”, que é um substantivo.",
+        ["Completa o verbo “chegou”, que é um verbo.", "Completa o adjetivo “óbvia”, que é um adjetivo.", "Completa o termo “aos poucos”, que é um advérbio."], "medium"),
+      mc("p9c2-g4-a7", "Na frase III, qual é a função sintática de “disso”?", I,
+        "Complemento nominal.",
+        ["Sujeito.", "Objeto direto.", "Adjunto adverbial de tempo."], "medium"),
+      mc("p9c2-g4-a8", "Considerando a resposta anterior, que função exerce a oração “de que todo perfil de rede social é um retrato ideal de nós mesmos”, que foi substituída pelo pronome?", I,
+        "Complemento nominal.",
+        ["Sujeito.", "Adjunto adnominal.", "Predicativo do sujeito."], "medium"),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// A5 — A tira "Redes (anti)sociais" e o padrão das orações substantivas
+// ---------------------------------------------------------------------------
+const a5: GrupoParcial = grupo(
+  "A coruja e as redes (anti)sociais",
+  "Ler uma tira sobre redes sociais e descobrir como reconhecer uma oração com valor de substantivo.",
+  "Uma coruja reflete sobre as redes e decide fugir para o mundo real. Depois, testamos um truque: trocar a oração por “isso”.",
+  IMG_LETRAS,
+  [
+    withImage(read("p9c2-tira-redes", "Tira: redes (anti)sociais", [
+      "Tira em 3 quadrinhos, com uma coruja de óculos pousada num galho, olhando para o celular.",
+      "Quadrinho 1. Coruja: “Ando pensando nas redes sociais: tanta violência, tantos crimes, tantas mentiras…”",
+      "Quadrinho 2. Coruja: “Jamais imaginei que fôssemos chegar a esse ponto…”",
+      "Quadrinho 3. A coruja guarda o celular e abre a asa para voar. Coruja: “Já estou pensando em fugir para o mundo real!”",
+    ]), IMG_TIRA_REDES, CAP_TIRA),
+    ...txt("p9c2-tira-redes",
+      withImage(mc("p9c2-g5-a1", "No primeiro quadrinho, qual é o objeto de reflexão da coruja? Ela o avalia de forma positiva ou negativa?", I,
+        "As redes sociais; ela as avalia de forma negativa, como mostram as palavras violência, crimes e mentiras.",
+        ["Os passarinhos; ela os avalia de forma positiva.", "O mundo real; ela o avalia de forma negativa.", "O celular; ela o avalia de forma positiva."]), IMG_TIRA_REDES, CAP_TIRA),
+      mc("p9c2-g5-a2", "Como a fala do último quadrinho contribui para o humor?", I,
+        "Ao dizer que vai fugir para o “mundo real”, a coruja quebra a expectativa, pois em geral as redes é que servem de refúgio do mundo real.",
+        ["Ela diz que vai postar uma foto nova.", "Ela convida os amigos para uma festa.", "Ela explica como usar o celular."], "medium"),
+      mc("p9c2-g5-a3", "Considere as falas do segundo e do terceiro quadrinho, cada uma como um período. Quantas orações há em cada um? Justifique.", I,
+        "Duas em cada: “imaginei” e “fôssemos chegar” no primeiro; “estou pensando” e “fugir” no segundo, pois há duas formas verbais em cada período.",
+        ["Uma em cada, porque as falas são curtas.", "Três em cada, porque há três quadrinhos.", "Nenhuma, porque são exclamações."], "medium"),
+      mc("p9c2-g5-a4", "Esses períodos são simples ou compostos?", I,
+        "Compostos.",
+        ["Simples.", "Sem verbo.", "Apenas orações sem sentido."]),
+      mc("p9c2-g5-a5", "Em grupo, procurem explicar: o que significa a palavra “padrão”?", I,
+        "Algo que serve de referência, de modelo.",
+        ["Uma peça de roupa.", "Um tipo de tinta.", "Um erro de digitação."]),
+      mc("p9c2-g5-a6", "Pronomes substantivos podem substituir substantivos. A oração destacada em “Eu decidi que não verei mais as mensagens eletrônicas” tem valor de substantivo? Como chegaram a essa conclusão?", I,
+        "Sim: ela pode ser substituída pelo pronome “isso” (“Eu decidi isso”).",
+        ["Não: porque tem verbo.", "Não: porque está no futuro.", "Sim: porque começa com a palavra “eu”."], "medium"),
+      mc("p9c2-g5-a7", "Substituindo a segunda oração das falas dos quadrinhos 2 e 3 pelo pronome “isso” (“Jamais imaginei isso”; “Já estou pensando nisso”), elas têm valor de substantivo?", I,
+        "Sim, as orações em destaque têm valor de substantivo.",
+        ["Não, porque a substituição muda o sentido por completo.", "Não, porque “isso” é verbo.", "Só a do quadrinho 2 tem."], "medium"),
+      mc("p9c2-g5-a8", "Qual é o padrão usado para reconhecer orações com valor de substantivo?", I,
+        "Se for possível substituir a oração toda por um pronome substantivo (como “isso”), ela tem valor de substantivo.",
+        ["Se a oração vier sempre no começo do período.", "Se a oração tiver mais de dez palavras.", "Se a oração terminar com ponto de exclamação."], "medium"),
+      mc("p9c2-g5-a9", "Na sua opinião, a identificação de um padrão para analisar orações facilita o estudo?", I,
+        "Sim: reconhecer o padrão ajuda a resolver os exercícios mais depressa e com mais segurança.",
+        ["Não: padrões só atrapalham.", "Não: cada oração é totalmente diferente das outras.", "Sim, mas só quando se decora a gramática inteira."]),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// A6 — Conceituando: tipos de subordinada substantiva + exercícios (texto sobre sono)
+// ---------------------------------------------------------------------------
+const a6: GrupoParcial = grupo(
+  "Subordinadas substantivas",
+  "Reconhecer a função das orações subordinadas substantivas (objetiva, subjetiva, predicativa, apositiva…) e a conjunção integrante.",
+  "Um objeto direto pode ser uma oração inteira! Vemos os seis tipos de subordinada substantiva e treinamos num texto sobre redes e sono.",
+  IMG_LIVRO,
+  [
+    ...txt("p9c2-tira-redes",
+      mc("p9c2-g6-a1", "Qual é a predicação das formas verbais “imaginei” e “estou pensando”?", I,
+        "“Imaginei” é transitivo direto; a locução “estou pensando” (pensar em) é transitiva indireta.",
+        ["As duas são intransitivas.", "As duas são verbos de ligação.", "“Imaginei” é transitivo indireto e “estou pensando” é transitivo direto."], "hard"),
+      mc("p9c2-g6-a2", "Qual é a função sintática dos termos “isso” e “nisso”, que substituem as orações?", I,
+        "“Isso” é objeto direto; “nisso” é objeto indireto.",
+        ["Os dois são sujeito.", "Os dois são adjunto adverbial.", "“Isso” é aposto; “nisso” é predicativo."], "medium"),
+      mc("p9c2-g6-a3", "Qual é a função sintática das orações “que fôssemos chegar a esse ponto” e “em fugir para o mundo real”?", I,
+        "Objeto direto e objeto indireto, respectivamente.",
+        ["Sujeito e predicativo, respectivamente.", "Aposto e complemento nominal, respectivamente.", "As duas são adjuntos adverbiais."], "hard"),
+    ),
+    read("p9c2-g6-conceito", "Oração subordinada substantiva", [
+      "Oração subordinada substantiva é a que tem valor de substantivo e exerce, em relação à oração principal, a função de sujeito, objeto direto, objeto indireto, predicativo, complemento nominal ou aposto. Por isso recebe o nome de subjetiva, objetiva direta, objetiva indireta, predicativa, completiva nominal ou apositiva.",
+      "Ela costuma ser introduzida pelas conjunções integrantes “que” e “se”. Usa-se “que” quando o verbo da subordinada expressa certeza e “se” quando expressa possibilidade ou dúvida. A conjunção pode ficar de fora quando a oração começa por pronome ou advérbio interrogativo, como “quem”, “como”, “quando” e “onde”.",
+      "Exemplos: “É importante que fiquemos atentos aos exageros da internet” (subjetiva); “O MPF pede que a universidade suspenda os desligamentos” (objetiva direta); “Lembrei-me de que hoje sairemos juntas” (objetiva indireta); “A única verdade incontestável é que não existem verdades incontestáveis” (predicativa); “Tenho certeza de que Paris vai ser diferente” (completiva nominal); “Ele disse a verdade: que não se interessava pelo cargo” (apositiva).",
+      "Truque: se for possível trocar a oração por um substantivo ou por “isto”, “isso” ou “aquilo”, ela é substantiva.",
+    ]),
+    read("p9c2-g6-lagoa", "Verso sobre o mar", [
+      "Imagine versos em que o eu lírico diz: não conheço o mar; não sei se o mar é bonito, não sei se ele é bravo; o mar não me importa.",
+    ], "Inspirado no poema “Lagoa”, de Carlos Drummond de Andrade, em Alguma poesia (Companhia das Letras, 2013)."),
+    ...txt("p9c2-g6-lagoa",
+      mc("p9c2-g6-a4", "Considerando o sentido, por que o eu lírico usa a conjunção integrante “se” nesses versos?", I,
+        "Porque ele não conhece o mar e expressa incertezas, levantando possibilidades.",
+        ["Porque ele tem certeza de que o mar é bonito.", "Porque ele conhece bem o mar.", "Porque ele quer dar uma ordem ao mar."], "medium"),
+    ),
+    read("p9c2-g6-sono", "Excesso de redes sociais e sono", [
+      "Em uma coluna de saúde, uma médica especialista em sono explica que as mídias sociais se tornaram um dos passatempos mais populares entre adolescentes e adultos. Pesquisas recentes mostram que 81% dos jovens usam rotineiramente as redes e que 60% deles as usam na hora que antecede o sono.",
+      "Na última década, alguns estudos demonstraram que tempo demais nas redes sociais leva a uma menor qualidade e quantidade de sono, a atrasos e horários irregulares para dormir e a maior dificuldade para adormecer. Uma das orientações clássicas de higiene do sono é interromper o uso de eletrônicos pelo menos uma hora antes do horário de dormir, para não atrapalhar a liberação adequada de melatonina.",
+    ], "Baseado em Sandra Doria Xavier, “Excesso de redes sociais prejudica o sono e a saúde mental”, Veja Saúde, 12 mar. 2022."),
+    ...txt("p9c2-g6-sono",
+      mc("p9c2-g6-a5", "Que problemas o uso excessivo das redes sociais pode provocar, segundo o texto?", I,
+        "Menor qualidade e quantidade de sono, atrasos e horários irregulares para dormir e mais dificuldade para adormecer.",
+        ["Aumento da altura.", "Melhora automática das notas.", "Perda de peso."]),
+      mc("p9c2-g6-a6", "Que orientação o texto dá para tentar reduzir os efeitos nocivos dessa prática?", I,
+        "Interromper o uso de eletrônicos pelo menos uma hora antes do horário de dormir.",
+        ["Usar o celular mais tempo à noite.", "Dormir com o celular no travesseiro.", "Só usar redes durante a madrugada."]),
+      mc("p9c2-g6-a7", "Considerando sua experiência e a de quem convive com você, o alerta do texto procede?", I,
+        "Sim: muita gente dorme tarde por ficar no celular e sente cansaço no dia seguinte.",
+        ["Não: usar o celular antes de dormir sempre melhora o sono.", "Não: ninguém se cansa por usar celular.", "Sim, mas só para quem tem mais de 30 anos."]),
+      mc("p9c2-g6-a8", "Copie o período “Na última década, alguns estudos demonstraram que tempo demais nas redes sociais leva a uma menor qualidade e quantidade de sono”, separe as orações e classifique-as.", I,
+        "“Na última década, alguns estudos demonstraram”: principal; “que tempo demais nas redes sociais leva a uma menor qualidade e quantidade de sono”: subordinada substantiva objetiva direta.",
+        ["A primeira é subordinada subjetiva e a segunda é principal.", "A primeira é coordenada aditiva e a segunda é coordenada adversativa.", "As duas são principais e independentes."], "hard"),
+      mc("p9c2-g6-a9", "No trecho “Pesquisas recentes mostram que 81% dos jovens usam rotineiramente as redes”, quantas orações há? Identifique-as.", I,
+        "Duas: “Pesquisas recentes mostram” e “que 81% dos jovens usam rotineiramente as redes”.",
+        ["Uma só: o trecho inteiro.", "Três: “pesquisas”, “mostram” e “as redes”.", "Quatro, uma para cada número do trecho."], "medium"),
+      mc("p9c2-g6-a10", "Qual é a classificação dessas orações?", I,
+        "A primeira é a oração principal; a segunda é subordinada substantiva objetiva direta.",
+        ["A primeira é subordinada subjetiva; a segunda é principal.", "As duas são coordenadas assindéticas.", "A primeira é subordinada apositiva; a segunda, coordenada conclusiva."], "hard"),
+    ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// A7 — Exercícios: reescrever com subordinadas, canção "Chega de saudade" e "Tarde em Itapuã"
+// ---------------------------------------------------------------------------
+const a7: GrupoParcial = grupo(
+  "Saudade, mar e orações",
+  "Transformar trechos em períodos compostos por subordinação e analisar orações substantivas em canções.",
+  "Dá para trocar o termo por uma oração inteira? E o que as canções de saudade e de praia têm a ver com isso?",
+  IMG_LETRAS,
+  [
+    mc("p9c2-g7-a1", "Reescreva “O uso das mídias sociais garante diversão às pessoas” com uma oração subordinada substantiva no lugar de “diversão às pessoas” e classifique-a.", I,
+      "“O uso das mídias sociais garante que as pessoas se divirtam”: subordinada substantiva objetiva direta.",
+      ["“O uso das mídias sociais garante, mas as pessoas se divirtam”: coordenada adversativa.", "“O uso das mídias sociais garante que divertidas”: subordinada predicativa.", "“O uso das mídias sociais garante as pessoas”: coordenada aditiva."], "hard"),
+    mc("p9c2-g7-a2", "Reescreva “O estudo divulgou um novo problema: os impactos dos usos de redes sociais para o sono” com uma oração subordinada substantiva e classifique-a.", I,
+      "“O estudo divulgou um novo problema: que as redes sociais impactam o sono”: subordinada substantiva apositiva.",
+      ["“O estudo divulgou que um novo problema”: subordinada subjetiva.", "“O estudo divulgou e as redes impactam o sono”: coordenada aditiva.", "“O estudo divulgou um novo problema porque o sono”: subordinada adverbial."], "hard"),
+    mc("p9c2-g7-a3", "Reescreva “É urgente a diminuição do tempo de uso das redes” com uma oração subordinada substantiva e classifique-a.", I,
+      "“É urgente que se diminua o tempo de uso das redes”: subordinada substantiva subjetiva.",
+      ["“É urgente, mas se diminua o tempo de uso”: coordenada adversativa.", "“É urgente o que diminua”: subordinada predicativa.", "“É urgente de que o tempo”: subordinada objetiva direta."], "hard"),
+    mc("p9c2-g7-a4", "Reescreva “O problema é o uso excessivo das redes sociais” com uma oração subordinada substantiva e classifique-a.", I,
+      "“O problema é que se usam excessivamente as redes sociais”: subordinada substantiva predicativa.",
+      ["“O problema é, portanto, as redes”: coordenada conclusiva.", "“O problema é se usar”: subordinada subjetiva.", "“O problema é e as redes sociais”: coordenada aditiva."], "hard"),
+    read("p9c2-g7-saudade", "Versos de saudade", [
+      "Imagine uma canção em que o eu lírico pede à tristeza: “Vai e diz a ela que sem ela eu não consigo seguir. Pede que ela volte, porque não aguento mais sofrer.” Em seguida, ele afirma que a verdade é que sem ela não há paz nem beleza, só tristeza.",
+    ], "Inspirado na canção “Chega de saudade”, de Tom Jobim e Vinicius de Moraes (1959)."),
+    ...txt("p9c2-g7-saudade",
+      mc("p9c2-g7-a5", "O eu lírico sofre por amor. Quem é o interlocutor dele?", I,
+        "A tristeza.",
+        ["A pessoa amada.", "O mar.", "Um amigo de infância."]),
+      mc("p9c2-g7-a6", "Qual é a causa do sofrimento do eu lírico?", I,
+        "A ausência da mulher amada.",
+        ["A falta de dinheiro.", "Uma briga com a tristeza.", "A mudança de cidade."]),
+      mc("p9c2-g7-a7", "Classifique sintaticamente a oração “que sem ela eu não consigo seguir”.", I,
+        "Oração subordinada substantiva objetiva direta.",
+        ["Oração subordinada substantiva predicativa.", "Oração coordenada adversativa.", "Oração subordinada substantiva subjetiva."], "hard"),
+      mc("p9c2-g7-a8", "Classifique sintaticamente a oração “que sem ela não há paz”, que vem depois de “a verdade é”.", I,
+        "Oração subordinada substantiva predicativa.",
+        ["Oração subordinada substantiva objetiva direta.", "Oração coordenada explicativa.", "Oração subordinada substantiva apositiva."], "hard"),
+      mc("p9c2-g7-a9", "Que oração do texto tem a mesma função sintática de “que sem ela eu não consigo seguir”?", I,
+        "“Que ela volte”.",
+        ["“Porque não aguento mais sofrer”.", "“Que a verdade é”.", "“Só tristeza”."], "hard"),
+    ),
+    read("p9c2-g7-itapua", "Tarde em Itapuã", [
+      "Uma canção diz que é bom passar uma tarde na praia de Itapuã, na Bahia, sob o sol forte, ouvindo o mar e conversando sobre amor.",
+    ], "Inspirado na canção “Tarde em Itapuã”, de Vinicius de Moraes e Toquinho (1971)."),
+    ...txt("p9c2-g7-itapua",
+      mc("p9c2-g7-a10", "Por esses versos, qual é o tema da canção?", I,
+        "A satisfação de passar uma tarde na praia de Itapuã, aproveitando o sol e o mar.",
+        ["A tristeza de estar longe do mar.", "A importância de estudar à noite.", "O medo de viajar de avião."]),
+    ),
+  ]
+);
+
+export const cap2aGrupos: GrupoParcial[] = [a1, a2, a3, a4, a5, a6, a7];

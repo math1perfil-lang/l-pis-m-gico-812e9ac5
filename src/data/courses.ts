@@ -81,13 +81,13 @@ export const courses: Course[] = [
   {
     id: "portugues-em-acao",
     title: "Português em Ação",
-    description: "Fake news, pós-verdade e redes sociais: leia, interprete e pense com senso crítico!",
+    description: "Fake news, redes sociais, poemas e contos: leia, interprete e pense com senso crítico!",
     image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800",
     ageMin: 14,
     ageMax: 15,
-    duration: "1h",
-    coinsReward: 235,
-    totalLessons: 4,
+    duration: "8h",
+    coinsReward: 3515,
+    totalLessons: 63,
     category: "Linguagem",
     lessons: []
   },
