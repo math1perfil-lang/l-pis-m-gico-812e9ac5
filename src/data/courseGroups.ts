@@ -2,6 +2,7 @@ import type { Activity } from "./activities";
 import type { LessonGroup } from "./alfabetizacaoGrupos";
 import { alfabetizacaoGrupos } from "./alfabetizacaoGrupos";
 import { portuguesEmAcaoGrupos } from "./portuguesEmAcaoGrupos";
+import { getOverlay, getOverlayVersion, mergeGroups, type EditableGroup } from "./contentOverlay";
 import { portuguesEmAcaoGrupos2 } from "./portuguesEmAcao2";
 import { MODULE_BONUS_BY_BAND, type AgeBand, type GroupSpec as ExtraGroupSpec } from "./activityKit";
 import { specs as numerosExtra } from "./groups/numeros-brincadeira";
@@ -1287,7 +1288,30 @@ const registry: Record<string, LessonGroup[]> = Object.fromEntries(
   Object.entries(baseRegistry).map(([id, groups]) => [id, withExtraModules(id, groups)])
 );
 
-export const getCourseGroups = (courseId: string): LessonGroup[] | undefined =>
-  registry[courseId];
+// Conteúdo do código, sem as edições do painel de educação.
+export const getBaseCourseGroups = (courseId: string): LessonGroup[] => registry[courseId] ?? [];
 
-export const hasCourseGroups = (courseId: string): boolean => courseId in registry;
+// Conteúdo com as edições do painel aplicadas (excluídos ficam de fora).
+let cacheVersion = -1;
+let cache: Record<string, LessonGroup[]> = {};
+export const getCourseGroups = (courseId: string): LessonGroup[] | undefined => {
+  if (!hasCourseGroups(courseId)) return undefined;
+  const v = getOverlayVersion();
+  if (v !== cacheVersion) {
+    cacheVersion = v;
+    cache = {};
+  }
+  if (!cache[courseId]) cache[courseId] = mergeGroups(courseId, getBaseCourseGroups(courseId)) as LessonGroup[];
+  return cache[courseId];
+};
+
+// Visão do painel: inclui itens excluídos (marcados com _deleted) para poder restaurar.
+export const getEditableCourseGroups = (courseId: string, includeDeleted = true): EditableGroup[] =>
+  mergeGroups(courseId, getBaseCourseGroups(courseId), includeDeleted);
+
+// Curso novo criado no painel (sem conteúdo no código) também usa o fluxo por grupos.
+export const hasCourseGroups = (courseId: string): boolean => {
+  if (courseId in registry) return true;
+  const ov = getOverlay();
+  return ov.courses.some((c) => c.id === courseId && c.is_custom && !c.deleted);
+};

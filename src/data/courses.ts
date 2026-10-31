@@ -1,3 +1,7 @@
+import { getOverlay, getOverlayVersion, mergeGroups } from "./contentOverlay";
+import { getBaseCourseGroups } from "./courseGroups";
+import { defaultSchoolYear } from "@/lib/schoolYears";
+
 export interface Course {
   id: string;
   title: string;
@@ -10,6 +14,8 @@ export interface Course {
   totalLessons: number;
   category: string;
   lessons: Lesson[];
+  schoolYear?: string; // ano escolar (definido no painel de educação)
+  deleted?: boolean; // só aparece na visão do painel (curso excluído)
 }
 
 export interface Lesson {
@@ -22,7 +28,7 @@ export interface Lesson {
   description: string;
 }
 
-export const courses: Course[] = [
+const baseCourses: Course[] = [
   // 6-8 anos - Básico
   {
     id: "alfabetizacao-divertida",
@@ -212,10 +218,81 @@ export const courses: Course[] = [
   },
 ];
 
+// Cursos do código (sem edições). Prefira getAllCourses().
+export const courses: Course[] = baseCourses;
+
+let baseWithYearCache: Course[] | null = null;
+const baseWithYear = (): Course[] =>
+  (baseWithYearCache ??= baseCourses.map((c) => ({ ...c, schoolYear: c.schoolYear ?? defaultSchoolYear(c.ageMin) })));
+
+let coursesCacheVersion = -1;
+let coursesCache: Course[] = baseCourses;
+
+// Cursos com as edições do painel aplicadas: novos, alterados e excluídos.
+export const getAllCourses = (includeDeleted = false): Course[] => {
+  const ov = getOverlay();
+  if (!ov.courses.length && !ov.groups.length && !ov.activities.length) {
+    return baseWithYear();
+  }
+  if (!includeDeleted && coursesCacheVersion === getOverlayVersion()) return coursesCache;
+
+  const rows = new Map(ov.courses.map((r) => [r.id, r]));
+  const touched = new Set([...ov.groups.map((r) => r.course_id), ...ov.activities.map((r) => r.course_id)]);
+
+  const build = (c: Course, pos: number) => {
+    const row = rows.get(c.id);
+    const merged: Course = {
+      ...c,
+      ...(row?.data as Partial<Course>),
+      id: c.id,
+      lessons: [],
+      schoolYear: row?.school_year ?? c.schoolYear ?? defaultSchoolYear(c.ageMin),
+    };
+    // Totais acompanham o conteúdo quando houve edição de grupos ou atividades.
+    if (touched.has(c.id) || row?.is_custom) {
+      const groups = mergeGroups(c.id, getBaseCourseGroups(c.id));
+      const acts = groups.reduce((n, g) => n + g.activities.reduce((m, a) => m + (a.coinsReward || 0), 0), 0);
+      merged.totalLessons = groups.length;
+      merged.coinsReward = acts + groups.reduce((n, g) => n + (g.groupCoinsBonus || 0), 0);
+    }
+    return { pos: row?.position ?? pos, course: merged, deleted: !!row?.deleted };
+  };
+
+  const list = baseCourses.map((c, i) => build(c, i * 10));
+  const baseIds = new Set(baseCourses.map((c) => c.id));
+  ov.courses.forEach((row) => {
+    if (baseIds.has(row.id)) return;
+    const d = row.data as Partial<Course>;
+    const c: Course = {
+      id: row.id,
+      title: d.title ?? "Novo curso",
+      description: d.description ?? "",
+      image: d.image ?? "",
+      ageMin: d.ageMin ?? 6,
+      ageMax: d.ageMax ?? 15,
+      duration: d.duration ?? "",
+      coinsReward: d.coinsReward ?? 0,
+      totalLessons: d.totalLessons ?? 0,
+      category: d.category ?? "Linguagem",
+      lessons: [],
+    };
+    list.push(build(c, 1e9));
+  });
+  const out = list
+    .filter((x) => includeDeleted || !x.deleted)
+    .sort((a, b) => a.pos - b.pos)
+    .map((x) => (x.deleted ? { ...x.course, deleted: true } : x.course));
+  if (!includeDeleted) {
+    coursesCache = out;
+    coursesCacheVersion = getOverlayVersion();
+  }
+  return out;
+};
+
 export const getCoursesForAge = (age: number): Course[] => {
-  return courses.filter(course => age >= course.ageMin && age <= course.ageMax);
+  return getAllCourses().filter((course) => age >= course.ageMin && age <= course.ageMax);
 };
 
 export const getCourseById = (id: string): Course | undefined => {
-  return courses.find(course => course.id === id);
+  return getAllCourses().find((course) => course.id === id);
 };

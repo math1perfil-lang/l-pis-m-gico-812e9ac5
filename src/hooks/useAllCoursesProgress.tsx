@@ -3,6 +3,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { getCourseGroups } from "@/data/courseGroups";
 import type { Course } from "@/data/courses";
+import { useContentVersion } from "@/hooks/useContent";
 
 export interface CourseProgressSummary {
   completed: number; // grupos concluídos de verdade
@@ -13,6 +14,7 @@ export interface CourseProgressSummary {
 /** Progresso real de todos os cursos, lido do que a pessoa de fato concluiu (nada de números de exemplo). */
 export const useAllCoursesProgress = () => {
   const { user } = useAuth();
+  useContentVersion();
   const [done, setDone] = useState<Record<string, number[]>>({});
 
   useEffect(() => {
