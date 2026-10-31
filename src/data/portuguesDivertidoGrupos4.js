@@ -1,0 +1,416 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.portuguesDivertidoGrupos4 = void 0;
+const portuguesDivertidoGrupos_1 = require("./portuguesDivertidoGrupos");
+// Português Divertido — grupos 32 a 47 (baseados nos temas da Parte 3 do livro
+// "Português Linguagens – 6º ano"): diário pessoal, adjetivo, artigo, numeral, carta pessoal,
+// pronomes, sílaba tônica, propaganda, verbo, tempos e modos verbais, entrevista e notícia.
+// Textos e questões criados do zero para 6 anos; nada foi copiado, por isso não há "Fonte".
+/** Marca várias questões como dependentes do mesmo texto-base. */
+const txt = (readingId, ...acts) => acts.map((a) => (0, portuguesDivertidoGrupos_1.fromText)(readingId, a));
+// ---------------------------------------------------------------------------
+// Grupo 32 — Querido diário
+// ---------------------------------------------------------------------------
+const g32Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g32-leitura", "Página do diário da Lúcia", [
+        "Recife, 12 de outubro",
+        "Querido diário,",
+        "Hoje foi um dia especial! Acordei cedo, tomei leite com pão e fui para a escola.",
+        "Na aula de artes, pintei um arco-íris enorme. À tarde, brinquei com meu cachorro Bolt no quintal.",
+        "Estou cansada, mas feliz. Amanhã conto mais!",
+        "Beijos, Lúcia",
+    ]),
+    ...txt("pd-g32-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a1", "Quem escreveu essa página de diário?", "Toque na resposta certa", "Lúcia", ["Bolt", "A professora", "A mamãe"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a2", "Em que cidade a Lúcia estava?", "Toque na resposta certa", "Recife", ["Bolt", "Artes", "Outubro"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a3", "O que a Lúcia pintou na aula de artes?", "Toque na resposta certa", "Um arco-íris enorme", ["Um cachorro", "Uma casa", "Um castelo"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a4", "Com quem ela brincou à tarde?", "Toque na resposta certa", "Com o cachorro Bolt", ["Com o gato", "Com o primo", "Com a vovó"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a5", "Como a Lúcia estava no fim do dia?", "Toque na resposta certa", "Cansada, mas feliz", ["Triste e com medo", "Brava", "Com muita fome"]), (0, portuguesDivertidoGrupos_1.order)("pd-g32-a6", "Coloque os fatos do dia da Lúcia na ordem certa", [
+        "Ela acordou cedo e tomou leite com pão.",
+        "Ela foi para a escola.",
+        "Ela pintou um arco-íris.",
+        "Ela brincou com o Bolt.",
+    ]), (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a7", "Quando o diário diz “Acordei cedo”, quem acordou?", "Toque na resposta certa", "Quem escreve o diário (eu)", ["O cachorro", "A professora", "Todo mundo"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a8", "Em um diário, a pessoa geralmente escreve sobre...", "Toque na resposta certa", "o que viveu, sentiu e pensou no dia", ["só receitas de bolo", "só números", "o que nunca aconteceu"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a9", "Como uma página de diário costuma começar?", "Toque na resposta certa", "Com o lugar e a data", ["Com um desenho de bolo", "Com a palavra FIM", "Com uma pergunta de prova"]),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g32-a10", "O diário pode ser só para a própria pessoa ler.", true),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a11", "Qual frase tem jeito de diário?", "Toque na resposta certa", "Hoje fiquei muito feliz porque ganhei um livro.", ["Misture o leite com o açúcar.", "Atenção: proibido pisar na grama.", "Cuidado com o degrau!"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g32-a12", "Qual palavra mostra que o dia já passou?", "Toque na resposta certa", "brinquei", ["brinco", "brincarei", "brincar"], "medium"),
+];
+// ---------------------------------------------------------------------------
+// Grupo 33 — Palavras que descrevem (adjetivo)
+// ---------------------------------------------------------------------------
+const g33Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g33-leitura", "O jardim da vovó", [
+        "O jardim da vovó é grande e muito bonito.",
+        "Lá nascem flores coloridas e rosas vermelhas e perfumadas.",
+        "Uma borboleta amarela pousou na cerca velha.",
+        "Um gato preguiçoso dorme embaixo da árvore frondosa.",
+    ]),
+    ...txt("pd-g33-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a1", "Como é o jardim da vovó?", "Toque na resposta certa", "Grande e bonito", ["Pequeno e feio", "Escuro e vazio", "Seco e triste"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a2", "Como são as rosas?", "Toque na resposta certa", "Vermelhas e perfumadas", ["Azuis e frias", "Pretas e secas", "Verdes e pequenas"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a3", "De que cor é a borboleta?", "Toque na resposta certa", "Amarela", ["Roxa", "Branca", "Marrom"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a4", "Como é o gato?", "Toque na resposta certa", "Preguiçoso", ["Corajoso", "Barulhento", "Faminto"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a5", "Qual palavra descreve a cerca?", "Toque na resposta certa", "velha", ["cerca", "pousou", "uma"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a6", "Palavras como grande, bonito e amarela, que dizem como é alguém ou algo, se chamam...", "Toque na resposta certa", "adjetivos", ["verbos", "artigos", "números"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a7", "Qual palavra é um adjetivo?", "Toque na resposta certa", "alegre", ["correr", "mesa", "cinco"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a8", "Em “sorvete gelado”, qual palavra é o adjetivo?", "Toque na resposta certa", "gelado", ["sorvete", "em", "o"]),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g33-a9", "Ligue cada nome ao adjetivo que combina", [
+        ["sol", "quente"],
+        ["gelo", "frio"],
+        ["elefante", "enorme"],
+        ["formiga", "minúscula"],
+    ]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a10", "Qual é o feminino de “bonito”?", "Toque na resposta certa", "bonita", ["bonitos", "bonitão", "bonitinho"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a11", "Qual é o plural de “feliz”?", "Toque na resposta certa", "felizes", ["felizs", "felizzes", "felizas"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g33-a12", "Complete: as meninas ___.", "Toque na resposta certa", "altas", ["alto", "alta", "altos"], "medium"),
+];
+// ---------------------------------------------------------------------------
+// Grupo 34 — O, a, um, uma (artigos)
+// ---------------------------------------------------------------------------
+const g34Activities = [
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a1", "Complete: ___ menina canta.", "Toque na resposta certa", "A", ["O", "Os", "Um"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a2", "Complete: ___ livros estão na mesa.", "Toque na resposta certa", "Os", ["As", "O", "Uma"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a3", "Complete: ___ casa é amarela.", "Toque na resposta certa", "A", ["O", "Os", "Um"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a4", "Complete: Ganhei ___ gato de presente.", "Toque na resposta certa", "um", ["uma", "os", "as"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a5", "Complete: Comi ___ maçã.", "Toque na resposta certa", "uma", ["um", "o", "os"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a6", "Quando falamos de algo que já conhecemos, usamos...", "Toque na resposta certa", "o, a, os, as", ["um, uma, uns, umas", "mais, menos", "muito, pouco"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a7", "Quando falamos de algo qualquer, que ninguém sabe qual é, usamos...", "Toque na resposta certa", "um, uma, uns, umas", ["o, a, os, as", "eu, tu, ele", "aqui, ali"], "medium"),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g34-a8", "Ligue o artigo à palavra que combina", [
+        ["o", "livro"],
+        ["a", "janela"],
+        ["os", "sapatos"],
+        ["as", "flores"],
+    ]),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g34-a9", "“Um” e “uma” são artigos que falam de algo qualquer.", true),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a10", "“No” é a junção de “em” + “o”. Complete: Moro ___ Brasil.", "Toque na resposta certa", "no", ["na", "do", "da"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a11", "“Da” é a junção de “de” + “a”. Complete: O livro ___ professora.", "Toque na resposta certa", "da", ["do", "na", "no"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g34-a12", "Qual frase está certa?", "Toque na resposta certa", "As crianças brincam.", ["O crianças brincam.", "A crianças brincam.", "Os crianças brincam."], "medium"),
+];
+// ---------------------------------------------------------------------------
+// Grupo 35 — Os números na frase (numerais)
+// ---------------------------------------------------------------------------
+const g35Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g35-leitura", "A corrida da escola", [
+        "Cinco crianças correram na corrida da escola.",
+        "Pedro chegou em primeiro lugar. Ana ficou em segundo, e Caio, em terceiro.",
+        "A professora deu uma medalha para cada um dos três primeiros.",
+        "Dois amigos dividiram um sanduíche: cada um comeu a metade.",
+    ]),
+    ...txt("pd-g35-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a1", "Quantas crianças correram?", "Toque na resposta certa", "Cinco", ["Três", "Dois", "Dez"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a2", "Quem ficou em segundo lugar?", "Toque na resposta certa", "Ana", ["Pedro", "Caio", "A professora"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a3", "Em que lugar Caio chegou?", "Toque na resposta certa", "Em terceiro", ["Em primeiro", "Em segundo", "Em quinto"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a4", "“Cinco” diz uma quantidade. “Primeiro” diz...", "Toque na resposta certa", "a posição (a ordem)", ["a cor", "o tamanho", "o som"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a5", "Quanto do sanduíche cada amigo comeu?", "Toque na resposta certa", "A metade", ["O dobro", "Nada", "Tudo"], "medium")),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g35-a6", "Ligue o número a como ele se escreve", [
+        ["1", "um"],
+        ["2", "dois"],
+        ["3", "três"],
+        ["4", "quatro"],
+    ]),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g35-a7", "Ligue o número da fila à posição", [
+        ["1º", "primeiro"],
+        ["2º", "segundo"],
+        ["3º", "terceiro"],
+        ["4º", "quarto"],
+    ]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a8", "Qual numeral diz a ordem (posição)?", "Toque na resposta certa", "quinto", ["cinco", "seis", "sete"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a9", "O dobro de 2 é...", "Toque na resposta certa", "4", ["1", "3", "6"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a10", "A metade de 10 é...", "Toque na resposta certa", "5", ["2", "20", "8"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g35-a11", "Qual frase tem um numeral?", "Toque na resposta certa", "Tenho três lápis.", ["Tenho muitos lápis.", "Tenho lápis coloridos.", "Tenho o lápis."]),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g35-a12", "“Primeiro”, “segundo” e “terceiro” são numerais que dizem a posição.", true),
+];
+// ---------------------------------------------------------------------------
+// Grupo 36 — Mais, menos, igual! (grau do adjetivo)
+// ---------------------------------------------------------------------------
+const g36Activities = [
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a1", "O elefante é grande. O rato é pequeno. Então o elefante é ___ que o rato.", "Toque na resposta certa", "maior", ["menor", "tão", "igual"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a2", "O rato é ___ que o elefante.", "Toque na resposta certa", "menor", ["maior", "melhor", "pior"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a3", "Ana e Bia têm a mesma altura. Ana é ___ alta quanto Bia.", "Toque na resposta certa", "tão", ["mais", "menos", "muito"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a4", "A tartaruga é ___ rápida que o coelho.", "Toque na resposta certa", "menos", ["mais", "tão", "muito"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a5", "O guepardo é ___ rápido que o cachorro.", "Toque na resposta certa", "mais", ["menos", "tão", "pouco"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a6", "O contrário de “mais” é...", "Toque na resposta certa", "menos", ["muito", "tão", "bem"]),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g36-a7", "Ligue a palavra ao seu “comparativo”", [
+        ["bom", "melhor"],
+        ["mau", "pior"],
+        ["grande", "maior"],
+        ["pequeno", "menor"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a8", "Quando algo é “bonitíssimo”, ele é...", "Toque na resposta certa", "muito, muito bonito", ["um pouco bonito", "nada bonito", "mais ou menos"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a9", "Qual frase diz que o sorvete é MUITO gostoso?", "Toque na resposta certa", "O sorvete é gostosíssimo.", ["O sorvete é gostoso.", "O sorvete é menos gostoso.", "O sorvete é gelado."], "medium"),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g36-a10", "“Melhor” é o comparativo de “bom”.", true),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a11", "Qual palavra quer dizer “muito, muito grande”?", "Toque na resposta certa", "enorme", ["pequenino", "médio", "baixinho"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g36-a12", "Complete: A pedra é ___ pesada que a pena.", "Toque na resposta certa", "mais", ["menos", "tão", "pouco"]),
+];
+// ---------------------------------------------------------------------------
+// Grupo 37 — Cartas para quem a gente ama
+// ---------------------------------------------------------------------------
+const g37Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g37-leitura", "Carta para a vovó Rita", [
+        "Salvador, 5 de maio de 2026",
+        "Querida vovó Rita,",
+        "Estou com saudade de você! Na escola, aprendi a escrever cartas e fiquei logo pensando em mandar uma para a senhora.",
+        "No fim de semana, fiz um desenho do seu jardim. Vou colocar dentro do envelope.",
+        "Venha logo nos visitar. Quero ouvir de novo a história do patinho.",
+        "Um beijo bem grande do seu neto,",
+        "Davi",
+    ]),
+    ...txt("pd-g37-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a1", "Quem escreveu a carta?", "Toque na resposta certa", "Davi", ["Rita", "A professora", "O jardineiro"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a2", "Para quem é a carta?", "Toque na resposta certa", "Para a vovó Rita", ["Para a professora", "Para o tio", "Para o amigo"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a3", "O que o Davi vai colocar dentro do envelope?", "Toque na resposta certa", "Um desenho do jardim", ["Uma foto", "Um bolo", "Uma flor de verdade"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a4", "Por que o Davi escreveu a carta?", "Toque na resposta certa", "Porque estava com saudade da vovó", ["Porque estava com sono", "Porque queria um presente", "Porque tinha prova"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a5", "“Querida vovó Rita” é o chamamento. Ele é feito para...", "Toque na resposta certa", "dizer a quem a carta é dirigida", ["dizer a data", "assinar a carta", "despedir-se"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a6", "Como Davi se despediu?", "Toque na resposta certa", "Com um beijo bem grande", ["Com um tchau seco", "Sem se despedir", "Com uma pergunta"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a7", "Onde fica o nome de quem escreve a carta?", "Toque na resposta certa", "No fim, na assinatura", ["No começo", "Só no envelope", "Em lugar nenhum"], "medium")),
+    (0, portuguesDivertidoGrupos_1.order)("pd-g37-a8", "Coloque as partes da carta na ordem certa", [
+        "Local e data",
+        "Chamamento (Querida vovó)",
+        "O assunto da carta",
+        "Despedida e assinatura",
+    ]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a9", "No envelope, a gente escreve o nome e o endereço de...", "Toque na resposta certa", "quem vai receber a carta", ["só o carteiro", "só o cachorro", "o dono do correio"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a10", "O número que ajuda a encontrar a rua certa se chama...", "Toque na resposta certa", "CEP", ["CPF", "ABC", "RG"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g37-a11", "Quem leva a carta até a casa da pessoa?", "Toque na resposta certa", "O carteiro", ["O padeiro", "O bombeiro", "O médico"]),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g37-a12", "Hoje também existem cartas digitais, como mensagens e e-mails.", true),
+];
+// ---------------------------------------------------------------------------
+// Grupo 38 — Eu, tu, ele: os pronomes
+// ---------------------------------------------------------------------------
+const g38Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g38-leitura", "Lia e o Nando", [
+        "Lia tem um amigo chamado Nando. Ela gosta de brincar com ele no parque.",
+        "— Nando, você quer subir no escorregador? — perguntou Lia.",
+        "— Quero! Eu vou primeiro e você vai depois — respondeu o menino.",
+        "Eles riram muito. Nós também gostamos de brincar assim!",
+    ]),
+    ...txt("pd-g38-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a1", "Em “Ela gosta de brincar”, a palavra ELA se refere a...", "Toque na resposta certa", "Lia", ["Nando", "O parque", "O escorregador"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a2", "Em “brincar com ele”, a palavra ELE se refere a...", "Toque na resposta certa", "Nando", ["Lia", "A professora", "O parque"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a3", "Quando o Nando diz “Eu vou primeiro”, quem vai primeiro?", "Toque na resposta certa", "O próprio Nando", ["A Lia", "O parque", "A professora"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a4", "Quando Lia diz “você” ao Nando, ela fala com...", "Toque na resposta certa", "o Nando", ["ela mesma", "o escorregador", "a mamãe"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a5", "Palavras como eu, você, ele e ela, que ficam no lugar de nomes, se chamam...", "Toque na resposta certa", "pronomes", ["adjetivos", "artigos", "sílabas"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a6", "Qual pronome fala de quem está falando?", "Toque na resposta certa", "eu", ["tu", "ele", "elas"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a7", "Qual pronome fala da pessoa com quem a gente conversa?", "Toque na resposta certa", "você", ["eu", "ele", "ela"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a8", "Troque o nome pelo pronome: “Maria pintou.” → ___ pintou.", "Toque na resposta certa", "Ela", ["Ele", "Eles", "Nós"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a9", "Troque os nomes pelo pronome: “Pedro e Ana cantam.” → ___ cantam.", "Toque na resposta certa", "Eles", ["Ele", "Ela", "Eu"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a10", "Para falar de você e de mais gente juntos, dizemos...", "Toque na resposta certa", "nós", ["eu", "ele", "tu"]),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g38-a11", "Ligue o pronome a quem ele representa", [
+        ["eu", "quem fala"],
+        ["você", "com quem se fala"],
+        ["ele", "o menino de quem se fala"],
+        ["elas", "as meninas de quem se fala"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g38-a12", "Para falar com a professora, a gente usa...", "Toque na resposta certa", "a senhora", ["a tua", "essa aí", "ô, tu"], "medium"),
+];
+// ---------------------------------------------------------------------------
+// Grupo 39 — Meu, seu, este, aquele
+// ---------------------------------------------------------------------------
+const g39Activities = [
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a1", "Complete: Esta é a minha mochila. Ela é ___.", "Toque na resposta certa", "minha", ["sua", "nossa", "dele"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a2", "Complete: Ana e eu temos um gato. O gato é ___.", "Toque na resposta certa", "nosso", ["meu", "seu", "dela"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a3", "“Meu”, “seu” e “nosso” mostram quem é o...", "Toque na resposta certa", "dono", ["tamanho", "som", "lugar"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a4", "Se o brinquedo está na SUA mão, você diz:", "Toque na resposta certa", "Este brinquedo é meu.", ["Aquele brinquedo é meu.", "Esse brinquedo é meu.", "Aquilo é um brinquedo."], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a5", "Se o brinquedo está longe de nós dois, dizemos:", "Toque na resposta certa", "Aquele brinquedo é bonito.", ["Este brinquedo é bonito.", "Esse brinquedo é bonito.", "Eu sou bonito."], "medium"),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g39-a6", "Ligue a palavra à distância", [
+        ["este", "perto de mim"],
+        ["esse", "perto de você"],
+        ["aquele", "longe dos dois"],
+        ["aquilo", "uma coisa longe de nós"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a7", "Complete: ___ aqui na minha mão é um lápis.", "Toque na resposta certa", "Isto", ["Aquilo", "Isso", "Aqui"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a8", "Qual palavra quer dizer “ninguém”?", "Toque na resposta certa", "nenhuma pessoa", ["todas as pessoas", "uma pessoa", "muita gente"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a9", "Complete: ___ quer brincar comigo? (pergunta)", "Toque na resposta certa", "Quem", ["Aquilo", "Nada", "Ninguém"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a10", "Qual palavra faz uma pergunta?", "Toque na resposta certa", "qual", ["muito", "tudo", "nada"]),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g39-a11", "“Muitos” e “poucos” falam de quantidade sem dizer o número exato.", true, "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g39-a12", "Qual frase tem um pronome possessivo (de dono)?", "Toque na resposta certa", "A minha bicicleta é azul.", ["A bicicleta é azul.", "Quem tem bicicleta?", "Aquilo é uma bicicleta."], "medium"),
+];
+// ---------------------------------------------------------------------------
+// Grupo 40 — Sílaba forte e sílaba fraca
+// ---------------------------------------------------------------------------
+const g40Activities = [
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a1", "Em ma-ca-CO, qual é a sílaba mais forte?", "Toque na resposta certa", "CO", ["ma", "ca", "Nenhuma"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a2", "Em BA-na-na, qual sílaba a gente fala com mais força?", "Toque na resposta certa", "na (a do meio)", ["ba", "a última", "Nenhuma"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a3", "A sílaba falada com mais força se chama...", "Toque na resposta certa", "tônica", ["átona", "muda", "fraca"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a4", "As sílabas faladas com menos força se chamam...", "Toque na resposta certa", "átonas", ["tônicas", "mudas", "fortes"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a5", "Em ca-FÉ, a sílaba mais forte é...", "Toque na resposta certa", "a última", ["a primeira", "a do meio", "Nenhuma"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a6", "Quando a sílaba mais forte é a ÚLTIMA, a palavra é...", "Toque na resposta certa", "oxítona", ["paroxítona", "proparoxítona", "átona"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a7", "Qual palavra é oxítona?", "Toque na resposta certa", "sofá", ["casa", "lâmpada", "bola"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a8", "Em CA-sa, a sílaba mais forte é a penúltima. A palavra é...", "Toque na resposta certa", "paroxítona", ["oxítona", "proparoxítona", "átona"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a9", "Qual palavra é proparoxítona (a mais forte é a antepenúltima)?", "Toque na resposta certa", "árvore", ["jacaré", "janela", "sapo"], "hard"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a10", "Todas as palavras proparoxítonas têm...", "Toque na resposta certa", "acento", ["hífen", "til em todas", "dois erres"], "hard"),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g40-a11", "Ligue a palavra ao tipo", [
+        ["jacaré", "oxítona"],
+        ["bola", "paroxítona"],
+        ["máquina", "proparoxítona"],
+        ["avô", "oxítona"],
+    ], "hard"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a12", "Qual palavra tem o acento certo?", "Toque na resposta certa", "café", ["cafe", "cáfe", "cafê"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g40-a13", "Qual palavra tem o acento certo?", "Toque na resposta certa", "lâmpada", ["lampada", "lampáda", "lampadá"], "medium"),
+];
+// ---------------------------------------------------------------------------
+// Grupo 41 — Cartaz e propaganda
+// ---------------------------------------------------------------------------
+const g41Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g41-leitura", "Cartaz: Água é vida!", [
+        "ÁGUA É VIDA!",
+        "Feche a torneira enquanto escova os dentes.",
+        "Tome banhos rápidos.",
+        "Cuide da água: o planeta agradece!",
+        "(No cartaz há o desenho de uma gota sorrindo e de uma criança escovando os dentes.)",
+    ]),
+    ...txt("pd-g41-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a1", "Qual é o assunto do cartaz?", "Toque na resposta certa", "Cuidar da água", ["Vender sorvete", "Um show de música", "Uma festa da escola"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a2", "O que o cartaz pede para fazer enquanto escovamos os dentes?", "Toque na resposta certa", "Fechar a torneira", ["Cantar", "Abrir a janela", "Correr"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a3", "Que tipo de banho o cartaz sugere?", "Toque na resposta certa", "Banho rápido", ["Banho demorado", "Banho de mangueira", "Nenhum banho"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a4", "A gota sorrindo e a criança escovando os dentes são...", "Toque na resposta certa", "desenhos que ajudam a passar a mensagem", ["só enfeite sem sentido", "propaganda de pasta", "uma receita"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a5", "“Feche” e “tome” são palavras que...", "Toque na resposta certa", "dão uma orientação (um pedido)", ["contam uma história do passado", "fazem uma pergunta", "dão nome a objetos"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a6", "A propaganda serve para...", "Toque na resposta certa", "convencer as pessoas de uma ideia ou de uma atitude", ["ensinar uma receita", "contar uma fábula", "marcar uma data no calendário"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a7", "Quem pode ler um cartaz de propaganda?", "Toque na resposta certa", "O público em geral", ["Só os professores", "Só os animais", "Só quem tem celular"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a8", "Qual frase serve de lema (slogan) para cuidar do planeta?", "Toque na resposta certa", "Cuide do planeta: ele é a nossa casa!", ["Compre agora e ganhe doces.", "O planeta é grande.", "Hoje choveu pouco."], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a9", "Qual desses é um bom argumento para economizar água?", "Toque na resposta certa", "A água é importante e pode acabar se for desperdiçada", ["Porque a torneira é azul", "Porque a gota é pequena", "Porque o cartaz é colorido"], "medium"),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g41-a10", "Ligue a atitude ao motivo", [
+        ["Fechar a torneira", "Economizar água"],
+        ["Jogar lixo na lixeira", "Manter a rua limpa"],
+        ["Apagar a luz", "Economizar energia"],
+        ["Plantar uma árvore", "Cuidar do ar e da natureza"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g41-a11", "Em um cartaz, as imagens e as palavras trabalham juntas.", true),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g41-a12", "Qual destas ideias combina com um cartaz sobre o lixo?", "Toque na resposta certa", "Jogue o lixo no lixo!", ["Coma frutas e legumes.", "Escove os dentes.", "Estude bastante."]),
+];
+// ---------------------------------------------------------------------------
+// Grupo 42 — Palavras de ação (verbos)
+// ---------------------------------------------------------------------------
+const g42Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g42-leitura", "Um sábado de brincadeira", [
+        "No sábado, Bia acordou cedo e correu até o parque.",
+        "Lá, ela pulou corda, jogou bola e tomou suco de laranja.",
+        "À noite, choveu forte, e Bia ficou em casa, lendo um livro.",
+    ]),
+    ...txt("pd-g42-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a1", "Qual palavra mostra o que a Bia fez ao acordar?", "Toque na resposta certa", "correu", ["parque", "suco", "livro"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a2", "Qual palavra mostra uma ação de brincadeira?", "Toque na resposta certa", "pulou", ["laranja", "sábado", "forte"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a3", "Qual palavra fala de um fenômeno da natureza?", "Toque na resposta certa", "choveu", ["acordou", "jogou", "ficou"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a4", "As palavras que mostram ação ou fenômenos da natureza se chamam...", "Toque na resposta certa", "verbos", ["adjetivos", "artigos", "numerais"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a5", "Qual palavra é um verbo?", "Toque na resposta certa", "cantar", ["canto de passarinho", "cantor", "canção"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a6", "Qual palavra é um verbo?", "Toque na resposta certa", "dormir", ["cama", "sonho", "lençol"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a7", "O verbo “brincar” termina em...", "Toque na resposta certa", "-ar", ["-er", "-ir", "-or"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a8", "Qual verbo termina em -er?", "Toque na resposta certa", "comer", ["pular", "partir", "dormir"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a9", "Qual verbo termina em -ir?", "Toque na resposta certa", "partir", ["cantar", "beber", "correr"], "medium"),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g42-a10", "Ligue o verbo ao que a gente faz", [
+        ["nadar", "ir pela água"],
+        ["ler", "olhar as palavras de um livro"],
+        ["desenhar", "fazer figuras no papel"],
+        ["ouvir", "escutar um som"],
+    ]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g42-a11", "O verbo no começo de tudo, sem estar mudado (como em “brincar”), está no...", "Toque na resposta certa", "infinitivo", ["passado", "futuro", "plural"], "hard"),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g42-a12", "“Chover” é um verbo.", true),
+];
+// ---------------------------------------------------------------------------
+// Grupo 43 — Ontem, hoje e amanhã (tempos do verbo)
+// ---------------------------------------------------------------------------
+const g43Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g43-leitura", "Ontem, hoje e amanhã", [
+        "Ontem eu pintei um barco. Hoje eu pinto uma casa. Amanhã eu pintarei um foguete!",
+        "Ontem os meninos brincaram de pique. Hoje eles brincam de bola. Amanhã eles brincarão de esconde-esconde.",
+    ]),
+    ...txt("pd-g43-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a1", "O que eu pintei ontem?", "Toque na resposta certa", "Um barco", ["Uma casa", "Um foguete", "Uma flor"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a2", "O que eu pinto hoje?", "Toque na resposta certa", "Uma casa", ["Um barco", "Um foguete", "Uma árvore"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a3", "O que eu vou pintar amanhã?", "Toque na resposta certa", "Um foguete", ["Uma casa", "Um barco", "Um sol"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a4", "A palavra “pintei” fala de uma ação...", "Toque na resposta certa", "que já aconteceu (passado)", ["que está acontecendo agora", "que ainda vai acontecer", "que nunca acontece"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a5", "A palavra “pintarei” fala de uma ação...", "Toque na resposta certa", "que ainda vai acontecer (futuro)", ["que já aconteceu", "que acontece agora", "que é impossível"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a6", "“Brincaram” e “brincarão” são diferentes. Qual deles é do passado?", "Toque na resposta certa", "brincaram", ["brincarão", "Os dois", "Nenhum dos dois"], "hard")),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g43-a7", "Ligue o verbo ao tempo", [
+        ["pulei", "passado"],
+        ["pulo", "presente"],
+        ["pularei", "futuro"],
+        ["pulamos", "presente (nós)"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a8", "Qual palavra mostra uma ação do presente?", "Toque na resposta certa", "canto", ["cantei", "cantarei", "cantaram"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a9", "Qual palavra mostra uma ação do passado?", "Toque na resposta certa", "comeu", ["come", "comerá", "comer"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a10", "Qual palavra mostra uma ação do futuro?", "Toque na resposta certa", "viajarei", ["viajei", "viajo", "viajou"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g43-a11", "“Eu canto” e “nós cantamos” mudam por causa da...", "Toque na resposta certa", "pessoa e do número (eu / nós)", ["cor", "rima", "letra maiúscula"], "hard"),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g43-a12", "Quando digo “ontem”, o verbo costuma ficar no passado.", true),
+];
+// ---------------------------------------------------------------------------
+// Grupo 44 — Pedidos e ordens (receita e modo imperativo)
+// ---------------------------------------------------------------------------
+const g44Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g44-leitura", "Receita: sanduíche de queijo", [
+        "Ingredientes: 2 fatias de pão e 1 fatia de queijo.",
+        "Modo de preparo:",
+        "1. Lave as mãos.",
+        "2. Pegue as duas fatias de pão.",
+        "3. Coloque o queijo no meio do pão.",
+        "4. Feche o sanduíche e corte ao meio.",
+        "5. Sirva e aproveite!",
+    ]),
+    ...txt("pd-g44-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a1", "Quantas fatias de pão a receita pede?", "Toque na resposta certa", "2", ["1", "3", "4"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a2", "O que a gente faz primeiro?", "Toque na resposta certa", "Lava as mãos", ["Corta o sanduíche", "Serve", "Come"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a3", "Onde se coloca o queijo?", "Toque na resposta certa", "No meio do pão", ["Em cima do prato", "Dentro do copo", "Na mesa"]), (0, portuguesDivertidoGrupos_1.order)("pd-g44-a4", "Coloque os passos do sanduíche na ordem certa", [
+        "Lave as mãos.",
+        "Pegue as fatias de pão.",
+        "Coloque o queijo no meio.",
+        "Feche e corte ao meio.",
+    ]), (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a5", "Palavras como “lave”, “pegue” e “coloque” dão...", "Toque na resposta certa", "ordens ou orientações", ["nomes de objetos", "cores", "números"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a6", "O modo do verbo usado para dar ordem, pedido ou conselho se chama...", "Toque na resposta certa", "imperativo", ["indicativo", "infinitivo", "plural"], "hard"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a7", "Qual frase dá uma ordem educada?", "Toque na resposta certa", "Feche a porta, por favor.", ["A porta está fechada.", "Ontem fechei a porta.", "Quem fechou a porta?"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a8", "Qual frase dá um conselho?", "Toque na resposta certa", "Escove os dentes depois de comer.", ["Comi um bolo.", "O bolo está quente.", "Eu gosto de chocolate."], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a9", "O modo que mostra certeza, como em “Eu como pão”, se chama...", "Toque na resposta certa", "indicativo", ["imperativo", "infinitivo", "diminutivo"], "hard"),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g44-a10", "Ligue a frase ao que ela faz", [
+        ["Venha aqui!", "Dá uma ordem"],
+        ["Eu como pão.", "Mostra uma certeza"],
+        ["Espero que chova.", "Mostra um desejo"],
+        ["Quer ajuda?", "Faz uma pergunta"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g44-a11", "Uma receita usa muitos verbos de ordem (como misture, bata e sirva).", true),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g44-a12", "Complete a ordem: ___ a água na panela (colocar).", "Toque na resposta certa", "Coloque", ["Coloquei", "Colocarei", "Colocando"], "medium"),
+];
+// ---------------------------------------------------------------------------
+// Grupo 45 — A entrevista
+// ---------------------------------------------------------------------------
+const g45Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g45-leitura", "Entrevista com a bibliotecária Rosa", [
+        "A turma do 6º ano visitou a biblioteca e conversou com a bibliotecária Rosa, que cuida dos livros da escola há dez anos.",
+        "Aluno: O que a senhora faz na biblioteca?",
+        "Dona Rosa: Eu guardo os livros, ajudo as crianças a escolher uma boa leitura e conto histórias.",
+        "Aluno: Qual é o seu livro preferido?",
+        "Dona Rosa: Gosto de todos, mas tenho carinho especial por livros de aventura.",
+        "Aluno: Obrigado pela conversa!",
+        "Dona Rosa: Eu é que agradeço. Voltem sempre!",
+    ]),
+    ...txt("pd-g45-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a1", "Quem foi entrevistada?", "Toque na resposta certa", "A bibliotecária Rosa", ["A professora", "A diretora", "Uma aluna"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a2", "Há quanto tempo ela cuida dos livros?", "Toque na resposta certa", "Há dez anos", ["Há dois anos", "Há um mês", "Há vinte anos"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a3", "O que a bibliotecária faz na biblioteca?", "Toque na resposta certa", "Guarda livros, ajuda a escolher e conta histórias", ["Vende doces", "Dá aulas de matemática", "Cuida da quadra"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a4", "De que tipo de livro Dona Rosa tem carinho especial?", "Toque na resposta certa", "De aventura", ["De receitas", "De poesia", "De ciência"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a5", "Quem faz as perguntas em uma entrevista?", "Toque na resposta certa", "O entrevistador", ["O entrevistado", "O leitor", "O cachorro"], "medium"), (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a6", "E quem responde?", "Toque na resposta certa", "O entrevistado", ["O entrevistador", "O jornal", "O revisor"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a7", "A introdução curtinha de uma entrevista, que diz quem é a pessoa e o assunto, se chama...", "Toque na resposta certa", "apresentação", ["despedida", "assinatura", "receita"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a8", "Qual dessas é uma boa pergunta para uma entrevista?", "Toque na resposta certa", "Como é o seu trabalho?", ["Sim.", "Foi ótimo.", "Amanhã eu vou."], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a9", "Antes de uma entrevista, o bom entrevistador...", "Toque na resposta certa", "pesquisa sobre a pessoa e o assunto", ["esquece o assunto", "inventa as respostas", "não faz perguntas"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g45-a10", "Para entrevistar com educação, a gente...", "Toque na resposta certa", "cumprimenta, ouve e agradece", ["interrompe sempre", "vira as costas", "fala mais que o entrevistado"]),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g45-a11", "Uma entrevista pode ser publicada em jornal, revista ou na internet.", true),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g45-a12", "Ligue cada papel à pessoa", [
+        ["Quem pergunta", "Entrevistador"],
+        ["Quem responde", "Entrevistado"],
+        ["Quem lê depois", "Leitor"],
+        ["Lugar da conversa", "Biblioteca"],
+    ]),
+];
+// ---------------------------------------------------------------------------
+// Grupo 46 — Notícia: o que, quem, quando e onde
+// ---------------------------------------------------------------------------
+const g46Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g46-leitura", "Escola do bairro planta horta", [
+        "Escola do bairro planta horta e ensina crianças a cuidar da terra",
+        "Na última segunda-feira, 20 de outubro, os alunos da Escola Girassol plantaram uma horta no pátio.",
+        "Eles semearam alface, cenoura e tomate, com a ajuda da professora Marta.",
+        "Segundo a diretora, a ideia é ensinar a importância de uma alimentação saudável. As verduras serão usadas na merenda.",
+        "As crianças vão regar as plantas todos os dias.",
+    ]),
+    ...txt("pd-g46-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a1", "O que aconteceu?", "Toque na resposta certa", "Uma horta foi plantada na escola", ["Um jogo de futebol", "Uma festa junina", "Uma prova"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a2", "Quem plantou a horta?", "Toque na resposta certa", "Os alunos, com a professora Marta", ["Só a diretora", "O vizinho", "O jardineiro da praça"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a3", "Quando foi o plantio?", "Toque na resposta certa", "Na segunda-feira, 20 de outubro", ["No Natal", "No sábado", "Em janeiro"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a4", "Onde foi plantada a horta?", "Toque na resposta certa", "No pátio da Escola Girassol", ["No parque", "Na biblioteca", "Na praia"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a5", "Por que a escola plantou a horta?", "Toque na resposta certa", "Para ensinar sobre alimentação saudável", ["Para vender flores", "Para fazer um estacionamento", "Porque a escola fechou"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a6", "O que será feito com as verduras?", "Toque na resposta certa", "Serão usadas na merenda", ["Serão jogadas fora", "Serão vendidas no mercado", "Serão enterradas"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a7", "A primeira frase, em destaque, que diz o assunto principal da notícia, é o...", "Toque na resposta certa", "título", ["rodapé", "final", "recado"], "medium")),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a8", "Uma notícia conta...", "Toque na resposta certa", "um fato que aconteceu e que interessa às pessoas", ["uma história de fadas", "uma receita", "uma poesia"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a9", "Que pergunta uma notícia responde com o nome das pessoas?", "Toque na resposta certa", "Quem?", ["Quando?", "Onde?", "Quanto?"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g46-a10", "Que pergunta uma notícia responde com a data?", "Toque na resposta certa", "Quando?", ["Quem?", "Onde?", "Como?"], "medium"),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g46-a11", "Ligue a pergunta à informação", [
+        ["O quê?", "Uma horta foi plantada"],
+        ["Quem?", "Alunos e professora Marta"],
+        ["Onde?", "No pátio da escola"],
+        ["Por quê?", "Para ensinar alimentação saudável"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g46-a12", "Uma notícia de verdade precisa contar fatos reais.", true),
+];
+// ---------------------------------------------------------------------------
+// Grupo 47 — Cuidar do planeta
+// ---------------------------------------------------------------------------
+const g47Activities = [
+    (0, portuguesDivertidoGrupos_1.read)("pd-g47-leitura", "A Terra é a nossa casa", [
+        "A Terra é a nossa casa. Nela vivem as pessoas, os bichos e as plantas.",
+        "As árvores limpam o ar, os rios dão água e o Sol aquece a todos.",
+        "Quando jogamos lixo na rua, sujamos nossa casa. Quando cuidamos dela, ela cuida de nós.",
+        "Para ajudar, a gente pode reduzir o lixo, reutilizar o que ainda serve e reciclar o que não serve mais.",
+    ]),
+    ...txt("pd-g47-leitura", (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a1", "Qual é a nossa casa, segundo o texto?", "Toque na resposta certa", "A Terra", ["A escola", "A lua", "O parque"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a2", "Quem vive na Terra?", "Toque na resposta certa", "Pessoas, bichos e plantas", ["Só pessoas", "Só plantas", "Só bichos"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a3", "O que as árvores fazem?", "Toque na resposta certa", "Limpam o ar", ["Fazem barulho", "Escondem o Sol", "Secam os rios"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a4", "O que acontece quando jogamos lixo na rua?", "Toque na resposta certa", "Sujamos nossa casa", ["A rua fica limpa", "O lixo vira flor", "Nada acontece"]), (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a5", "Quais são os três “erres” citados no texto?", "Toque na resposta certa", "Reduzir, reutilizar e reciclar", ["Rir, rolar e rezar", "Rasgar, riscar e roubar", "Ler, rimar e rodar"], "medium")),
+    (0, portuguesDivertidoGrupos_1.match)("pd-g47-a6", "Ligue o “erre” ao exemplo", [
+        ["Reduzir", "Usar menos copos descartáveis"],
+        ["Reutilizar", "Usar de novo um pote de vidro"],
+        ["Reciclar", "Separar papel e plástico para virar coisa nova"],
+    ], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a7", "A lixeira azul geralmente é para...", "Toque na resposta certa", "papel", ["vidro", "plástico", "restos de comida"], "medium"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a8", "A lixeira amarela geralmente é para...", "Toque na resposta certa", "metal", ["papel", "vidro", "orgânico"], "hard"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a9", "Qual atitude ajuda o planeta?", "Toque na resposta certa", "Apagar a luz ao sair da sala", ["Deixar a torneira aberta", "Jogar papel no chão", "Queimar lixo no quintal"]),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a10", "As palavras “calmamente” e “rapidamente” terminam em -mente. Elas dizem...", "Toque na resposta certa", "como uma ação é feita", ["quantas coisas há", "de quem é o objeto", "quando é a festa"], "hard"),
+    (0, portuguesDivertidoGrupos_1.mc)("pd-g47-a11", "Complete: Guardei os brinquedos ___ (de modo cuidadoso).", "Toque na resposta certa", "cuidadosamente", ["cuidadoso", "cuidado", "cuidar"], "hard"),
+    (0, portuguesDivertidoGrupos_1.tf)("pd-g47-a12", "Plantar árvores ajuda a cuidar do planeta.", true),
+];
+exports.portuguesDivertidoGrupos4 = [
+    (0, portuguesDivertidoGrupos_1.grupo)(32, "Querido Diário", "Diário pessoal: contar o que vivemos, sentimos e pensamos no dia.", "Pan abre um caderninho com cadeado e descobre como escrever sobre o seu dia.", portuguesDivertidoGrupos_1.IMG_LIVRO, g32Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(33, "Palavras que Descrevem", "Adjetivos: como são as pessoas, os bichos e as coisas.", "Pan passeia pelo jardim da vovó e vê cores, tamanhos e cheiros para descrever.", portuguesDivertidoGrupos_1.IMG_FLORESTA, g33Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(34, "O, A, Um, Uma", "Artigos definidos e indefinidos.", "Pan descobre as palavrinhas pequenas que vêm antes dos nomes.", portuguesDivertidoGrupos_1.IMG_LETRAS, g34Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(35, "Os Números na Frase", "Numerais: quantidades e posições (primeiro, segundo...).", "Pan participa de uma corrida e aprende a falar quantos e em que lugar cada um chegou.", portuguesDivertidoGrupos_1.IMG_CRIANCAS, g35Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(36, "Mais, Menos, Igual!", "Comparar: maior, menor, melhor, pior e muito, muito (-íssimo).", "Pan compara elefantes, tartarugas e guepardos e inventa jeitos de dizer “muito”.", portuguesDivertidoGrupos_1.IMG_FLORESTA, g36Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(37, "Cartas para Quem a Gente Ama", "Carta pessoal: data, chamamento, assunto, despedida e assinatura; o envelope.", "Pan escreve uma carta e aprende o caminho que ela faz até chegar à vovó.", portuguesDivertidoGrupos_1.IMG_LIVRO, g37Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(38, "Eu, Tu, Ele: os Pronomes", "Pronomes pessoais: eu, você, ele, ela, nós, eles, elas.", "Pan percebe que algumas palavras ficam no lugar dos nomes para a história não repetir.", portuguesDivertidoGrupos_1.IMG_CRIANCAS, g38Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(39, "Meu, Seu, Este, Aquele", "Pronomes possessivos, demonstrativos, indefinidos e interrogativos.", "Pan brinca de apontar o que é perto, o que é longe e de quem é cada coisa.", portuguesDivertidoGrupos_1.IMG_CRIANCAS, g39Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(40, "Sílaba Forte e Sílaba Fraca", "Sílaba tônica; palavras oxítonas, paroxítonas e proparoxítonas; acento.", "Pan escuta o ritmo das palavras e descobre onde fica a sílaba que fala mais alto.", portuguesDivertidoGrupos_1.IMG_LETRAS, g40Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(41, "Cartaz e Propaganda", "Propaganda: convencer com palavras e imagens, e cuidar da água.", "Pan desenha um cartaz para convencer a escola a economizar água.", portuguesDivertidoGrupos_1.IMG_CRIANCAS, g41Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(42, "Palavras de Ação", "Verbos: ação, fenômenos da natureza e as três conjugações (-ar, -er, -ir).", "Pan brinca de mímica para descobrir o que cada verbo faz.", portuguesDivertidoGrupos_1.IMG_FLORESTA, g42Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(43, "Ontem, Hoje e Amanhã", "Tempos do verbo: passado, presente e futuro.", "Pan viaja no tempo e vê o mesmo dia de três jeitos.", portuguesDivertidoGrupos_1.IMG_LIVRO, g43Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(44, "Pedidos e Ordens", "Receita e o modo imperativo; indicativo para certezas.", "Pan cozinha com a vovó e aprende a seguir um passo a passo.", portuguesDivertidoGrupos_1.IMG_CRIANCAS, g44Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(45, "A Entrevista", "Entrevistador, entrevistado, perguntas, respostas e boas maneiras.", "Pan vira repórter e conversa com a bibliotecária da escola.", portuguesDivertidoGrupos_1.IMG_LIVRO, g45Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(46, "O Jornal da Turma", "Notícia: título, o quê, quem, quando, onde e por quê.", "Pan e os amigos montam um jornalzinho para contar o que acontece na escola.", portuguesDivertidoGrupos_1.IMG_LIVRO, g46Activities),
+    (0, portuguesDivertidoGrupos_1.grupo)(47, "Cuidar do Planeta", "Meio ambiente, os três erres e palavras terminadas em -mente.", "Pan descobre como cada gesto pequeno ajuda a cuidar da nossa casa: a Terra.", portuguesDivertidoGrupos_1.IMG_FLORESTA, g47Activities),
+];
