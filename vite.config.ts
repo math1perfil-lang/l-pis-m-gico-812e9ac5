@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
@@ -24,11 +24,11 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     {
       name: "emit-version-json",
-      apply: "build" as const,
+      apply: "build",
       generateBundle() {
         this.emitFile({ type: "asset", fileName: "version.json", source: JSON.stringify({ id: BUILD_ID }) });
       },
-    },
+    } satisfies Plugin,
     VitePWA({
       // O app deixou de usar service worker: ele guardava uma cópia antiga do app no celular e
       // o ícone da tela de início ficava preso na versão velha. Este modo gera um sw.js que se
