@@ -12,13 +12,21 @@ import Rewards from "./pages/Rewards";
 import Cofrinho from "./pages/Cofrinho";
 import Profile from "./pages/Profile";
 import AdminAccess from "./pages/AdminAccess";
+import EducationPanel from "./pages/EducationPanel";
 import NotFound from "./pages/NotFound";
 import { CoinsProvider } from "./hooks/useCoins";
 import { AuthProvider } from "./hooks/useAuth";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { UpdateBanner } from "./components/UpdateBanner";
+import { useContentLoader } from "./hooks/useContent";
 
 const queryClient = new QueryClient();
+
+// Carrega as edições do painel de educação e as aplica ao conteúdo do app.
+const ContentLoader = () => {
+  useContentLoader();
+  return null;
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -29,6 +37,7 @@ const App = () => (
             <Toaster />
             <Sonner />
             <UpdateBanner />
+            <ContentLoader />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
@@ -81,6 +90,7 @@ const App = () => (
                 }
               />
               <Route path="/admin-acess" element={<AdminAccess />} />
+              <Route path="/painel-educacao" element={<EducationPanel />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </CoinsProvider>

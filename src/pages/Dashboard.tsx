@@ -21,7 +21,8 @@ import { CourseCard } from "@/components/CourseCard";
 import { ProgressBar } from "@/components/ProgressBar";
 import { StreakDisplay } from "@/components/StreakDisplay";
 import { AgeSelector } from "@/components/AgeSelector";
-import { courses, getCoursesForAge } from "@/data/courses";
+import { getAllCourses, getCoursesForAge } from "@/data/courses";
+import { useContentVersion } from "@/hooks/useContent";
 import { useCoins } from "@/hooks/useCoins";
 import { useAuth } from "@/hooks/useAuth";
 import { useProfile } from "@/hooks/useProfile";
@@ -30,6 +31,8 @@ import { cn } from "@/lib/utils";
 
 export default function Dashboard() {
   const navigate = useNavigate();
+  useContentVersion();
+  const courses = getAllCourses();
   const { balance: totalCoins, xp, level, xpCurrent, xpToNextLevel, streakDays } = useCoins();
   const { summaryFor } = useAllCoursesProgress();
   const { profile } = useProfile();

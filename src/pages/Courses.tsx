@@ -6,7 +6,8 @@ import { Input } from "@/components/ui/input";
 import { CourseCard } from "@/components/CourseCard";
 import { AgeSelector } from "@/components/AgeSelector";
 import { CoinDisplay } from "@/components/CoinDisplay";
-import { courses, getCoursesForAge } from "@/data/courses";
+import { getAllCourses, getCoursesForAge } from "@/data/courses";
+import { useContentVersion } from "@/hooks/useContent";
 import { useCoins } from "@/hooks/useCoins";
 import { useAllCoursesProgress } from "@/hooks/useAllCoursesProgress";
 
@@ -23,6 +24,8 @@ const categories = [
 
 export default function Courses() {
   const navigate = useNavigate();
+  useContentVersion();
+  const courses = getAllCourses();
   const { balance: totalCoins } = useCoins();
   const { summaryFor } = useAllCoursesProgress();
   const [selectedAge, setSelectedAge] = useState<number | null>(null);

@@ -10,6 +10,7 @@ import { AnimatedGroupVideo } from "@/components/AnimatedGroupVideo";
 import { ActivityPlayer } from "@/components/ActivityPlayer";
 import { GroupLearningPath } from "@/components/GroupLearningPath";
 import { getCourseById } from "@/data/courses";
+import { useContentVersion } from "@/hooks/useContent";
 import { getActivitiesForLesson } from "@/data/activities";
 import { getCourseGroups, hasCourseGroups } from "@/data/courseGroups";
 import { useCoins } from "@/hooks/useCoins";
@@ -20,6 +21,7 @@ import vogaisThumb from "@/assets/thumbnails/vogais-cantantes-thumb.jpg";
 
 export default function CourseDetail() {
   const { courseId } = useParams();
+  useContentVersion();
   const navigate = useNavigate();
   const { balance: totalCoins, addCoins } = useCoins();
   const course = getCourseById(courseId || "");
@@ -117,8 +119,22 @@ function CourseGroupFlow({ course, courseId }: { course: ReturnType<typeof getCo
     }
   };
 
+  // Curso ou grupo ainda sem conteúdo (criado no painel de educação)
+  if (!group) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-6">
+        <div className="text-center">
+          <div className="text-6xl mb-4">🛠️</div>
+          <h2 className="text-2xl font-bold text-foreground mb-2">Curso em preparação</h2>
+          <p className="text-muted-foreground mb-4">Em breve este curso terá conteúdo novo.</p>
+          <Button onClick={() => navigate("/courses")}>Voltar aos cursos</Button>
+        </div>
+      </div>
+    );
+  }
+
   // Atividades em página inteira (sem a página do curso por trás, para a rolagem não conflitar)
-  if (showActivities) {
+  if (showActivities && group.activities.length > 0) {
     return (
       <ActivityPlayer
         activities={group.activities}
