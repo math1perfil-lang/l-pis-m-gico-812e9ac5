@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Calendar, Camera } from "lucide-react";
 import logoPandoorga from "@/assets/logo-pandoorga.png";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,10 @@ import { useAuth } from "@/hooks/useAuth";
 
 export default function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  // Volta para a página de onde a pessoa veio (ex.: painel de educação); por padrão, o app dos alunos.
+  const fromState = (location.state as { from?: string } | null)?.from;
+  const destination = fromState && fromState.startsWith("/") && !fromState.startsWith("//") ? fromState : "/dashboard";
   const { user, loading: authLoading, signIn, signUp, signInWithGoogle } = useAuth();
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
@@ -23,8 +27,8 @@ export default function Login() {
   const [parentName, setParentName] = useState("");
 
   useEffect(() => {
-    if (!authLoading && user) navigate("/dashboard", { replace: true });
-  }, [authLoading, user, navigate]);
+    if (!authLoading && user) navigate(destination, { replace: true });
+  }, [authLoading, user, navigate, destination]);
 
   const translateError = (msg: string) => {
     if (/Invalid login credentials/i.test(msg)) return "E-mail ou senha incorretos.";
@@ -48,7 +52,7 @@ export default function Login() {
         return;
       }
       toast.success("Bem-vindo de volta! 🎉");
-      navigate("/dashboard");
+      navigate(destination);
     } else {
       const { error } = await signUp({
         email: email.trim(),
@@ -63,7 +67,7 @@ export default function Login() {
         return;
       }
       toast.success("Conta criada! Sua jornada começa do zero. 🚀");
-      navigate("/dashboard");
+      navigate(destination);
     }
   };
 
