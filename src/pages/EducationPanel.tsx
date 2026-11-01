@@ -1,14 +1,19 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  ArrowDown, ArrowLeft, ArrowUp, BookOpen, ChevronDown, ChevronRight, Copy, Eye, EyeOff, FolderPlus,
-  Pencil, Plus, RotateCcw, Search, Trash2, Undo2,
+  ArrowDown, ArrowUp, BookOpen, ChevronDown, ChevronRight, Coins, Copy, Eye, EyeOff, FolderPlus, GraduationCap,
+  LogOut, MoreHorizontal, Pencil, Plus, RotateCcw, Search, Trash2, Undo2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuSub,
+  DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { EducationLogin } from "@/components/education/EducationLogin";
+import { useAuth } from "@/hooks/useAuth";
 import { ActivityDialog, typeLabel } from "@/components/education/ActivityDialog";
 import { CourseDialog } from "@/components/education/CourseDialog";
 import { GroupDialog } from "@/components/education/GroupDialog";
@@ -81,6 +86,8 @@ const CoinsInput = ({ value, onSave }: { value: number; onSave: (n: number) => v
 export default function EducationPanel() {
   const navigate = useNavigate();
   const { user, allowed, loading } = useContentEditor();
+  const { signOut } = useAuth();
+  const [openYear, setOpenYear] = useState<string | null>(null);
   const version = useContentVersion();
 
   const [courseId, setCourseId] = useState<string | null>(null);
@@ -142,27 +149,13 @@ export default function EducationPanel() {
   if (loading) {
     return <div className="min-h-screen flex items-center justify-center text-muted-foreground">Carregando...</div>;
   }
-  if (!user || !allowed) {
-    return (
-      <div className="min-h-screen flex items-center justify-center p-6 bg-background">
-        <div className="max-w-md text-center space-y-4">
-          <div className="text-6xl">🔒</div>
-          <h1 className="text-2xl font-bold text-foreground">Painel de Educação</h1>
-          <p className="text-muted-foreground">
-            {user
-              ? "Sua conta não tem permissão de educador. Peça a um administrador para liberar o acesso."
-              : "Entre com uma conta de educador para continuar."}
-          </p>
-          <div className="flex gap-2 justify-center">
-            {!user && <Button onClick={() => navigate("/login", { state: { from: "/painel-educacao" } })}>Entrar</Button>}
-            <Button variant="outline" onClick={() => navigate("/dashboard")}>
-              Voltar ao app
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  if (!user) return <EducationLogin />;
+  if (!allowed) return <EducationLogin blockedEmail={user.email ?? "sua conta"} />;
+
+  const leave = async () => {
+    await signOut();
+    navigate("/painel-educacao", { replace: true });
+  };
 
   // ---------- Ações ----------
   const swap = <T,>(list: T[], i: number, dir: -1 | 1) => {
@@ -218,6 +211,7 @@ export default function EducationPanel() {
 
   const openFromSearch = (c: Course, g: EditableGroup) => {
     setCourseId(c.id);
+    setOpenYear(c.schoolYear ?? defaultSchoolYear(c.ageMin));
     setOpenGroup(g.id);
     setQuery("");
   };
@@ -231,64 +225,96 @@ export default function EducationPanel() {
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-40 bg-card/90 backdrop-blur border-b border-border">
-        <div className="px-4 py-3 flex flex-wrap items-center gap-3">
-          <Button variant="ghost" size="icon" onClick={() => navigate("/dashboard")} title="Voltar ao app">
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
-          <div className="mr-auto">
-            <h1 className="text-lg font-bold text-foreground leading-tight">Painel de Educação</h1>
-            <p className="text-xs text-muted-foreground">Matérias, grupos e atividades por ano escolar</p>
+        <div className="px-4 py-3 flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center shrink-0">
+            <GraduationCap className="w-5 h-5 text-primary-foreground" />
           </div>
-          <div className="relative w-full sm:w-72 order-last sm:order-none">
+          <div className="mr-auto min-w-0">
+            <h1 className="text-base font-bold text-foreground leading-tight truncate">Portal Educação</h1>
+            <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+          </div>
+          <div className="relative flex-1 max-w-md hidden sm:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input className="pl-9" placeholder="Buscar atividade em todas as matérias" value={query} onChange={(e) => setQuery(e.target.value)} />
           </div>
-          <Button variant="outline" size="sm" onClick={() => setShowDeleted((v) => !v)}>
-            {showDeleted ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
-            {showDeleted ? "Ocultar excluídos" : "Mostrar excluídos"}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon" aria-label="Opções do painel">
+                <MoreHorizontal className="w-4 h-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setShowDeleted((v) => !v)}>
+                {showDeleted ? <EyeOff className="w-4 h-4 mr-2" /> : <Eye className="w-4 h-4 mr-2" />}
+                {showDeleted ? "Ocultar excluídos" : "Mostrar excluídos"}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => run(reloadContent, "Conteúdo atualizado")}>
+                <RotateCcw className="w-4 h-4 mr-2" /> Atualizar conteúdo
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+          <Button variant="outline" size="sm" onClick={leave}>
+            <LogOut className="w-4 h-4 sm:mr-2" /> <span className="hidden sm:inline">Sair</span>
           </Button>
-          <Button variant="outline" size="sm" onClick={() => run(reloadContent, "Conteúdo atualizado")}>
-            <RotateCcw className="w-4 h-4 mr-2" /> Atualizar
-          </Button>
+        </div>
+        <div className="px-4 pb-3 sm:hidden relative">
+          <Search className="absolute left-7 top-1/2 -translate-y-[70%] w-4 h-4 text-muted-foreground" />
+          <Input className="pl-9" placeholder="Buscar atividade" value={query} onChange={(e) => setQuery(e.target.value)} />
         </div>
       </header>
 
-      <div className="grid lg:grid-cols-[19rem_1fr] gap-0">
-        {/* Menu lateral: anos escolares e matérias */}
-        <aside className="border-r border-border bg-card/40 p-4 lg:min-h-[calc(100vh-61px)]">
-          <Button className="w-full mb-4" onClick={() => setCourseDlg({ course: null })}>
+      <div className="grid lg:grid-cols-[17rem_1fr] gap-0">
+        {/* Menu lateral: um botão por ano; ao abrir mostra as matérias */}
+        <aside className="border-b lg:border-b-0 lg:border-r border-border bg-card/40 p-3 lg:sticky lg:top-[61px] lg:h-[calc(100vh-61px)] lg:overflow-y-auto">
+          <Button className="w-full mb-3" onClick={() => setCourseDlg({ course: null })}>
             <Plus className="w-4 h-4 mr-2" /> Nova matéria
           </Button>
-          <div className="space-y-4">
-            {byYear.map(({ year, items }) => (
-              <div key={year}>
-                <p className="text-xs font-bold uppercase tracking-wide text-muted-foreground mb-1">{year}</p>
-                <div className="space-y-1">
-                  {items.map((c) => (
-                    <button
-                      key={c.id}
-                      onClick={() => {
-                        setCourseId(c.id);
-                        setOpenGroup(null);
-                      }}
-                      className={cn(
-                        "w-full text-left px-3 py-2 rounded-lg text-sm flex items-center gap-2 hover:bg-muted transition-colors",
-                        courseId === c.id && "bg-primary/10 text-primary font-semibold",
-                        c.deleted && "opacity-50 line-through"
-                      )}
-                    >
-                      <BookOpen className="w-4 h-4 shrink-0" />
-                      <span className="flex-1 truncate">{c.title}</span>
-                      <span className="text-xs text-muted-foreground">{c.totalLessons}</span>
-                    </button>
-                  ))}
+          <nav className="space-y-1">
+            {byYear.map(({ year, items }) => {
+              const isOpen = openYear === year;
+              const hasActive = items.some((c) => c.id === courseId);
+              return (
+                <div key={year}>
+                  <button
+                    onClick={() => setOpenYear(isOpen ? null : year)}
+                    className={cn(
+                      "w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold hover:bg-muted transition-colors",
+                      hasActive && "text-primary"
+                    )}
+                    aria-expanded={isOpen}
+                  >
+                    {isOpen ? <ChevronDown className="w-4 h-4 shrink-0" /> : <ChevronRight className="w-4 h-4 shrink-0" />}
+                    <span className="flex-1 text-left">{year}</span>
+                    <span className="text-xs font-normal text-muted-foreground bg-muted rounded-full px-2 py-0.5">{items.length}</span>
+                  </button>
+                  {isOpen && (
+                    <div className="ml-4 pl-3 border-l border-border mt-1 mb-2 space-y-0.5">
+                      {items.map((c) => (
+                        <button
+                          key={c.id}
+                          onClick={() => {
+                            setCourseId(c.id);
+                            setOpenGroup(null);
+                          }}
+                          className={cn(
+                            "w-full text-left px-2.5 py-1.5 rounded-md text-sm flex items-center gap-2 hover:bg-muted transition-colors",
+                            courseId === c.id && "bg-primary/10 text-primary font-semibold",
+                            c.deleted && "opacity-50 line-through"
+                          )}
+                        >
+                          <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                          <span className="flex-1 truncate">{c.title}</span>
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
-          </div>
+              );
+            })}
+          </nav>
         </aside>
 
-        <main className="p-4 sm:p-6 space-y-6 min-w-0">
+        <main className="p-4 sm:p-6 space-y-5 min-w-0 max-w-5xl">
           {/* Resultados da busca */}
           {query.trim().length >= 2 && (
             <section className="rounded-xl border border-border bg-card p-4">
@@ -315,59 +341,68 @@ export default function EducationPanel() {
           {!course ? (
             <div className="text-center text-muted-foreground py-24">
               <BookOpen className="w-12 h-12 mx-auto mb-3 opacity-40" />
-              Escolha uma matéria no menu ou crie uma nova.
+              Abra um ano no menu e escolha uma matéria, ou crie uma nova.
             </div>
           ) : (
             <>
               {/* Cabeçalho da matéria */}
-              <section className="rounded-xl border border-border bg-card p-4 sm:p-5 flex flex-wrap gap-4 items-start">
-                {course.image ? <img src={course.image} alt="" className="w-24 h-24 rounded-lg object-cover bg-muted" onError={(e) => ((e.target as HTMLImageElement).style.display = "none")} /> : null}
-                <div className="flex-1 min-w-[14rem]">
+              <section className="flex items-center gap-4">
+                {course.image ? (
+                  <img src={course.image} alt="" className="w-14 h-14 rounded-xl object-cover bg-muted shrink-0" onError={(e) => ((e.target as HTMLImageElement).style.display = "none")} />
+                ) : null}
+                <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h2 className="text-xl font-bold">{course.title}</h2>
+                    <h2 className="text-xl font-bold truncate">{course.title}</h2>
                     <Badge variant="secondary">{course.schoolYear}</Badge>
-                    <Badge variant="outline">{course.category}</Badge>
                     {course.deleted && <Badge variant="destructive">Excluída</Badge>}
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">{course.description}</p>
-                  <p className="text-sm mt-2">
-                    <b>{liveGroups.length}</b> grupos · <b>{totalActs}</b> atividades · <b>{totalCoins}</b> moedas · idades {course.ageMin}–{course.ageMax}
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    {liveGroups.length} grupos · {totalActs} atividades · {totalCoins} moedas · {course.category} · {course.ageMin}–{course.ageMax} anos
                   </p>
                 </div>
-                <div className="flex gap-2 flex-wrap">
-                  <Button variant="outline" size="sm" onClick={() => setCourseDlg({ course })}>
-                    <Pencil className="w-4 h-4 mr-2" /> Editar
-                  </Button>
-                  {course.deleted ? (
-                    <Button size="sm" onClick={() => run(() => restoreCourse(course.id), "Matéria restaurada")}>
-                      <Undo2 className="w-4 h-4 mr-2" /> Restaurar
+                <Button size="sm" onClick={() => setGroupDlg({ group: null })}>
+                  <FolderPlus className="w-4 h-4 mr-2" /> Novo grupo
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" size="icon" aria-label="Opções da matéria">
+                      <MoreHorizontal className="w-4 h-4" />
                     </Button>
-                  ) : (
-                    <Button variant="outline" size="sm" onClick={() => deleteCourse(course)}>
-                      <Trash2 className="w-4 h-4 mr-2" /> Excluir
-                    </Button>
-                  )}
-                  <Button size="sm" onClick={() => setGroupDlg({ group: null })}>
-                    <FolderPlus className="w-4 h-4 mr-2" /> Novo grupo
-                  </Button>
-                </div>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => setCourseDlg({ course })}>
+                      <Pencil className="w-4 h-4 mr-2" /> Editar matéria
+                    </DropdownMenuItem>
+                    {course.deleted ? (
+                      <DropdownMenuItem onClick={() => run(() => restoreCourse(course.id), "Matéria restaurada")}>
+                        <Undo2 className="w-4 h-4 mr-2" /> Restaurar matéria
+                      </DropdownMenuItem>
+                    ) : (
+                      <DropdownMenuItem className="text-destructive" onClick={() => deleteCourse(course)}>
+                        <Trash2 className="w-4 h-4 mr-2" /> Excluir matéria
+                      </DropdownMenuItem>
+                    )}
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </section>
 
               {/* Grupos */}
-              <section className="space-y-3">
+              <section className="space-y-2">
                 {groups.length === 0 && <p className="text-muted-foreground text-sm">Esta matéria ainda não tem grupos.</p>}
                 {groups.map((g) => {
                   const live = g.activities.filter((a) => !a._deleted);
                   const open = openGroup === g.id;
                   const liveIdx = liveGroups.findIndex((x) => x.id === g.id);
                   return (
-                    <div key={g.id} className={cn("rounded-xl border border-border bg-card", g._deleted && "opacity-60")}>
-                      <div className="flex items-center gap-2 p-3">
-                        <button className="flex items-center gap-2 flex-1 min-w-0 text-left" onClick={() => setOpenGroup(open ? null : g.id)}>
-                          {open ? <ChevronDown className="w-4 h-4 shrink-0" /> : <ChevronRight className="w-4 h-4 shrink-0" />}
-                          <span className="text-sm text-muted-foreground w-7 shrink-0">{g._deleted ? "—" : liveIdx + 1}</span>
+                    <div key={g.id} className={cn("rounded-xl border border-border bg-card overflow-hidden", open && "ring-1 ring-primary/30", g._deleted && "opacity-60")}>
+                      <div className="flex items-center gap-2 px-3 py-2.5">
+                        <button className="flex items-center gap-3 flex-1 min-w-0 text-left" onClick={() => setOpenGroup(open ? null : g.id)}>
+                          {open ? <ChevronDown className="w-4 h-4 shrink-0 text-muted-foreground" /> : <ChevronRight className="w-4 h-4 shrink-0 text-muted-foreground" />}
+                          <span className="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center shrink-0">
+                            {g._deleted ? "—" : liveIdx + 1}
+                          </span>
                           <span className={cn("font-semibold truncate", g._deleted && "line-through")}>{g.title}</span>
-                          <Badge variant="secondary" className="shrink-0">{live.length} ativ.</Badge>
+                          <span className="text-xs text-muted-foreground shrink-0">{live.length} ativ.</span>
                           {g._custom && <Badge className="shrink-0">nova</Badge>}
                           {g._edited && !g._custom && <Badge variant="outline" className="shrink-0">editada</Badge>}
                         </button>
@@ -376,32 +411,41 @@ export default function EducationPanel() {
                             <Undo2 className="w-4 h-4 mr-1" /> Restaurar
                           </Button>
                         ) : (
-                          <>
-                            <Button variant="ghost" size="icon" disabled={liveIdx === 0} onClick={() => moveGroup(g, -1)} title="Subir grupo">
-                              <ArrowUp className="w-4 h-4" />
-                            </Button>
-                            <Button variant="ghost" size="icon" disabled={liveIdx === liveGroups.length - 1} onClick={() => moveGroup(g, 1)} title="Descer grupo">
-                              <ArrowDown className="w-4 h-4" />
-                            </Button>
-                            <Button variant="ghost" size="icon" onClick={() => setGroupDlg({ group: g })} title="Editar grupo">
-                              <Pencil className="w-4 h-4" />
-                            </Button>
-                            <Button variant="ghost" size="icon" onClick={() => deleteGroup(g)} title="Excluir grupo">
-                              <Trash2 className="w-4 h-4" />
-                            </Button>
-                          </>
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="icon" aria-label="Opções do grupo">
+                                <MoreHorizontal className="w-4 h-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              <DropdownMenuItem onClick={() => setGroupDlg({ group: g })}>
+                                <Pencil className="w-4 h-4 mr-2" /> Editar grupo
+                              </DropdownMenuItem>
+                              <DropdownMenuItem disabled={liveIdx === 0} onClick={() => moveGroup(g, -1)}>
+                                <ArrowUp className="w-4 h-4 mr-2" /> Subir
+                              </DropdownMenuItem>
+                              <DropdownMenuItem disabled={liveIdx === liveGroups.length - 1} onClick={() => moveGroup(g, 1)}>
+                                <ArrowDown className="w-4 h-4 mr-2" /> Descer
+                              </DropdownMenuItem>
+                              <DropdownMenuSeparator />
+                              <DropdownMenuItem className="text-destructive" onClick={() => deleteGroup(g)}>
+                                <Trash2 className="w-4 h-4 mr-2" /> Excluir grupo
+                              </DropdownMenuItem>
+                            </DropdownMenuContent>
+                          </DropdownMenu>
                         )}
                       </div>
 
                       {open && !g._deleted && (
-                        <div className="border-t border-border p-3 space-y-3">
+                        <div className="border-t border-border bg-muted/20 p-3 space-y-2">
                           <div className="flex flex-wrap items-center gap-2">
                             <Button size="sm" onClick={() => setActDlg({ groupId: g.id, activity: null })}>
                               <Plus className="w-4 h-4 mr-1" /> Nova atividade
                             </Button>
-                            <div className="flex items-center gap-2 ml-auto text-sm">
-                              <span className="text-muted-foreground">Moedas de todas:</span>
-                              <Input type="number" min={0} className="w-20 h-8" value={bulkCoins} onChange={(e) => setBulkCoins(e.target.value)} />
+                            <div className="flex items-center gap-2 ml-auto text-xs text-muted-foreground">
+                              <Coins className="w-4 h-4" />
+                              <span className="hidden sm:inline">Moedas de todas</span>
+                              <Input type="number" min={0} className="w-16 h-8" value={bulkCoins} onChange={(e) => setBulkCoins(e.target.value)} aria-label="Moedas para todas as atividades" />
                               <Button variant="outline" size="sm" onClick={() => applyBulk(g)}>
                                 Aplicar
                               </Button>
@@ -409,89 +453,83 @@ export default function EducationPanel() {
                           </div>
 
                           {g.activities.length === 0 ? (
-                            <p className="text-sm text-muted-foreground">Sem atividades. Um grupo vazio não abre exercícios para o aluno.</p>
+                            <p className="text-sm text-muted-foreground py-2">Sem atividades. Um grupo vazio não abre exercícios para o aluno.</p>
                           ) : (
-                            <div className="overflow-x-auto">
-                              <table className="w-full text-sm">
-                                <thead>
-                                  <tr className="text-left text-xs text-muted-foreground">
-                                    <th className="py-1 pr-2 w-8">#</th>
-                                    <th className="py-1 pr-2">Atividade</th>
-                                    <th className="py-1 pr-2 whitespace-nowrap">Tipo</th>
-                                    <th className="py-1 pr-2">Moedas</th>
-                                    <th className="py-1 text-right">Ações</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {g.activities.map((a) => {
-                                    const liveI = live.findIndex((x) => x.id === a.id);
-                                    return (
-                                      <tr key={a.id} className={cn("border-t border-border align-top", a._deleted && "opacity-50")}>
-                                        <td className="py-2 pr-2 text-muted-foreground">{a._deleted ? "—" : liveI + 1}</td>
-                                        <td className="py-2 pr-2">
-                                          <span className={cn(a._deleted && "line-through")}>{snippet(a)}</span>
-                                          <span className="ml-2 inline-flex gap-1 align-middle">
-                                            {a.imageUrl && <Badge variant="outline">imagem</Badge>}
-                                            {a._custom && <Badge>nova</Badge>}
-                                            {a._edited && !a._custom && <Badge variant="outline">editada</Badge>}
-                                          </span>
-                                        </td>
-                                        <td className="py-2 pr-2 whitespace-nowrap text-muted-foreground">{typeLabel(a.type).split(" (")[0]}</td>
-                                        <td className="py-2 pr-2">
-                                          <CoinsInput value={a.coinsReward} onSave={(n) => run(() => saveActivity(course.id, g.id, { ...a, coinsReward: n }))} />
-                                        </td>
-                                        <td className="py-2 text-right whitespace-nowrap">
-                                          {a._deleted ? (
-                                            <Button size="sm" onClick={() => run(() => restoreActivity(course.id, a), "Atividade restaurada")}>
-                                              <Undo2 className="w-4 h-4 mr-1" /> Restaurar
+                            <ul className="space-y-1.5">
+                              {g.activities.map((a) => {
+                                const liveI = live.findIndex((x) => x.id === a.id);
+                                return (
+                                  <li key={a.id} className={cn("flex items-center gap-3 rounded-lg border border-border bg-card px-3 py-2", a._deleted && "opacity-50")}>
+                                    <span className="w-6 text-xs text-muted-foreground text-center shrink-0">{a._deleted ? "—" : liveI + 1}</span>
+                                    <div className="flex-1 min-w-0">
+                                      <p className={cn("text-sm line-clamp-2", a._deleted && "line-through")}>{snippet(a)}</p>
+                                      <p className="text-xs text-muted-foreground mt-0.5 flex flex-wrap items-center gap-x-2">
+                                        <span>{typeLabel(a.type).split(" (")[0]}</span>
+                                        {a.imageUrl && <span>· com imagem</span>}
+                                        {a._custom && <span className="text-primary">· nova</span>}
+                                        {a._edited && !a._custom && <span className="text-primary">· editada</span>}
+                                      </p>
+                                    </div>
+                                    {a._deleted ? (
+                                      <Button size="sm" onClick={() => run(() => restoreActivity(course.id, a), "Atividade restaurada")}>
+                                        <Undo2 className="w-4 h-4 mr-1" /> Restaurar
+                                      </Button>
+                                    ) : (
+                                      <>
+                                        <CoinsInput value={a.coinsReward} onSave={(n) => run(() => saveActivity(course.id, g.id, { ...a, coinsReward: n }))} />
+                                        <Button variant="ghost" size="icon" onClick={() => setActDlg({ groupId: g.id, activity: a })} title="Editar" aria-label="Editar atividade">
+                                          <Pencil className="w-4 h-4" />
+                                        </Button>
+                                        <DropdownMenu>
+                                          <DropdownMenuTrigger asChild>
+                                            <Button variant="ghost" size="icon" aria-label="Mais opções">
+                                              <MoreHorizontal className="w-4 h-4" />
                                             </Button>
-                                          ) : (
-                                            <>
-                                              <Button variant="ghost" size="icon" disabled={liveI === 0} onClick={() => moveAct(g, a, -1)} title="Subir">
-                                                <ArrowUp className="w-4 h-4" />
-                                              </Button>
-                                              <Button variant="ghost" size="icon" disabled={liveI === live.length - 1} onClick={() => moveAct(g, a, 1)} title="Descer">
-                                                <ArrowDown className="w-4 h-4" />
-                                              </Button>
-                                              <Button variant="ghost" size="icon" onClick={() => setActDlg({ groupId: g.id, activity: a })} title="Editar">
-                                                <Pencil className="w-4 h-4" />
-                                              </Button>
-                                              <Button variant="ghost" size="icon" onClick={() => run(() => duplicateActivity(course.id, g.id, g.activities, a), "Atividade duplicada")} title="Duplicar">
-                                                <Copy className="w-4 h-4" />
-                                              </Button>
-                                              {a._edited && !a._custom && (
-                                                <Button variant="ghost" size="icon" onClick={() => run(() => resetActivity(course.id, a), "Voltou ao original")} title="Voltar ao original">
-                                                  <RotateCcw className="w-4 h-4" />
-                                                </Button>
-                                              )}
-                                              <Button variant="ghost" size="icon" onClick={() => deleteAct(a)} title="Excluir">
-                                                <Trash2 className="w-4 h-4" />
-                                              </Button>
-                                              {liveGroups.length > 1 && (
-                                                <Select value="" onValueChange={(target) => run(() => moveActivityToGroup(course.id, a, target), "Atividade movida")}>
-                                                  <SelectTrigger className="inline-flex w-28 h-8 ml-1 text-xs" aria-label="Mover para o grupo">
-                                                    <SelectValue placeholder="Mover para…" />
-                                                  </SelectTrigger>
-                                                  <SelectContent>
-                                                    {liveGroups
-                                                      .filter((x) => x.id !== g.id)
-                                                      .map((x) => (
-                                                        <SelectItem key={x.id} value={x.id}>
-                                                          {liveGroups.findIndex((y) => y.id === x.id) + 1}. {x.title}
-                                                        </SelectItem>
-                                                      ))}
-                                                  </SelectContent>
-                                                </Select>
-                                              )}
-                                            </>
-                                          )}
-                                        </td>
-                                      </tr>
-                                    );
-                                  })}
-                                </tbody>
-                              </table>
-                            </div>
+                                          </DropdownMenuTrigger>
+                                          <DropdownMenuContent align="end">
+                                            <DropdownMenuItem disabled={liveI === 0} onClick={() => moveAct(g, a, -1)}>
+                                              <ArrowUp className="w-4 h-4 mr-2" /> Subir
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem disabled={liveI === live.length - 1} onClick={() => moveAct(g, a, 1)}>
+                                              <ArrowDown className="w-4 h-4 mr-2" /> Descer
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => run(() => duplicateActivity(course.id, g.id, g.activities, a), "Atividade duplicada")}>
+                                              <Copy className="w-4 h-4 mr-2" /> Duplicar
+                                            </DropdownMenuItem>
+                                            {liveGroups.length > 1 && (
+                                              <DropdownMenuSub>
+                                                <DropdownMenuSubTrigger>
+                                                  <FolderPlus className="w-4 h-4 mr-2" /> Mover para o grupo
+                                                </DropdownMenuSubTrigger>
+                                                <DropdownMenuSubContent className="max-h-72 overflow-y-auto">
+                                                  <DropdownMenuLabel>Escolha o destino</DropdownMenuLabel>
+                                                  {liveGroups
+                                                    .filter((x) => x.id !== g.id)
+                                                    .map((x) => (
+                                                      <DropdownMenuItem key={x.id} onClick={() => run(() => moveActivityToGroup(course.id, a, x.id), "Atividade movida")}>
+                                                        {liveGroups.findIndex((y) => y.id === x.id) + 1}. {x.title}
+                                                      </DropdownMenuItem>
+                                                    ))}
+                                                </DropdownMenuSubContent>
+                                              </DropdownMenuSub>
+                                            )}
+                                            {a._edited && !a._custom && (
+                                              <DropdownMenuItem onClick={() => run(() => resetActivity(course.id, a), "Voltou ao original")}>
+                                                <RotateCcw className="w-4 h-4 mr-2" /> Voltar ao original
+                                              </DropdownMenuItem>
+                                            )}
+                                            <DropdownMenuSeparator />
+                                            <DropdownMenuItem className="text-destructive" onClick={() => deleteAct(a)}>
+                                              <Trash2 className="w-4 h-4 mr-2" /> Excluir
+                                            </DropdownMenuItem>
+                                          </DropdownMenuContent>
+                                        </DropdownMenu>
+                                      </>
+                                    )}
+                                  </li>
+                                );
+                              })}
+                            </ul>
                           )}
                         </div>
                       )}
@@ -521,6 +559,7 @@ export default function EducationPanel() {
           } else {
             const id = await createCourse(f);
             setCourseId(id);
+            setOpenYear(f.schoolYear);
             toast.success("Matéria criada");
           }
         }}
