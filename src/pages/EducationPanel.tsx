@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowDown, ArrowUp, BookOpen, ChevronDown, ChevronRight, Coins, Copy, Eye, EyeOff, FolderPlus, GraduationCap,
-  LogOut, MoreHorizontal, Pencil, Plus, RotateCcw, Search, Trash2, Undo2,
+  KeyRound, LogOut, MoreHorizontal, Pencil, Plus, RotateCcw, Search, Trash2, Undo2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +13,7 @@ import {
   DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { EducationLogin } from "@/components/education/EducationLogin";
+import { TeacherAccess } from "@/components/education/TeacherAccess";
 import { useAuth } from "@/hooks/useAuth";
 import { ActivityDialog, typeLabel } from "@/components/education/ActivityDialog";
 import { CourseDialog } from "@/components/education/CourseDialog";
@@ -85,7 +86,8 @@ const CoinsInput = ({ value, onSave }: { value: number; onSave: (n: number) => v
 
 export default function EducationPanel() {
   const navigate = useNavigate();
-  const { user, allowed, loading } = useContentEditor();
+  const { user, allowed, loading, isAdmin, courseIds, name: teacherName } = useContentEditor();
+  const [view, setView] = useState<"conteudo" | "acessos">("conteudo");
   const { signOut } = useAuth();
   const [openYear, setOpenYear] = useState<string | null>(null);
   const version = useContentVersion();
@@ -99,7 +101,8 @@ export default function EducationPanel() {
   const [actDlg, setActDlg] = useState<null | { groupId: string; activity: EditableActivity | null }>(null);
   const [bulkCoins, setBulkCoins] = useState("5");
 
-  const courses = getAllCourses(true);
+  // Docentes só enxergam as matérias atribuídas; a gestão vê todas.
+  const courses = getAllCourses(true).filter((c) => isAdmin || courseIds.includes(c.id));
   const course = courses.find((c) => c.id === courseId) ?? null;
   const groupsAll = course ? getEditableCourseGroups(course.id, true) : [];
   const groups = showDeleted ? groupsAll : groupsAll.filter((g) => !g._deleted);
@@ -115,7 +118,7 @@ export default function EducationPanel() {
       .map((y) => ({ year: y, items: courses.filter((c) => (c.schoolYear ?? defaultSchoolYear(c.ageMin)) === y && (showDeleted || !c.deleted)) }))
       .filter((x) => x.items.length > 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [version, showDeleted]);
+  }, [version, showDeleted, isAdmin, courseIds]);
 
   const run = async (fn: () => Promise<unknown>, ok?: string) => {
     try {
@@ -143,7 +146,7 @@ export default function EducationPanel() {
     }
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query, version]);
+  }, [query, version, isAdmin, courseIds]);
 
   // ---------- Acesso ----------
   if (loading) {
@@ -231,12 +234,17 @@ export default function EducationPanel() {
           </div>
           <div className="mr-auto min-w-0">
             <h1 className="text-base font-bold text-foreground leading-tight truncate">Portal Educação</h1>
-            <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+            <p className="text-xs text-muted-foreground truncate">{isAdmin ? "Gestão" : `Docente${teacherName ? ` · ${teacherName}` : ""}`} · {user.email}</p>
           </div>
           <div className="relative flex-1 max-w-md hidden sm:block">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input className="pl-9" placeholder="Buscar atividade em todas as matérias" value={query} onChange={(e) => setQuery(e.target.value)} />
           </div>
+          {isAdmin && (
+            <Button variant={view === "acessos" ? "default" : "outline"} size="sm" onClick={() => setView(view === "acessos" ? "conteudo" : "acessos")}>
+              <KeyRound className="w-4 h-4 sm:mr-2" /> <span className="hidden sm:inline">Acessos</span>
+            </Button>
+          )}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="icon" aria-label="Opções do painel">
@@ -266,9 +274,11 @@ export default function EducationPanel() {
       <div className="grid lg:grid-cols-[17rem_1fr] gap-0">
         {/* Menu lateral: um botão por ano; ao abrir mostra as matérias */}
         <aside className="border-b lg:border-b-0 lg:border-r border-border bg-card/40 p-3 lg:sticky lg:top-[61px] lg:h-[calc(100vh-61px)] lg:overflow-y-auto">
-          <Button className="w-full mb-3" onClick={() => setCourseDlg({ course: null })}>
-            <Plus className="w-4 h-4 mr-2" /> Nova matéria
-          </Button>
+          {isAdmin && (
+            <Button className="w-full mb-3" onClick={() => setCourseDlg({ course: null })}>
+              <Plus className="w-4 h-4 mr-2" /> Nova matéria
+            </Button>
+          )}
           <nav className="space-y-1">
             {byYear.map(({ year, items }) => {
               const isOpen = openYear === year;
@@ -295,6 +305,7 @@ export default function EducationPanel() {
                           onClick={() => {
                             setCourseId(c.id);
                             setOpenGroup(null);
+                            setView("conteudo");
                           }}
                           className={cn(
                             "w-full text-left px-2.5 py-1.5 rounded-md text-sm flex items-center gap-2 hover:bg-muted transition-colors",
@@ -315,6 +326,10 @@ export default function EducationPanel() {
         </aside>
 
         <main className="p-4 sm:p-6 space-y-5 min-w-0 max-w-5xl">
+          {view === "acessos" && isAdmin ? (
+            <TeacherAccess />
+          ) : (
+            <>
           {/* Resultados da busca */}
           {query.trim().length >= 2 && (
             <section className="rounded-xl border border-border bg-card p-4">
@@ -341,7 +356,7 @@ export default function EducationPanel() {
           {!course ? (
             <div className="text-center text-muted-foreground py-24">
               <BookOpen className="w-12 h-12 mx-auto mb-3 opacity-40" />
-              Abra um ano no menu e escolha uma matéria, ou crie uma nova.
+              {isAdmin ? "Abra um ano no menu e escolha uma matéria, ou crie uma nova." : courses.length ? "Abra um ano no menu e escolha uma das suas matérias." : "Nenhuma matéria atribuída a você ainda. Fale com a gestão."}
             </div>
           ) : (
             <>
@@ -363,6 +378,7 @@ export default function EducationPanel() {
                 <Button size="sm" onClick={() => setGroupDlg({ group: null })}>
                   <FolderPlus className="w-4 h-4 mr-2" /> Novo grupo
                 </Button>
+                {isAdmin && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="icon" aria-label="Opções da matéria">
@@ -384,6 +400,7 @@ export default function EducationPanel() {
                     )}
                   </DropdownMenuContent>
                 </DropdownMenu>
+                )}
               </section>
 
               {/* Grupos */}
@@ -537,6 +554,8 @@ export default function EducationPanel() {
                   );
                 })}
               </section>
+            </>
+          )}
             </>
           )}
         </main>

@@ -3,6 +3,7 @@ import { Eye, EyeOff, GraduationCap, Lock, LogOut, Mail, ShieldCheck } from "luc
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 import logoPandoorga from "@/assets/logo-pandoorga.png";
 import { cn } from "@/lib/utils";
 
@@ -33,12 +34,46 @@ export const EducationLogin = ({ blockedEmail }: { blockedEmail?: string | null 
   const [show, setShow] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [firstAccess, setFirstAccess] = useState(false);
+  const [name, setName] = useState("");
+  const [notice, setNotice] = useState<string | null>(null);
   const p = PROFILES[profile];
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
     setError(null);
+    setNotice(null);
     setBusy(true);
+    if (profile === "docente" && firstAccess) {
+      const mail = email.trim();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const { data: invited } = await (supabase as any).rpc("teacher_invited", { _email: mail });
+      if (invited !== true) {
+        setBusy(false);
+        setError("Este e-mail ainda não foi liberado pela gestão.");
+        return;
+      }
+      if (password.length < 6) {
+        setBusy(false);
+        setError("A senha precisa ter ao menos 6 caracteres.");
+        return;
+      }
+      const { data, error: err } = await supabase.auth.signUp({
+        email: mail,
+        password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/painel-educacao`,
+          data: { display_name: name.trim() || mail.split("@")[0] },
+        },
+      });
+      setBusy(false);
+      if (err) {
+        setError(/registered|already/i.test(err.message) ? "Este e-mail já tem conta. Use “Já tenho senha”." : err.message);
+      } else if (!data.session) {
+        setNotice("Enviamos uma mensagem de confirmação para o seu e-mail. Confirme e depois entre aqui.");
+      }
+      return;
+    }
     const { error: err } = await signIn(email.trim(), password);
     setBusy(false);
     if (err) setError(/invalid/i.test(err) ? "E-mail ou senha incorretos." : err);
@@ -79,7 +114,12 @@ export const EducationLogin = ({ blockedEmail }: { blockedEmail?: string | null 
                       type="button"
                       role="tab"
                       aria-selected={profile === k}
-                      onClick={() => setProfile(k)}
+                      onClick={() => {
+                        setProfile(k);
+                        setFirstAccess(false);
+                        setError(null);
+                        setNotice(null);
+                      }}
                       className={cn(
                         "flex-1 py-2 px-3 rounded-lg font-bold text-sm flex items-center justify-center gap-2 transition-all",
                         profile === k ? "gradient-primary text-primary-foreground shadow-soft" : "text-muted-foreground hover:text-foreground"
@@ -95,6 +135,12 @@ export const EducationLogin = ({ blockedEmail }: { blockedEmail?: string | null 
               <p className="text-sm text-muted-foreground mb-5">{p.hint}</p>
 
               <form onSubmit={submit} className="space-y-4">
+                {profile === "docente" && firstAccess && (
+                  <div className="relative">
+                    <GraduationCap className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                    <Input type="text" placeholder="Seu nome" className="pl-10" value={name} onChange={(e) => setName(e.target.value)} />
+                  </div>
+                )}
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                   <Input
@@ -112,8 +158,8 @@ export const EducationLogin = ({ blockedEmail }: { blockedEmail?: string | null 
                   <Input
                     type={show ? "text" : "password"}
                     required
-                    autoComplete="current-password"
-                    placeholder="Senha"
+                    autoComplete={profile === "docente" && firstAccess ? "new-password" : "current-password"}
+                    placeholder={profile === "docente" && firstAccess ? "Crie uma senha" : "Senha"}
                     className="pl-10 pr-10"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -128,13 +174,29 @@ export const EducationLogin = ({ blockedEmail }: { blockedEmail?: string | null 
                   </button>
                 </div>
                 {error && <p className="text-sm text-destructive">{error}</p>}
+                {notice && <p className="text-sm text-primary">{notice}</p>}
                 <Button type="submit" className="w-full" disabled={busy}>
-                  {busy ? "Entrando..." : `Entrar como ${p.label}`}
+                  {busy ? "Aguarde..." : profile === "docente" && firstAccess ? "Criar acesso" : `Entrar como ${p.label}`}
                 </Button>
               </form>
 
-              <p className="text-xs text-muted-foreground text-center mt-5">
-                Não há cadastro aberto: o acesso é liberado pela gestão.
+              {profile === "docente" ? (
+                <button
+                  type="button"
+                  className="block mx-auto mt-5 text-sm text-primary font-semibold hover:underline"
+                  onClick={() => {
+                    setFirstAccess((v) => !v);
+                    setError(null);
+                    setNotice(null);
+                  }}
+                >
+                  {firstAccess ? "Já tenho senha" : "Primeiro acesso? Crie sua senha"}
+                </button>
+              ) : null}
+              <p className="text-xs text-muted-foreground text-center mt-3">
+                {profile === "docente"
+                  ? "Use o e-mail que a gestão cadastrou para você."
+                  : "Acesso restrito à gestão da plataforma."}
               </p>
             </>
           )}
