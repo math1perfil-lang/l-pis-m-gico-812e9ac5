@@ -15,15 +15,21 @@ const IMG_TIRA_BESOURO = `${IMG}/c1-tira-besouro.jpg`;
 const g1: GrupoParcial = grupo(
   "Pesquisar sem cair em fake news",
   "Pensar em como pesquisar com segurança e ler uma tira sobre o compartilhamento de mensagens sem conferir.",
-  "Duas amigas e um amigo recebem mensagens no celular. Quem confere antes de repassar? A tira mostra como uma notícia falsa corre solta.",
+  "Dois amigos recebem mensagens no celular. Quem confere antes de repassar? A tira mostra como uma notícia falsa corre solta.",
   IMG_CRIANCAS,
   [
+    read("p9c1-g1-entrev", "Uma ideia da pesquisadora", [
+      "A pesquisadora Pollyana Ferrari, em uma entrevista sobre fake news, afirma que quem usa redes sociais precisa ter uma postura crítica e ética.",
+      "Postura crítica é avaliar com cuidado o que se lê, em vez de aceitar tudo. Postura ética é agir com responsabilidade, pensando no efeito que as nossas atitudes causam nos outros.",
+    ], "Baseado na entrevista de Pollyana Ferrari à revista Carta Capital, 17 abr. 2018."),
     mc("p9c1-g1-a1", "Hoje todo mundo pesquisa na internet, mas ter muitos resultados não garante que eles sejam bons. Qual hábito ajuda mais a conseguir informações confiáveis e bem fundamentadas?", I,
       "Comparar várias fontes, ver quem escreveu e quando, e consultar também livros, artigos e entrevistas.",
       ["Confiar no primeiro resultado que aparece na busca.", "Acreditar no site que tiver mais cores e mais anúncios.", "Escolher o texto que concorda com o que eu já penso."], "medium"),
-    mc("p9c1-g1-a2", "Na entrevista, a pesquisadora diz que quem usa redes sociais deve ter postura crítica e ética. O que é ter uma postura ética no mundo digital?", I,
-      "Não espalhar informação sem ter certeza de que é verdadeira e não expor dados nem a imagem de outras pessoas.",
-      ["Postar tudo o que chega, para os amigos ficarem bem informados.", "Apagar as mensagens dos outros para ninguém discordar.", "Só usar as redes à noite, quando há menos gente."], "medium"),
+    ...txt("p9c1-g1-entrev",
+      mc("p9c1-g1-a2", "Segundo a pesquisadora, quem usa redes sociais deve ter postura crítica e ética. O que é ter uma postura ética no mundo digital?", I,
+        "Não espalhar informação sem ter certeza de que é verdadeira e não expor dados nem a imagem de outras pessoas.",
+        ["Postar tudo o que chega, para os amigos ficarem bem informados.", "Apagar as mensagens dos outros para ninguém discordar.", "Só usar as redes à noite, quando há menos gente."], "medium"),
+    ),
     mc("p9c1-g1-a3", "Antes de compartilhar uma postagem, qual atitude mostra que a pessoa a avalia com cuidado?", I,
       "Conferir a fonte e pensar nas consequências antes de apertar o botão de compartilhar.",
       ["Compartilhar logo, porque a mensagem pede para repassar.", "Compartilhar se muitos amigos já curtiram.", "Compartilhar se o título for chamativo."]),
@@ -69,13 +75,23 @@ const g2: GrupoParcial = grupo(
   "Releitura da tira: o que faz a Ana desconfiar, quem espalha a mentira e qual é a graça do último quadrinho. Depois, comparamos a tira com a entrevista da pesquisadora.",
   IMG_LETRAS,
   [
-    read("p9c1-g2-leitura", "Duas falas da entrevista", [
-      "Para comparar com a tira, releia duas ideias da pesquisadora Pollyana Ferrari, contadas com palavras nossas.",
+    withImage(read(
+      "p9c1-g2-tira",
+      "Correria das fake news (a tira, de novo)",
+      [
+        "Tira em 3 quadrinhos. Dois jovens olham o celular: a Ana, de cabelo preso com uma presilha verde, e o Rafa, de gorro laranja.",
+        "Quadrinho 1. Ana: “Recebi um aviso sobre economizar água.” Rafa: “No meu, dizem que falar palavrão faz bem à saúde!”",
+        "Quadrinho 2. Ana: “Fui conferir: o aviso é verdadeiro! Vou mandar para a minha mãe.” Rafa: “Eu já mandei o meu para mais de mil pessoas!”",
+        "Quadrinho 3. Ana: “Mas o seu está com cara de fake news!” Rafa: “Que nada! Só de espalhar eu já me sinto mais saudável!”",
+      ]
+    ), IMG_TIRA_FAKE, "Tira: dois jovens trocam mensagens no celular"),
+    read("p9c1-g2-leitura", "Três ideias da entrevista", [
+      "Para comparar com a tira, leia três ideias da pesquisadora Pollyana Ferrari, contadas com palavras nossas.",
       "Ideia 1: quando alguém espalha uma mentira para prejudicar outra pessoa, perde a noção do tamanho do estrago; depois que ela se espalha, até dá para tirá-la do ar, mas às vezes o dano já não tem volta.",
       "Ideia 2: muitas vezes as pessoas até sabem que uma informação é falsa, mas, como ela combina com o que desejam, acabam compartilhando.",
       "Ideia 3: uma informação mentirosa pode destruir a vida de alguém, uma reputação, uma empresa, uma escola, uma família.",
     ], "Baseado na entrevista de Pollyana Ferrari à revista Carta Capital, 17 abr. 2018."),
-    ...txt("p9c1-tira1",
+    ...txt("p9c1-g2-tira",
       withImage(mc("p9c1-g2-a1", "No último quadrinho, a Ana diz: “Mas o seu está com cara de fake news!”. O que a faz desconfiar da mensagem do Rafa?", I,
         "Ela acha improvável que falar palavrão faça bem à saúde.",
         ["Ela não gosta do Rafa e quer implicar com ele.", "Ela percebeu que a mensagem estava em outra língua.", "Ela viu que o celular do Rafa era mais antigo."]), IMG_TIRA_FAKE, "Tira: dois jovens trocam mensagens no celular"),
@@ -91,7 +107,7 @@ const g2: GrupoParcial = grupo(
       mc("p9c1-g2-a5", "Considerando esse resultado, a mensagem do Rafa deve ser entendida como fake news?", I,
         "Depende: é preciso olhar a fonte, o método da pesquisa e o contexto, sem exagerar nem espalhar sem pensar.",
         ["Sim, porque qualquer mensagem sobre saúde é falsa.", "Não, porque se aparece na internet já é verdade.", "Não, porque quanto mais gente repassa, mais verdadeira fica."], "hard"),
-      mc("p9c1-g2-a6", "Se o Rafa tivesse pesquisado antes de compartilhar, a atitude dele passaria a ser mais “crítica e ética”?", I,
+      mc("p9c1-g2-a6", "Se o Rafa tivesse pesquisado antes de compartilhar, a atitude dele passaria a ser mais crítica e ética (avaliar com cuidado e agir com responsabilidade)?", I,
         "Sim, desde que, além de pesquisar, ele conferisse as fontes e pensasse se valia a pena enviar a mais de mil pessoas.",
         ["Sim, porque pesquisar rápido já resolve tudo.", "Não, porque pesquisar na internet nunca adianta.", "Não, porque uma mensagem verdadeira nunca precisa de cuidado."], "hard"),
     ),
@@ -103,7 +119,7 @@ const g2: GrupoParcial = grupo(
         "A ideia 2: a pessoa até percebe que a informação é falsa, mas a compartilha porque combina com o que ela quer.",
         ["A ideia 1: o estrago da mentira se perde de vista.", "A ideia 3: a mentira destrói reputações.", "Nenhuma das ideias."], "hard"),
     ),
-    ...txt("p9c1-tira1",
+    ...txt("p9c1-g2-tira",
       mc("p9c1-g2-a9", "Quais objetivos comunicativos combinam com cada texto? I. A tira quer mostrar, com humor, que não existem fake news. II. A entrevista usa o conhecimento da pesquisadora para alertar sobre fake news e levar o leitor a agir com responsabilidade. III. A entrevista fala de fake news, mas não ajuda o leitor a refletir. IV. A tira critica, com humor, quem compartilha mensagens sem verificar se são confiáveis.", I,
         "Apenas II e IV.",
         ["Apenas I e III.", "Apenas I e II.", "Apenas III e IV."], "medium"),
@@ -112,12 +128,12 @@ const g2: GrupoParcial = grupo(
 );
 
 // ---------------------------------------------------------------------------
-// Grupo 3 — O cartaz contra as fake news + período composto por coordenação (Construindo o conceito)
+// Grupo 3 — O cartaz contra as fake news
 // ---------------------------------------------------------------------------
 const g3: GrupoParcial = grupo(
   "Se é fake, não é notícia",
-  "Analisar um cartaz de campanha contra notícias falsas e começar a estudar o período composto por coordenação.",
-  "Um cartaz com um celular chama a atenção para as notícias falsas. Em seguida, olhamos duas frases da entrevista para descobrir quando um período é simples ou composto.",
+  "Analisar um cartaz de campanha contra notícias falsas e relacionar texto verbal e imagem.",
+  "Um cartaz com um celular chama a atenção para as notícias falsas. Vemos qual é a ideia da campanha e como a imagem ajuda a transmiti-la.",
   IMG_LIVRO,
   [
     read("p9c1-g3-cartaz", "Cartaz da campanha contra fake news", [
@@ -134,10 +150,30 @@ const g3: GrupoParcial = grupo(
       mc("p9c1-g3-a3", "“Se é fake, não é news.” O que significam as palavras da língua inglesa nessa frase e qual é a condição que ela estabelece?", I,
         "Fake quer dizer falsa e news quer dizer notícia; se a informação é falsa, ela não pode ser considerada notícia.",
         ["Fake quer dizer rápida e news quer dizer nova; se é rápida, é nova.", "Fake quer dizer grande e news quer dizer jornal; se é grande, é jornal.", "Fake quer dizer verdadeira e news quer dizer boato; se é verdadeira, é boato."], "medium"),
-      mc("p9c1-g3-a4", "Como o cartaz se relaciona com a entrevista do capítulo e com a tira estudada?", I,
+      mc("p9c1-g3-a4", "Como o cartaz se relaciona com a entrevista da pesquisadora e com a tira em que o Rafa repassa uma mensagem a mais de mil pessoas sem conferir?", I,
         "Os três textos chamam a atenção do leitor para o combate às notícias falsas, cada um de um jeito.",
         ["O cartaz ensina a usar o celular e os outros dois ensinam a escrever poemas.", "O cartaz defende as fake news e os outros dois as criticam.", "Não há relação: cada um fala de um assunto diferente."], "medium"),
     ),
+  ]
+);
+
+// ---------------------------------------------------------------------------
+// Grupo — O período composto por coordenação (conceito + primeira prática)
+// ---------------------------------------------------------------------------
+const g3b: GrupoParcial = grupo(
+  "Período simples e composto por coordenação",
+  "Entender o que é período simples, período composto e orações coordenadas, e aplicar em duas frases da entrevista.",
+  "Primeiro vemos a teoria: oração, período, coordenadas assindéticas e sindéticas e o sentido de cada conjunção. Depois, analisamos duas frases sobre fake news.",
+  IMG_LETRAS,
+  [
+    read("p9c1-g4-conceito", "Período composto por coordenação", [
+      "Período é uma frase organizada em torno de verbos. Se tem apenas uma oração (um verbo ou uma locução verbal), é período simples: “As notícias falsas circulam depressa.” Se tem mais de uma oração, é período composto: “As notícias falsas circulam depressa e enganam muita gente.”",
+      "Quando as orações de um período composto são independentes entre si, isto é, uma não faz parte da outra, o período é composto por coordenação.",
+      "Oração coordenada assindética é a que não vem introduzida por conjunção. Oração coordenada sindética é a que vem introduzida por conjunção.",
+      "As sindéticas se classificam pelo sentido: aditivas (ideia de soma; e, nem), adversativas (oposição; mas, porém, todavia, no entanto), alternativas (escolha; ou, ora… ora, quer… quer), conclusivas (consequência; logo, portanto, por isso) e explicativas (motivo; porque, pois, que).",
+      "Exemplos: “Adoro cinema e sempre vejo filmes de arte” (aditiva); “Gostaria de viajar, mas não tenho dinheiro” (adversativa); “Vou ao cinema ou vou dormir cedo?” (alternativa); “Estou com febre, por isso não vou ao clube” (conclusiva); “Não demore, porque sua mãe fica preocupada” (explicativa).",
+      "Às vezes o verbo da segunda oração não aparece, porque já foi dito antes e fica subentendido (elipse): “Não quero doce, mas sorvete” (= mas quero sorvete).",
+    ]),
     read("p9c1-g3-trechos", "Duas frases para analisar", [
       "Frase I: As fake news sempre existiram. Há registros de jornais falsos desde a Roma Antiga.",
       "Frase II: Não estou falando de opinião política, mas de etapas de apuração.",
@@ -169,17 +205,11 @@ const g3: GrupoParcial = grupo(
 // Grupo 4 — Orações coordenadas sindéticas e assindéticas (Conceituando + Exercícios)
 // ---------------------------------------------------------------------------
 const g4: GrupoParcial = grupo(
-  "Orações coordenadas",
-  "Reconhecer orações coordenadas assindéticas e sindéticas e o sentido das conjunções que as ligam.",
-  "Duas orações independentes podem ficar lado a lado, com ou sem conjunção. Vemos as cinco relações possíveis: adição, oposição, alternância, conclusão e explicação.",
+  "Orações coordenadas na prática",
+  "Aplicar o estudo das orações coordenadas a uma tira e a um trecho da entrevista.",
+  "Hora de praticar: dividimos em orações o período de uma tira do besouro, classificamos a conjunção e analisamos um trecho da entrevista.",
   IMG_LETRAS,
   [
-    read("p9c1-g4-conceito", "Período composto por coordenação", [
-      "Um período composto tem mais de uma oração, e cada oração tem um verbo. Quando as orações são independentes entre si, isto é, uma não faz parte da outra, o período é composto por coordenação.",
-      "Oração coordenada assindética é a que não vem introduzida por conjunção. Oração coordenada sindética é a que vem introduzida por conjunção.",
-      "As sindéticas se classificam pelo sentido: aditivas (ideia de soma; e, nem), adversativas (oposição; mas, porém, todavia, no entanto), alternativas (escolha; ou, ora… ora, quer… quer), conclusivas (consequência; logo, portanto, por isso) e explicativas (motivo; porque, pois, que).",
-      "Exemplos: “Adoro cinema e sempre vejo filmes de arte” (aditiva); “Gostaria de viajar, mas não tenho dinheiro” (adversativa); “Vou ao cinema ou vou dormir cedo?” (alternativa); “Estou com febre, por isso não vou ao clube” (conclusiva); “Não demore, porque sua mãe fica preocupada” (explicativa).",
-    ]),
     withImage(read(
       "p9c1-besouro",
       "Tira: o lugar seguro",
@@ -239,7 +269,7 @@ const g5: GrupoParcial = grupo(
     read("p9c1-g5-funil", "Como não cair em boatos de internet", [
       "Imagine uma peça de campanha contra notícias falsas, feita pelo Senado Federal para as redes sociais. O título diz: “Como não cair em boatos de internet”.",
       "No centro, há um funil dividido em cinco faixas, com dicas: “Confira a fonte da notícia”; “Use o bom senso e seja um pouco cético em relação ao que lê”; “Leia a notícia completa”; “Veja se não é notícia velha”; “Não caia no alarmismo”. Abaixo do funil, em letras grandes: “Ficou em dúvida? Não compartilhe!”.",
-      "Em quadros coloridos ao lado, cada dica é explicada. Um deles diz que há páginas especializadas em inventar boatos e que é preciso evitá-las. Outro avisa que às vezes o título é distorcido só para chamar a atenção, e que, ao ler, “não é nada daquilo”. Outro, com o título “BOMBA!”, lembra que notícias em tom alarmista não costumam ser verdadeiras. Um quadro diz que algumas notícias são verdadeiras, mas estão desatualizadas. Cada quadro é ligado à sua faixa do funil por um traço e pela mesma cor.",
+      "Em quadros coloridos ao lado, cada dica é explicada. Um deles diz que há páginas especializadas em inventar boatos e que é preciso evitá-las. Outro avisa que às vezes o título é distorcido só para chamar a atenção, e que, ao ler, “não é nada daquilo”. Outro chama de “bizarra” a notícia que parece absurda demais para ser verdade. Outro, com o título “BOMBA!”, lembra que notícias em tom alarmista não costumam ser verdadeiras. Um quadro diz que algumas notícias são verdadeiras, mas estão desatualizadas. Cada quadro é ligado à sua faixa do funil por um traço e pela mesma cor.",
     ]),
     ...txt("p9c1-g5-funil",
       mc("p9c1-g5-a1", "Qual é a finalidade dessa peça de campanha?", I,
@@ -255,14 +285,25 @@ const g5: GrupoParcial = grupo(
         "De menor formalidade; criam proximidade com o público-alvo.",
         ["De maior formalidade; criam distância e seriedade.", "De maior formalidade; dão ar de lei oficial.", "De menor formalidade; mostram que o autor não sabe escrever."], "medium"),
       mc("p9c1-g5-a5", "Que outras expressões poderiam substituir “boatos de internet”, e por que se preferiu essa?", I,
-        "“Notícias falsas” ou “fake news”; “boatos de internet” soa mais informal, evita o estrangeirismo e atinge um público maior.",
+        "“Notícias falsas” ou “fake news”; “boatos de internet” soa mais informal, evita o estrangeirismo (palavra de outra língua) e atinge um público maior.",
         ["“Documentos oficiais”; porque é mais difícil de entender.", "“Receitas da internet”; porque é mais curto.", "“Poemas virtuais”; porque é mais bonito."], "medium"),
       mc("p9c1-g5-a6", "O que o desenho central da peça representa?", I,
         "Um funil.",
         ["Uma árvore.", "Um relógio.", "Uma montanha."]),
+      mc("p9c1-g6-a1", "Que elementos não verbais ligam cada quadro colorido à faixa do funil que ele explica?", I,
+        "Um traço e a cor.",
+        ["Uma seta vermelha e um número.", "Uma foto e uma legenda.", "Um balão de fala e um emoji."]),
+    ),
+    read("p9c1-g5-imperativo", "Verbos que dão conselhos", [
+      "O modo imperativo é usado para dar ordens, conselhos, pedidos e orientações: “Confira a fonte”, “Leia com atenção”, “Não compartilhe”. É comum em campanhas, receitas e instruções.",
+      "Outros modos: o indicativo apresenta fatos (“A notícia circulou ontem”); o subjuntivo expressa dúvida ou desejo (“Espero que seja verdade”).",
+    ]),
+    ...txt("p9c1-g5-imperativo",
       mc("p9c1-g5-a7", "Nas frases do funil, como “confira”, “use”, “seja”, “leia”, “veja” e “não caia”, em que modo está a maioria dos verbos e qual é a função dele na peça?", I,
         "No modo imperativo, para aconselhar e dar dicas ao leitor.",
         ["No modo indicativo, para contar fatos do passado.", "No modo subjuntivo, para expressar dúvidas.", "No infinitivo, para dar nome às coisas."], "medium"),
+    ),
+    ...txt("p9c1-g5-funil",
       mc("p9c1-g5-a8", "Sem mudar o sentido, como transformar “Ficou em dúvida? Não compartilhe!” em um período composto por coordenação e como se classifica a oração coordenada criada?", I,
         "“Ficou em dúvida; então não compartilhe”: oração coordenada sindética conclusiva.",
         ["“Ficou em dúvida, mas compartilhe”: coordenada sindética adversativa.", "“Ficou em dúvida e compartilhe”: coordenada sindética aditiva.", "“Ficou em dúvida porque compartilhe”: coordenada sindética explicativa."], "hard"),
@@ -278,26 +319,25 @@ const g5: GrupoParcial = grupo(
 // ---------------------------------------------------------------------------
 const g6: GrupoParcial = grupo(
   "Conjunções em ação",
-  "Completar frases com a conjunção adequada e classificar orações coordenadas.",
-  "Mas, porém, entretanto, nem, ou… ou: cada conjunção muda o sentido da frase. Praticamos com as dicas do funil dos boatos.",
+  "Completar frases com a conjunção adequada, classificar orações coordenadas e ver conjunções que mudam de lugar.",
+  "Mas, porém, entretanto, nem, ou… ou: cada conjunção muda o sentido da frase. Praticamos com ideias parecidas com as do funil dos boatos.",
   IMG_LETRAS,
   [
-    ...txt("p9c1-g5-funil",
-      mc("p9c1-g6-a1", "Que elementos não verbais ligam cada quadro colorido à faixa do funil que ele explica?", I,
-        "Um traço e a cor.",
-        ["Uma seta vermelha e um número.", "Uma foto e uma legenda.", "Um balão de fala e um emoji."]),
-    ),
-    mc("p9c1-g6-a2", "Complete as frases com a conjunção adequada: I. A notícia é absurda; ___, não deve ser verdadeira. II. Leia a notícia completa ___ observe se ela não é velha. III. Não vamos cair no alarmismo, ___ notícias em tom alarmista geralmente são mentirosas. IV. Há páginas que inventam boatos; ___, devemos estar atentos. V. ___ cheque as fontes, ___ não compartilhe.", I,
+    mc("p9c1-g6-a2", "Complete as cinco frases com a conjunção adequada: I. A notícia é absurda; ___, não deve ser verdadeira. II. Leia a notícia completa ___ observe se ela não é velha. III. Não vamos cair no alarmismo, ___ notícias em tom alarmista geralmente são mentirosas. IV. Há páginas que inventam boatos; ___, devemos estar atentos. V. ___ cheque as fontes, ___ não compartilhe.", I,
       "I logo/então; II e; III pois/porque; IV por isso/portanto; V ou… ou.",
       ["I mas; II ou; III logo; IV porque; V e… e.", "I porque; II mas; III então; IV ou; V nem… nem.", "I e; II logo; III mas; IV pois; V porém… porém."], "hard"),
-    mc("p9c1-g6-a3", "Classifique as orações que você completou no item anterior (I a V), nessa ordem.", I,
+    mc("p9c1-g6-a3", "Considere as frases completas: I. A notícia é absurda; logo, não deve ser verdadeira. II. Leia a notícia completa e observe se ela não é velha. III. Não vamos cair no alarmismo, pois notícias em tom alarmista geralmente são mentirosas. IV. Há páginas que inventam boatos; por isso, devemos estar atentos. V. Ou cheque as fontes, ou não compartilhe. Como se classificam as orações introduzidas pelas conjunções destacadas (logo, e, pois, por isso, ou… ou), nessa ordem?", I,
       "I conclusiva; II aditiva; III explicativa; IV conclusiva; V alternativa.",
       ["I explicativa; II adversativa; III conclusiva; IV aditiva; V alternativa.", "I adversativa; II alternativa; III aditiva; IV explicativa; V conclusiva.", "I aditiva; II conclusiva; III alternativa; IV adversativa; V explicativa."], "hard"),
     read("p9c1-g6-bola", "Conjunções que mudam de lugar", [
+      "A palavra nem equivale a “e não”: “Não estudou nem trabalhou”. Em frases como “Não estuda e nem trabalha”, o “e nem” reforça a negação.",
       "A conjunção mas só pode ficar no início da oração. Já outras adversativas, como porém, contudo e entretanto, aceitam mais de uma posição. Veja uma notícia de futebol: “O time chegou ao estádio em desvantagem, após perder por 1 a 0 fora de casa. Entretanto, com um segundo tempo muito forte, fez 3 a 0”. Também seria possível escrever: “Com um segundo tempo muito forte, entretanto, o time fez 3 a 0”.",
     ]),
-    ...txt("p9c1-g5-funil",
-      mc("p9c1-g6-a4", "No texto da campanha do Senado, há um período composto por coordenação com oração adversativa. Qual é ele e que conjunção adversativa foi usada?", I,
+    read("p9c1-g6-dicas", "Dicas contra boatos", [
+      "Veja um trecho de uma campanha contra boatos de internet: “Leia a notícia completa. Há páginas especializadas em inventar boatos. Algumas notícias são verdadeiras, mas estão desatualizadas. Ficou em dúvida? Não compartilhe!”.",
+    ]),
+    ...txt("p9c1-g6-dicas",
+      mc("p9c1-g6-a4", "No trecho da campanha, há um período composto por coordenação com oração adversativa. Qual é ele e que conjunção adversativa foi usada?", I,
         "“Algumas notícias são verdadeiras, mas estão desatualizadas”; conjunção mas.",
         ["“Ficou em dúvida? Não compartilhe!”; conjunção não.", "“Leia a notícia completa”; conjunção leia.", "“Há páginas especializadas em inventar boatos”; conjunção em."], "medium"),
     ),
@@ -307,7 +347,7 @@ const g6: GrupoParcial = grupo(
     mc("p9c1-g6-a6", "A palavra nem tem em geral o mesmo sentido de “e + não”. Por que são comuns frases com “e nem”, como “Notícias alarmistas não costumam ser verdadeiras e nem ajudam a resolver problemas”?", I,
       "Porque o “e nem” dá mais ênfase à ideia apresentada.",
       ["Porque “e nem” é a única forma correta de usar o nem.", "Porque “e nem” transforma a frase em pergunta.", "Porque “e nem” indica oposição entre as orações."], "medium"),
-    mc("p9c1-g6-a7", "Escolha duas frases das dicas e, usando nem, forme um período composto coerente com a campanha. Qual opção está certa?", I,
+    mc("p9c1-g6-a7", "Usando nem, qual opção forma um período composto coerente com uma campanha contra boatos?", I,
       "Não divulgue dados sem fonte nem compartilhe boatos.",
       ["Divulgue dados sem fonte nem compartilhe boatos.", "Leia toda a notícia nem compartilhe boatos.", "Use o bom senso nem leia toda a notícia."], "hard"),
   ]
@@ -322,6 +362,11 @@ const g7: GrupoParcial = grupo(
   "O editorial é o texto que expressa a opinião de um jornal. Vamos ler um e descobrir onde está a ideia principal e como ela é defendida.",
   IMG_LIVRO,
   [
+    read("p9c1-g7-conceito", "O que é um editorial", [
+      "O editorial é um texto de jornal ou revista que expressa a opinião do próprio veículo sobre um assunto importante para a sociedade. Não é assinado por um repórter: fala em nome da publicação.",
+      "Ele costuma ter três partes. Na introdução, apresenta o tema e o posicionamento do jornal. No desenvolvimento, defende a ideia com argumentos (razões, dados, exemplos, falas de especialistas). Na conclusão, resume o que foi dito ou propõe uma solução.",
+      "A ideia principal que o texto defende chama-se tese. Já o ponto de vista é o modo como o jornal enxerga o assunto.",
+    ]),
     read("p9c1-g7-editorial", "Senso crítico e fake news (editorial)", [
       "1. A preocupação com as fake news, ou notícias falsas, é um dos grandes desafios do mundo atual e ganhou dimensão enorme com a internet. A divulgação de informação não é mais restrita aos profissionais e às empresas de comunicação.",
       "2. Hoje, publicar textos, vídeos e fotos está ao alcance de qualquer pessoa. Se isso facilita o acesso e democratiza a informação, também pode gerar conteúdos falsos, criados com a criminosa intenção de destruir reputações e levar a sociedade a erros irreparáveis.",
@@ -371,7 +416,24 @@ const g8: GrupoParcial = grupo(
   "Um bom editorial defende uma tese com argumentos e vozes de especialistas. Observamos também a linguagem: formal, impessoal e em terceira pessoa.",
   IMG_LETRAS,
   [
-    ...txt("p9c1-g7-editorial",
+    read("p9c1-g8-conceito", "Vozes, discurso e linguagem", [
+      "Argumento de autoridade é a fala de um especialista ou instituição usada para dar força a uma opinião.",
+      "Para reproduzir a fala de alguém há duas maneiras. No discurso direto, as palavras são citadas exatamente, entre aspas: Ele disse: “Estudar é importante”. No discurso indireto, quem escreve conta o que a pessoa disse com suas próprias palavras: Ele disse que estudar é importante.",
+      "A conclusão de um editorial pode ser uma síntese (resumo das ideias) ou uma proposta (sugestão de solução).",
+      "Norma-padrão é a variedade da língua usada em textos formais, que segue as regras da gramática. Um texto é impessoal quando não revela quem escreve, evitando a primeira pessoa (eu, nós) e usando a terceira pessoa (ele, eles, as pessoas, o jornal).",
+    ]),
+    read("p9c1-g8-editorial", "Senso crítico e fake news (editorial, para reler)", [
+      "1. A preocupação com as fake news, ou notícias falsas, é um dos grandes desafios do mundo atual e ganhou dimensão enorme com a internet. A divulgação de informação não é mais restrita aos profissionais e às empresas de comunicação.",
+      "2. Hoje, publicar textos, vídeos e fotos está ao alcance de qualquer pessoa. Se isso facilita o acesso e democratiza a informação, também pode gerar conteúdos falsos, criados com a criminosa intenção de destruir reputações e levar a sociedade a erros irreparáveis.",
+      "3. O tema foi tratado em uma reportagem do jornal na coluna “Educare”. O texto considera os estudantes vulneráveis às notícias falsas, porque usam a internet como parte do conteúdo pedagógico. É enorme o risco de encontrarem mentiras no mundo virtual.",
+      "4. Por isso, recai sobre os professores parte da responsabilidade de alertar os alunos sobre o universo digital de notícias.",
+      "5. Um historiador e professor de ensino superior e médio propõe caminhos: “Aprender a raciocinar, conhecer os fatos com base científica e ter senso crítico é muito importante”.",
+      "6. Ele acredita que essas habilidades ajudam o aluno a desenvolver a capacidade de discernir as notícias falsas que aparecem nas redes sociais.",
+      "7. Em contrapartida, as fake news reforçam a necessidade de valorizar um jornalismo que busque a verdade e siga valores éticos e democráticos. A sociedade precisa, cada vez mais, de uma imprensa séria, independente e que inspire confiança. O tema, portanto, não se limita à educação: alcança todos os setores comprometidos com o interesse de quem lê notícias.",
+      "8. Um reitor de uma faculdade de jornalismo dos Estados Unidos, em visita ao Brasil, afirmou que os jornalistas precisam se disciplinar para adotar métodos de verificação de conteúdo digital. Segundo ele, às vezes são criadas campanhas com imagens ou notícias falsas na esperança de que a imprensa as repasse e as legitime.",
+      "9. A importância do assunto ganha novos contornos em ano de eleições. A mesma atenção dada às fake news deve valer na avaliação dos candidatos, pois maus políticos usam métodos parecidos para enganar o cidadão com promessas vazias. Cabe aos eleitores, com senso crítico, escolher candidatos sérios e rejeitar os maus políticos.",
+    ], "Baseado no editorial “Senso crítico e ‘fake news’”, Cruzeiro do Sul, Sorocaba, 29 jan. 2018."),
+    ...txt("p9c1-g8-editorial",
       mc("p9c1-g8-a1", "Que argumentos o editorial apresenta em relação ao papel da educação no enfrentamento do problema?", I,
         "Com base em uma reportagem do próprio jornal, os estudantes estão vulneráveis a notícias falsas, pois usam a internet como recurso pedagógico; por isso, os professores têm a responsabilidade de alertá-los.",
         ["Os estudantes devem ser proibidos de usar a internet.", "Os professores não têm nenhuma responsabilidade.", "As escolas devem apenas usar jornais impressos."], "medium"),
@@ -396,7 +458,7 @@ const g8: GrupoParcial = grupo(
       mc("p9c1-g8-a8", "Que pessoa gramatical predomina no texto?", I,
         "A terceira pessoa.",
         ["A primeira pessoa do singular.", "A segunda pessoa do singular.", "A primeira pessoa do plural."]),
-      mc("p9c1-g8-a9", "Expressões como “É imenso o risco de depararem com mentiras” e “O referido senso crítico deve ser acionado” revelam o esforço do autor de tornar o texto pessoal ou impessoal? Por quê?", I,
+      mc("p9c1-g8-a9", "Expressões como “É enorme o risco de encontrarem mentiras” e “Cabe aos eleitores, com senso crítico, escolher candidatos sérios” revelam o esforço do autor de tornar o texto pessoal ou impessoal? Por quê?", I,
         "Impessoal: o texto não traz marcas de autoria, como a primeira pessoa, e usa sujeitos que não são pessoas.",
         ["Pessoal: o autor fala de si mesmo o tempo todo.", "Pessoal: o texto usa muitas gírias e opiniões íntimas.", "Impessoal: porque o texto é muito curto."], "hard"),
     ),
@@ -435,4 +497,4 @@ const g9: GrupoParcial = grupo(
   ]
 );
 
-export const cap1Grupos: GrupoParcial[] = [g1, g2, g3, g4, g5, g6, g7, g8, g9];
+export const cap1Grupos: GrupoParcial[] = [g1, g2, g3, g3b, g4, g5, g6, g7, g8, g9];

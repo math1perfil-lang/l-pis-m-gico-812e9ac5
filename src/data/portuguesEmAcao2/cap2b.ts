@@ -11,7 +11,7 @@ const CAP_CARTUM = "Cartum: a semana de uma trabalhadora";
 // B1/B2 — Semântica e discurso: poema "Presença"
 // ---------------------------------------------------------------------------
 const presenca = read("p9c2-presenca", "Presença", [
-  "Poema dedicado a uma amiga poeta e jornalista. O eu lírico fala diretamente com a pessoa de quem sente saudade. Aqui vai o poema contado com palavras nossas, em seis momentos:",
+  "Poema dedicado a uma amiga poeta e jornalista. Em um poema, o eu lírico é a voz que fala, e o interlocutor é a pessoa a quem ela se dirige. Neste, o eu lírico fala diretamente com a pessoa de quem sente saudade. Aqui vai o poema contado com palavras nossas, em seis momentos:",
   "1. É preciso que a saudade trace o teu rosto com perfeição e que o vento das horas mexa de leve nos teus cabelos.",
   "2. É preciso que a tua ausência deixe no ar um cheiro suave de trevo amassado e de folhas de alecrim guardadas num móvel antigo.",
   "3. Mas é preciso, também, que seja como abrir uma janela e te respirar, azul e luminosa, no ar.",
@@ -57,7 +57,7 @@ const b2: GrupoParcial = grupo(
   IMG_LETRAS,
   [
     ...txt("p9c2-presenca",
-      mc("p9c2-g9-a1", "Quais são os períodos compostos formados pela estrutura “É preciso” e pelos complementos que você identificou?", I,
+      mc("p9c2-g9-a1", "Quais são os períodos compostos formados pela estrutura “É preciso” e por seus complementos (“que a saudade trace…”, “que a tua ausência deixe…”, “que seja como abrir uma janela…”)?", I,
         "“É preciso que a saudade trace o teu rosto…”, “É preciso que a tua ausência deixe no ar um cheiro…” e “Mas é preciso, também, que seja como abrir uma janela…”.",
         ["“Mas, quando surges, és tão outra…” e “E eu preciso fechar os olhos…”.", "“Poema dedicado a uma amiga” e “Aqui vai o poema”.", "Nenhum: todos são períodos simples."], "hard"),
       mc("p9c2-g9-a2", "Classifique as orações que compõem esses períodos compostos.", I,
@@ -84,10 +84,15 @@ const b2: GrupoParcial = grupo(
 // ---------------------------------------------------------------------------
 const b3: GrupoParcial = grupo(
   "Compostos em manchetes",
-  "Identificar substantivos e adjetivos compostos em manchetes e observar como formam o plural.",
+  "Conhecer as regras do plural dos compostos e identificar substantivos e adjetivos compostos em manchetes.",
   "Abaixo-assinados, arranha-céus e sul-americanos: o que muda quando essas palavras vão para o plural?",
   IMG_LIVRO,
   [
+    read("p9c2-regras", "Plural dos compostos: resumo", [
+      "Palavra composta é a que junta duas palavras num só sentido (guarda-sol, sul-americano). Pode ser substantivo ou adjetivo. Substantivos compostos: pluralizam-se as palavras variáveis (substantivos, adjetivos, numerais) e não as invariáveis (verbos, advérbios): couves-flores, quintas-feiras, guarda-sóis, bota-foras.",
+      "Se o segundo substantivo especifica o primeiro, só o primeiro varia: mangas-rosa. Com “guarda”: guardas-florestais (substantivo + adjetivo) e guarda-sóis (verbo + substantivo). Ligadas por “de”, só a primeira: pés-de-moleque. Palavras repetidas ou onomatopeias: só a segunda varia: tico-ticos, reco-recos.",
+      "Adjetivos compostos: pluraliza-se só o último elemento (acordos luso-brasileiros, pessoas bem-vindas, olhos verde-claros). Exceção: azul-marinho, invariável. Cores com substantivo ficam invariáveis: camisetas amarelo-canário, bolsas verde-água, roupas verde-oliva.",
+    ]),
     read("p9c2-manchetes", "Três manchetes", [
       "I. Abaixo-assinados on-line funcionam? Entenda como as petições da internet dão resultado.",
       "II. Definida a equipe brasileira de vela para os Jogos Sul-Americanos.",
@@ -101,7 +106,7 @@ const b3: GrupoParcial = grupo(
         "“Abaixo-assinados” (I) e “arranha-céus” (III).",
         ["“On-line” (I) e “Sul-Americanos” (II).", "“Equipe” (II) e “horizonte” (III).", "“Petições” (I) e “Nova York” (III)."]),
       mc("p9c2-g10-a3", "Por que “abaixo-assinados” e “arranha-céus” são considerados substantivos?", I,
-        "Porque nomeiam, respectivamente, um tipo de documento e um tipo de prédio, e vêm precedidos de artigo ou de numeral.",
+        "Porque nomeiam, respectivamente, um tipo de documento e um tipo de prédio.",
         ["Porque estão escritos com hífen.", "Porque indicam ação.", "Porque modificam um verbo."], "medium"),
       mc("p9c2-g10-a4", "Como se deu a formação do plural em “abaixo-assinados” e “arranha-céus”?", I,
         "Nos dois casos, o primeiro elemento ficou invariável e o segundo foi para o plural.",
@@ -128,11 +133,6 @@ const b4: GrupoParcial = grupo(
   "Um eu lírico solitário pede carinho ao beija-flor, e um cartum mostra como a segunda-feira assusta o domingo. Tudo com plurais de palavras compostas!",
   IMG_FLORESTA,
   [
-    read("p9c2-regras", "Plural dos compostos: resumo", [
-      "Substantivos compostos: pluralizam-se as palavras variáveis (substantivos, adjetivos, numerais) e não as invariáveis (verbos, advérbios): couves-flores, quintas-feiras, guarda-sóis, bota-foras.",
-      "Se o segundo substantivo especifica o primeiro, só o primeiro varia: mangas-rosa. Com “guarda”: guardas-florestais (substantivo + adjetivo) e guarda-sóis (verbo + substantivo). Ligadas por “de”, só a primeira: pés-de-moleque. Palavras repetidas ou onomatopeias: só a segunda varia: tico-ticos, reco-recos.",
-      "Adjetivos compostos: pluraliza-se só o último elemento (acordos luso-brasileiros). Exceção: azul-marinho, invariável. Cores com substantivo ficam invariáveis: camisetas amarelo-canário, bolsas verde-água.",
-    ]),
     read("p9c2-beijaflor", "Beija-flor", [
       "Poema com um eu lírico em primeira pessoa: ele fala com um beija-flor pequenininho, que beija a flor com carinho, e pede um pouco de amor, porque hoje se sente muito sozinho. Reconhece que não é flor, mas quer um beijinho. Os versos têm sete sílabas e rimam.",
     ], "Inspirado em Roseana Murray, No mundo da lua, Paulus, 2011."),
@@ -143,10 +143,10 @@ const b4: GrupoParcial = grupo(
       mc("p9c2-g11-a2", "Que sentimento ele demonstra ter no apelo que faz?", I,
         "Solidão.",
         ["Raiva.", "Orgulho.", "Entusiasmo."]),
-      mc("p9c2-g11-a3", "O verso é a redondilha maior (sete sílabas), muito usada em cantigas de roda e no cordel. Que efeito isso produz?", I,
+      mc("p9c2-g11-a3", "Os versos do poema têm sete sílabas (redondilha maior), medida muito usada em cantigas de roda e no cordel. Que efeito isso produz?", I,
         "O poema fica leve, simples, sonoro e fácil de memorizar.",
         ["O poema fica pesado e difícil de ler.", "O poema perde as rimas.", "O poema vira um texto científico."], "medium"),
-      mc("p9c2-g11-a4", "A palavra do título é um substantivo composto. Qual é o plural dela?", I,
+      mc("p9c2-g11-a4", "“Beija-flor”, título do poema, é um substantivo composto. Qual é o plural dele?", I,
         "Beija-flores.",
         ["Beijas-flores.", "Beijas-flor.", "Beija-flor."], "medium"),
     ),
@@ -217,6 +217,7 @@ const b5: GrupoParcial = grupo(
 // B6 — Artigo de opinião (I): leitura e estudo
 // ---------------------------------------------------------------------------
 const sayao = read("p9c2-sayao", "A convivência com a internet (artigo de opinião)", [
+  "Texto assinado por Rosely Sayão, psicóloga e colunista de jornal, que escreve sobre educação e comportamento de crianças e jovens.",
   "1. A vida de crianças e adolescentes não está simples nem fácil. São tantas as tentações que fica difícil resistir, sobretudo porque a formação crítica que eles precisariam ter sobre a vida tem sido escassa. Família e escola pouco investem nisso, talvez por subestimarem a capacidade de reflexão dos mais novos.",
   "2. Vamos considerar a convivência deles com a internet. Um passeio por blogues, portais e reportagens mostra, nos comentários, a violência e a agressividade com que as pessoas se manifestam, sejam jovens, sejam adultas. Penso que a internet consegue arrancar o que há de pior em muitas pessoas.",
   "3. Vou reunir alguns casos para ilustrar essa conversa. Um jovem de 17 anos me escreveu contando que abriu uma conta numa rede, mas estava prestes a fechá-la, porque percebeu que muita gente, inclusive ele, escreve coisas por impulso e depois se arrepende, mas aí é tarde demais, porque o texto já se espalhou.",
@@ -234,6 +235,10 @@ const b6: GrupoParcial = grupo(
   IMG_CRIANCAS,
   [
     sayao,
+    read("p9c2-g13-conceito", "Artigo de opinião: lembrete", [
+      "Artigo de opinião é um texto em que o autor defende um ponto de vista (sua opinião) sobre um assunto, apoiando-o em argumentos (razões, exemplos, dados e experiências). Costuma ter introdução (apresenta o assunto e a posição do autor), desenvolvimento (os argumentos) e conclusão (retoma ou reforça a ideia).",
+      "Pessoa do discurso: na primeira pessoa do singular (“penso”), o autor fala por si; na primeira do plural (“vamos considerar”), inclui o leitor; na terceira (“pensa-se”), o texto fica mais impessoal.",
+    ]),
     ...txt("p9c2-sayao",
       mc("p9c2-g13-a1", "Em artigos de opinião, é comum a introdução vir logo no primeiro parágrafo, com assunto e posição do autor. Isso acontece no texto lido?", I,
         "Sim: o assunto e a opinião são apresentados no primeiro parágrafo, embora o contexto da internet só fique explícito no segundo.",
@@ -294,8 +299,8 @@ const b7: GrupoParcial = grupo(
       mc("p9c2-g14-a4", "Qual é o principal argumento da autora para se contrapor a esse outro posicionamento?", I,
         "Hoje muitos veículos e mídias (televisão, internet, publicidade) e os valores sociais educam; a família sozinha não consegue ter sucesso na formação moral dos filhos.",
         ["A família não gosta de educar.", "A escola é mais antiga que a família.", "Só a internet deve educar."], "hard"),
-      mc("p9c2-g14-a5", "De que tipo é a conclusão do artigo (retomar o ponto de vista, propor solução ou provocar os leitores)?", I,
-        "Muito breve: retoma o ponto de vista (acreditar no potencial dos mais novos e investir na formação deles) e provoca o leitor com “Só falta acreditarmos nisso”.",
+      mc("p9c2-g14-a5", "Como é a conclusão do artigo?", I,
+        "Muito breve: retoma o ponto de vista (o potencial de reflexão dos mais novos é alto) e provoca o leitor com “Só falta acreditarmos nisso”.",
         ["Só repete a primeira frase do texto.", "Propõe uma lei e termina.", "Não tem conclusão."], "hard"),
       mc("p9c2-g14-a6", "A linguagem do artigo de opinião lido é direta e clara ou subjetiva?", I,
         "É direta e clara.",

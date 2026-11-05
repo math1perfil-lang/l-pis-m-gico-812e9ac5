@@ -6,6 +6,7 @@ import type { GrupoParcial } from "./shared";
 const I = "Toque na resposta certa";
 const IMG_PAI = `${IMG}/u2-tira-historia.jpg`;
 const IMG_SHOW = `${IMG}/u2-tira-mostre-conte.jpg`;
+const IMG_PRESENTE = `${IMG}/u2-tira-presente.jpg`;
 
 // ---------------------------------------------------------------------------
 // G1 — Abertura da unidade: pintura e poema
@@ -425,4 +426,44 @@ const g10: GrupoParcial = grupo(
   ]
 );
 
-export const unidade2aGrupos: GrupoParcial[] = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10];
+// ---------------------------------------------------------------------------
+// G11 — Tira do gato e do presente
+// ---------------------------------------------------------------------------
+const presente = withImage(read("p9u2-tira-presente", "Tira: algo que os gatos adoram", [
+  "Tira em 3 quadrinhos. Um rapaz, o Caio, e seu gato laranja, o Mingau, estão na sala.",
+  "Quadrinho 1. Caio, animado, chega com uma sacola e diz: “Trouxe algo que os gatos adoram!” Mingau, de olhos brilhando, imagina um carro esportivo.",
+  "Quadrinho 2. Mingau, surpreso e feliz, pensa: “Será que é um carro?”",
+  "Quadrinho 3. Caio abre a sacola e mostra um pacotinho de petiscos. Mingau fica decepcionado, de orelhas caídas, e Caio, desanimado, pergunta: “Você não gostou?”",
+]), IMG_PRESENTE, "Tira: um gato espera um carro e recebe um pacotinho de petiscos");
+
+const g11: GrupoParcial = grupo(
+  "Tira: algo que os gatos adoram",
+  "Interpretar expressões, pronome relativo e humor em uma tira de gato e dono.",
+  "“Algo” pode ser qualquer coisa. Por isso o gato imaginou um carro, e ganhou petiscos.",
+  IMG_FLORESTA,
+  [
+    presente,
+    ...txt("p9u2-tira-presente",
+      withImage(mc("p9u2-g11-a1", "Que transformações ocorrem na expressão de Caio e de Mingau ao longo da tira?", I,
+        "Caio está animado nos dois primeiros quadrinhos e desanimado no terceiro; Mingau está animado, surpreso e depois decepcionado.",
+        ["Os dois ficam bravos o tempo todo.", "Mingau dorme na tira inteira.", "Nada muda: os dois têm a mesma expressão."]), IMG_PRESENTE, "Tira: um gato espera um carro e recebe um pacotinho de petiscos"),
+      mc("p9u2-g11-a2", "O que provocou essas transformações?", I,
+        "A decepção do gato ao perceber que não ganharia um carro, e a de Caio com a decepção dele.",
+        ["O frio na sala.", "O barulho do carro.", "A chegada de um vizinho."], "medium"),
+      mc("p9u2-g11-a3", "Na fala de Caio, no primeiro quadrinho, há um pronome relativo. Qual é e que termo ele retoma?", I,
+        "O pronome “que”, que retoma “algo”.",
+        ["O pronome “que”, que retoma “gatos”.", "O pronome “algo”, que retoma “Caio”.", "O pronome “trouxe”, que retoma “sacola”."], "medium"),
+      mc("p9u2-g11-a4", "Qual oração fez o gato ficar entusiasmado e como se classifica?", I,
+        "“que os gatos adoram”; é uma oração subordinada adjetiva.",
+        ["“Trouxe algo”; é uma oração coordenada.", "“Será que é um carro”; é uma oração adverbial.", "“Você não gostou”; é uma oração substantiva."], "medium"),
+      mc("p9u2-g11-a5", "O fato de “algo” ser um pronome indefinido contribuiu para a decepção do gato? Por quê?", I,
+        "Sim: um pronome indefinido não esclarece a que se refere, e isso deixou o gato imaginar um carro em vez de petiscos.",
+        ["Não: “algo” sempre é muito claro.", "Não: o gato nem entendeu a frase.", "Sim: porque “algo” significa carro."], "hard"),
+      mc("p9u2-g11-a6", "O que provoca o humor nessa tira?", I,
+        "A quebra de expectativa: o gato imagina um presente enorme e ganha apenas petiscos.",
+        ["A fala repetida do dono.", "O tamanho da sala.", "A cor do gato."], "medium"),
+    ),
+  ]
+);
+
+export const unidade2aGrupos: GrupoParcial[] = [g1, g2, g3, g4, g5, g7, g11, g6, g9, g8, g10];
