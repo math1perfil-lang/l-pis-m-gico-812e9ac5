@@ -305,7 +305,7 @@ const g5: GrupoParcial = grupo(
     ),
     ...txt("p9c1-g5-funil",
       mc("p9c1-g5-a8", "Sem mudar o sentido, como transformar “Ficou em dúvida? Não compartilhe!” em um período composto por coordenação e como se classifica a oração coordenada criada?", I,
-        "“Ficou em dúvida; então não compartilhe”: oração coordenada sindética conclusiva.",
+        "“Ficou em dúvida; portanto, não compartilhe”: oração coordenada sindética conclusiva.",
         ["“Ficou em dúvida, mas compartilhe”: coordenada sindética adversativa.", "“Ficou em dúvida e compartilhe”: coordenada sindética aditiva.", "“Ficou em dúvida porque compartilhe”: coordenada sindética explicativa."], "hard"),
       mc("p9c1-g5-a9", "Qual é a relação entre o desenho do funil, as frases dentro dele e o enunciado “Ficou em dúvida? Não compartilhe!”?", I,
         "O funil dá a ideia de que, quanto mais a pessoa se questiona, mais fácil fica descobrir se a notícia é verdadeira; assim, ao passar pelas dicas, ela decide se vale divulgar.",
@@ -474,11 +474,6 @@ const g9: GrupoParcial = grupo(
   "Um quadro-resumo organiza tudo o que aprendemos sobre o editorial e abre o caminho para escrever o nosso, dando a opinião do grupo.",
   IMG_LIVRO,
   [
-    read("p9c1-g9-artigo", "Abominável mundo novo (artigo de opinião)", [
-      "Para refletir antes de escrever um editorial, leia a ideia central de um artigo de opinião do jornalista Lira Neto, contada com palavras nossas.",
-      "O autor visita uma escola na hora do intervalo e se assusta: quase todos os alunos, crianças e pré-adolescentes, estão de cabeça baixa, olhando o celular, muitos com fones de ouvido, sem olhar uns para os outros. Estão juntos, mas separados por uma barreira invisível.",
-      "Ele esperava encontrar só vaidade e exibição, mas, ao investigar redes, aplicativos e hashtags, percebeu que o quadro era mais sério. Os jovens têm dificuldade com pausas e silêncios, com a reflexão e com a construção de si mesmos, e vivem agitados por estímulos rápidos. Para ele, o verdadeiro perigo está nas mãos das crianças e dos adolescentes, a um clique de distância.",
-    ], "Baseado em Lira Neto, “Abominável mundo novo”, Folha de S.Paulo, 15 out. 2017."),
     mc("p9c1-g9-a1", "Quem são os interlocutores de um editorial?", I,
       "O corpo editorial da publicação (jornal ou revista) e os leitores dela.",
       ["Apenas os políticos do país.", "Só os amigos do jornalista.", "Apenas os anunciantes."]),
@@ -491,9 +486,25 @@ const g9: GrupoParcial = grupo(
     mc("p9c1-g9-a4", "Como é a estrutura de um editorial?", I,
       "Introdução com o tema e o posicionamento; desenvolvimento com argumentos; conclusão em resumo ou em proposta, geralmente no último parágrafo.",
       ["Título, rimas e refrão.", "Falas de personagens em balões.", "Lista de ingredientes e modo de preparo."], "medium"),
-    mc("p9c1-g9-a5", "Por onde circula o editorial?", I,
+    mc("p9c1-g9-a5", "Em que tipo de publicação um editorial costuma circular?", I,
       "Em jornais e revistas.",
       ["Em embalagens de alimentos.", "Em placas de trânsito.", "Em bulas de remédio."]),
+    read("p9c1-g9-artigo", "Abominável mundo novo (artigo de opinião)", [
+      "Para refletir antes de escrever um editorial, leia a ideia central de um artigo de opinião do jornalista Lira Neto, contada com palavras nossas.",
+      "O autor visita uma escola na hora do intervalo e se assusta: quase todos os alunos, crianças e pré-adolescentes, estão de cabeça baixa, olhando o celular, muitos com fones de ouvido, sem olhar uns para os outros. Estão juntos, mas separados por uma barreira invisível.",
+      "Ele esperava encontrar só vaidade e exibição, mas, ao investigar redes, aplicativos e hashtags, percebeu que o quadro era mais sério. Os jovens têm dificuldade com pausas e silêncios, com a reflexão e com a construção de si mesmos, e vivem agitados por estímulos rápidos. Para ele, o verdadeiro perigo está nas mãos das crianças e dos adolescentes, a um clique de distância.",
+    ], "Baseado em Lira Neto, “Abominável mundo novo”, Folha de S.Paulo, 15 out. 2017."),
+    ...txt("p9c1-g9-artigo",
+      mc("p9c1-g9-a6", "Onde o autor do artigo vê a cena que o deixa assustado?", I,
+        "Em uma escola, na hora do intervalo.",
+        ["Em um estádio de futebol.", "Em uma biblioteca pública.", "Em uma festa de rua."]),
+      mc("p9c1-g9-a7", "O que o autor quer dizer ao afirmar que os alunos estão juntos, mas separados por uma barreira invisível?", I,
+        "Estão perto uns dos outros, mas cada um está isolado, olhando para o próprio celular.",
+        ["Há uma parede de vidro no meio do pátio.", "Os alunos brigaram e não se falam mais.", "A escola separa os alunos por idade."], "medium"),
+      mc("p9c1-g9-a8", "Um editorial e um artigo de opinião assinado por um jornalista, como esse, expressam opiniões. Qual é a diferença mais importante entre eles?", I,
+        "O editorial expressa a opinião do próprio jornal; o artigo expressa a opinião de quem o assina.",
+        ["O editorial é sempre em versos; o artigo é em prosa.", "O editorial conta uma história inventada; o artigo, não.", "Não há diferença nenhuma entre os dois."], "medium"),
+    ),
   ]
 );
 

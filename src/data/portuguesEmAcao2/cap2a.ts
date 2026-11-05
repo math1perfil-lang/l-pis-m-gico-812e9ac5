@@ -60,14 +60,19 @@ const a2: GrupoParcial = grupo(
   "O narrador muda de opinião aos poucos. Observamos como ele chega a essa conclusão e quais expressões do texto mostram a virada.",
   IMG_LIVRO,
   [
-    ...txt("p9c2-cronica",
+    read("p9c2-g2-resumo", "A crônica em resumo", [
+      "Na crônica de Antonio Prata, o narrador vê, no perfil de uma moça, a foto de uma atriz famosa entre as fotos dela. No começo, sente pena e “vergonha alheia”, pois acha que ela tem delírios de beleza. “Aos poucos, contudo”, chega a uma constatação óbvia: todo perfil de rede social é um retrato ideal de nós mesmos; quando ele posta o link de um filme, uma frase de filósofo ou um churrasco, também se edita, para valorizar o quadro que faz de si.",
+      "“Pensando bem”, diz ele, nem é preciso ir às redes: ao nos vestirmos, opinarmos ou andarmos de peito aberto ou de olhos no chão, também negociamos entre o real e o ideal. Há pobres que se vestem de ricos, ricos que se vestem de pobres, e acabamos sendo um meio-termo entre o ator e o roteiro que tentamos escrever.",
+      "“Hoje, portanto”, ele admira as moças que põem fotos de atrizes entre as suas: vê ali ousadia e esperança, e a capacidade de se aceitar na mistura entre o que se é e o que se gostaria de ser.",
+    ], "Resumo da crônica de Antonio Prata, Folha de S.Paulo, 4 jul. 2012."),
+    ...txt("p9c2-g2-resumo",
       mc("p9c2-g2-a1", "Com base nas observações, a que conclusão o narrador chega sobre os perfis das redes sociais? Explique.", I,
         "Chega à conclusão de que todo perfil de rede social é um retrato ideal de nós mesmos.",
         ["Conclui que todo perfil é feito só de mentiras.", "Conclui que ninguém deveria ter perfil.", "Conclui que só famosos têm perfil verdadeiro."]),
       mc("p9c2-g2-a2", "O que o narrador conclui quanto ao papel das imagens, dos pensamentos e dos links de filmes em um perfil?", I,
         "Que tudo o que é postado ajuda a criar uma identidade que não é exatamente a real, mas a que a pessoa gostaria de ter.",
         ["Que tudo é postado por acaso, sem intenção.", "Que servem só para encher espaço.", "Que mostram a pessoa exatamente como ela é."], "medium"),
-      mc("p9c2-g2-a3", "De acordo com o quinto e o sexto parágrafos, o confronto entre o real e o ideal se restringe às redes sociais? Justifique com exemplos.", I,
+      mc("p9c2-g2-a3", "De acordo com o resumo, o confronto entre o real e o ideal se restringe às redes sociais? Justifique com exemplos.", I,
         "Não: também fora das redes buscamos passar uma imagem entre o real e o ideal, na postura, nas roupas que vestimos e ao imitar quem admiramos.",
         ["Sim: só nas redes as pessoas tentam parecer algo que não são.", "Sim: fora das redes todo mundo se mostra exatamente como é.", "Não: porque apenas atores e atrizes fazem isso."], "medium"),
       mc("p9c2-g2-a4", "Em “acabamos sendo um meio-termo entre o ator e o roteiro que tentamos escrever”, quem é o ator e o que é o roteiro?", I,
@@ -98,8 +103,13 @@ const a3: GrupoParcial = grupo(
   "Como uma palavra muda de lugar e ganha novo sentido? E como as curtidas e os seguidores medem o reconhecimento de alguém nas redes?",
   IMG_LETRAS,
   [
-    ...txt("p9c2-cronica",
-      mc("p9c2-g3-a1", "No primeiro parágrafo, o narrador se refere a um “Carnaval já amarelado do século 20”. Que efeito de sentido a palavra “amarelado” produz?", I,
+    read("p9c2-g3-trechos", "Três trechos da crônica", [
+      "Trecho 1: o narrador vê fotos de uma moça em várias fases da vida, entre elas uma de criança, vestida de odalisca “num Carnaval já amarelado do século 20”.",
+      "Trecho 2: ele percebe que quem saiu bem numa das fotos era uma atriz famosa, “cuja imagem foi contrabandeada para aquele álbum”.",
+      "Trecho 3: ele diz que, ao postar links e frases, tenta emoldurar seus defeitos e qualidades de um jeito que valorize o quadro: “engraçado, profundo, hedonista?” (hedonista: quem busca o prazer).",
+    ], "Baseado em Antonio Prata, Folha de S.Paulo, 4 jul. 2012."),
+    ...txt("p9c2-g3-trechos",
+      mc("p9c2-g3-a1", "No trecho 1, o narrador se refere a um “Carnaval já amarelado do século 20”. Que efeito de sentido a palavra “amarelado” produz?", I,
         "Transfere para o Carnaval a característica da foto envelhecida, mostrando que ele é antigo.",
         ["Indica que o Carnaval foi pintado de amarelo.", "Mostra que a festa foi no verão.", "Indica que a moça estava doente."], "medium"),
       mc("p9c2-g3-a2", "A palavra “contrabandeada” (“cuja imagem foi contrabandeada para aquele álbum”) pertence à área da ilegalidade. O que justifica esse emprego?", I,
@@ -109,6 +119,11 @@ const a3: GrupoParcial = grupo(
         "Ao quadro, ou retrato, que o cronista acredita formar de si mesmo por meio do que posta.",
         ["À atriz famosa que apareceu na foto.", "Ao churrasco que ele postou.", "Ao filme de Woody Allen."], "medium"),
     ),
+    read("p9c2-g3-metricas", "Métricas das mídias sociais", [
+      "Métricas são números que medem o desempenho de uma página ou de uma pessoa nas redes: quantidade de curtidas, de seguidores, de comentários e de compartilhamentos. Quando um post alcança muitas pessoas em pouco tempo, diz-se que ele viralizou.",
+      "Influenciador (ou influencer) é quem tem muitos seguidores e, por isso, consegue chamar a atenção do público para produtos, ideias e obras.",
+    ]),
+    ...txt("p9c2-g3-metricas",
     mc("p9c2-g3-a4", "Quando se fala em “métricas das mídias sociais”, o que a expressão significa?", I,
       "São as medidas que permitem entender o desempenho de uma página ou pessoa nas redes sociais.",
       ["São regras de português para legendas.", "São os tipos de papel usados em jornais.", "São medidas de tamanho de telas de celular."]),
@@ -128,8 +143,9 @@ const a3: GrupoParcial = grupo(
       "Elaborar um pequeno questionário e entrevistar alunos de outras turmas, com a ajuda do professor.",
       ["Perguntar só aos amigos mais próximos.", "Copiar as respostas de uma pesquisa antiga.", "Não perguntar a ninguém e supor as respostas."]),
     mc("p9c2-g3-a10", "Com as respostas de todas as turmas em mãos, como organizar os resultados?", I,
-      "Em outro gráfico de barras, somando os resultados, que podem ser compartilhados no evento da escola.",
+      "Em outro gráfico de barras, somando os resultados, que podem ser mostrados para a escola toda.",
       ["Em uma lista sem números.", "Em um poema sobre os resultados.", "Em uma foto do caderno fechado."]),
+    ),
   ]
 );
 

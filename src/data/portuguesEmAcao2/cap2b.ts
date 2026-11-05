@@ -56,7 +56,12 @@ const b2: GrupoParcial = grupo(
   "A repetição das orações subjetivas dá o ritmo do poema, e o mas faz o eu lírico virar o jogo: da saudade à pessoa que surge.",
   IMG_LETRAS,
   [
-    ...txt("p9c2-presenca",
+    read("p9c2-g9-retomada", "Lembrando “Presença”", [
+      "No poema, o eu lírico fala com a pessoa de quem sente saudade e repete a estrutura “É preciso”: “É preciso que a saudade trace o teu rosto…”; “É preciso que a tua ausência deixe no ar um cheiro suave…”; “Mas é preciso, também, que seja como abrir uma janela e te respirar…”; e “É preciso a saudade para eu sentir a presença misteriosa da vida.”",
+      "Depois vem a virada: “Mas, quando surges, és tão outra, múltipla e imprevista, que nunca te pareces com o teu retrato.” Por fim: “E eu preciso fechar os olhos para te ver!”",
+      "Lembrete: oração subordinada substantiva subjetiva é a que exerce a função de sujeito da oração principal (“É preciso que a saudade trace o teu rosto”: o que é preciso? Isso, a oração). A conjunção “mas” pode indicar oposição (“Quis ir, mas choveu”) ou, na locução “mas também”, adição (“Estudou, mas também brincou”).",
+    ], "Baseado em Mário Quintana, “Presença”, Poesia completa, Nova Aguilar, 2006."),
+    ...txt("p9c2-g9-retomada",
       mc("p9c2-g9-a1", "Quais são os períodos compostos formados pela estrutura “É preciso” e por seus complementos (“que a saudade trace…”, “que a tua ausência deixe…”, “que seja como abrir uma janela…”)?", I,
         "“É preciso que a saudade trace o teu rosto…”, “É preciso que a tua ausência deixe no ar um cheiro…” e “Mas é preciso, também, que seja como abrir uma janela…”.",
         ["“Mas, quando surges, és tão outra…” e “E eu preciso fechar os olhos…”.", "“Poema dedicado a uma amiga” e “Aqui vai o poema”.", "Nenhum: todos são períodos simples."], "hard"),
@@ -286,7 +291,12 @@ const b7: GrupoParcial = grupo(
   "A autora passa do problema às soluções e rebate quem diz que educar é só da família. Vemos como ela conclui e que linguagem usa.",
   IMG_LETRAS,
   [
-    ...txt("p9c2-sayao",
+    read("p9c2-g14-retomada", "Lembrando o artigo", [
+      "No artigo “A convivência com a internet”, Rosely Sayão mostra que crianças e jovens enfrentam muitas tentações e recebem pouca formação crítica. Ela dá exemplos de jovens que lhe escreveram, entre eles um rapaz que se arrependeu do que escreveu por impulso: “mas aí é tarde demais, porque o texto já se espalhou”.",
+      "Em seguida pergunta: “O que podemos fazer para ajudar essas crianças e esses jovens a ter uma vida mais saudável?” e responde que talvez seja preciso investir na formação do espírito crítico e das virtudes, papel da família e da escola. Diz ver constantemente adultos afirmarem que educação moral e ética é papel da família, mas lembra que hoje a televisão, a internet, a publicidade e os valores sociais também educam. Por isso, mesmo que a família invista muito, os mais novos sofrem inúmeras influências.",
+      "Termina assim: “Precisamos reconhecer: o potencial de reflexão deles é alto. Só falta acreditarmos nisso.”",
+    ], "Baseado em Rosely Sayão, “A convivência com a internet”, Folha de S.Paulo, 19 ago. 2014."),
+    ...txt("p9c2-g14-retomada",
       mc("p9c2-g14-a1", "A partir do parágrafo iniciado pela pergunta “O que podemos fazer…?”, qual passa a ser o foco?", I,
         "O enfrentamento do problema e a discussão das possíveis soluções.",
         ["A história da internet.", "A biografia da autora.", "A venda de aplicativos."]),
@@ -324,6 +334,11 @@ const b8: GrupoParcial = grupo(
   "Montamos um quadro com tudo o que vimos sobre o artigo de opinião, para usar na hora de escrever o nosso.",
   IMG_LIVRO,
   [
+    read("p9c2-g15-recap", "Artigo de opinião: o que vimos", [
+      "No artigo de Rosely Sayão, a autora assina o texto, defende uma posição sobre a educação de crianças e jovens diante da internet, apresenta argumentos (observação, casos de leitores, contraposição a outra opinião) e conclui chamando o leitor a agir. Ela usa verbos na primeira pessoa do singular e do plural, e a linguagem é clara, próxima da norma-padrão.",
+      "O texto foi publicado em um jornal. Agora organizamos, em perguntas, as características do gênero artigo de opinião.",
+    ]),
+    ...txt("p9c2-g15-recap",
     mc("p9c2-g15-a1", "Qual é o objetivo do artigo de opinião?", I,
       "Defender um ponto de vista sobre um assunto, geralmente polêmico, por meio de argumentos.",
       ["Contar uma história de ficção.", "Ensinar uma receita.", "Descrever uma paisagem."]),
@@ -345,6 +360,7 @@ const b8: GrupoParcial = grupo(
     mc("p9c2-g15-a7", "Que pessoa do discurso predomina nos verbos e pronomes do artigo de opinião?", I,
       "Varia: pode ser a terceira (mais impessoal), a primeira do plural (parcialmente impessoal) ou a primeira do singular (pessoal).",
       ["Sempre a segunda pessoa do plural.", "Sempre a terceira pessoa do plural.", "Nenhuma pessoa: o texto não usa verbos."], "medium"),
+    ),
   ]
 );
 

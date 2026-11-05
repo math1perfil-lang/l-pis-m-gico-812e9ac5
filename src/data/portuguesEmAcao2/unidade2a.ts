@@ -30,7 +30,7 @@ const g1: GrupoParcial = grupo(
       mc("p9u2-g1-a2", "Quem são as pessoas retratadas e que hipótese o nome da obra permite levantar?", I,
         "São o artista e a esposa, e o nome sugere uma comemoração de aniversário.",
         ["São dois desconhecidos, e o nome sugere uma despedida.", "São dois irmãos, e o nome sugere uma viagem.", "São um professor e um aluno, e o nome sugere uma prova."], "medium"),
-      mc("p9u2-g1-a3", "Na pintura, os personagens parecem flutuar. O que esse detalhe pode representar?", I,
+      mc("p9u2-g1-a3", "Na pintura, o homem parece flutuar no ar. O que esse detalhe pode representar?", I,
         "A grande felicidade e o amor entre eles, que parecem leves e “nas alturas”.",
         ["Que o quarto está cheio de água.", "Que eles estão com medo de cair.", "Que a pintura foi feita de cabeça para baixo."], "medium"),
       mc("p9u2-g1-a4", "Para o eu lírico do poema, como é o amor?", I,
@@ -46,17 +46,31 @@ const g1: GrupoParcial = grupo(
 // ---------------------------------------------------------------------------
 // G2 — Poemas lidos e Estudo do texto 1 a 5
 // ---------------------------------------------------------------------------
-const poemaTempo = read("p9u2-poema-tempo", "O tempo passa? Não passa (resumo)", [
-  "Resumo do poema de Carlos Drummond de Andrade. O eu lírico pergunta se o tempo passa e responde que não, porque dentro do “abismo do coração” a graça do amor continua florindo, como uma canção.",
-  "O tempo aproxima os amantes cada vez mais e os reduz a um só verso e uma rima de mãos e olhos, na luz. Para eles, não existe tempo gasto nem tempo a economizar: o tempo é todo vestido de amor e de tempo de amar.",
-  "O tempo dos dois ultrapassa qualquer medida e, além do amor, não há nada; amar é o sumo da vida. Ontem e hoje são apenas mitos de calendário, e o aniversário da amada é um nascer a toda hora. O amor deles brotou do tempo, mas não tem idade, pois só quem ama escutou o apelo da eternidade.",
-], "Baseado em Carlos Drummond de Andrade, “O tempo passa? Não passa”, Amar se aprende amando (Record, 2009).");
+const SRC_TEMPO = "Baseado em Carlos Drummond de Andrade, “O tempo passa? Não passa”, Amar se aprende amando (Record, 2009).";
+const SRC_SONETO = "Baseado em Vinicius de Moraes, “Soneto de fidelidade”, Poesia completa e prosa (Aguilar, 1974).";
 
-const poemaSoneto = read("p9u2-poema-soneto", "Soneto de fidelidade (resumo)", [
-  "Resumo do soneto de Vinicius de Moraes. O eu lírico promete ser atento ao seu amor antes de tudo, com zelo, sempre e tanto, de modo que, mesmo diante do maior encanto, o seu pensamento se encante ainda mais com a pessoa amada.",
-  "Ele quer viver o amor em cada momento, mesmo os mais banais, cantar seu louvor, rir seu riso e derramar seu pranto, tanto no pesar quanto no contentamento da pessoa amada.",
-  "Nos últimos versos, imagina que, quando a morte, a solidão ou a angústia o procurarem, poderá dizer do amor que viveu: que não seja imortal, pois é chama, mas que seja infinito enquanto dure.",
-], "Baseado em Vinicius de Moraes, “Soneto de fidelidade”, Poesia completa e prosa (Aguilar, 1974).");
+/** Leitura-resumo do poema de Drummond; reutilizada em vários grupos (cada uso precisa de um id próprio). */
+export const leituraTempo = (id: string, extra: string[] = []) =>
+  read(id, "O tempo passa? Não passa (resumo)", [
+    "Resumo do poema de Carlos Drummond de Andrade. O eu lírico pergunta se o tempo passa e responde que não, porque lá dentro, no abismo do coração, a graça do amor continua florindo, como uma canção.",
+    "O tempo aproxima os amantes cada vez mais e os reduz a um só verso e uma rima de mãos e olhos, na luz. Para eles, não existe tempo gasto nem tempo a economizar: o tempo é todo vestido de amor e de tempo de amar.",
+    "O tempo dos dois ultrapassa qualquer medida e, além do amor, não há nada; amar é o sumo da vida. Ontem e hoje são apenas mitos de calendário, e o aniversário da amada é um nascer a toda hora. O amor deles brotou do tempo, mas não tem idade, pois só quem ama escutou o apelo da eternidade.",
+    "Trechos curtos: “Não passa / no abismo do coração”; “a graça / do amor”; “E nosso amor, que brotou / do tempo, não tem idade, / pois só quem ama escutou / o apelo da eternidade.”",
+    ...extra,
+  ], SRC_TEMPO);
+
+/** Leitura-resumo do soneto de Vinicius; reutilizada em vários grupos. */
+export const leituraSoneto = (id: string, extra: string[] = []) =>
+  read(id, "Soneto de fidelidade (resumo)", [
+    "Resumo do soneto de Vinicius de Moraes. O eu lírico promete ser atento ao seu amor antes de tudo, com zelo, sempre e tanto, de modo que, mesmo diante do maior encanto, o seu pensamento se encante ainda mais com a pessoa amada.",
+    "Ele quer viver o amor em cada momento, mesmo os mais banais, cantar seu louvor, rir seu riso e derramar seu pranto, tanto no pesar quanto no contentamento da pessoa amada.",
+    "Nos últimos versos, imagina que, quando a morte, a solidão ou a angústia o procurarem, poderá dizer do amor que viveu: que não seja imortal, pois é chama, mas que seja infinito enquanto dure.",
+    "Fragmentos: “De tudo, ao meu amor serei atento / Antes, e com tal zelo, e sempre, e tanto”; “mesmo em face do maior encanto”; “em seu louvor hei de espalhar meu canto”; “E rir meu riso e derramar meu pranto / Ao seu pesar ou seu contentamento”; “Que não seja imortal, posto que é chama / Mas que seja infinito enquanto dure”.",
+    ...extra,
+  ], SRC_SONETO);
+
+const poemaTempo = leituraTempo("p9u2-poema-tempo");
+const poemaSoneto = leituraSoneto("p9u2-poema-soneto");
 
 const g2: GrupoParcial = grupo(
   "O tempo do amor em dois poemas",
@@ -70,9 +84,13 @@ const g2: GrupoParcial = grupo(
       mc("p9u2-g2-a1", "Enjambement (ou encadeamento) é a continuidade da ideia de um verso no verso seguinte. No começo do poema de Drummond, onde ele aparece?", I,
         "Em “Não passa / no abismo do coração” e em “a graça / do amor”, em que a frase continua no verso seguinte.",
         ["Em cada verso que termina com ponto final.", "Apenas no título do poema.", "Em nenhuma parte do poema."], "hard"),
-      mc("p9u2-g2-a2", "Nos primeiros versos do soneto de Vinicius aparece também um enjambement acompanhado de inversão (“Antes de tudo ... atento”). Como ficaria na ordem direta?", I,
+    ),
+    ...txt("p9u2-poema-soneto",
+      mc("p9u2-g2-a2", "Nos primeiros versos do soneto de Vinicius (“De tudo, ao meu amor serei atento / Antes, e com tal zelo, e sempre, e tanto”) há um enjambement acompanhado de inversão. Como ficaria na ordem direta?", I,
         "“Serei atento ao meu amor antes de tudo, e com tal zelo, e sempre, e tanto”.",
         ["“O amor serei antes de atento tudo”.", "“Atento tudo, ao meu antes amor serei”.", "“Serei de tudo antes ao amor atento nunca”."], "hard"),
+    ),
+    ...txt("p9u2-poema-tempo",
       mc("p9u2-g2-a3", "Qual é o tema comum aos dois poemas?", I,
         "O amor em sua relação com o tempo.",
         ["A rotina de trabalho.", "A saudade da escola.", "A beleza da natureza."]),
@@ -104,7 +122,9 @@ const g3: GrupoParcial = grupo(
   "Será que amor verdadeiro significa entrega total? E quanto tempo um amor pode durar? Comparamos o que cada poeta pensa.",
   IMG_FLORESTA,
   [
-    ...txt("p9u2-poema-soneto",
+    leituraSoneto("p9u2-soneto-g3"),
+    leituraTempo("p9u2-tempo-g3"),
+    ...txt("p9u2-soneto-g3",
       mc("p9u2-g3-a1", "No soneto, o que significam as expressões “serei atento” e “maior encanto”?", I,
         "“Serei atento” significa zelar, cuidar; “maior encanto” é outra pessoa encantadora.",
         ["“Serei atento” significa vigiar; “maior encanto” é um feitiço.", "“Serei atento” significa ficar quieto; “maior encanto” é um presente caro.", "As duas expressões significam “esquecer o amor”."], "medium"),
@@ -123,10 +143,12 @@ const g3: GrupoParcial = grupo(
       mc("p9u2-g3-a6", "Qual afirmação traduz melhor o conceito de fidelidade e de amor no soneto?", I,
         "O amor não é eterno, mas, enquanto dura, exige uma entrega intensa e infinita em qualidade.",
         ["O amor é sempre eterno e nunca acaba.", "O amor é só uma brincadeira passageira.", "A fidelidade é só uma regra social sem valor."], "hard"),
-      mc("p9u2-g3-a7", "Compare os poemas quanto à entrega, à intensidade e à fidelidade: o que têm em comum?", I,
+    ),
+    ...txt("p9u2-tempo-g3",
+      mc("p9u2-g3-a7", "Compare o poema de Drummond e o soneto de Vinicius quanto à entrega, à intensidade e à fidelidade: o que têm em comum?", I,
         "Os dois veem o amor como entrega total, persistência, intensidade e fidelidade.",
         ["Só o de Drummond fala de entrega.", "Só o de Vinicius fala de intensidade.", "Os dois negam a fidelidade."], "medium"),
-      mc("p9u2-g3-a8", "E quanto à duração do amor, o que os poemas dizem?", I,
+      mc("p9u2-g3-a8", "E quanto à duração do amor, o que cada poema diz?", I,
         "Drummond fala de um amor contínuo, que chega à eternidade; Vinicius admite que o amor pode acabar (“infinito enquanto dure”).",
         ["Os dois dizem que o amor dura um dia só.", "Os dois dizem que o amor é eterno sem exceções.", "Os dois dizem que o amor não existe."], "hard"),
     ),
@@ -142,6 +164,9 @@ const g4: GrupoParcial = grupo(
   "Um poema usa palavras simples; o outro, uma linguagem elevada. Também conversamos sobre o amor nos dias de hoje.",
   IMG_CRIANCAS,
   [
+    leituraTempo("p9u2-tempo-g4"),
+    leituraSoneto("p9u2-soneto-g4"),
+    ...txt("p9u2-soneto-g4",
     mc("p9u2-g4-a1", "Em qual dos poemas a linguagem é menos elaborada, com palavras e construções mais acessíveis?", I,
       "No de Drummond, que usa expressões como “lá dentro”, “cada vez mais” e “toda hora”.",
       ["No de Vinicius, que usa “hei de espalhar”.", "Em nenhum: os dois são iguais.", "No título do poema de Vinicius."], "medium"),
@@ -166,6 +191,7 @@ const g4: GrupoParcial = grupo(
     mc("p9u2-g4-a8", "Para declamar bem um poema em dupla, o que vocês devem fazer?", I,
       "Valorizar vírgulas, ritmo e rimas, destacar palavras-chave, treinar e ouvir sugestões do colega.",
       ["Ler o mais rápido possível sem pausas.", "Ler em tom monótono para não errar.", "Decorar só o título."]),
+    ),
   ]
 );
 
@@ -182,6 +208,10 @@ const g5: GrupoParcial = grupo(
   "“Nosso amor, que brotou do tempo, não tem idade.” A parte entre vírgulas é uma oração que descreve um substantivo.",
   IMG_LETRAS,
   [
+    read("p9u2-adj-teoria", "Oração subordinada adjetiva: o conceito", [
+      "Um adjetivo é a palavra que descreve um substantivo: “amor eterno”. Uma oração subordinada adjetiva faz o mesmo trabalho, mas com um verbo: “amor que não acaba”. Ela costuma começar com um pronome relativo (que, o qual, onde, cujo...), que retoma o termo anterior, chamado antecedente.",
+      "Há dois tipos. A restritiva vem sem vírgulas e limita o sentido do antecedente, separando um grupo dentro do todo: “Os alunos que estudaram passaram” (só os que estudaram). A explicativa vem entre vírgulas e apenas acrescenta uma informação sobre o antecedente inteiro: “Os alunos, que estudaram, passaram” (todos estudaram).",
+    ]),
     versos,
     ...txt("p9u2-versos",
       mc("p9u2-g5-a1", "O que a expressão “brotou do tempo” sugere sobre o amor do eu lírico?", I,
@@ -227,7 +257,7 @@ const tiraHistoria = withImage(read("p9u2-tira-historia", "Tira: a história par
 
 const estufa = read("p9u2-estufa", "O efeito estufa (resumo)", [
   "Um texto de divulgação científica explica que o efeito estufa, em si, é bom: sem ele, a Terra seria um picolé. Ele funciona como um cobertor de gases que retêm o calor da luz solar perto da superfície do planeta.",
-  "O principal causador é o dióxido de carbono, o gás que soltamos quando respiramos e que não é tóxico para os seres vivos. Por isso, não se pode chamá-lo de poluente.",
+  "O principal causador é o dióxido de carbono. Por isso, não se pode chamar de poluente um gás que emitimos ao respirar e que não tem efeito tóxico nenhum sobre os seres vivos.",
 ], "Baseado em “A poluição causa o efeito estufa”, revista Galileu, n. 172, nov. 2005.");
 
 const g6: GrupoParcial = grupo(
@@ -250,11 +280,11 @@ const g6: GrupoParcial = grupo(
     ),
     estufa,
     ...txt("p9u2-estufa",
-      mc("p9u2-g6-a4", "Em “cobertor de gases que retêm o calor... perto da superfície do planeta”, “que emitimos” e “que não tem efeito tóxico”, há três orações adjetivas. Quais são elas?", I,
+      mc("p9u2-g6-a4", "No texto sobre o efeito estufa há três orações adjetivas introduzidas por “que”. Quais são elas?", I,
         "“que retêm o calor da luz solar perto da superfície do planeta”, “que emitimos” e “que não tem efeito tóxico nenhum sobre os seres vivos”.",
         ["“sem ele, a Terra seria um picolé”, “que emitimos” e “portanto”.", "“o efeito funciona”, “o gás” e “o dióxido”.", "Só existe uma oração adjetiva."], "hard"),
       mc("p9u2-g6-a5", "Como se classificam essas orações e por quê?", I,
-        "São restritivas, pois restringem o sentido de “cobertor de gases” e de “gás”, indicando qual cobertor e qual gás.",
+        "São restritivas, pois restringem o sentido de “cobertor de gases” e de “gás”, indicando que tipo de cobertor e que tipo de gás.",
         ["São explicativas, pois dão uma informação sobre todos os gases.", "São substantivas, pois funcionam como sujeito.", "São adverbiais, pois indicam o tempo."], "hard"),
     ),
   ]
@@ -311,9 +341,13 @@ const g8: GrupoParcial = grupo(
   "“O primeiro homem a caminhar no espaço” é o mesmo que “o primeiro homem que caminhou no espaço”. A primeira forma é reduzida.",
   IMG_LIVRO,
   [
+    read("p9u2-reduzida-teoria", "Oração reduzida: o conceito", [
+      "Uma oração reduzida é aquela que não tem pronome relativo ou conjunção e traz o verbo em uma forma reduzida: infinitivo (caminhar), gerúndio (caminhando) ou particípio (caminhado). Quando uma reduzida funciona como adjetivo, é uma adjetiva reduzida.",
+      "Para desenvolvê-la, basta recolocar o pronome “que” e conjugar o verbo. Exemplos: “Aluno a estudar de manhã” = “aluno que estuda de manhã”; “menina cantando no pátio” = “menina que está cantando no pátio”; “livro lido por todos” = “livro que foi lido por todos”.",
+    ]),
     leonov,
     ...txt("p9u2-leonov",
-      mc("p9u2-g8-a1", "No trecho há uma palavra usada para se referir a alguém que fez algo pela primeira vez. Qual é?", I,
+      mc("p9u2-g8-a1", "No título da notícia há uma palavra usada para se referir a alguém que fez algo pela primeira vez. Qual é?", I,
         "Pioneiro.",
         ["Cosmonauta.", "Agência.", "Moscou."]),
       mc("p9u2-g8-a2", "No último período, “informação” se refere a qual fato?", I,
@@ -323,18 +357,23 @@ const g8: GrupoParcial = grupo(
         "“Ele foi o primeiro homem que caminhou no espaço.”",
         ["“Ele foi o primeiro homem caminhando no espaço.”", "“Ele foi o primeiro homem em caminhar no espaço.”", "“Ele foi o primeiro homem para caminhar no espaço.”"], "medium"),
     ),
+    read("p9u2-tempo-g8", "Trechos do poema de Drummond", [
+      "Do poema “O tempo passa? Não passa”, de Carlos Drummond de Andrade, em palavras curtas: “Lá dentro, perdura a graça do amor, florindo em canção”; o eu lírico diz que, para os amantes, “não há tempo consumido” nem “tempo a economizar”.",
+    ], "Baseado em Carlos Drummond de Andrade, “O tempo passa? Não passa”, Amar se aprende amando (Record, 2009)."),
+    ...txt("p9u2-tempo-g8",
     mc("p9u2-g8-a4", "Os versos “Lá dentro, perdura a graça do amor, florindo em canção” e “nem tempo a economizar” têm orações reduzidas. Classifique-as.", I,
       "“florindo em canção”: adjetiva explicativa reduzida de gerúndio (refere-se a “amor”); “a economizar”: adjetiva restritiva reduzida de infinitivo (refere-se a “tempo”).",
       ["As duas são adjetivas explicativas reduzidas de particípio.", "As duas são adverbiais de finalidade.", "As duas são coordenadas aditivas."], "hard"),
-    mc("p9u2-g8-a5", "Desenvolva as reduzidas dessa atividade.", I,
+    mc("p9u2-g8-a5", "Desenvolva as duas reduzidas da atividade anterior (“florindo em canção” e “a economizar”).", I,
       "“a graça do amor, que está florindo em canção” e “nem tempo que seja economizado”.",
       ["“a graça do amor, que florescer em canção” e “nem tempo se economizar”.", "“a graça do amor, e florindo canção” e “nem tempo e economizar”.", "Não podem ser desenvolvidas."], "hard"),
     mc("p9u2-g8-a6", "Em “Não há tempo consumido”, qual é a função sintática do termo “consumido”?", I,
       "Adjunto adnominal (pode ser visto também como oração adjetiva reduzida de particípio).",
       ["Sujeito.", "Objeto direto.", "Adjunto adverbial."], "hard"),
-    mc("p9u2-g8-a7", "Que contribuição as orações adjetivas dão ao poema?", I,
+    mc("p9u2-g8-a7", "Que contribuição as orações adjetivas dão a esses versos do poema?", I,
       "Restringem ou exemplificam um termo, caracterizando-o da perspectiva do eu lírico e deixando a visão sobre o amor mais evidente.",
       ["Não fazem diferença nenhuma.", "Só servem para rimar.", "Só servem para encurtar os versos."], "hard"),
+    ),
   ]
 );
 
@@ -342,8 +381,8 @@ const g8: GrupoParcial = grupo(
 // G9 — Texto "Ficar de mãos dadas"
 // ---------------------------------------------------------------------------
 const maos = read("p9u2-maos", "Ficar de mãos dadas ajuda a reduzir a dor", [
-  "Um texto de divulgação científica explica que, em situações de dor e medo, as pessoas procuram instintivamente a mão de alguém: ao tomar uma vacina, durante o parto ou antes de uma notícia importante. Desde a barriga da mãe, os bebês desenvolvem o reflexo de agarrar o que toca a palma da mão, e por isso gêmeos podem ser vistos de mãos dadas no útero.",
-  "O toque pele a pele ajuda a produzir a oxitocina, o “hormônio do amor”, que reduz a ansiedade e a dor ao diminuir hormônios de estresse. Mães de recém-nascidos, que são invadidas por muita oxitocina durante o parto e depois, quando sentem o cheiro do bebê, se beneficiam bastante. Segurar a mão de um estranho já acalma, mas a mão de alguém que se ama é muito mais eficaz.",
+  "Um texto de divulgação científica explica que, em situações de dor e medo, as pessoas procuram instintivamente a mão de alguém: ao tomar uma vacina, durante o parto ou antes de uma notícia importante. Desde a barriga da mãe, os bebês desenvolvem o reflexo de agarrar tudo que toca a palma da mão, e por isso gêmeos podem ser vistos de mãos dadas no útero.",
+  "O toque pele a pele ajuda a produzir a oxitocina, o “hormônio do amor”, que reduz a ansiedade e a dor ao diminuir hormônios de estresse. Mães de recém-nascidos, que são invadidas por uma enxurrada de oxitocina durante o parto e depois, quando sentem o cheiro do bebê, se beneficiam bastante. Segurar a mão de estranhos tem efeito calmante em situações de estresse, mas dar as mãos para alguém que você ama é muito mais eficaz.",
 ], "Baseado em Ana Carolina Leonardi, “Ficar de mãos dadas sincroniza cérebros e reduz percepção da dor”, Superinteressante, 1º mar. 2018.");
 
 const g9: GrupoParcial = grupo(
@@ -456,7 +495,7 @@ const g11: GrupoParcial = grupo(
       mc("p9u2-g11-a4", "Qual oração fez o gato ficar entusiasmado e como se classifica?", I,
         "“que os gatos adoram”; é uma oração subordinada adjetiva.",
         ["“Trouxe algo”; é uma oração coordenada.", "“Será que é um carro”; é uma oração adverbial.", "“Você não gostou”; é uma oração substantiva."], "medium"),
-      mc("p9u2-g11-a5", "O fato de “algo” ser um pronome indefinido contribuiu para a decepção do gato? Por quê?", I,
+      mc("p9u2-g11-a5", "O fato de “algo” ser um pronome indefinido (que não diz exatamente de que coisa se fala) contribuiu para a decepção do gato? Por quê?", I,
         "Sim: um pronome indefinido não esclarece a que se refere, e isso deixou o gato imaginar um carro em vez de petiscos.",
         ["Não: “algo” sempre é muito claro.", "Não: o gato nem entendeu a frase.", "Sim: porque “algo” significa carro."], "hard"),
       mc("p9u2-g11-a6", "O que provoca o humor nessa tira?", I,
@@ -466,4 +505,4 @@ const g11: GrupoParcial = grupo(
   ]
 );
 
-export const unidade2aGrupos: GrupoParcial[] = [g1, g2, g3, g4, g5, g7, g11, g6, g9, g8, g10];
+export const unidade2aGrupos: GrupoParcial[] = [g1, g2, g3, g4, g5, g7, g11, g6, g9, g10, g8];

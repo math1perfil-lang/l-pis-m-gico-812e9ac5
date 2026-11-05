@@ -140,7 +140,7 @@ const c3: GrupoParcial = grupo(
     mc("p9c3-g3-a9", "Você tem o hábito de publicar nas redes fatos do cotidiano, como gatos subindo em cortinas ou pratos de comida? O que pensa disso?", I,
       "Às vezes publico coisas do dia a dia, mas penso se isso ajuda alguém ou se é só para aparecer.",
       ["Publico absolutamente tudo sem pensar.", "Nunca publico nada porque acho tudo ridículo.", "Publico só para ganhar curtidas, nunca por vontade própria."]),
-    mc("p9c3-g3-a10", "Você concorda com o autor de que o uso indiscriminado do celular para registrar fatos cotidianos rouba a privacidade das pessoas? Por quê?", I,
+    mc("p9c3-g3-a10", "Há quem diga que o uso indiscriminado do celular para registrar fatos cotidianos rouba a privacidade das pessoas. Qual é a sua posição?", I,
       "Concordo em parte: quando se posta sem cuidado, expõem-se dados e imagens de outras pessoas; por isso é preciso controlar quem vê o que postamos.",
       ["Discordo: nunca há problema em postar qualquer foto.", "Concordo totalmente: ninguém deveria usar celular.", "Não tenho opinião e prefiro nem pensar no assunto."], "medium"),
     mc("p9c3-g3-a11", "Para você, sentir a paisagem é mais importante do que fotografá-la e compartilhá-la? Como se relaciona com o que fotografa e posta?", I,
@@ -152,12 +152,13 @@ const c3: GrupoParcial = grupo(
 // ---------------------------------------------------------------------------
 // C4 — Pronome relativo: construindo o conceito + tira "Placebo" (parte 1)
 // ---------------------------------------------------------------------------
-const placebo = withImage(read("p9c3-placebo", "Tira: alimentar a rede social", [
+const placeboRead = (id: string) => withImage(read(id, "Tira: alimentar a rede social", [
   "Tira em 3 quadrinhos, com um adolescente de moletom e, atrás dele, a “rede social” desenhada como um monstrinho peludo que parece uma sombra.",
   "Quadrinho 1. O monstro da rede social fica grudado atrás do adolescente, olhando-o com fome.",
   "Quadrinho 2. Adolescente: “Hora de alimentar a minha rede social!” O monstro abre a boca.",
   "Quadrinho 3. O adolescente joga na boca do monstro: “Alimento a minha rede social com livros que não li. Alimento a minha rede social com coisas que não sou.” O monstro mastiga contente, e o adolescente fica preso a ele por uma coleira.",
 ]), IMG_PLACEBO, "Tira: um adolescente alimenta o monstro da rede social");
+const placebo = placeboRead("p9c3-placebo");
 
 const c4: GrupoParcial = grupo(
   "Pronome relativo: o que liga e substitui",
@@ -214,7 +215,8 @@ const c5: GrupoParcial = grupo(
   "Duas frases viram uma só com a ajuda do “que”. Treinamos também com preposição e com quem, o qual e onde.",
   IMG_FLORESTA,
   [
-    ...txt("p9c3-placebo",
+    placeboRead("p9c3-placebo-g5"),
+    ...txt("p9c3-placebo-g5",
       mc("p9c3-g5-a1", "Observe: “Alimento a minha rede social com livros que não li” e “Alimento a minha rede social com coisas que não sou”. Quantos verbos há em cada período? Identifique-os.", I,
         "Dois em cada: “alimento” e “li”, no primeiro; “alimento” e “sou”, no segundo.",
         ["Um em cada: “alimento”.", "Três em cada.", "Nenhum em cada."]),
@@ -239,9 +241,6 @@ const c5: GrupoParcial = grupo(
       mc("p9c3-g5-a8", "Una usando “que”: “Esta é a calça nova? Você comprou uma calça nova?”", I,
         "Esta é a calça nova que você comprou?",
         ["Esta é a calça nova você comprou?", "Esta é que a calça nova comprou?", "Esta calça é você comprou nova?"]),
-      mc("p9c3-g5-a9", "Una as orações empregando um pronome relativo coerente: “O problema ___ tenho me referido é outro.”", I,
-        "ao qual / a que",
-        ["quem", "onde", "cujo"], "hard"),
     ),
   ]
 );
@@ -255,6 +254,10 @@ const c6: GrupoParcial = grupo(
   "Às vezes o relativo precisa de uma preposição: de que, a que, em que, com quem. É o verbo da segunda oração que manda.",
   IMG_LETRAS,
   [
+    read("p9c3-g6-prep", "Relativo com preposição", [
+      "O verbo (ou o nome) da segunda oração pode exigir uma preposição. Ela vem antes do relativo: “O filme a que assisti é longo” (quem assiste, assiste a algo); “O bairro em que moro é antigo”; “Os amigos de quem gosto são sinceros”.",
+      "Para saber qual preposição usar, monte a frase com o antecedente: “Assisti ao filme” pede a; “Gosto dos amigos” pede de. Depois troque o termo pelo relativo.",
+    ]),
     mc("p9c3-g6-a1", "Complete com o pronome relativo adequado: “Eu emprestarei meus lápis coloridos a ___ estiver precisando.”", I,
       "quem",
       ["onde", "cujo", "como"]),
@@ -285,6 +288,9 @@ const c6: GrupoParcial = grupo(
     mc("p9c3-g6-a10", "Una: “Fomos ao Rio de Janeiro. A sede da Academia Brasileira de Letras se localiza no Rio de Janeiro.”", I,
       "Fomos ao Rio de Janeiro, onde se localiza a sede da Academia Brasileira de Letras.",
       ["Fomos ao Rio de Janeiro, quem se localiza a sede da Academia.", "Fomos ao Rio de Janeiro, cujo se localiza a sede da Academia.", "Fomos ao Rio de Janeiro, como se localiza a sede da Academia."], "medium"),
+    mc("p9c3-g5-a9", "Complete com o pronome relativo (com preposição) que o verbo exige: “O problema ___ tenho me referido é outro.”", I,
+      "ao qual / a que",
+      ["quem", "onde", "cujo"], "hard"),
     mc("p9c3-g6-a11", "Sobre o pronome relativo depois de preposição, qual é a regra?", I,
       "O relativo deve ser antecedido de preposição quando o verbo da segunda oração a exige (ex.: “A permissão de que preciso é obrigatória”).",
       ["O relativo nunca aceita preposição.", "A preposição vem sempre depois do relativo.", "A preposição só aparece com o relativo “cujo”."], "medium"),
