@@ -44,6 +44,117 @@ export type Database = {
         }
         Relationships: []
       }
+      content_activities: {
+        Row: {
+          course_id: string
+          created_at: string
+          data: Json
+          deleted: boolean
+          group_id: string
+          id: string
+          is_custom: boolean
+          position: number | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          data?: Json
+          deleted?: boolean
+          group_id: string
+          id: string
+          is_custom?: boolean
+          position?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          data?: Json
+          deleted?: boolean
+          group_id?: string
+          id?: string
+          is_custom?: boolean
+          position?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      content_courses: {
+        Row: {
+          created_at: string
+          data: Json
+          deleted: boolean
+          id: string
+          is_custom: boolean
+          position: number | null
+          school_year: string | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          data?: Json
+          deleted?: boolean
+          id: string
+          is_custom?: boolean
+          position?: number | null
+          school_year?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          data?: Json
+          deleted?: boolean
+          id?: string
+          is_custom?: boolean
+          position?: number | null
+          school_year?: string | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      content_groups: {
+        Row: {
+          course_id: string
+          created_at: string
+          data: Json
+          deleted: boolean
+          id: string
+          is_custom: boolean
+          position: number | null
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          data?: Json
+          deleted?: boolean
+          id: string
+          is_custom?: boolean
+          position?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          data?: Json
+          deleted?: boolean
+          id?: string
+          is_custom?: boolean
+          position?: number | null
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
       course_progress: {
         Row: {
           coins_earned: number
@@ -143,6 +254,39 @@ export type Database = {
         }
         Relationships: []
       }
+      teachers: {
+        Row: {
+          active: boolean
+          course_ids: string[]
+          created_at: string
+          created_by: string | null
+          display_name: string
+          email: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          active?: boolean
+          course_ids?: string[]
+          created_at?: string
+          created_by?: string | null
+          display_name?: string
+          email: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          active?: boolean
+          course_ids?: string[]
+          created_at?: string
+          created_by?: string | null
+          display_name?: string
+          email?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
       user_medals: {
         Row: {
           earned_at: string
@@ -223,6 +367,11 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      can_edit_course: {
+        Args: { _course_id: string; _user_id: string }
+        Returns: boolean
+      }
+      grant_educator: { Args: { _email: string }; Returns: boolean }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -230,9 +379,21 @@ export type Database = {
         }
         Returns: boolean
       }
+      is_content_editor: { Args: { _user_id: string }; Returns: boolean }
+      remove_teacher: { Args: { _email: string }; Returns: undefined }
+      save_teacher: {
+        Args: {
+          _active?: boolean
+          _course_ids: string[]
+          _email: string
+          _name: string
+        }
+        Returns: undefined
+      }
+      teacher_invited: { Args: { _email: string }; Returns: boolean }
     }
     Enums: {
-      app_role: "admin" | "student"
+      app_role: "admin" | "student" | "educador"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -360,7 +521,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "student"],
+      app_role: ["admin", "student", "educador"],
     },
   },
 } as const
