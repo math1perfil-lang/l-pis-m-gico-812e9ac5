@@ -9,7 +9,7 @@ import { fromText, IMG_CRIANCAS, IMG_LETRAS, IMG_LIVRO, match, mc, read } from "
 // Cada pergunta do livro virou exatamente uma atividade, reescrita com palavras próprias e
 // mantida no nível do 9º ano. Perguntas de resposta pessoal viraram escolha entre A, B, C e D.
 // Os textos-base foram reescritos; por isso a fonte aparece como "baseado em", e não como cópia.
-// Só os dois trechinhos citados no grupo 4 são cópia fiel e levam a fonte completa.
+// Só os dois trechos citados no grupo 4 são cópia fiel e levam a fonte completa.
 
 const IMG = "/ilustracoes/portugues9";
 const IMG_ABERTURA = `${IMG}/abertura.jpg`;
@@ -103,6 +103,16 @@ const g1Activities: Activity[] = [
 // Grupo 2 — As fake news (abertura do capítulo + primeira parte da entrevista)
 // ---------------------------------------------------------------------------
 const g2Activities: Activity[] = [
+  read(
+    "p9-g2-leitura0",
+    "Uma notícia chega ao celular",
+    [
+      "Você já recebeu, num grupo de mensagens, uma notícia chocante que todo mundo estava repassando? Muitas vezes a gente curte e compartilha na hora, sem parar para pensar se a informação é verdadeira.",
+      "Notícia falsa, que circula como se fosse verdadeira, tem um nome que vamos usar bastante: fake news. Vamos refletir sobre isso e, depois, ler o que uma pesquisadora explica sobre o assunto.",
+    ]
+  ),
+  ...txt(
+    "p9-g2-leitura0",
   withImage(
     mc("p9-g2-a1", "Que mal pode haver em curtir e repassar uma notícia sem conferir se ela é verdadeira?", "Toque na resposta certa",
       "Uma mentira pode se espalhar bem rápido e prejudicar pessoas.",
@@ -113,27 +123,28 @@ const g2Activities: Activity[] = [
       "Procurar saber se a informação é verdadeira, em fontes confiáveis, antes de repassar.",
       ["Repassar na hora, para ser o primeiro a contar.", "Acreditar em tudo que os amigos mandam.", "Apagar só as mensagens que eu não entendi."], "medium"),
     IMG_LUPA, "Um jovem com uma lupa conferindo uma notícia no celular"),
+  ),
   withImage(read(
     "p9-g2-leitura",
     "Como sair das bolhas? (primeira parte)",
     [
       "A pesquisadora Pollyana Ferrari estuda as fake news, que são notícias falsas, e conversou sobre isso com uma revista de educação.",
       "Ela explica que as notícias falsas sempre existiram, até na Roma Antiga. O que mudou foi o tamanho: com as redes sociais, todo mundo ganhou voz e pode criar e espalhar conteúdo pelo celular. Nos grandes jornais há etapas para checar as informações. Nas redes, qualquer pessoa pode postar sem ninguém conferir.",
-      "Ela conta um caso real: em 2014, Fabiane de Jesus foi linchada no Guarujá (SP) depois de ser acusada, em uma página da internet, de praticar magia negra com crianças. A informação era falsa. Mesmo quando a mentira é tirada do ar, o estrago pode ficar. Uma informação falsa pode destruir a vida de alguém, a fama de uma empresa, uma escola, uma família.",
+      "Ela conta um caso real: em 2014, Fabiane de Jesus foi linchada no Guarujá (SP) depois de ser acusada, em uma página da internet, de praticar magia negra com crianças. A informação era falsa. Mesmo quando a mentira é tirada do ar, o estrago pode ficar. Uma informação falsa pode destruir a vida de alguém, a fama de uma empresa, uma escola, uma família. Além disso, o desmentido quase nunca chega a tanta gente quanto a mentira chegou.",
       "Quem cria fake news? Cerca de 30% vêm de escritórios e grupos que ganham dinheiro com isso. A maior parte vem de pessoas comuns, que querem prejudicar alguém ou espalhar ódio. E quem começou? Quase nunca se descobre, por isso é tão difícil punir.",
     ],
     "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018). Texto reescrito."
   ), IMG_ESPALHA, "Uma mensagem falsa se espalhando por uma rede de pessoas"),
   ...txt(
     "p9-g2-leitura",
-    mc("p9-g2-a3", "Segundo o texto, qual é a diferença entre as informações dos grandes veículos de comunicação e as das redes sociais?", "Toque na resposta certa",
+    mc("p9-g2-a3", "Segundo a pesquisadora, qual é a diferença entre as informações dos grandes veículos de comunicação e as das redes sociais?", "Toque na resposta certa",
       "Nos grandes veículos há etapas de checagem; nas redes, qualquer pessoa pode postar sem conferir.",
       ["Na grande imprensa só há mentiras e nas redes só há verdades.", "Não há diferença: ninguém confere nada em lugar nenhum.", "Nas redes, só jornalistas podem postar."]),
     mc("p9-g2-a4", "O que são fake news?", "Toque na resposta certa",
       "São informações ou notícias falsas.",
       ["São notícias muito engraçadas.", "São notícias muito antigas.", "São notícias escritas em inglês."]),
-    mc("p9-g2-a5", "Como as fake news nascem? Que interesses podem existir por trás delas?", "Toque na resposta certa",
-      "São criadas por pessoas que postam mentiras, muitas vezes por raiva, vingança ou para ganhar dinheiro.",
+    mc("p9-g2-a5", "Segundo a pesquisadora, como as fake news nascem? Que interesses podem existir por trás delas?", "Toque na resposta certa",
+      "São criadas por pessoas ou grupos que postam mentiras, muitas vezes para ganhar dinheiro, prejudicar alguém ou espalhar ódio.",
       ["Nascem sozinhas, sem que ninguém as crie.", "São criadas só para ajudar as pessoas.", "São criadas pelos jornais para ensinar a ler."], "medium"),
     withImage(
       mc("p9-g2-a6", "Por que as fake news podem ser prejudiciais?", "Toque na resposta certa",
@@ -144,7 +155,7 @@ const g2Activities: Activity[] = [
       "Porque a maioria vem de pessoas comuns, e quase nunca se sabe quem começou, o que dificulta punir.",
       ["Porque elas só existem em um país.", "Porque são sempre fáceis de reconhecer.", "Porque ninguém usa redes sociais."], "medium"),
     mc("p9-g2-a8", "Desmentir uma notícia falsa é uma atitude suficiente para resolver o problema das fake news?", "Toque na resposta certa",
-      "Não: a mentira costuma chegar a muito mais gente que o desmentido, e o estrago pode não ter volta. Por isso é preciso outras formas de combate, como checar antes de repassar.",
+      "Não: como o texto mostra, o desmentido quase nunca chega a tanta gente quanto a mentira, e o estrago pode não ter volta. Por isso é preciso outras formas de combate, como checar antes de repassar.",
       ["Sim, porque desmentindo tudo se resolve.", "Sim, porque quem viu a mentira esquece na hora.", "Não faz diferença nenhuma o que fazemos."], "hard"),
   ),
 ];
@@ -157,16 +168,16 @@ const g3Activities: Activity[] = [
     "p9-g3-leitura",
     "A pós-verdade",
     [
-      "Pós-verdade é uma informação, ou uma afirmação, que muda a verdade de propósito. Ela mexe muito com a emoção e se apoia no que as pessoas já acreditam, em vez de apoiar-se em fatos conferidos. Mesmo assim, passa a ser aceita como verdadeira e acaba influenciando a opinião e o comportamento das pessoas.",
+      "Pós-verdade é uma informação, ou uma afirmação, que muda a verdade de propósito. Ela mexe muito com a emoção e se apoia no que as pessoas já acreditam e no interesse de certos grupos, em vez de apoiar-se em fatos conferidos. Mesmo assim, passa a ser aceita como verdadeira e acaba influenciando a opinião e o comportamento das pessoas.",
       "A pós-verdade também aparece quando notícias parecem verdadeiras e mexem com as emoções, e ganham destaque, principalmente na vida social e na política, como se fossem fatos comprovados.",
-      "Na entrevista, a pesquisadora conta que a pós-verdade aparece quando as pessoas compartilham o que combina com seus desejos e crenças, mesmo que desconfiem que é falso. Ela lembra que o dedo é mais rápido que o cérebro: a gente compartilha sem perguntar de onde veio a foto ou o vídeo. Uma rede social que reúne 2 bilhões de pessoas, cerca de um terço da população do mundo, torna isso ainda mais preocupante.",
+      "Na entrevista que você começou a ler, a pesquisadora Pollyana Ferrari conta que a pós-verdade aparece quando as pessoas compartilham o que combina com seus desejos e crenças, mesmo que desconfiem que é falso. Ela lembra que o dedo é mais rápido que o cérebro: a gente compartilha sem perguntar de onde veio a foto ou o vídeo. Isso vale ainda mais quando a informação vem de alguém em quem confiamos, ou quando a recebemos várias vezes, e então parece verdadeira. Uma grande rede social que reúne 2 bilhões de pessoas, cerca de um terço da população do mundo, torna isso ainda mais preocupante.",
     ],
     "Baseado no verbete “pós-verdade” (Academia Brasileira de Letras, Nova Palavra) e na entrevista de Pollyana Ferrari (Carta Capital, 2018). Texto reescrito."
   ), IMG_COMPARTILHA, "Um dedo apertando o botão de compartilhar, enquanto um cérebro com lupa vem correndo atrás"),
   ...txt(
     "p9-g3-leitura",
     mc("p9-g3-a1", "O que é pós-verdade? Que relação ela tem com as fake news?", "Toque na resposta certa",
-      "É uma informação falsa ou distorcida que mexe com a emoção e passa a ser aceita como verdade; as fake news reforçam crenças e valores de quem as compartilha.",
+      "É uma informação falsa ou distorcida que mexe com a emoção e passa a ser aceita como verdade; as fake news alimentam a pós-verdade, pois reforçam as crenças de quem as compartilha.",
       ["É a verdade que aparece depois de uma notícia.", "É um tipo de jornal impresso.", "É um jogo de internet sem relação com notícias."], "medium"),
     mc("p9-g3-a2", "Por que as pessoas passam a acreditar na pós-verdade?", "Toque na resposta certa",
       "Porque confiam em quem enviou, recebem a mesma informação várias vezes e ela combina com o que já pensam.",
@@ -176,7 +187,7 @@ const g3Activities: Activity[] = [
         "As pessoas repassam antes de pensar e checar. Assim, a informação falsa se espalha e acaba virando “verdade”.",
         ["Que digitar com o dedo é mais rápido que pensar, e isso é bom.", "Que o cérebro dá ordem para o dedo checar tudo.", "Que quem tem dedos rápidos nunca erra."], "hard"),
       IMG_COMPARTILHA, "Um dedo apertando o botão de compartilhar, enquanto um cérebro com lupa vem correndo atrás"),
-    mc("p9-g3-a4", "A rede social citada reúne 2 bilhões de pessoas, cerca de um terço da população do mundo. Por que isso preocupa a pesquisadora?", "Toque na resposta certa",
+    mc("p9-g3-a4", "A rede social citada no texto reúne 2 bilhões de pessoas, cerca de um terço da população do mundo. Por que isso preocupa a pesquisadora?", "Toque na resposta certa",
       "Porque uma mentira tomada como verdade pode chegar a muita gente e causar consequências graves.",
       ["Porque a rede fica lotada e trava.", "Porque ninguém mais usa a escola.", "Porque ter muitos amigos é sempre ruim."], "medium"),
   ),
@@ -188,7 +199,7 @@ const g3Activities: Activity[] = [
         "Pollyana Ferrari chama as redes sociais de bolhas. Nelas, a gente compartilha mais com os nossos “iguais”, as pessoas que pensam parecido. Isso é confortável, mas a gente perde a chance de ouvir ideias diferentes.",
         "Os algoritmos, que são programas de computador, reforçam as bolhas: se você fala de comida orgânica, só recebe anúncios e marcas sobre isso. Quem cria fake news também compra perfis falsos para entrar nas bolhas e oferecer discursos sob medida.",
         "Para sair da bolha, é preciso conhecer outros grupos, ver mensagens de pessoas que pensam diferente e conversar. Se ficarmos só no que concordamos, repetimos opiniões prontas.",
-        "A pesquisadora diz que a escola não pode ignorar esse assunto. Ela ajuda a formar adultos mais críticos e éticos, que sabem pensar sobre os temas por pontos de vista diferentes.",
+        "A pesquisadora diz que a escola não pode ignorar esse assunto. Ela ajuda a formar adultos mais críticos e éticos, que sabem pensar sobre os temas por pontos de vista diferentes. Isso é o senso crítico: a capacidade de analisar, questionar e comparar informações antes de aceitá-las.",
       ],
       "Baseado na entrevista “Como sair das bolhas?”, de Pollyana Ferrari, à Carta Educação (Carta Capital, 17 abr. 2018)."
     ),
@@ -219,11 +230,11 @@ const g3Activities: Activity[] = [
     mc("p9-g3-a9", "Segundo a pesquisadora, como a escola pode ajudar o jovem a sair da bolha?", "Toque na resposta certa",
       "Estimulando o senso crítico e a reflexão sobre temas e pontos de vista diferentes dos que ele já conhece.",
       ["Proibindo o uso de qualquer tela.", "Ensinando que só existe uma opinião certa.", "Deixando esse assunto de fora das aulas."], "medium"),
-    mc("p9-g3-a10", "Qual destas frases é FALSA, de acordo com o que você leu?", "Toque na frase falsa",
+    mc("p9-g3-a10", "Qual destas frases é FALSA, de acordo com as leituras deste grupo?", "Toque na frase falsa",
       "A pós-verdade é criada nas redes sociais e só tem poder porque ajuda a formar bolhas.",
       [
         "As fake news acontecem muito porque as pessoas repassam informações sem questionar, seja por falta de senso crítico, seja porque a informação combina com o que desejam.",
-        "A pós-verdade é uma afirmação falsa ou conveniente, ligada a crenças, emoções e interesses de grupos sociais.",
+        "A pós-verdade é uma afirmação falsa ou distorcida, ligada a crenças, emoções e interesses de grupos sociais.",
         "Segundo a pesquisadora, para combater as fake news é preciso desenvolver o senso crítico e ter contato com outras fontes e outros jeitos de pensar.",
       ], "hard"),
   ),
@@ -237,36 +248,37 @@ const g4Activities: Activity[] = [
     "p9-g4-leitura",
     "Trechos para observar",
     [
-      "“As fake news sempre existiram. No meu livro eu cito relatos e resumos de jornais fake desde Roma Antiga. [...] O que mudou é a questão da escala. Com as redes sociais, basicamente as temos há 14 anos, todo mundo ganhou voz.”",
-      "“Bolha são as redes sociais e proponho uma reflexão sobre a necessidade de sairmos desse espaço que te induz a compartilhar com os seus ‘iguais’.”",
-      "Nesses trechos, preste atenção nas palavras fake, fake news e timeline, no pronome “as”, no verbo “são”, no pronome “te” e nas aspas de “iguais”.",
+      "Estes são dois trechos da entrevista de Pollyana Ferrari que você conheceu nos grupos anteriores. Leia com atenção.",
+      "Trecho 1: “As fake news sempre existiram. No meu livro eu cito relatos e resumos de jornais fake desde Roma Antiga. [...] O que mudou é a questão da escala. Com as redes sociais, basicamente as temos há 14 anos, todo mundo ganhou voz.”",
+      "Trecho 2: “Bolha são as redes sociais e proponho uma reflexão sobre a necessidade de sairmos desse espaço que te induz a compartilhar com os seus ‘iguais’.”",
+      "Para analisar a linguagem, vamos usar quatro ideias. (1) Estrangeirismo é uma palavra de outra língua usada no nosso texto, como “fake”, do inglês. (2) Pronome é a palavra que substitui ou retoma um termo já dito, para não repeti-lo: em “Vi as fotos e gostei delas”, “delas” retoma “as fotos”. (3) Concordância é o acordo entre o verbo e o termo a que ele se liga: “As aulas são longas” (plural com plural) e “A aula é longa” (singular com singular). (4) Aspas, além de marcar a fala de alguém, podem mostrar que uma palavra está sendo usada de um jeito especial: em “meus ‘amigos’ da internet”, as aspas indicam que talvez nem sejam amigos de verdade.",
     ],
-    "FERRARI, Pollyana. [Entrevista cedida a] Ana Luiza Basilio. Carta Capital, São Paulo, 17 abr. 2018. Trechos copiados."
+    "FERRARI, Pollyana. [Entrevista cedida a] Ana Luiza Basilio. Carta Capital, São Paulo, 17 abr. 2018. Trechos copiados; explicações com palavras nossas."
   ), IMG_MAPA, "Um mapa-múndi colorido, com símbolos que lembram línguas diferentes"),
   ...txt(
     "p9-g4-leitura",
     withImage(
-      mc("p9-g4-a1", "As palavras fake, fake news e timeline vêm de qual língua?", "Toque na resposta certa",
+      mc("p9-g4-a1", "As palavras “fake” e “fake news”, usadas no Trecho 1, vêm de qual língua?", "Toque na resposta certa",
         "Do inglês.", ["Do espanhol.", "Do francês.", "Do tupi."]),
       IMG_MAPA, "Um mapa-múndi colorido, com símbolos que lembram línguas diferentes"),
-    match("p9-g4-a2", "Ligue cada palavra em inglês à palavra ou expressão em português que quer dizer quase o mesmo.",
-      [["fake", "falso"], ["fake news", "notícias falsas"], ["timeline", "linha do tempo"]]),
-    mc("p9-g4-a3", "Por que você acha que a pesquisadora preferiu usar essas palavras em inglês em vez de palavras em português?", "Toque na resposta certa",
-      "Porque esses termos são muito usados no mundo digital e esses fenômenos surgiram primeiro em países de língua inglesa.",
-      ["Porque ela não sabe falar português.", "Porque não existe nenhuma palavra em português para isso.", "Porque o jornal só aceita textos em inglês."], "medium"),
-    mc("p9-g4-a4", "Se a autora tivesse usado palavras em português, o sentido do texto mudaria?", "Toque na resposta certa",
+    match("p9-g4-a2", "Ligue cada palavra do trecho à palavra ou expressão em português que quer dizer quase o mesmo.",
+      [["fake", "falso"], ["fake news", "notícias falsas"], ["escala", "tamanho, proporção"]]),
+    mc("p9-g4-a3", "Por que a pesquisadora pode ter preferido usar “fake news” em vez de “notícias falsas”?", "Toque na resposta certa",
+      "Porque a expressão em inglês é muito usada no mundo digital e já é conhecida por quem lê sobre o assunto.",
+      ["Porque ela não sabe falar português.", "Porque não existe nenhuma palavra em português para isso.", "Porque a revista só aceita textos em inglês."], "medium"),
+    mc("p9-g4-a4", "Se a pesquisadora tivesse escrito “notícias falsas”, o sentido do trecho mudaria?", "Toque na resposta certa",
       "O sentido seria praticamente o mesmo, mas soaria menos comum para quem lê sobre o assunto.",
-      ["Mudaria para o contrário.", "O texto ficaria impossível de entender.", "O texto deixaria de falar de internet."], "medium"),
-    mc("p9-g4-a5", "No trecho “Com as redes sociais, basicamente as temos há 14 anos”, a que termo anterior se refere o pronome “as”? Justifique.", "Toque na resposta certa",
-      "A “redes sociais”: o pronome “as” retoma esse termo e diz que as redes sociais existem há cerca de 14 anos, segundo o texto.",
+      ["Mudaria para o contrário.", "O trecho ficaria impossível de entender.", "O trecho deixaria de falar de internet."], "medium"),
+    mc("p9-g4-a5", "No Trecho 1, em “Com as redes sociais, basicamente as temos há 14 anos”, a que termo o pronome “as” se refere?", "Toque na resposta certa",
+      "A “redes sociais”: o pronome “as” retoma esse termo e quer dizer que temos as redes sociais há cerca de 14 anos.",
       ["A “fake news”, porque elas existem desde a Roma Antiga.", "A “jornais”, porque eles têm 14 anos.", "A “escala”, porque ela é feminina."], "hard"),
-    mc("p9-g4-a6", "No trecho “Bolha são as redes sociais”, por que o verbo ser está em “são” (plural) e não em “é”?", "Toque na resposta certa",
+    mc("p9-g4-a6", "No Trecho 2, “Bolha são as redes sociais”: por que o verbo ser está em “são” (plural) e não em “é”?", "Toque na resposta certa",
       "Porque ele concorda com “as redes sociais” (plural), e não com “bolha” (singular).",
       ["Porque houve um erro de digitação.", "Porque “bolha” é o nome de um grupo de pessoas.", "Porque o verbo ser fica sempre no plural."], "hard"),
-    mc("p9-g4-a7", "No mesmo trecho, o pronome “te” se refere especificamente a quem lê o texto ou a todos os internautas em geral?", "Toque na resposta certa",
-      "A todos os internautas em geral: a pesquisadora fala de algo que acontece com todas as pessoas que participam de redes.",
+    mc("p9-g4-a7", "No Trecho 2, o pronome “te” (“que te induz”) se refere especificamente a quem lê o texto ou a qualquer pessoa que usa as redes?", "Toque na resposta certa",
+      "A qualquer pessoa que usa as redes: a pesquisadora fala de algo que acontece com todos os que participam delas.",
       ["Só a quem está lendo a revista.", "Só à jornalista que fez a entrevista.", "A nenhuma pessoa, é só enfeite."], "hard"),
-    mc("p9-g4-a8", "O que justifica o uso de aspas na palavra “iguais”?", "Toque na resposta certa",
+    mc("p9-g4-a8", "No Trecho 2, o que justifica o uso de aspas na palavra “iguais”?", "Toque na resposta certa",
       "As aspas mostram que as pessoas das bolhas não são exatamente iguais: elas só compartilham gostos e ideias parecidas.",
       ["As aspas servem só para enfeitar a palavra.", "As aspas mostram que a palavra está escrita errada.", "As aspas indicam que alguém está gritando."], "hard"),
   ),
@@ -311,7 +323,7 @@ export const portuguesEmAcaoGrupos: LessonGroup[] = [
     "Como as redes formam bolhas, como os algoritmos as reforçam e como o senso crítico ajuda a sair delas.",
     IMG_LETRAS, g3Activities),
   grupo9(4, "A linguagem do texto",
-    "Observar palavras em inglês, pronomes, o verbo ser e as aspas em trechos da entrevista.",
-    "Estrangeirismos, pronomes, concordância do verbo ser e aspas em trechos da entrevista.",
+    "Observar estrangeirismos, pronomes, a concordância do verbo ser e as aspas em dois trechos da entrevista.",
+    "Estrangeirismos, pronomes, concordância do verbo ser e aspas em dois trechos da entrevista, com os conceitos explicados antes.",
     IMG_LIVRO, g4Activities),
 ];

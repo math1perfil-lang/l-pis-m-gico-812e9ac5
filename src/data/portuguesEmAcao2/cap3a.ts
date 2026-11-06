@@ -13,16 +13,21 @@ const IMG_HQ = `${IMG}/c3-hq-coracao.jpg`;
 // ---------------------------------------------------------------------------
 // C1 — Artigo de opinião "Selfies" (compreensão, parte 1)
 // ---------------------------------------------------------------------------
-const selfies = read("p9c3-selfies", "Selfies (artigo de opinião)", [
+const selfiesPassage = [
   "1. Muita gente se irrita, e com razão, com o uso indiscriminado dos celulares. Se servissem só para falar, já seria ruim, mas eles também tiram fotos, e assim somos invadidos por imagens de gatos subindo na cortina, focinhos de cachorro diante da câmera, pratos de torresmo, brownie e feijoada.",
-  "2. Pelo que o autor vê com os filhos, de 10 e 12 anos, o tempo dos “selfies” está chegando ao fim: eles já acham ridícula a mania de tirar retratos de si em qualquer ocasião e até têm preconceito com os colegas que fazem isso: “Fulaninha? Tira foto na frente do espelho.”",
+  "2. Pelo que vejo entre meus filhos, de 10 e 12 anos, o tempo dos “selfies” está chegando ao fim: eles já acham ridícula a mania de tirar retratos de si em qualquer ocasião e até têm preconceito com os colegas que fazem isso: “Fulaninha? Tira foto na frente do espelho.”",
   "3. O hábito pode ser compreensível: alguém que quer melhorar a forma física e registra o progresso a cada semana, ou um adolescente que começa a se descobrir. Já a bobeira aparece quando alguém tira um “selfie” com a torre Eiffel ao fundo ou (pior) ao lado de, sei lá, um ator famoso.",
   "4. Seria apenas o registro de algo importante que nos acontece, e tudo bem. O problema se complica com as fotos de comida. Em primeiro lugar, o autor vê nisso uma espécie de “degradação da experiência”: como se o que vivemos de fato, uma estada em Paris, um jantar, não pudesse ser vivido e sentido como é.",
   "5. Quem se entrega a fotografar a si mesmo na viagem, em vez de simplesmente viajar, pode estar fugindo das próprias sensações. Desdobra o “self” em duas entidades: a pessoa que está em Paris e a que tira a foto de quem está em Paris.",
   "6. Pode ser narcisismo, claro, mas o narcisismo não precisa viajar. A complicação vem do objeto: o que fazer diante da torre Eiffel? Dá para unir-se à paisagem, sentir a respiração diante daquela elevação de ferro e nuvem, deixar o olhar atravessar o rendilhado que brilha ao sol.",
   "7. Mas ele pega o celular e tira uma foto de si na torre. O mundo se fecha no visor do aparelho. Não por acaso faz uma careta idiota e dá as costas para o monumento: na verdade, dá as costas para a vida.",
   "8. Talvez as coisas não sejam tão desesperadoras. Imagine que, daqui a cem anos, depois de uma guerra atômica e de uma catástrofe climática, um pesquisador encontre os “selfies” e as fotos de batata frita. Ele poderá dizer “Como as pessoas eram felizes naquela época!” ou “Como eram tontas!”. Dependerá dos humores do pesquisador.",
-], "Baseado em Marcelo Coelho, “Selfies”, Folha de S.Paulo, 23 abr. 2014.");
+];
+const selfiesCredit = "Baseado em Marcelo Coelho, “Selfies”, Folha de S.Paulo, 23 abr. 2014.";
+/** O mesmo artigo, para reler nos grupos seguintes (cada leitura precisa de id próprio). */
+export const selfiesRead = (id: string, title = "Selfies (artigo de opinião)") =>
+  read(id, title, selfiesPassage, selfiesCredit);
+const selfies = selfiesRead("p9c3-selfies");
 
 const c1: GrupoParcial = grupo(
   "Selfies: o que o autor pensa",
@@ -33,16 +38,16 @@ const c1: GrupoParcial = grupo(
     selfies,
     ...txt("p9c3-selfies",
       mc("p9c3-g1-a1", "O autor aborda o uso do celular. Ele vê esse uso de forma positiva ou negativa? Por quê?", I,
-        "De forma negativa: quando usado de modo indiscriminado, o celular tira a privacidade das pessoas.",
+        "De forma negativa: ele se irrita com o uso indiscriminado do celular, que enche tudo de imagens banais.",
         ["De forma positiva: o celular só traz vantagens.", "De forma indiferente: ele não tem opinião.", "De forma positiva: porque as fotos ficam lindas."], "medium"),
       mc("p9c3-g1-a2", "Das múltiplas funções do celular, qual é a que mais incomoda o autor?", I,
         "A função de máquina fotográfica.",
         ["A função de despertador.", "A função de calculadora.", "A função de telefone."]),
       mc("p9c3-g1-a3", "O que o autor pensa de fotos banais, como gatos subindo na cortina e pratos de feijoada?", I,
-        "Considera que dizem respeito à vida particular e mostram situações corriqueiras e desinteressantes.",
+        "Considera banais: mostram situações corriqueiras que interessam pouco a quem as vê.",
         ["Considera obras de arte.", "Considera documentos históricos importantes.", "Considera as melhores fotos da internet."]),
-      mc("p9c3-g1-a4", "Apesar do uso quase ilimitado do celular para tirar fotos, a selfie é uma unanimidade entre os adolescentes? Por quê?", I,
-        "Não: há adolescentes que rejeitam o hábito de se autofotografar a todo instante e têm preconceito com quem o tem.",
+      mc("p9c3-g1-a4", "Apesar do uso quase ilimitado do celular para tirar fotos, a selfie é uma unanimidade entre os mais jovens? Por quê?", I,
+        "Não: os filhos do autor, de 10 e 12 anos, acham ridículo o hábito de se autofotografar a todo instante e têm preconceito com quem o tem.",
         ["Sim: todos os adolescentes adoram.", "Sim: porque os pais obrigam.", "Não: porque os adolescentes não têm celular."], "medium"),
       mc("p9c3-g1-a5", "Em que situação o autor acha que haveria sentido alguém fotografar a si mesmo?", I,
         "Quando há uma finalidade prática, como registrar o progresso de um programa de exercícios.",
@@ -51,7 +56,7 @@ const c1: GrupoParcial = grupo(
         "Na selfie banal, como fotografar-se com a torre Eiffel ao fundo ou ao lado de pessoas famosas.",
         ["Na selfie para registrar exercícios.", "Na selfie de adolescentes que se descobrem.", "Em qualquer foto tirada por outra pessoa."], "medium"),
       mc("p9c3-g1-a7", "Segundo o autor, a onda das selfies provocou uma “espécie de degradação da experiência”. O que ele quer dizer com isso?", I,
-        "Que a experiência vivida (a comida, a viagem, conhecer um artista) foi banalizada, pois tudo é publicado: o que importa passa a ser divulgar, não viver.",
+        "Que a experiência vivida (a comida, a viagem) fica empobrecida, pois a pessoa se ocupa de fotografar em vez de viver e sentir o que está acontecendo.",
         ["Que as selfies estragam os celulares.", "Que as experiências deixaram de existir.", "Que os jovens passaram a viajar menos por falta de dinheiro."], "hard"),
     ),
   ]
@@ -66,8 +71,9 @@ const c2: GrupoParcial = grupo(
   "O autor usa uma viagem a Paris para defender sua ideia: quem só fotografa a si mesmo deixa de viver o lugar.",
   IMG_LETRAS,
   [
-    ...txt("p9c3-selfies",
-      mc("p9c3-g2-a1", "Para ilustrar seu ponto de vista, o autor cita uma viagem a Paris. Em tese, o que uma pessoa procura quando viaja?", I,
+    selfiesRead("p9c3-selfies-g2", "Selfies (para reler)"),
+    ...txt("p9c3-selfies-g2",
+      mc("p9c3-g2-a1", "Para ilustrar seu ponto de vista, o autor cita uma viagem a Paris. Em tese, o que uma pessoa procura quando viaja e conhece a torre Eiffel?", I,
         "Conhecimento e emoções novas.",
         ["Apenas descanso e silêncio.", "Apenas fotos para postar.", "Apenas lugares para comprar roupas."]),
       mc("p9c3-g2-a2", "O que muda quando a pessoa fotografa a si mesma no lugar onde faz turismo?", I,
@@ -76,19 +82,19 @@ const c2: GrupoParcial = grupo(
       mc("p9c3-g2-a3", "Por que o autor vê narcisismo nesse tipo de atitude?", I,
         "Porque a própria pessoa quer ver-se a todo instante nos diferentes lugares por onde passa.",
         ["Porque a pessoa quer ver só os outros turistas.", "Porque a pessoa evita as fotos.", "Porque a pessoa só fotografa paisagens."], "medium"),
-      mc("p9c3-g2-a4", "O autor diz: “Desdobro o meu ‘self’ em duas entidades: quem está em Paris e quem tira a foto de quem está em Paris”. Qual procedimento NÃO seria próprio de uma “pessoa que está em Paris”?", I,
+      mc("p9c3-g2-a4", "Segundo o artigo, quem se fotografa em Paris “desdobra o ‘self’ em duas entidades”: a pessoa que está em Paris e a que tira a foto de quem está em Paris. Qual atitude NÃO seria própria da “pessoa que está em Paris”?", I,
         "Fazer uma careta para a câmera, de costas para o monumento.",
         ["Unir-se à paisagem.", "Sentir como respira diante da torre.", "Deixar o olhar atravessar o rendilhado de ferro."], "hard"),
-      mc("p9c3-g2-a5", "Por que, para o autor, a selfie indiscriminada é uma forma de negação da vida (“dou as costas para a vida”)?", I,
+      mc("p9c3-g2-a5", "Por que, para o autor, a selfie indiscriminada é uma forma de negação da vida (“dá as costas para a vida”)?", I,
         "Porque a prática impede a pessoa de viver plenamente o lugar e o momento ou de interagir com os outros, limitando-se a olhar a imagem da realidade.",
         ["Porque a selfie tira a vida da pessoa fotografada.", "Porque a selfie é proibida em monumentos.", "Porque a selfie só se usa à noite."], "hard"),
       mc("p9c3-g2-a6", "No final, o autor imagina um pesquisador do futuro que recupera as selfies e as fotos de batata frita. O que você acha que o pesquisador diria?", I,
         "Depende do humor dele: tanto “Como eram felizes!” quanto “Como eram tontas!” seriam possíveis, dependendo de como ele interpreta aquelas imagens.",
         ["Diria sempre “Como eram felizes!”, sem exceção.", "Diria sempre “Como eram tontas!”, sem exceção.", "Não diria nada, pois as fotos não existem mais."]),
-      mc("p9c3-g2-a7", "Se Marcelo Coelho fosse o pesquisador, o que ele diria?", I,
+      mc("p9c3-g2-a7", "Pelo tom do artigo, qual das duas frases do pesquisador combina mais com a opinião do autor, Marcelo Coelho?", I,
         "“Como eram tontas!”.",
         ["“Como as pessoas eram felizes naquela época!”.", "“Que fotos incríveis!”.", "“Quero tirar uma selfie agora!”."]),
-      mc("p9c3-g2-a8", "E você, o que diria como pesquisador?", I,
+      mc("p9c3-g2-a8", "E você, o que diria se fosse o pesquisador?", I,
         "Que as fotos mostram um pouco de tudo: momentos felizes, mas também pessoas distraídas do que viviam.",
         ["Que ninguém sabia tirar foto.", "Que ninguém tinha celular.", "Que todos mentiam em todas as fotos."]),
     ),
@@ -104,22 +110,23 @@ const c3: GrupoParcial = grupo(
   "O autor escolhe palavras que mostram sua opinião. Depois, é a nossa vez de opinar sobre selfies, privacidade e viver o momento.",
   IMG_LIVRO,
   [
-    ...txt("p9c3-selfies",
+    selfiesRead("p9c3-selfies-g3", "Selfies (para reler)"),
+    ...txt("p9c3-selfies-g3",
       mc("p9c3-g3-a1", "Na frase “Fulaninha? Tira foto na frente do espelho”, qual é o sentido da palavra “fulaninha”? Refere-se a uma pessoa específica?", I,
         "Tem sentido vago e pode se referir a alguém cujo nome não se conhece ou não se quer dizer; não é uma pessoa específica.",
         ["Refere-se a uma pessoa específica, a filha do autor.", "Refere-se a uma atriz famosa.", "Refere-se ao nome de uma rede social."], "medium"),
       mc("p9c3-g3-a2", "Que efeito, quanto ao sentido, o diminutivo tem em “fulaninha”?", I,
         "Cria um sentido pejorativo, preconceituoso.",
         ["Cria um sentido carinhoso.", "Indica que a pessoa é pequena.", "Não muda o sentido."], "medium"),
-      mc("p9c3-g3-a3", "Que palavra ou expressão do trecho “A bobeira se revela em outras situações [...] ao lado de, sei lá, um ator famoso” mostra que o autor busca uma linguagem informal?", I,
+      mc("p9c3-g3-a3", "Que palavra ou expressão do trecho “Já a bobeira aparece quando alguém tira um selfie com a torre Eiffel ao fundo ou (pior) ao lado de, sei lá, um ator famoso” mostra que o autor busca uma linguagem informal?", I,
         "A palavra “bobeira” e a expressão “sei lá”.",
         ["As palavras “situações” e “revela”.", "As palavras “fundo” e “torre”.", "A palavra “famoso” apenas."], "medium"),
-      mc("p9c3-g3-a4", "Por que o autor empregou a palavra “pior” entre parênteses?", I,
+      mc("p9c3-g3-a4", "No mesmo trecho, por que o autor empregou a palavra “pior” entre parênteses?", I,
         "Para isolar um comentário dele mesmo a respeito do exemplo que deu.",
         ["Para corrigir um erro de ortografia.", "Para citar outra pessoa.", "Para indicar o nome de um lugar."], "medium"),
-      mc("p9c3-g3-a5", "No trecho em que ele pega o celular e tira a foto, por que o autor usa verbos e pronomes na primeira pessoa do singular? A quem se referem?", I,
-        "A primeira pessoa tem função impessoal e generalizante: refere-se a qualquer pessoa que aja daquela forma.",
-        ["Refere-se só ao autor, que viajou a Paris.", "Refere-se aos filhos do autor.", "Refere-se apenas aos leitores adultos."], "hard"),
+      mc("p9c3-g3-a5", "No trecho “Mas ele pega o celular e tira uma foto de si na torre”, a quem se refere o “ele”?", I,
+        "A qualquer pessoa que aja daquela forma: é um “ele” generalizante, não alguém específico.",
+        ["Ao próprio autor, que viajou a Paris.", "Aos filhos do autor.", "A um ator famoso."], "hard"),
       mc("p9c3-g3-a6", "Pelo uso de “fulaninha” e “bobeira”, a visão contrária do autor às selfies fica clara. Considerando que o texto é de 2014, ele ainda teria essa visão hoje?", I,
         "Provavelmente em parte: pode ter se acostumado às selfies, mas talvez ainda critique o exagero e a perda da experiência.",
         ["Com certeza ele se tornou fã de selfies.", "Ele nunca viu uma selfie na vida.", "Ele passou a odiar todas as fotografias."], "hard"),
@@ -133,7 +140,7 @@ const c3: GrupoParcial = grupo(
     mc("p9c3-g3-a9", "Você tem o hábito de publicar nas redes fatos do cotidiano, como gatos subindo em cortinas ou pratos de comida? O que pensa disso?", I,
       "Às vezes publico coisas do dia a dia, mas penso se isso ajuda alguém ou se é só para aparecer.",
       ["Publico absolutamente tudo sem pensar.", "Nunca publico nada porque acho tudo ridículo.", "Publico só para ganhar curtidas, nunca por vontade própria."]),
-    mc("p9c3-g3-a10", "Você concorda com o autor de que o uso indiscriminado do celular para registrar fatos cotidianos rouba a privacidade das pessoas? Por quê?", I,
+    mc("p9c3-g3-a10", "Há quem diga que o uso indiscriminado do celular para registrar fatos cotidianos rouba a privacidade das pessoas. Qual é a sua posição?", I,
       "Concordo em parte: quando se posta sem cuidado, expõem-se dados e imagens de outras pessoas; por isso é preciso controlar quem vê o que postamos.",
       ["Discordo: nunca há problema em postar qualquer foto.", "Concordo totalmente: ninguém deveria usar celular.", "Não tenho opinião e prefiro nem pensar no assunto."], "medium"),
     mc("p9c3-g3-a11", "Para você, sentir a paisagem é mais importante do que fotografá-la e compartilhá-la? Como se relaciona com o que fotografa e posta?", I,
@@ -145,12 +152,13 @@ const c3: GrupoParcial = grupo(
 // ---------------------------------------------------------------------------
 // C4 — Pronome relativo: construindo o conceito + tira "Placebo" (parte 1)
 // ---------------------------------------------------------------------------
-const placebo = withImage(read("p9c3-placebo", "Tira: alimentar a rede social", [
+const placeboRead = (id: string) => withImage(read(id, "Tira: alimentar a rede social", [
   "Tira em 3 quadrinhos, com um adolescente de moletom e, atrás dele, a “rede social” desenhada como um monstrinho peludo que parece uma sombra.",
   "Quadrinho 1. O monstro da rede social fica grudado atrás do adolescente, olhando-o com fome.",
   "Quadrinho 2. Adolescente: “Hora de alimentar a minha rede social!” O monstro abre a boca.",
   "Quadrinho 3. O adolescente joga na boca do monstro: “Alimento a minha rede social com livros que não li. Alimento a minha rede social com coisas que não sou.” O monstro mastiga contente, e o adolescente fica preso a ele por uma coleira.",
 ]), IMG_PLACEBO, "Tira: um adolescente alimenta o monstro da rede social");
+const placebo = placeboRead("p9c3-placebo");
 
 const c4: GrupoParcial = grupo(
   "Pronome relativo: o que liga e substitui",
@@ -207,7 +215,8 @@ const c5: GrupoParcial = grupo(
   "Duas frases viram uma só com a ajuda do “que”. Treinamos também com preposição e com quem, o qual e onde.",
   IMG_FLORESTA,
   [
-    ...txt("p9c3-placebo",
+    placeboRead("p9c3-placebo-g5"),
+    ...txt("p9c3-placebo-g5",
       mc("p9c3-g5-a1", "Observe: “Alimento a minha rede social com livros que não li” e “Alimento a minha rede social com coisas que não sou”. Quantos verbos há em cada período? Identifique-os.", I,
         "Dois em cada: “alimento” e “li”, no primeiro; “alimento” e “sou”, no segundo.",
         ["Um em cada: “alimento”.", "Três em cada.", "Nenhum em cada."]),
@@ -232,9 +241,6 @@ const c5: GrupoParcial = grupo(
       mc("p9c3-g5-a8", "Una usando “que”: “Esta é a calça nova? Você comprou uma calça nova?”", I,
         "Esta é a calça nova que você comprou?",
         ["Esta é a calça nova você comprou?", "Esta é que a calça nova comprou?", "Esta calça é você comprou nova?"]),
-      mc("p9c3-g5-a9", "Una as orações empregando um pronome relativo coerente: “O problema ___ tenho me referido é outro.”", I,
-        "ao qual / a que",
-        ["quem", "onde", "cujo"], "hard"),
     ),
   ]
 );
@@ -248,6 +254,10 @@ const c6: GrupoParcial = grupo(
   "Às vezes o relativo precisa de uma preposição: de que, a que, em que, com quem. É o verbo da segunda oração que manda.",
   IMG_LETRAS,
   [
+    read("p9c3-g6-prep", "Relativo com preposição", [
+      "O verbo (ou o nome) da segunda oração pode exigir uma preposição. Ela vem antes do relativo: “O filme a que assisti é longo” (quem assiste, assiste a algo); “O bairro em que moro é antigo”; “Os amigos de quem gosto são sinceros”.",
+      "Para saber qual preposição usar, monte a frase com o antecedente: “Assisti ao filme” pede a; “Gosto dos amigos” pede de. Depois troque o termo pelo relativo.",
+    ]),
     mc("p9c3-g6-a1", "Complete com o pronome relativo adequado: “Eu emprestarei meus lápis coloridos a ___ estiver precisando.”", I,
       "quem",
       ["onde", "cujo", "como"]),
@@ -278,6 +288,9 @@ const c6: GrupoParcial = grupo(
     mc("p9c3-g6-a10", "Una: “Fomos ao Rio de Janeiro. A sede da Academia Brasileira de Letras se localiza no Rio de Janeiro.”", I,
       "Fomos ao Rio de Janeiro, onde se localiza a sede da Academia Brasileira de Letras.",
       ["Fomos ao Rio de Janeiro, quem se localiza a sede da Academia.", "Fomos ao Rio de Janeiro, cujo se localiza a sede da Academia.", "Fomos ao Rio de Janeiro, como se localiza a sede da Academia."], "medium"),
+    mc("p9c3-g5-a9", "Complete com o pronome relativo (com preposição) que o verbo exige: “O problema ___ tenho me referido é outro.”", I,
+      "ao qual / a que",
+      ["quem", "onde", "cujo"], "hard"),
     mc("p9c3-g6-a11", "Sobre o pronome relativo depois de preposição, qual é a regra?", I,
       "O relativo deve ser antecedido de preposição quando o verbo da segunda oração a exige (ex.: “A permissão de que preciso é obrigatória”).",
       ["O relativo nunca aceita preposição.", "A preposição vem sempre depois do relativo.", "A preposição só aparece com o relativo “cujo”."], "medium"),

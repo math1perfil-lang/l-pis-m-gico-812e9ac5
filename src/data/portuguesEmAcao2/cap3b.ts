@@ -1,5 +1,6 @@
 import { grupo, IMG, IMG_CRIANCAS, IMG_FLORESTA, IMG_LETRAS, IMG_LIVRO, mc, read, txt, withImage } from "./shared";
 import type { GrupoParcial } from "./shared";
+import { selfiesRead } from "./cap3a";
 
 // Capítulo 3 (continuação): onde/aonde, poema "Quadrilha", E/I e O/U, visão crítica, artigo de opinião (II).
 
@@ -8,6 +9,20 @@ const IMG_CASULO = `${IMG}/c3-tira-casulo.jpg`;
 const IMG_PAI = `${IMG}/c3-tira-pai.jpg`;
 const IMG_CHEFE = `${IMG}/c3-tira-chefe.jpg`;
 const IMG_ALIEN = `${IMG}/c3-tira-alien.jpg`;
+
+/** Resumo do artigo de Rosely Sayão (capítulo 2), para quem precisar compará-lo. */
+const sayaoResumo = (id: string) =>
+  read(id, "Resumo: “A convivência com a internet”", [
+    "Rosely Sayão, psicóloga e colunista de jornal, escreve sobre educação de crianças e jovens. Neste artigo, ela expõe um problema: os mais novos recebem pouca formação crítica e enfrentam muitas tentações na internet, onde os comentários mostram violência e agressividade.",
+    "Para ilustrar, conta casos de jovens que lhe escreveram, como um rapaz que se arrependeu do que postou por impulso e uma garota ameaçada por um ex-namorado. Depois, apresenta uma alternativa: em vez de apenas aconselhar ou proibir, família e escola devem investir na formação do espírito crítico dos jovens.",
+  ], "Resumo de Rosely Sayão, “A convivência com a internet”, Folha de S.Paulo, 19 ago. 2014.");
+
+/** Quadro-resumo do gênero artigo de opinião (estudado no capítulo 2). */
+const quadroArtigo = (id: string) =>
+  read(id, "Artigo de opinião: o que costuma ter", [
+    "O artigo de opinião é um texto assinado que defende um ponto de vista sobre um tema atual. Costuma ter: apresentação do assunto, argumentos que sustentam a opinião (dados, exemplos, casos, experiência do autor), eventual contraposição a outra opinião e uma conclusão.",
+    "A linguagem é próxima da norma-padrão, e o autor pode escrever na primeira pessoa do singular (“penso”, “vejo”) ou do plural (“somos”, “precisamos”) para se aproximar do leitor.",
+  ]);
 
 // ---------------------------------------------------------------------------
 // C9 — Onde, aonde, donde: tira da borboleta
@@ -300,20 +315,26 @@ const c14: GrupoParcial = grupo(
   "Um mesmo assunto pode ser visto de jeitos muito diferentes. Comparamos três textos sobre as redes e a internet.",
   IMG_CRIANCAS,
   [
+    selfiesRead("p9c3-selfies-g14", "Selfies (para reler)"),
+    sayaoResumo("p9c3-sayao-g14"),
     doze,
     ...txt("p9c3-doze",
       mc("p9c3-g14-a1", "Qual é o objetivo do texto “12 pontos positivos das redes sociais”?", I,
         "Apresentar pontos positivos das redes sociais, tantas vezes criticadas.",
         ["Criticar o uso de celulares.", "Ensinar a pesquisar na internet.", "Anunciar um produto."]),
-      mc("p9c3-g14-a2", "O artigo “Selfies” diz que fotografar-se na viagem pode ser fugir das próprias sensações. Em que trecho do outro texto se explicita uma visão diferente sobre postar fotos?", I,
+      mc("p9c3-g14-a2", "O artigo “Selfies” (lido acima) diz que fotografar-se na viagem pode ser fugir das próprias sensações. Em que trecho do texto “12 pontos…” se explicita uma visão diferente sobre postar fotos?", I,
         "No item 2, “Estar perto, mesmo que distante fisicamente”.",
         ["No item 9, “Acabar com a espera”.", "No item 11, “Emocionar-se”.", "No item 1, “Reencontrar amigos de infância”."], "medium"),
       mc("p9c3-g14-a3", "Em que consiste a diferença de pontos de vista entre os dois textos?", I,
         "O artigo “Selfies” defende que postar selfies esvazia as experiências reais; o outro vê postar fotos como uma forma de aproximar pessoas que se gostam e estão distantes.",
         ["Os dois defendem exatamente a mesma ideia.", "O primeiro defende as selfies e o segundo as condena.", "Os dois falam de assuntos diferentes."], "hard"),
-      mc("p9c3-g14-a4", "No artigo “A convivência com a internet”, Rosely Sayão fala da agressividade e da violência em comentários. Qual ponto do texto “12 pontos…” também fala de violência, mas de um jeito que torna as redes úteis?", I,
+    ),
+    ...txt("p9c3-sayao-g14",
+      mc("p9c3-g14-a4", "No artigo “A convivência com a internet”, resumido acima, Rosely Sayão fala da agressividade e da violência em comentários. Qual ponto do texto “12 pontos…” também fala de violência, mas de um jeito que torna as redes úteis?", I,
         "O ponto 3, “Denunciar agressores”, que defende que as redes facilitam denunciar agressões.",
         ["O ponto 5, “Adquirir conhecimento”.", "O ponto 9, “Acabar com a espera”.", "O ponto 1, “Reencontrar amigos”."], "medium"),
+    ),
+    ...txt("p9c3-doze",
       mc("p9c3-g14-a5", "Um dos três textos apresenta um ponto de vista mais correto ou verdadeiro? Ou todos apresentam pontos válidos?", I,
         "Todos apresentam pontos válidos, cada um com seu objetivo e sua situação de produção.",
         ["Só o primeiro está certo.", "Só o último está certo.", "Nenhum tem pontos válidos."], "medium"),
@@ -338,7 +359,8 @@ const c15: GrupoParcial = grupo(
   "Afirmar e avaliar, usar a primeira pessoa do plural e do singular, citar a experiência pessoal: são recursos para persuadir. E nem todo artigo segue o mesmo molde.",
   IMG_LETRAS,
   [
-    ...txt("p9c3-selfies",
+    selfiesRead("p9c3-selfies-g15", "Selfies (para reler)"),
+    ...txt("p9c3-selfies-g15",
       mc("p9c3-g15-a1", "Na primeira frase do trecho (“Muita gente se irrita, e com razão, com o uso indiscriminado dos celulares”), qual é a afirmação e como se expressa a avaliação sobre ela?", I,
         "A afirmação é que muita gente se irrita com o uso indiscriminado dos celulares; a avaliação aparece em “e com razão”, entre vírgulas.",
         ["A afirmação é que os celulares são caros; a avaliação é “indiscriminado”.", "A afirmação é que ninguém usa celular; a avaliação é “muita gente”.", "Não há afirmação, só uma pergunta."], "medium"),
@@ -349,10 +371,15 @@ const c15: GrupoParcial = grupo(
         "O verbo “vejo” e o pronome “meus” (“meus filhos”); ele observa que os filhos acham ridículo tirar e postar selfies, o que confirma sua posição.",
         ["O verbo “somos” e o pronome “nós”; ele conta uma viagem.", "O verbo “serve” e o pronome “eles”; ele fala de gatos.", "As palavras “dez” e “doze”; ele fala da sua idade."], "hard"),
     ),
-    mc("p9c3-g15-a4", "O artigo de Marcelo Coelho tem estrutura e linguagem diferentes do de Rosely Sayão. Quais afirmações se referem a cada um? a) Conteúdo pessoal sem relação explícita com a profissão do autor. b) Conteúdo pessoal com argumentos ligados à experiência profissional. c) Expõe um problema e apresenta alternativas. d) Constrói humor com situações do cotidiano.", I,
+    sayaoResumo("p9c3-sayao-g15"),
+    ...txt("p9c3-sayao-g15",
+    mc("p9c3-g15-a4", "O artigo de Marcelo Coelho (“Selfies”) tem estrutura e linguagem diferentes do de Rosely Sayão, resumido acima. Quais afirmações se referem a cada um? a) Conteúdo pessoal sem relação explícita com a profissão do autor. b) Conteúdo pessoal com argumentos ligados à experiência profissional. c) Expõe um problema e apresenta alternativas. d) Constrói humor com situações do cotidiano.", I,
       "a) e d) são de Marcelo Coelho; b) e c) são de Rosely Sayão.",
       ["a) e c) são de Marcelo Coelho; b) e d) são de Rosely Sayão.", "a) e b) são de Marcelo Coelho; c) e d) são de Rosely Sayão.", "Todas são de Marcelo Coelho."], "hard"),
-    mc("p9c3-g15-a5", "O quadro “Artigo de opinião: construção e recursos expressivos” do capítulo anterior vale também para o artigo estudado neste capítulo? Explique.", I,
+    ),
+    quadroArtigo("p9c3-quadro-g15"),
+    ...txt("p9c3-quadro-g15",
+    mc("p9c3-g15-a5", "As características do artigo de opinião resumidas acima valem também para o artigo “Selfies”? Explique.", I,
       "Sim, em linhas gerais: as características do gênero se mantêm, ainda que haja diferenças de estilo e de modo de apresentar o ponto de vista.",
       ["Não: os dois textos são de gêneros diferentes.", "Não: nada do quadro vale para este artigo.", "Sim: porque os dois textos são idênticos."], "medium"),
     mc("p9c3-g15-a6", "Existe um único padrão para os artigos de opinião? Que tipo de variação parece haver?", I,
@@ -361,9 +388,10 @@ const c15: GrupoParcial = grupo(
     mc("p9c3-g15-a7", "O que é indispensável no artigo de opinião, que o caracteriza como tal?", I,
       "A defesa de um ponto de vista sobre determinado tema, fundamentada em argumentos consistentes.",
       ["O uso de gírias e de emojis.", "A presença de personagens e de enredo.", "A rima e a métrica."]),
+    ),
     clube,
     ...txt("p9c3-clube",
-      mc("p9c3-g15-a8", "Os artigos “Selfies” e “A convivência com a internet” focam bastante nos aspectos negativos do mundo digital. E o texto sobre o clube de leitura? Explique.", I,
+      mc("p9c3-g15-a8", "Os artigos “Selfies” e “A convivência com a internet”, que você viu neste grupo, focam bastante nos aspectos negativos do mundo digital. E o texto sobre o clube de leitura? Explique.", I,
         "Não: ele destaca um uso muito positivo das redes, pois foi por meio delas que as jovens criaram a iniciativa premiada.",
         ["Sim: também só critica o mundo digital.", "Sim: afirma que as redes não servem para ler.", "Não: porque o texto não fala de redes."], "medium"),
     ),

@@ -1,56 +1,22 @@
 import { grupo, IMG, IMG_CRIANCAS, IMG_FLORESTA, IMG_LETRAS, IMG_LIVRO, mc, read, txt, withImage } from "./shared";
 import type { GrupoParcial } from "./shared";
+import { leituraSoneto, leituraTempo } from "./unidade2a";
 
 // Unidade 2 — Amor. Capítulo 1 (parte B: tira, adjetivos pátrios, poema e paródia) e Capítulo 2 (início).
 
 const I = "Toque na resposta certa";
-const IMG_PRESENTE = `${IMG}/u2-tira-presente.jpg`;
-
-// ---------------------------------------------------------------------------
-// G11 — Tira do gato e do presente
-// ---------------------------------------------------------------------------
-const presente = withImage(read("p9u2-tira-presente", "Tira: algo que os gatos adoram", [
-  "Tira em 3 quadrinhos. Um rapaz, o Caio, e seu gato laranja, o Mingau, estão na sala.",
-  "Quadrinho 1. Caio, animado, chega com uma sacola e diz: “Trouxe algo que os gatos adoram!” Mingau, de olhos brilhando, imagina um carro esportivo.",
-  "Quadrinho 2. Mingau, surpreso e feliz, pensa: “Será que é um carro?”",
-  "Quadrinho 3. Caio abre a sacola e mostra um pacotinho de petiscos. Mingau fica decepcionado, de orelhas caídas, e Caio, desanimado, pergunta: “Você não gostou?”",
-]), IMG_PRESENTE, "Tira: um gato espera um carro e recebe um pacotinho de petiscos");
-
-const g11: GrupoParcial = grupo(
-  "Tira: algo que os gatos adoram",
-  "Interpretar expressões, pronome relativo e humor em uma tira de gato e dono.",
-  "“Algo” pode ser qualquer coisa. Por isso o gato imaginou um carro, e ganhou petiscos.",
-  IMG_FLORESTA,
-  [
-    presente,
-    ...txt("p9u2-tira-presente",
-      withImage(mc("p9u2-g11-a1", "Que transformações ocorrem na expressão de Caio e de Mingau ao longo da tira?", I,
-        "Caio está animado nos dois primeiros quadrinhos e desanimado no terceiro; Mingau está animado, surpreso e depois decepcionado.",
-        ["Os dois ficam bravos o tempo todo.", "Mingau dorme na tira inteira.", "Nada muda: os dois têm a mesma expressão."]), IMG_PRESENTE, "Tira: um gato espera um carro e recebe um pacotinho de petiscos"),
-      mc("p9u2-g11-a2", "O que provocou essas transformações?", I,
-        "A decepção do gato ao perceber que não ganharia um carro, e a de Caio com a decepção dele.",
-        ["O frio na sala.", "O barulho do carro.", "A chegada de um vizinho."], "medium"),
-      mc("p9u2-g11-a3", "Na fala de Caio, no primeiro quadrinho, há um pronome relativo. Qual é e que termo ele retoma?", I,
-        "O pronome “que”, que retoma “algo”.",
-        ["O pronome “que”, que retoma “gatos”.", "O pronome “algo”, que retoma “Caio”.", "O pronome “trouxe”, que retoma “sacola”."], "medium"),
-      mc("p9u2-g11-a4", "Qual oração fez o gato ficar entusiasmado e como se classifica?", I,
-        "“que os gatos adoram”; é uma oração subordinada adjetiva.",
-        ["“Trouxe algo”; é uma oração coordenada.", "“Será que é um carro”; é uma oração adverbial.", "“Você não gostou”; é uma oração substantiva."], "medium"),
-      mc("p9u2-g11-a5", "O fato de “algo” ser um pronome indefinido contribuiu para a decepção do gato? Por quê?", I,
-        "Sim: um pronome indefinido não esclarece a que se refere, e isso deixou o gato imaginar um carro em vez de petiscos.",
-        ["Não: “algo” sempre é muito claro.", "Não: o gato nem entendeu a frase.", "Sim: porque “algo” significa carro."], "hard"),
-      mc("p9u2-g11-a6", "O que provoca o humor nessa tira?", I,
-        "A quebra de expectativa: o gato imagina um presente enorme e ganha apenas petiscos.",
-        ["A fala repetida do dono.", "O tamanho da sala.", "A cor do gato."], "medium"),
-    ),
-  ]
-);
 
 // ---------------------------------------------------------------------------
 // G12 — Adjetivos pátrios: conceito
 // ---------------------------------------------------------------------------
+const patriosTeoria = read("p9u2-patrios-teoria", "Adjetivos pátrios: o conceito", [
+  "Adjetivo pátrio (ou gentílico) é a palavra que indica a origem de alguém ou de algo: país, estado ou cidade. Exemplos: brasileiro, mineiro, curitibano, chileno. Muitos terminam em -ês, -ense, -eiro, -ão e -ano, mas há formas irregulares, como carioca (cidade do Rio de Janeiro) e capixaba (Espírito Santo).",
+  "A mesma palavra pode ser substantivo ou adjetivo. Como substantivo, nomeia a pessoa ou o idioma: “O português é falado no Brasil.” Como adjetivo, acompanha um substantivo e indica a origem: “O idioma português está entre os mais falados do mundo.”",
+  "Quando o adjetivo junta duas origens, forma-se um adjetivo composto, em que o primeiro elemento aparece em forma reduzida e alatinada: sino- (chinês), luso- (português), ítalo- (italiano), anglo- (inglês), hispano- (espanhol). Exemplos: “aliança luso-brasileira”, “conflito sino-japonês”.",
+]);
+
 const eteAmo = read("p9u2-eteamo", "Eu te amo em vários idiomas", [
-  "Uma imagem mostra um globo terrestre e vários balões de fala em forma de coração, com a expressão “Eu te amo” escrita em diferentes idiomas: albanês, dinamarquês, inglês, japonês, francês, polonês, chinês e alemão.",
+  "Descrição de um cartaz: um globo terrestre e vários balões de fala em forma de coração, com a expressão “Eu te amo” escrita em diferentes idiomas: albanês, dinamarquês, inglês, japonês, francês, polonês, chinês e alemão.",
 ]);
 
 const g12: GrupoParcial = grupo(
@@ -59,9 +25,10 @@ const g12: GrupoParcial = grupo(
   "Brasileiro, mineiro, carioca, nipônico: palavras que mostram de onde alguém ou algo vem.",
   IMG_LETRAS,
   [
+    patriosTeoria,
     eteAmo,
     ...txt("p9u2-eteamo",
-      mc("p9u2-g12-a1", "Qual é, em português, a expressão que aparece em vários idiomas na imagem?", I,
+      mc("p9u2-g12-a1", "Qual é, em português, a expressão que aparece em vários idiomas no cartaz descrito?", I,
         "“Eu te amo”.",
         ["“Bom dia”.", "“Boa viagem”.", "“Até logo”."]),
       mc("p9u2-g12-a2", "Os nomes dos idiomas (albanês, japonês, francês...) podem ser substantivos ou adjetivos. O que indicam quando são substantivos?", I,
@@ -73,9 +40,9 @@ const g12: GrupoParcial = grupo(
       mc("p9u2-g12-a4", "Qual alternativa define melhor os adjetivos pátrios?", I,
         "Adjetivos que indicam país, estado, cidade ou origem de alguém ou algo, formados geralmente com -ês, -ense, -eiro, -ão e -ano.",
         ["Palavras que indicam ações de um país.", "Adjetivos que indicam só a idade.", "Palavras que indicam só nomes de rios."], "medium"),
-      mc("p9u2-g12-a5", "Qual adjetivo pátrio corresponde a “cidade de Alagoas”?", I,
-        "Alagoana.",
-        ["Alagoense-eiro.", "Alagoês.", "Alagotano."], "medium"),
+      mc("p9u2-g12-a5", "Qual adjetivo pátrio corresponde ao estado de Alagoas?", I,
+        "Alagoano.",
+        ["Alagoês.", "Alagotano.", "Alagoeiro."], "medium"),
       mc("p9u2-g12-a6", "Em “conflito sino-japonês”, a forma “sino-” é:", I,
         "A forma reduzida e alatinada de “chinês”.",
         ["A forma reduzida de “sinal”.", "A forma reduzida de “sinônimo”.", "Um prefixo que significa “sem”."], "medium"),
@@ -186,35 +153,46 @@ const g14: GrupoParcial = grupo(
 // ---------------------------------------------------------------------------
 const g15: GrupoParcial = grupo(
   "Poema: métrica, soneto e rimas",
-  "Retomar a escansão, a estrutura do soneto e as figuras de linguagem dos poemas de Drummond e Vinicius.",
+  "Aprender a contar sílabas poéticas, a estrutura do soneto e as figuras de linguagem, usando os poemas de Drummond e Vinicius.",
   "Contar sílabas poéticas, ver como as rimas se organizam e achar metáforas e aliterações.",
   IMG_LETRAS,
   [
-    ...txt("p9u2-poema-tempo",
-      mc("p9u2-g15-a1", "Drummond usa a redondilha maior, comum em cantigas de roda, quadrinhas e repente. Quantas sílabas poéticas têm esses versos?", I,
+    read("p9u2-metrica-teoria", "Métrica, soneto e figuras: o conceito", [
+      "Métrica é a medida do verso, feita contando as sílabas poéticas (até a última sílaba tônica do verso; vogais que se encontram podem se juntar). A redondilha maior tem 7 sílabas, muito usada em cantigas de roda e no repente. O decassílabo tem 10 sílabas e é mais solene.",
+      "Soneto é um poema de 14 versos em quatro estrofes: dois quartetos (quatro versos cada) e dois tercetos (três versos cada). As rimas recebem letras: versos que rimam entre si recebem a mesma letra (ABAB = o 1º rima com o 3º e o 2º com o 4º; ABBA = o 1º com o 4º e o 2º com o 3º).",
+      "Figuras de linguagem que vamos procurar: metáfora (comparação sem “como”: “o amor é uma chama”); antítese (palavras de sentido oposto: riso e choro); pleonasmo (repetição de ideia para dar ênfase: “viver a vida”); paradoxo (ideias contraditórias que fazem sentido juntas).",
+    ]),
+    leituraTempo("p9u2-tempo-g15", [
+      "Palavras que terminam os versos da estrofe citada acima, na ordem: brotou, idade, escutou, eternidade. Verso para contar: “E nosso amor, que brotou” (7 sílabas poéticas).",
+    ]),
+    leituraSoneto("p9u2-soneto-g15", [
+      "Palavras que terminam os versos do soneto, na ordem: atento, tanto, encanto, pensamento; momento, canto, pranto, contentamento; procure, vive, ama; tive, chama, dure. Os versos têm dez sílabas poéticas, e o poema tem 14 versos.",
+    ]),
+    ...txt("p9u2-tempo-g15",
+      mc("p9u2-g15-a1", "Drummond usa a redondilha maior, comum em cantigas de roda, quadrinhas e repente. Quantas sílabas poéticas têm versos como “E nosso amor, que brotou”?", I,
         "Sete.",
         ["Cinco.", "Dez.", "Doze."]),
-      mc("p9u2-g15-a2", "Como se organizam as rimas no poema de Drummond?", I,
-        "De modo alternado em cada estrofe: ABAB, CDCD, EFEF, etc.",
-        ["Em pares: AABB, CCDD.", "Não há rimas.", "Todas rimam com o mesmo som."], "medium"),
+      mc("p9u2-g15-a2", "Como se organizam as rimas na estrofe de Drummond (brotou, idade, escutou, eternidade)?", I,
+        "De modo alternado: ABAB.",
+        ["Em pares: AABB.", "Não há rimas.", "Todas rimam com o mesmo som."], "medium"),
       mc("p9u2-g15-a3", "Que verso ou expressão do poema de Drummond usa metáfora?", I,
         "“no abismo do coração” ou “amar é o sumo da vida”.",
         ["“o tempo passa”.", "“cada vez mais”.", "“duas estrofes”."], "medium"),
     ),
-    ...txt("p9u2-poema-soneto",
+    ...txt("p9u2-soneto-g15",
       mc("p9u2-g15-a4", "Qual é a métrica usada por Vinicius de Moraes no soneto?", I,
         "O decassílabo (versos de dez sílabas poéticas).",
         ["A redondilha maior.", "O verso de quatro sílabas.", "O verso livre."], "medium"),
       mc("p9u2-g15-a5", "Quantas estrofes tem o soneto e quantos versos tem cada uma?", I,
         "Quatro estrofes: duas de quatro versos e duas de três.",
         ["Três estrofes de quatro versos.", "Duas estrofes de seis versos.", "Uma estrofe de catorze versos."], "medium"),
-      mc("p9u2-g15-a6", "Como se organizam as rimas no soneto de Vinicius?", I,
+      mc("p9u2-g15-a6", "Como se organizam as rimas no soneto de Vinicius, a partir das palavras finais dos versos?", I,
         "ABBA, ABBA, CDE, DEC.",
         ["AABB, CCDD, EEF, FFE.", "ABAB, CDCD, EFE, FEF.", "Sem rimas."], "hard"),
-      mc("p9u2-g15-a7", "Qual par de palavras do soneto forma uma antítese?", I,
+      mc("p9u2-g15-a7", "Qual par de palavras do soneto forma uma antítese (sentidos opostos)?", I,
         "“Riso” e “pranto” (ou “pesar” e “contentamento”).",
         ["“Amor” e “zelo”.", "“Canto” e “louvor”.", "“Morte” e “solidão”."], "medium"),
-      mc("p9u2-g15-a8", "Qual expressão do soneto é um pleonasmo?", I,
+      mc("p9u2-g15-a8", "Qual expressão do soneto é um pleonasmo (repetição de ideia para dar ênfase)?", I,
         "“Rir meu riso”.",
         ["“Quem sabe a morte”.", "“Infinito enquanto dure”.", "“Maior encanto”."], "medium"),
     ),
@@ -230,9 +208,15 @@ const g16: GrupoParcial = grupo(
   "Um resumo do gênero poema, com a aliteração e as ideias principais.",
   IMG_LIVRO,
   [
-    mc("p9u2-g16-a1", "A aliteração é a repetição de um mesmo som consonantal ou de sons próximos. Qual exemplo ilustra isso em um poema?", I,
-      "A repetição constante do /t/ e do /d/ em versos sobre “tempo” e “medida”.",
-      ["A repetição de uma mesma palavra em todo verso.", "A repetição de sons vocálicos no final dos versos.", "A troca de uma palavra por outra de sentido oposto."], "medium"),
+    read("p9u2-quadro-poema", "O gênero poema em resumo", [
+      "O poema é um texto em versos (cada linha) agrupados em estrofes. Pode ser lido por pessoas de todas as idades e tem como objetivo emocionar, entreter e provocar reflexão. Circula principalmente em livros, mas também em jornais, revistas, sites e redes.",
+      "Sua estrutura pode ser livre ou seguir regras, como a métrica (contagem de sílabas) e as rimas, como vimos no soneto de Vinicius e no poema de Drummond. A sonoridade e o ritmo nascem dessas escolhas e também de recursos como a aliteração (repetição de um som consonante: “O rato roeu a roupa do rei de Roma”, em que o /r/ se repete) e a assonância (repetição de um som vogal).",
+      "A linguagem costuma ser cuidadosa e cheia de figuras, como metáforas e antíteses, mas pode ser simples e próxima da fala.",
+    ]),
+    ...txt("p9u2-quadro-poema",
+    mc("p9u2-g16-a1", "A aliteração é a repetição de um mesmo som consonantal ou de sons próximos. Em “O rato roeu a roupa do rei de Roma”, qual som se repete?", I,
+      "O som do /r/.",
+      ["O som do /a/ no final das palavras.", "O som do /m/ no começo de todas as palavras.", "O som do /s/ em todos os versos."], "medium"),
     mc("p9u2-g16-a2", "Quem são os leitores do poema?", I,
       "Pessoas de todas as idades.",
       ["Só crianças.", "Só professores.", "Só poetas."]),
@@ -242,12 +226,13 @@ const g16: GrupoParcial = grupo(
     mc("p9u2-g16-a4", "Por onde circulam os poemas?", I,
       "Principalmente em livros, mas também em jornais, revistas e na internet.",
       ["Só em avisos de elevador.", "Só em placas de trânsito.", "Só em notas fiscais."]),
-    mc("p9u2-g16-a5", "Como o poema se estrutura?", I,
+    mc("p9u2-g16-a5", "Como um poema costuma se estruturar?", I,
       "Em versos (linhas) e estrofes (conjuntos de versos), que podem ser livres ou seguir métrica e rimas.",
       ["Em parágrafos longos, sem versos.", "Em capítulos numerados.", "Em tópicos com números."], "medium"),
     mc("p9u2-g16-a6", "Como são construídos a sonoridade e o ritmo do poema?", I,
       "Pela métrica dos versos e das estrofes, com rimas, aliterações e assonâncias.",
       ["Pelo tamanho da letra.", "Pelo número de páginas.", "Pelo uso de ilustrações."], "medium"),
+    ),
   ]
 );
 
@@ -256,7 +241,7 @@ const g16: GrupoParcial = grupo(
 // ---------------------------------------------------------------------------
 const parodia = read("p9u2-parodia", "Paródia do soneto (resumo)", [
   "O “Soneto da (in)felicidade”, de Antonio Sousa Brito, é uma paródia do “Soneto de fidelidade”, de Vinicius de Moraes. Em vez de falar do amor, o poema fala de um professor atento à aula, que tenta ensinar bem, mas teme que a aula não saia como planejada e pede ajuda ao giz, ao livro e até a um santo.",
-  "O texto mantém palavras e a organização do original (duas estrofes de quatro versos e duas de três, com as mesmas rimas), mas troca o tema e usa um tom bem-humorado e uma linguagem simples. A figura de linguagem aparece em “me jogar na lama” (metáfora) e no jogo com “(in)felicidade”.",
+  "O texto mantém palavras e a organização do original (duas estrofes de quatro versos e duas de três, com as mesmas rimas) e um ritmo parecido na leitura, mas os versos não têm sempre o mesmo número de sílabas. Troca o tema e usa um tom bem-humorado e uma linguagem simples. Tem poucas figuras de linguagem, como a metáfora em “me jogar na lama”. A felicidade ou infelicidade do título depende de a aula do professor dar certo ou não.",
 ], "Baseado em Antonio Sousa Brito, “Soneto da (in)felicidade”, blog Reticências poéticas, 17 maio 2010.");
 
 const g17: GrupoParcial = grupo(
@@ -265,6 +250,12 @@ const g17: GrupoParcial = grupo(
   "Uma paródia imita um texto conhecido, mas muda o tema para criar humor, ironia ou crítica.",
   IMG_CRIANCAS,
   [
+    read("p9u2-parodia-teoria", "Paródia: o conceito", [
+      "Paródia é um texto que imita outro, já conhecido, mudando o tema ou o ponto de vista para criar humor, ironia ou crítica. Para a graça funcionar, o leitor precisa reconhecer o texto original: a paródia mantém palavras, estrutura ou ritmo dele. Esse diálogo entre textos se chama intertextualidade.",
+    ]),
+    leituraSoneto("p9u2-soneto-g17", [
+      "Características do soneto de Vinicius, para comparação: versos decassílabos; duas estrofes de quatro versos e duas de três, com rimas ABBA, ABBA, CDE, DEC; linguagem elevada e complexa; várias figuras, como antíteses, paradoxo, pleonasmo e metáfora.",
+    ]),
     parodia,
     ...txt("p9u2-parodia",
       mc("p9u2-g17-a1", "As rimas do poema original e da paródia se assemelham ou se diferenciam?", I,
@@ -304,6 +295,12 @@ const g18: GrupoParcial = grupo(
   "A paródia quase sempre tem humor. A “Canção do exílio”, de Gonçalves Dias, inspirou várias.",
   IMG_FLORESTA,
   [
+    read("p9u2-quadro-parodia", "A paródia de poema em resumo", [
+      "A paródia de poema é lida por pessoas de todas as idades que gostam de poesia e circula em livros, jornais, revistas e na internet. Seu objetivo é entreter, criando humor, ironia ou sátira a partir de um poema conhecido.",
+      "Para isso, usa palavras, versos inteiros, rimas, ritmo e figuras que lembram o original, mas muda algo e surpreende o leitor (quebra de expectativa). A linguagem não tem regra: pode manter o registro do original, formal ou informal, ou ser irreverente.",
+      "Um exemplo famoso: Gonçalves Dias escreveu, na “Canção do exílio”, “Minha terra tem palmeiras, / Onde canta o sabiá”. Esse início foi retomado e transformado por muitos poetas, entre eles Cacaso, em “Jogos florais”, que usa a mesma ideia para dar um tom irônico e bem-humorado.",
+    ], "Baseado em Gonçalves Dias, “Canção do exílio” (1843), e Cacaso, “Jogos florais”."),
+    ...txt("p9u2-quadro-parodia",
     mc("p9u2-g18-a1", "Quem são os leitores de uma paródia de poema?", I,
       "Pessoas de todas as idades que se interessam por poesia.",
       ["Só pessoas que nunca leram poemas.", "Só juízes.", "Só atletas."]),
@@ -322,9 +319,10 @@ const g18: GrupoParcial = grupo(
     mc("p9u2-g18-a6", "Como é a linguagem de uma paródia?", I,
       "Não há regra: pode manter o registro do original, formal ou informal, ou ser irreverente.",
       ["Sempre muito formal.", "Sempre em outra língua.", "Sempre em forma de siglas."], "medium"),
-    mc("p9u2-g18-a7", "Na versão “Jogos florais”, de Cacaso, o poema de Gonçalves Dias que se transforma é qual?", I,
+    mc("p9u2-g18-a7", "Na versão “Jogos florais”, de Cacaso, qual poema de Gonçalves Dias é retomado e transformado?", I,
       "“Canção do exílio”.",
       ["“Soneto de fidelidade”.", "“O tempo passa? Não passa”.", "“Quadrilha”."], "medium"),
+    ),
   ]
 );
 
@@ -332,8 +330,8 @@ const g18: GrupoParcial = grupo(
 // G19 — Capítulo 2: Felicidade clandestina
 // ---------------------------------------------------------------------------
 const felicidade = read("p9u2-felicidade", "Felicidade clandestina (resumo)", [
-  "Conto de Clarice Lispector, em resumo. A narradora, quando criança, vivia no Recife e adorava ler. Uma colega de classe, filha do dono de uma livraria, era gorda, sardenta, de cabelos muito crespos e arruivados, e tinha um busto grande. Ela chupava balas com barulho e dava, de aniversário, cartões-postais da loja do pai, em vez de livros. A narradora a descreve como cruel e cheia de vingança contra as meninas bonitas, esguias e de cabelos livres.",
-  "Um dia, a menina anunciou, como se fosse por acaso, que tinha o livro “As reinações de Narizinho”, de Monteiro Lobato, e que o emprestaria. A narradora passou a noite sonhando. No dia seguinte, a menina disse que tinha emprestado o livro a outra pessoa; mandou voltar no outro dia, e assim fez durante muito tempo, até a narradora ficar com olheiras.",
+  "Conto de Clarice Lispector, em resumo. A narradora, quando criança, vivia no Recife e adorava ler. Uma colega de classe, filha do dono de uma livraria, era sardenta, de cabelos muito crespos e arruivados, e tinha o corpo bem diferente do das meninas esbeltas da turma. Ela chupava balas com barulho e dava, de aniversário, cartões-postais da loja do pai, em vez de livros. A narradora diz que ela tinha “talento para a crueldade” e só emprestava livros a quem implorasse; vê nela um desejo de vingança contra as meninas bonitas, esguias e de cabelos livres.",
+  "Um dia, a menina anunciou, “como casualmente”, que tinha o livro “As reinações de Narizinho”, de Monteiro Lobato, e que o emprestaria. A narradora passou a noite sonhando. No dia seguinte, a menina disse que tinha emprestado o livro a outra pessoa; mandou voltar no outro dia, e assim fez durante muito tempo, até a narradora ficar com olheiras.",
   "Até que a mãe da menina apareceu, estranhou a cena diária e descobriu que o livro nunca tinha saído de casa. Horrorizada, mandou a filha emprestá-lo na hora e disse à narradora: “Você fica com o livro pelo tempo que quiser”. A narradora voltou para casa andando devagar, apertando o livro no peito. Em casa, demorou a ler: fingia que não o tinha, abria e fechava, comia pão com manteiga, só para prolongar a felicidade, que sempre seria “clandestina”. Sentada na rede, com o livro aberto no colo, sem nem tocá-lo, sentia um êxtase: não era mais uma menina com um livro, mas uma mulher com seu amante.",
 ], "Baseado em Clarice Lispector, “Felicidade clandestina”, Felicidade clandestina (Rocco, 1971).");
 
@@ -351,8 +349,8 @@ const g19: GrupoParcial = grupo(
       mc("p9u2-g19-a2", "Como a narradora descreve as personagens e a si mesma: de modo superficial ou minucioso?", I,
         "De modo minucioso, aprofundado.",
         ["De modo superficial.", "Sem descrever nada.", "Só descreve a mãe."]),
-      mc("p9u2-g19-a3", "Que aspectos são descritos com mais ênfase nos três primeiros parágrafos?", I,
-        "Aspectos físicos e psicológicos: a filha do dono da livraria é gorda, sardenta, de cabelos crespos e cruel, e as outras meninas são bonitinhas e ansiosas por livros.",
+      mc("p9u2-g19-a3", "Que aspectos são descritos com mais ênfase no começo do conto?", I,
+        "Aspectos físicos e psicológicos: a filha do dono da livraria é sardenta, de cabelos crespos e arruivados e cruel, enquanto as outras meninas são bonitas e esguias.",
         ["Apenas a roupa das meninas.", "Apenas a cidade do Recife.", "Apenas os livros da loja."], "medium"),
       mc("p9u2-g19-a4", "Embora a filha do dono de livraria não despertasse simpatia, algo a fazia parecer superior. O que era?", I,
         "O fato de o pai ser dono de livraria, o que dava acesso aos livros tão desejados.",
@@ -366,11 +364,11 @@ const g19: GrupoParcial = grupo(
       mc("p9u2-g19-a7", "A expressão “como casualmente” dá a entender que a iniciativa da filha do dono de livraria foi casual ou planejada?", I,
         "Planejada, embora ela quisesse dar a impressão de que era casual.",
         ["Totalmente casual.", "Imposta pela mãe.", "Pedida pela narradora."], "medium"),
-      mc("p9u2-g19-a8", "Por que a menina teria usado “As reinações de Narizinho” para começar a “tortura chinesa”?", I,
+      mc("p9u2-g19-a8", "Por que a menina teria escolhido “As reinações de Narizinho” para prolongar a espera da narradora?", I,
         "Porque já sabia da paixão da narradora por livros e do poder que tinha por ser filha do dono de livraria.",
         ["Porque era o único livro que tinha.", "Porque a narradora já o tinha lido.", "Porque a mãe pediu."], "hard"),
     ),
   ]
 );
 
-export const unidade2bGrupos: GrupoParcial[] = [g11, g12, g13, g14, g15, g16, g17, g18, g19];
+export const unidade2bGrupos: GrupoParcial[] = [g12, g13, g14, g15, g16, g17, g18, g19];
